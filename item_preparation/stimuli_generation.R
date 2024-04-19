@@ -5,6 +5,7 @@ library(MASS)
 library(Hmisc)
 library(bbplot)
 library(png)
+library(gtools)
 
 # for now, let's just use the same seed as previous work
 
@@ -54,13 +55,11 @@ slope_function <- function(my_desired_r) {
   return(slopes)
 }
 
-# plot generation function
+# covid plot generation function
 
-plot_function <- function(slopes, my_desired_r, letter, size_value, theme) {
+plot_function_covid <- function(slopes, my_desired_r, name, size_value, theme) {
   
-  logo <- readPNG("item_preparation/BBC-LOGO-SMALL.png")
-  
-  p <- ggplot(slopes, aes(x = V1, y = V2)) +
+    p <- ggplot(slopes, aes(x = V1, y = V2)) +
     scale_size_identity() +
     scale_alpha_identity() +
     geom_point(aes(size =  6*(size_value + 0.3), alpha = 1), shape = 16) +  
@@ -76,10 +75,9 @@ plot_function <- function(slopes, my_desired_r, letter, size_value, theme) {
          caption = "Source: NHS England") +
     annotate("text", x = 3, y = 67, label = "Fewer lockdowns") +
     annotate("text", x = 7, y = 67, label = "More lockdowns") +
-    coord_cartesian(clip = "off") +
-    annotation_raster(logo, xmin =  7.2, xmax = 8.7, ymin = 85, ymax = 87)
+    coord_cartesian(clip = "off")
   
-  ggsave(p,filename=paste0(counter, letter, ".png"),
+  ggsave(p,filename=paste0(counter, "_covid_", name, ".png"),
          device = "png",
          bg = "white",
          path = "item_preparation/all_plots",
@@ -91,7 +89,41 @@ plot_function <- function(slopes, my_desired_r, letter, size_value, theme) {
   return(p)
 }
 
-# create plots
+# reading plot generation function
+
+plot_function_reading <- function(slopes, my_desired_r, name, size_value, theme) {
+  
+  p <- ggplot(slopes, aes(x = V1, y = V2)) +
+    scale_size_identity() +
+    scale_alpha_identity() +
+    geom_point(aes(size =  6*(size_value + 0.3), alpha = 1), shape = 16) +  
+    geom_hline(yintercept = 68, size = 1, colour="#333333") +
+    geom_segment(x = 0, xend = 10, y = 66.2, yend = 66.2, size = 0.3, colour="#585858") +
+    bbc_style() +
+    theme(axis.text.x = element_blank(),
+          title = element_text(size = 14),
+          plot.subtitle = element_text(size = 11),
+          plot.caption = element_text(size = 9, hjust = -.1)) +
+    labs(title = "Book Worms",
+         subtitle = "People who read more books per year tend to live longer",
+         caption = "Source: The British Library") +
+    annotate("text", x = 3, y = 67, label = "Fewer books read") +
+    annotate("text", x = 7, y = 67, label = "More books read") +
+    coord_cartesian(clip = "off")
+  
+  ggsave(p,filename=paste0(counter,"_books_", name, ".png"),
+         device = "png",
+         bg = "white",
+         path = "item_preparation/all_plots",
+         units = "px",
+         width = 1500,
+         height = 1500,
+  )
+  
+  return(p)
+}
+
+# create plots for high r
 
 counter = 1
 for(value in high_r) {
@@ -100,10 +132,50 @@ for(value in high_r) {
   slopeI <- (slopes$slope_inverted)
   typical <- (slopes$typical)
   
-  plot_function(slopes, value, "atyp", slopeI, bbc_style())
-  plot_function(slopes, value, "typ", typical, bbc_style())
+  plot_function_covid(slopes, value, "A_hi", slopeI, bbc_style())
+  plot_function_covid(slopes, value, "T_hi", typical, bbc_style())
+  plot_function_reading(slopes, value, "A_hi", slopeI, bbc_style())
+  plot_function_reading(slopes, value, "T_hi", typical, bbc_style())
   
   if (counter > 0) {
     counter = counter + 1
   }
 }
+
+# create plots for low r
+
+counter = 1
+for(value in low_r) {
+  
+  slopes <- slope_function(value)
+  slopeI <- (slopes$slope_inverted)
+  typical <- (slopes$typical)
+  
+  plot_function(slopes, value, "A_lo", slopeI, bbc_style())
+  plot_function(slopes, value, "T_lo", typical, bbc_style())
+  plot_function_reading(slopes, value, "A_lo", slopeI, bbc_style())
+  plot_function_reading(slopes, value, "T_lo", typical, bbc_style())
+  
+  if (counter > 0) {
+    counter = counter + 1
+  }
+}
+
+# build csv file
+
+images_typical <- mixedsort(list.files(path = "item_preparation/all_plots", pattern = "_T_", full.names = F))
+
+images_atypical <- mixedsort(list.files(path = "item_preparation/all_plots", pattern = "_A_", full.names = F))
+
+plot_labels <- rep(c("all_plots/"), each = 180)
+
+plots_with_labels <- paste(plot_labels, images, sep = "")
+
+final_data <- full_data %>%
+  
+  select(-c(item_no, my_ss))
+unique_item_no <- c(1:180)
+
+instructions <- rep(c("Please look at the following plot and use the slider to estimate the correlation"), each = 180)
+
+data_with_plots <- cbind(unique_item_no, final_data, plots_with_labels, images, instructions)
