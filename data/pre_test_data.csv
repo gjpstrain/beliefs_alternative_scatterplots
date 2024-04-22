@@ -1,0 +1,32 @@
+item_no,statement,emot_diff,corr_diff,avg_emot,avg_corr,label,colour
+1,Increased exposure to sunlight is correlated with higher vitamin D levels.,1,1,4.5,6.5,high_corr,black
+2,"As caffeine consumption increases, so does the average heart rate.",0,1,4,6.5,high_corr,black
+3,Greater frequency of exercise is linked to a lower risk of depression.,2,1,4,5.5,high_corr,black
+4,Greater use of helmets is associated with a lower incidence of head injuries in cyclists.,2,1,3,6.5,high_corr,black
+5,"As the quality of healthcare improves, life expectancy tends to increase.",2,0,4,7,high_corr,black
+6,"As access to clean water improves, the incidence of waterborne diseases decreases.",1,1,4.5,6.5,high_corr,black
+7,Higher levels of empathy are linked to stronger interpersonal relationships.,2,1,5,5.5,high_corr,black
+8,"As soil quality degrades, agricultural productivity tends to decrease.",2,1,3,5.5,high_corr,black
+9,Higher levels of civic engagement are linked to a stronger sense of community.,0,1,4,5.5,high_corr,black
+10,Higher sugar consumption is associated with an increased risk of dental cavities.,0,2,3,6,high_corr,black
+11,Higher attendance at preventive health screenings is linked to earlier detection of diseases.,2,0,3,6,high_corr,black
+12,Increased use of energy-efficient appliances is associated with lower electricity bills.,1,1,4.5,6.5,high_corr,black
+13,"As pedestrian-friendly infrastructure improves, urban walkability tends to increase.",2,1,5,6.5,high_corr,black
+14,Greater regularity in sleep patterns is associated with improved mental health.,1,2,4.5,6,high_corr,black
+15,Greater water consumption is linked to improved kidney function.,0,1,4,3.5,low_corr,black
+16,"As the amount of sleep decreases, the risk of obesity increases.",0,1,3,3.5,low_corr,black
+17,Greater intake of omega-3 fatty acids is associated with lower inflammation levels.,1,1,4.5,3.5,low_corr,black
+18,Greater exposure to music education is linked to enhanced cognitive development in children.,2,0,5,3,low_corr,black
+19,Higher exposure to air conditioning is associated with increased respiratory issues.,2,0,3,1,low_corr,black
+20,Higher frequency of family meals is linked to better eating habits in children.,2,1,5,3.5,low_corr,black
+21,"As participation in community arts programs increases, local cultural engagement tends to rise.",1,2,4.5,3,low_corr,black
+22,Higher consumption of spicy foods is associated with a lower risk of certain types of cancer.,1,1,4.5,2.5,low_corr,black
+23,Greater adherence to a Mediterranean diet is linked to a lower risk of neurodegenerative diseases.,0,2,4,3,low_corr,black
+24,Higher consumption of nuts and seeds is associated with reduced risk of cardiovascular diseases.,2,1,4,2.5,low_corr,black
+25,"As cultural preservation efforts increase, community identity and cohesion tend to strengthen.",1,0,4.5,3,low_corr,black
+26,Please set both sliders to 7.,NA,NA,NA,NA,AC,red
+27,Please set both sliders to 7.,NA,NA,NA,NA,AC,red
+28,Please set both sliders to 7.,NA,NA,NA,NA,AC,red
+29,Please set both sliders to 1.,NA,NA,NA,NA,AC,red
+30,Please set both sliders to 1.,NA,NA,NA,NA,AC,red
+31,Please set both sliders to 1.,NA,NA,NA,NA,AC,red
