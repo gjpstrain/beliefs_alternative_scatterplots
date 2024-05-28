@@ -2,7 +2,7 @@ library(tidyverse)
 
 data <- read_csv("data/pre_test_responses.csv")
 
-passed <- read.csv("data/passed.csv")
+passed <- read.csv("data/pre_test_passed.csv")
 
 passed_yes <- passed %>%
   filter(passed == TRUE)
@@ -18,4 +18,4 @@ final_data$participant <- NULL
 final_data <- final_data %>%
   rename(participant = ID)
 
-write_csv(final_data, "data/additive_data.csv") # change this according to the exp
+write_csv(final_data, "data/pre_test_response_final.csv") # change this according to the exp
