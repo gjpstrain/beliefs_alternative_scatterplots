@@ -1,1643 +1,730 @@
-
-% Journals
-
-% First the Full Name is given, then the abbreviation used in the AMS Math
-% Reviews, with an indication if it could not be found there.
-% Note the 2nd overwrites the 1st, so swap them if you want the full name.
-
- %{AMS}
- @String{AMSTrans = "American Mathematical Society Translations" }
- @String{AMSTrans = "Amer. Math. Soc. Transl." }
- @String{BullAMS = "Bulletin of the American Mathematical Society" }
- @String{BullAMS = "Bull. Amer. Math. Soc." }
- @String{ProcAMS = "Proceedings of the American Mathematical Society" }
- @String{ProcAMS = "Proc. Amer. Math. Soc." }
- @String{TransAMS = "Transactions of the American Mathematical Society" }
- @String{TransAMS = "Trans. Amer. Math. Soc." }
-
- %ACM
- @String{CACM = "Communications of the {ACM}" }
- @String{CACM = "Commun. {ACM}" }
- @String{CompServ = "Comput. Surveys" }
- @String{JACM = "J. ACM" }
- @String{ACMMathSoft = "{ACM} Transactions on Mathematical Software" }
- @String{ACMMathSoft = "{ACM} Trans. Math. Software" }
- @String{SIGNUM = "{ACM} {SIGNUM} Newsletter" }
- @String{SIGNUM = "{ACM} {SIGNUM} Newslett." }
-
- @String{AmerSocio = "American Journal of Sociology" }
- @String{AmerStatAssoc = "Journal of the American Statistical Association" }
- @String{AmerStatAssoc = "J. Amer. Statist. Assoc." }
- @String{ApplMathComp = "Applied Mathematics and Computation" }
- @String{ApplMathComp = "Appl. Math. Comput." }
- @String{AmerMathMonthly = "American Mathematical Monthly" }
- @String{AmerMathMonthly = "Amer. Math. Monthly" }
- @String{BIT = "{BIT}" }
- @String{BritStatPsych = "British Journal of Mathematical and Statistical
-          Psychology" }
- @String{BritStatPsych = "Brit. J. Math. Statist. Psych." }
- @String{CanMathBull = "Canadian Mathematical Bulletin" }
- @String{CanMathBull = "Canad. Math. Bull." }
- @String{CompApplMath = "Journal of Computational and Applied Mathematics" }
- @String{CompApplMath = "J. Comput. Appl. Math." }
- @String{CompPhys = "Journal of Computational Physics" }
- @String{CompPhys = "J. Comput. Phys." }
- @String{CompStruct = "Computers and Structures" }
- @String{CompStruct = "Comput. \& Structures" }
- @String{CompJour = "The Computer Journal" }
- @String{CompJour = "Comput. J." }
- @String{CompSysSci = "Journal of Computer and System Sciences" }
- @String{CompSysSci = "J. Comput. System Sci." }
- @String{Computing = "Computing" }
- @String{ContempMath = "Contemporary Mathematics" }
- @String{ContempMath = "Contemp. Math." }
- @String{Crelle = "Crelle's Journal" }
- @String{GiornaleMath = "Giornale di Mathematiche" }
- @String{GiornaleMath = "Giorn. Mat." } % didn't find in AMS MR., ibid.
-
- %IEEE
- @String{Computer = "{IEEE} Computer" }
- @String{IEEETransComp = "{IEEE} Transactions on Computers" }
- @String{IEEETransComp = "{IEEE} Trans. Comput." }
- @String{IEEETransAC = "{IEEE} Transactions on Automatic Control" }
- @String{IEEETransAC = "{IEEE} Trans. Automat. Control" }
- @String{IEEESpec = "{IEEE} Spectrum" } % didn't find in AMS MR
- @String{ProcIEEE = "Proceedings of the {IEEE}" }
- @String{ProcIEEE = "Proc. {IEEE}" } % didn't find in AMS MR
- @String{IEEETransAeroElec = "{IEEE} Transactions on Aerospace and Electronic
-     Systems" }
- @String{IEEETransAeroElec = "{IEEE} Trans. Aerospace Electron. Systems" }
-
- @String{IMANumerAna = "{IMA} Journal of Numerical Analysis" }
- @String{IMANumerAna = "{IMA} J. Numer. Anal." }
- @String{InfProcLet = "Information Processing Letters" }
- @String{InfProcLet = "Inform. Process. Lett." }
- @String{InstMathApp = "Journal of the Institute of Mathematics and
-     its Applications" }
- @String{InstMathApp = "J. Inst. Math. Appl." }
- @String{IntControl = "International Journal of Control" }
- @String{IntControl = "Internat. J. Control" }
- @String{IntNumerEng = "International Journal for Numerical Methods in
-     Engineering" }
- @String{IntNumerEng = "Internat. J. Numer. Methods Engrg." }
- @String{IntSuper = "International Journal of Supercomputing Applications" }
- @String{IntSuper = "Internat. J. Supercomputing Applic." } % didn't find
-%% in AMS MR
- @String{Kibernetika = "Kibernetika" }
- @String{JResNatBurStand = "Journal of Research of the National Bureau
-     of Standards" }
- @String{JResNatBurStand = "J. Res. Nat. Bur. Standards" }
- @String{LinAlgApp = "Linear Algebra and its Applications" }
- @String{LinAlgApp = "Linear Algebra Appl." }
- @String{MathAnaAppl = "Journal of Mathematical Analysis and Applications" }
- @String{MathAnaAppl = "J. Math. Anal. Appl." }
- @String{MathAnnalen = "Mathematische Annalen" }
- @String{MathAnnalen = "Math. Ann." }
- @String{MathPhys = "Journal of Mathematical Physics" }
- @String{MathPhys = "J. Math. Phys." }
- @String{MathComp = "Mathematics of Computation" }
- @String{MathComp = "Math. Comp." }
- @String{MathScand = "Mathematica Scandinavica" }
- @String{MathScand = "Math. Scand." }
- @String{TablesAidsComp = "Mathematical Tables and Other Aids to Computation" }
- @String{TablesAidsComp = "Math. Tables Aids Comput." }
- @String{NumerMath = "Numerische Mathematik" }
- @String{NumerMath = "Numer. Math." }
- @String{PacificMath = "Pacific Journal of Mathematics" }
- @String{PacificMath = "Pacific J. Math." }
- @String{ParDistComp = "Journal of Parallel and Distributed Computing" }
- @String{ParDistComp = "J. Parallel and Distrib. Comput." } % didn't find
-%% in AMS MR
- @String{ParComputing = "Parallel Computing" }
- @String{ParComputing = "Parallel Comput." }
- @String{PhilMag = "Philosophical Magazine" }
- @String{PhilMag = "Philos. Mag." }
- @String{ProcNAS = "Proceedings of the National Academy of Sciences
-                    of the USA" }
- @String{ProcNAS = "Proc. Nat. Acad. Sci. U. S. A." }
- @String{Psychometrika = "Psychometrika" }
- @String{QuartMath = "Quarterly Journal of Mathematics, Oxford, Series (2)" }
- @String{QuartMath = "Quart. J. Math. Oxford Ser. (2)" }
- @String{QuartApplMath = "Quarterly of Applied Mathematics" }
- @String{QuartApplMath = "Quart. Appl. Math." }
- @String{RevueInstStat = "Review of the International Statisical Institute" }
- @String{RevueInstStat = "Rev. Inst. Internat. Statist." }
-
- %SIAM
- @String{JSIAM = "Journal of the Society for Industrial and Applied
-     Mathematics" }
- @String{JSIAM = "J. Soc. Indust. Appl. Math." }
- @String{JSIAMB = "Journal of the Society for Industrial and Applied
-     Mathematics, Series B, Numerical Analysis" }
- @String{JSIAMB = "J. Soc. Indust. Appl. Math. Ser. B Numer. Anal." }
- @String{SIAMAlgMeth = "{SIAM} Journal on Algebraic and Discrete Methods" }
- @String{SIAMAlgMeth = "{SIAM} J. Algebraic Discrete Methods" }
- @String{SIAMAppMath = "{SIAM} Journal on Applied Mathematics" }
- @String{SIAMAppMath = "{SIAM} J. Appl. Math." }
- @String{SIAMComp = "{SIAM} Journal on Computing" }
- @String{SIAMComp = "{SIAM} J. Comput." }
- @String{SIAMMatrix = "{SIAM} Journal on Matrix Analysis and Applications" }
- @String{SIAMMatrix = "{SIAM} J. Matrix Anal. Appl." }
- @String{SIAMNumAnal = "{SIAM} Journal on Numerical Analysis" }
- @String{SIAMNumAnal = "{SIAM} J. Numer. Anal." }
- @String{SIAMReview = "{SIAM} Review" }
- @String{SIAMReview = "{SIAM} Rev." }
- @String{SIAMSciStat = "{SIAM} Journal on Scientific and Statistical
-     Computing" }
- @String{SIAMSciStat = "{SIAM} J. Sci. Statist. Comput." }
-
- @String{SoftPracExp = "Software Practice and Experience" }
- @String{SoftPracExp = "Software Prac. Experience" } % didn't find in AMS MR
- @String{StatScience = "Statistical Science" }
- @String{StatScience = "Statist. Sci." }
- @String{Techno = "Technometrics" }
- @String{USSRCompMathPhys = "{USSR} Computational Mathematics and Mathematical
-     Physics" }
- @String{USSRCompMathPhys = "{U. S. S. R.} Comput. Math. and Math. Phys." }
- @String{VLSICompSys = "Journal of {VLSI} and Computer Systems" }
- @String{VLSICompSys = "J. {VLSI} Comput. Syst." }
- @String{ZAngewMathMech = "Zeitschrift fur Angewandte Mathematik und
-     Mechanik" }
- @String{ZAngewMathMech = "Z. Angew. Math. Mech." }
- @String{ZAngewMathPhys = "Zeitschrift fur Angewandte Mathematik und Physik" }
- @String{ZAngewMathPhys = "Z. Angew. Math. Phys." }
-
-% Publishers % ================================================= |
-
- @String{Academic = "Academic Press" }
- @String{ACMPress = "{ACM} Press" }
- @String{AdamHilger = "Adam Hilger" }
- @String{AddisonWesley = "Addison-Wesley" }
- @String{AllynBacon = "Allyn and Bacon" }
- @String{AMS = "American Mathematical Society" }
- @String{Birkhauser = "Birkha{\"u}ser" }
- @String{CambridgePress = "Cambridge University Press" }
- @String{Chelsea = "Chelsea" }
- @String{ClaredonPress = "Claredon Press" }
- @String{DoverPub = "Dover Publications" }
- @String{Eyolles = "Eyolles" }
- @String{HoltRinehartWinston = "Holt, Rinehart and Winston" }
- @String{Interscience = "Interscience" }
- @String{JohnsHopkinsPress = "The Johns Hopkins University Press" }
- @String{JohnWileySons = "John Wiley and Sons" }
- @String{Macmillan = "Macmillan" }
- @String{MathWorks = "The Math Works Inc." }
- @String{McGrawHill = "McGraw-Hill" }
- @String{NatBurStd = "National Bureau of Standards" }
- @String{NorthHolland = "North-Holland" }
- @String{OxfordPress = "Oxford University Press" }  %address Oxford or London?
- @String{PergamonPress = "Pergamon Press" }
- @String{PlenumPress = "Plenum Press" }
- @String{PrenticeHall = "Prentice-Hall" }
- @String{SIAMPub = "{SIAM} Publications" }
- @String{Springer = "Springer-Verlag" }
- @String{TexasPress = "University of Texas Press" }
- @String{VanNostrand = "Van Nostrand" }
- @String{WHFreeman = "W. H. Freeman and Co." }
-
-%Entries
-
-@Article{Abril07,
-  author        = "Patricia S. Abril and Robert Plant",
-  title         = "The patent holder's dilemma: Buy, sell, or troll?",
-  journal       = "Communications of the ACM",
-  volume        = "50",
-  number        = "1",
-  month         = jan,
-  year          = "2007",
-  pages         = "36--44",
-  doi           = "10.1145/1188913.1188915",
-  url           = "http://doi.acm.org/10.1145/1219092.1219093",
-  note          = "",
-}
-
-@Article{Cohen07,
-  author        = "Sarah Cohen and Werner Nutt and Yehoshua Sagic",
-  title         = "Deciding equivalances among conjunctive aggregate queries",
-  journal       = JACM,
-  articleno     = 5,
-  numpages      = 50,
-  volume        = 54,
-  number        = 2,
-  month         = apr,
-  year          = 2007,
-  doi           = "10.1145/1219092.1219093",
-  url           = "http://doi.acm.org/10.1145/1219092.1219093",
-  acmid         = 1219093,
-}
-
-
-@periodical{JCohen96,
-  key =          "Cohen",
-  editor =       "Jacques Cohen",
-  title =        "Special issue: Digital Libraries",
-  journal =      CACM,
-  volume =       "39",
-  number =       "11",
-  month =        nov,
-  year =         "1996",
-}
-
-
-@Book{Kosiur01,
-  author =       "David Kosiur",
-  title =        "Understanding Policy-Based Networking",
-  publisher =    "Wiley",
-  year =         "2001",
-  address =      "New York, NY",
-  edition =      "2nd.",
-  editor =       "",
-  volume =       "",
-  number =       "",
-  series =       "",
-  month =        "",
-  note =         "",
-}
-
-
-@Book{Harel79,
-  author =       "David Harel",
-  year =         "1979",
-  title =        "First-Order Dynamic Logic",
-  series =       "Lecture Notes in Computer Science",
-  volume =       "68",
-  address =      "New York, NY",
-  publisher =    "Springer-Verlag",
-  doi =          "10.1007/3-540-09237-4",
-  url =          "http://dx.doi.org/10.1007/3-540-09237-4",
-  editor =       "",
-  number =       "",
-  month =        "",
-  note =         "",
-}
-
-
-@Inbook{Editor00,
-  author =       "",
-  editor =       "Ian Editor",
-  title =        "The title of book one",
-  subtitle =     "The book subtitle",
-  series =       "The name of the series one",
-  year =         "2007",
-  volume =       "9",
-  address =      "Chicago",
-  edition =      "1st.",
-  publisher =    "University of Chicago Press",
-  doi =          "10.1007/3-540-09237-4",
-  url =          "http://dx.doi.org/10.1007/3-540-09456-9",
-  chapter =      "",
-  pages =        "",
-  number =       "",
-  type =         "",
-  month =        "",
-  note =         "",
-}
-
-%
-@InBook{Editor00a,
-  author =       "",
-  editor =       "Ian Editor",
-  title =        "The title of book two",
-  subtitle =     "The book subtitle",
-  series =       "The name of the series two",
-  year =         "2008",
-  address =      "Chicago",
-  edition =      "2nd.",
-  publisher =    "University of Chicago Press",
-  doi =          "10.1007/3-540-09237-4",
-  url =          "http://dx.doi.org/10.1007/3-540-09456-9",
-  volume =       "",
-  chapter =      "100",
-  pages =        "",
-  number =       "",
-  type =         "",
-  month =        "",
-  note =         "",
-}
-
-
-% incollection (has an editor, title, and possibly a booktitle)
-@Incollection{Spector90,
-  author =       "Asad Z. Spector",
-  title =        "Achieving application requirements",
-  booktitle =    "Distributed Systems",
-  publisher =    "ACM Press",
-  address =      "New York, NY",
-  year =         "1990",
-  edition =      "2nd.",
-  chapter =      "",
-  editor =       "Sape Mullender",
-  pages =        "19--33",
-  doi =          "10.1145/90417.90738",
-  url =          "http://doi.acm.org/10.1145/90417.90738",
-  volume =       "",
-  number =       "",
-  series =       "",
-  type =         "",
-  month =        "",
-  note =         "",
-}
-
-
-% incollection (has an editor, title, and possibly a booktitle)
-@Incollection{Douglass98,
-  author =       "Bruce P. Douglass and David Harel and Mark B. Trakhtenbrot",
-  title =        "Statecarts in use: structured analysis and object-orientation",
-  series =       "Lecture Notes in Computer Science",
-  booktitle =    "Lectures on Embedded Systems",
-  publisher =    "Springer-Verlag",
-  address =      "London",
-  volume =       "1494",
-  year =         "1998",
-  chapter =      "",
-  editor =       "Grzegorz Rozenberg and Frits W. Vaandrager",
-  pages =        "368--394",
-  doi =          "10.1007/3-540-65193-4_29",
-  url =          "http://dx.doi.org/10.1007/3-540-65193-4_29",
-  edition =      "",
-  number =       "",
-  type =         "",
-  month =        "",
-  note =         "",
-}
-
-
-@Book{Knuth97,
-  author =       "Donald E. Knuth",
-  title =        "The Art of Computer Programming, Vol. 1: Fundamental Algorithms (3rd. ed.)",
-  publisher =    "Addison Wesley Longman Publishing Co., Inc.",
-  year =         "1997",
-  address =      "",
-  edition =      "",
-  editor =       "",
-  volume =       "",
-  number =       "",
-  series =       "",
-  month =        "",
-  note =         "",
-}
-
-
-@Book{Knuth98,
-  author =       "Donald E. Knuth",
-  year =         "1998",
-  title =        "The Art of Computer Programming",
-  series =       "Fundamental Algorithms",
-  volume =       "1",
-  edition =      "3rd",
-  address =      "",
-  publisher =    "Addison Wesley Longman Publishing Co., Inc.",
-  doi =          "",
-  url =          "",
-  editor =       "",
-  number =       "",
-  month =        "",
-  note =         "(book)",
-}
-
-%Inbook{Knuth97,
-%  author =       "Donald E. Knuth",
-%  title =        "The Art of Computer Programming",
-%  booktitle =    "the booktitle",
-%  edition =      "3",
-%  volume =       "1",
-%  year =         "1997",
-%  publisher =    "Addison Wesley Longman Publishing Co., Inc.",
-%  editor =       "",
-%  number =       "",
-%  series =       "Fundamental Algorithms",
-%  type =         "",
-%  chapter =      "",
-%  pages =        "",
-%  address =      "",
-%  month =        "",
-%  note =         "(inbook)",
-%}
-
-%INBOOK{DK:73-inbook-full,
-%   author = "Donald E. Knuth",
-%   title = "Fundamental Algorithms (inbook w series)",
-%   volume = 1,
-%   series = "The Art of Computer Programming",
-%   publisher = "Addison-Wesley",
-%   address = "Reading, Massachusetts",
-%   edition = "Second",
-%   month = "10~" # jan,
-%   year = "1973",
-%   type = "Section",
-%   chapter = "1.2",
-%   pages = "10--119",
-%   note = "Full INBOOK entry (w series)",
-%}
-
-%INcollection{DK:74-incoll,
-%   author = "Donald E. Knuth",
-%   title = "Fundamental Algorithms (incoll)",
-%   volume = 1,
-%   booktitle = "The Art of Computer Programming",
-%   publisher = "Addison-Wesley",
-%   address = "Reading, Massachusetts",
-%   month = "10~" # jan,
-%   year = "1974",
-%   pages = "10--119",
-%   editor = "Bernard Rous",
-%   note = "This is a full incoll entry with an editor",
-%}
-
-%INcollection{DK:75-incollws,
-%   author = "Donald E. Knuth",
-%   title = "Fundamental Algorithms (incoll w series)",
-%   volume = 1,
-%   booktitle = "The Art of Computer Programming",
-%   series = "The Art of Computer Programming",
-%   publisher = "Addison-Wesley",
-%   address = "Reading, Massachusetts",
-%   month = "10~" # jan,
-%   year = "1975",
-%   pages = "10--119",
-%   editor = "Bernard Rous",
-%   note = "This is a full incoll entry with an editor and series",
-%}
-
-
-@incollection{GM05,
-Author= "Dan Geiger and Christopher Meek",
-Title= "Structured Variational Inference Procedures and their Realizations (as incol)",
-Year= 2005,
-Booktitle="Proceedings of Tenth International Workshop on Artificial Intelligence and Statistics, {\rm The Barbados}",
-Publisher="The Society for Artificial Intelligence and Statistics",
-Month= jan,
-Editors= "Z. Ghahramani and R. Cowell"
-}
-
-@Inproceedings{Smith10,
-  author =       "Stan W. Smith",
-  title =        "An experiment in bibliographic mark-up: Parsing metadata for XML export",
-  booktitle =    "Proceedings of the 3rd. annual workshop on Librarians and Computers",
-  series =       "LAC '10",
-  editor =       "Reginald N. Smythe and Alexander Noble",
-  volume =       "3",
-  year =         "2010",
-  publisher =    "Paparazzi Press",
-  address =      "Milan Italy",
-  pages =        "422--431",
-  doi =          "99.9999/woot07-S422",
-  url =          "http://dx.doi.org/99.0000/woot07-S422",
-  number =       "",
-  month =        "",
-  organization = "",
-  note =         "",
-}
-
-@Inproceedings{VanGundy07,
-  author =       "Matthew Van Gundy and Davide Balzarotti and Giovanni Vigna",
-  year =         2007,
-  title =        "Catch me, if you can: Evading network signatures with web-based polymorphic worms",
-  booktitle =    "Proceedings of the first USENIX workshop on Offensive Technologies",
-  series =       "WOOT '07",
-  publisher =    "USENIX Association",
-  address =      "Berkley, CA",
-  articleno =    {Paper 7},
-  numpages =     9,
-}
-
-@Inproceedings{VanGundy08,
-  author =       "Matthew Van Gundy and Davide Balzarotti and Giovanni Vigna",
-  year =         2008,
-  title =        "Catch me, if you can: Evading network signatures with web-based polymorphic worms",
-  booktitle =    "Proceedings of the first USENIX workshop on Offensive Technologies",
-  series =       "WOOT '08",
-  publisher =    "USENIX Association",
-  address =      "Berkley, CA",
-  articleno =    7,
-  numpages =     2,
-  pages =        "99-100",
-}
-
-@Inproceedings{VanGundy09,
-  author =       "Matthew Van Gundy and Davide Balzarotti and Giovanni Vigna",
-  year =         2009,
-  title =        "Catch me, if you can: Evading network signatures with web-based polymorphic worms",
-  booktitle =    "Proceedings of the first USENIX workshop on Offensive Technologies",
-  series =       "WOOT '09",
-  publisher =    "USENIX Association",
-  address =      "Berkley, CA",
-  pages =        "90--100",
-}
-
-@Inproceedings{Andler79,
-  author =       "Sten Andler",
-  title =        "Predicate Path expressions",
-  booktitle =    "Proceedings of the 6th. ACM SIGACT-SIGPLAN symposium on Principles of Programming Languages",
-  series =       "POPL '79",
-  year =         "1979",
-  publisher =    "ACM Press",
-  address =      "New York, NY",
-  pages =        "226--236",
-  doi =          "10.1145/567752.567774",
-  url =          "http://doi.acm.org/10.1145/567752.567774",
-  editor =       "",
-  volume =       "",
-  number =       "",
-  month =        "",
-  organization = "",
-  note =         "",
-}
-
-@Techreport{Harel78,
-  author =       "David Harel",
-  year =         "1978",
-  title =        "LOGICS of Programs: AXIOMATICS and DESCRIPTIVE POWER",
-  institution =  "Massachusetts Institute of Technology",
-  type =         "MIT Research Lab Technical Report",
-  number =       "TR-200",
-  address =      "Cambridge, MA",
-  month =        "",
-  note =         "",
-}
-
-@MASTERSTHESIS{anisi03,
-author = {David A. Anisi},
-title = {Optimal Motion Control of a Ground Vehicle},
-school = {Royal Institute of Technology (KTH), Stockholm, Sweden},
-intitution = {FOI-R-0961-SE, Swedish Defence Research Agency (FOI)},
-year = {2003},
-}
-
-
-@Phdthesis{Clarkson85,
-  author =       "Kenneth L. Clarkson",
-  year =         "1985",
-  title =        "Algorithms for Closest-Point Problems (Computational Geometry)",
-  school =       "Stanford University",
-  address =      "Palo Alto, CA",
-  note =         "UMI Order Number: AAT 8506171",
-  type =         "",
-  month =        "",
-}
-
-
-@online{Thornburg01,
-  author =       "Harry Thornburg",
-  year =         "2001",
-  title =        "Introduction to Bayesian Statistics",
-  url =          "http://ccrma.stanford.edu/~jos/bayes/bayes.html",
-  month =        mar,
-  lastaccessed = "March 2, 2005",
-}
-
-
-@online{Ablamowicz07,
-  author =       "Rafal Ablamowicz and Bertfried Fauser",
-  year =         "2007",
-  title =        "CLIFFORD: a Maple 11 Package for Clifford Algebra Computations, version 11",
-  url =          "http://math.tntech.edu/rafal/cliff11/index.html",
-  lastaccessed = "February 28, 2008",
-}
-
-
-@misc{Poker06,
-  author =       "Poker-Edge.Com",
-  year =         "2006",
-  month =        mar,
-  title =        "Stats and Analysis",
-  lastaccessed = "June 7, 2006",
-  url =          "http://www.poker-edge.com/stats.php",
-}
-
-@misc{Obama08,
-  author        = "Barack Obama",
-  year          = "2008",
-  title         = "A more perfect union",
-  howpublished  = "Video",
-  day           = "5",
-  url           = "http://video.google.com/videoplay?docid=6528042696351994555",
-  month         = mar,
-  lastaccessed  = "March 21, 2008",
-  note          =  "",
-}
-
-@misc{JoeScientist001,
-  author =       "Joseph Scientist",
-  year =         "2009",
-  title =        "The fountain of youth",
-  note =         "Patent No. 12345, Filed July 1st., 2008, Issued Aug. 9th., 2009",
-  url =          "",
-  howpublished = "",
-  month =        aug,
-  lastaccessed = "",
-}
-
-
-@Inproceedings{Novak03,
-  author =       "Dave Novak",
-  title =        "Solder man",
-  booktitle =    "ACM SIGGRAPH 2003 Video Review on Animation theater Program: Part I - Vol. 145 (July 27--27, 2003)",
-  year =         "2003",
-  publisher =    "ACM Press",
-  address =      "New York, NY",
-  pages =        "4",
-  month =        "March 21, 2008",
-  doi =          "99.9999/woot07-S422",
-  url =          "http://video.google.com/videoplay?docid=6528042696351994555",
-  note =         "",
-  howpublished = "Video",
-  editor =       "",
-  volume =       "",
-  number =       "",
-  series =       "",
-  organization = "",
-  distinctURL = 1
-}
-
-
-@article{Lee05,
-  author =       "Newton Lee",
-  year =         "2005",
-  title =        "Interview with Bill Kinder: January 13, 2005",
-  journal =      "Comput. Entertain.",
-  eid =          "4",
-  volume =       "3",
-  number =       "1",
-  month =        "Jan.-March",
-  doi =          "10.1145/1057270.1057278",
-  url =          "http://doi.acm.org/10.1145/1057270.1057278",
-  howpublished = "Video",
-  note =         "",
-}
-
-@article{rous08,
-  author =       "Bernard Rous",
-  year =         "2008",
-  title =        "The Enabling of Digital Libraries",
-  journal =      "Digital Libraries",
-  volume =       "12",
-  number =       "3",
-  month =        jul,
-  articleno =    "Article~5",
-  doi =          "",
-  url =          "",
-  howpublished = "",
-  note =         "To appear",
-}
-
-@article{384253,
- author = {Werneck,, Renato and Setubal,, Jo\~{a}o and da Conceic\~{a}o,, Arlindo},
- title = {(old) Finding minimum congestion spanning trees},
- journal = {J. Exp. Algorithmics},
- volume = {5},
- year = {2000},
- issn = {1084-6654},
- pages = {11},
- doi = {http://doi.acm.org/10.1145/351827.384253},
- publisher = {ACM},
- address = {New York, NY, USA},
- }
-
-
-@article{Werneck:2000:FMC:351827.384253,
- author = {Werneck, Renato and Setubal, Jo\~{a}o and da Conceic\~{a}o, Arlindo},
- title = {(new) Finding minimum congestion spanning trees},
- journal = {J. Exp. Algorithmics},
- volume = 5,
- month = dec,
- year = 2000,
- issn = {1084-6654},
- articleno = 11,
- url = {http://portal.acm.org/citation.cfm?id=351827.384253},
- doi = {10.1145/351827.384253},
- acmid = 384253,
- publisher = {ACM},
- address = {New York, NY, USA},
-}
-
-@article{1555162,
- author = {Conti, Mauro and Di Pietro, Roberto and Mancini, Luigi V. and Mei, Alessandro},
- title = {(old) Distributed data source verification in wireless sensor networks},
- journal = {Inf. Fusion},
- volume = {10},
- number = {4},
- year = {2009},
- issn = {1566-2535},
- pages = {342--353},
- doi = {http://dx.doi.org/10.1016/j.inffus.2009.01.002},
- publisher = {Elsevier Science Publishers B. V.},
- address = {Amsterdam, The Netherlands, The Netherlands},
- }
-
-@article{Conti:2009:DDS:1555009.1555162,
- author = {Conti, Mauro and Di Pietro, Roberto and Mancini, Luigi V. and Mei, Alessandro},
- title = {(new) Distributed data source verification in wireless sensor networks},
- journal = {Inf. Fusion},
- volume = {10},
- number = {4},
- month = oct,
- year = {2009},
- issn = {1566-2535},
- pages = {342--353},
- numpages = {12},
- url = {http://portal.acm.org/citation.cfm?id=1555009.1555162},
- doi = {10.1016/j.inffus.2009.01.002},
- acmid = {1555162},
- publisher = {Elsevier Science Publishers B. V.},
- address = {Amsterdam, The Netherlands, The Netherlands},
- keywords = {Clone detection, Distributed protocol, Securing data fusion, Wireless sensor networks},
-}
-
-@inproceedings{Li:2008:PUC:1358628.1358946,
- author = {Li, Cheng-Lun and Buyuktur, Ayse G. and Hutchful, David K. and Sant, Natasha B. and Nainwal, Satyendra K.},
- title = {Portalis: using competitive online interactions to support aid initiatives for the homeless},
- booktitle = {CHI '08 extended abstracts on Human factors in computing systems},
- year = {2008},
- isbn = {978-1-60558-012-X},
- location = {Florence, Italy},
- pages = {3873--3878},
- numpages = {6},
- url = {http://portal.acm.org/citation.cfm?id=1358628.1358946},
- doi = {10.1145/1358628.1358946},
- acmid = {1358946},
- publisher = {ACM},
- address = {New York, NY, USA},
- keywords = {cscw, distributed knowledge acquisition, incentive design, online games, recommender systems, reputation systems, user studies, virtual community},
-}
-
-@book{Hollis:1999:VBD:519964,
- author = {Hollis, Billy S.},
- title = {Visual Basic 6: Design, Specification, and Objects with Other},
- year = {1999},
- isbn = {0130850845},
- edition = {1st},
- publisher = {Prentice Hall PTR},
- address = {Upper Saddle River, NJ, USA},
- }
-
-
-@book{Goossens:1999:LWC:553897,
- author = {Goossens, Michel and Rahtz, S. P. and Moore, Ross and Sutor, Robert S.},
- title = {The  Latex Web Companion: Integrating TEX, HTML, and XML},
- year = {1999},
- isbn = {0201433117},
- edition = {1st},
- publisher = {Addison-Wesley Longman Publishing Co., Inc.},
- address = {Boston, MA, USA},
- }
-
-% need to test genres for errant isbn output
-
-% techreport
-@techreport{897367,
- author = {Buss, Jonathan F. and Rosenberg, Arnold L. and Knott, Judson D.},
- title = {Vertex Types in Book-Embeddings},
- year = {1987},
- source = {http://www.ncstrl.org:8900/ncstrl/servlet/search?formname=detail\&id=oai%3Ancstrlh%3Aumass_cs%3Ancstrl.umassa_cs%2F%2FUM-CS-1987-018},
- publisher = {University of Massachusetts},
- address = {Amherst, MA, USA},
- }
-
-@techreport{Buss:1987:VTB:897367,
- author = {Buss, Jonathan F. and Rosenberg, Arnold L. and Knott, Judson D.},
- title = {Vertex Types in Book-Embeddings},
- year = {1987},
- source = {http://www.ncstrl.org:8900/ncstrl/servlet/search?formname=detail\&id=oai%3Ancstrlh%3Aumass_cs%3Ancstrl.umassa_cs%2F%2FUM-CS-1987-018},
- publisher = {University of Massachusetts},
- address = {Amherst, MA, USA},
- }
-
-% whole proceedings
-
-@proceedings{Czerwinski:2008:1358628,
- author = {},
- note = {General Chair-Czerwinski, Mary and General Chair-Lund, Arnie and Program Chair-Tan, Desney},
- title = {CHI '08: CHI '08 extended abstracts on Human factors in computing systems},
- year = {2008},
- isbn = {978-1-60558-012-X},
- location = {Florence, Italy},
- order_no = {608085},
- publisher = {ACM},
- address = {New York, NY, USA},
- }
-
-% phdthesis
-
-@phdthesis{Clarkson:1985:ACP:911891,
- author = {Clarkson, Kenneth Lee},
- advisor = {Yao, Andrew C.},
- title = {Algorithms for Closest-Point Problems (Computational Geometry)},
- year = {1985},
- note = {AAT 8506171},
- school = {Stanford University},
- address = {Stanford, CA, USA},
- }
-% school is being picked up -- but not publisher (which is OK)
-% Also -- the title is NOT being output in italics !!! Arrrrgh! - I fixed it. :-)
-
-
-%%% compare with 'old'
-%%% atsign-Phdthesis{Clarkson85,
-%%%  author =       "Kenneth L. Clarkson",
-%%%  year =         "1985",
-%%%  title =        "Algorithms for Closest-Point Problems (Computational Geometry)",
-%%%  school =       "Stanford University",
-%%%  address =      "Palo Alto, CA",
-%%%  note =         "UMI Order Number: AAT 8506171",
-%%%  type =         "",
-%%%  month =        "",
-%%%}
-
-% A bibliography
-@Article{1984:1040142,
- key = {{$\!\!$}},
- journal = {SIGCOMM Comput. Commun. Rev.},
- year = {1984},
- issn = {0146-4833},
- volume = {13-14},
- number = {5-1},
- issue_date = {January/April 1984},
- publisher = {ACM},
- address = {New York, NY, USA},
- }
-
-
-% grinder
-@inproceedings{2004:ITE:1009386.1010128,
- key = {IEEE},
- title = {IEEE TCSC Executive Committee},
- booktitle = {Proceedings of the IEEE International Conference on Web Services},
- series = {ICWS '04},
- year = {2004},
- isbn = {0-7695-2167-3},
- pages = {21--22},
- url = {http://dx.doi.org/10.1109/ICWS.2004.64},
- doi = {http://dx.doi.org/10.1109/ICWS.2004.64},
- acmid = {1010128},
- publisher = {IEEE Computer Society},
- address = {Washington, DC, USA},
-}
-
-% div book
-@book{Mullender:1993:DS:302430,
- editor = {Mullender, Sape},
- title = {Distributed systems (2nd Ed.)},
- year = {1993},
- isbn = {0-201-62427-3},
- publisher = {ACM Press/Addison-Wesley Publishing Co.},
- address = {New York, NY, USA},
- }
-
-% master thesis (as techreport and thesis)
-
-@techreport{Petrie:1986:NAD:899644,
- author = {Petrie, Charles J.},
- title = {New Algorithms for Dependency-Directed Backtracking (Master's thesis)},
- year = {1986},
- source = {http://www.ncstrl.org:8900/ncstrl/servlet/search?formname=detail\&id=oai%3Ancstrlh%3Autexas_cs%3AUTEXAS_CS%2F%2FAI86-33},
- publisher = {University of Texas at Austin},
- address = {Austin, TX, USA},
- }
-
-@MASTERSTHESIS{Petrie:1986:NAD:12345,
- author = {Petrie, Charles J.},
- title = {New Algorithms for Dependency-Directed Backtracking (Master's thesis)},
- year = {1986},
- source = {http://www.ncstrl.org:8900/ncstrl/servlet/search?formname=detail\&id=oai%3Ancstrlh%3Autexas_cs%3AUTEXAS_CS%2F%2FAI86-33},
- school = {University of Texas at Austin},
- address = {Austin, TX, USA},
- }
-
-
-
-
-@BOOK{book-minimal,
-   author = "Donald E. Knuth",
-   title = "Seminumerical Algorithms",
-   publisher = "Addison-Wesley",
-   year = "1981",
-}
-
-% incollection (has an editor, title, and possibly a booktitle)
-@INcollection{KA:2001,
- author = {Kong, Wei-Chang},
- Title = {The implementation of electronic commerce in SMEs in Singapore (as Incoll)},
- booktitle = {E-commerce and cultural values},
- year = {2001},
- isbn = {1-59140-056-2},
- pages = {51--74},
- numpages = {24},
- url = {http://portal.acm.org/citation.cfm?id=887006.887010},
- acmid = {887010},
- publisher = {IGI Publishing},
- address = {Hershey, PA, USA},
-}
-
-
-% with bibfield 'type' before chapter (note no editor)
-@INBOOK{KAGM:2001,
- author = {Kong, Wei-Chang},
- type = {Name of Chapter:},
- chapter = {The implementation of electronic commerce in SMEs in Singapore (Inbook-w-chap-w-type)},
- title = {E-commerce and cultural values},
- year = {2001},
- isbn = {1-59140-056-2},
- pages = {51--74},
- numpages = {24},
- url = {http://portal.acm.org/citation.cfm?id=887006.887010},
- acmid = {887010},
- publisher = {IGI Publishing},
- address = {Hershey, PA, USA},
-}
-
-%%% Notes! This is because the atsign-INBOOK citation type specifies EITHER
-%%% editor or author, but not both. In my experiments with the harvard/dcu
-%%% bibtex style (and presumably this applies to other styles too), bibtex
-%%% ignores the editor information if author information exists in an
-%%% atsign-INBOOK entry. atsign-INCOLLECTION is far more commonly used in my references,
-%%% and in the absence of an editor I believe most bibtex styles will just
-%%% ommit the editor from the reference - the chapter information will not
-%%% end up in the in-text citation as you suggest it should be but at least
-%%% there is a place to put the editor if necessary.
-
-
-
-% was 'Inbook' -- changed to incollection - (editor is different to author) - need to tell Asad to codify as such.
-@incollection{Kong:2002:IEC:887006.887010,
-  author =      {Kong, Wei-Chang},
-  editor =      {Theerasak Thanasankit},
-  title =       {Chapter 9},
-  booktitle =   {E-commerce and cultural values (Incoll-w-text (chap 9) 'title')},
-  year =        {2002},
-  address =     {Hershey, PA, USA},
-  publisher =   {IGI Publishing},
-  url =         {http://portal.acm.org/citation.cfm?id=887006.887010},
-  pages =       {51--74},
-  numpages =    {24},
-  acmid =       {887010},
-  isbn =        {1-59140-056-2},
-  number =      "",
-  type =        "",
-  month =       "",
-  note =        "",
-}
-
-% incol when the chapter is 'text' - due to presence of editor (different to author)
-@incollection{Kong:2003:IEC:887006.887011,
- author = {Kong, Wei-Chang},
- title = {The implementation of electronic commerce in SMEs in Singapore (Incoll)},
- booktitle = {E-commerce and cultural values},
- editor = {Thanasankit, Theerasak},
- year = {2003},
- isbn = {1-59140-056-2},
- pages = {51--74},
- numpages = {24},
- url = {http://portal.acm.org/citation.cfm?id=887006.887010},
- acmid = {887010},
- publisher = {IGI Publishing},
- address = {Hershey, PA, USA},
-}
-
-% ------ test
-%incollection{Kong:2003:IEC:887006.887010,
-% author = {Kong, Wei-Chang},
-% chapter = {The implementation of electronic commerce in SMEs in Singapore (Incoll-text-in-chap)},
-% booktitle = {booktitle E-commerce and cultural values},
-% title =   {The title},
-% editor = {Thanasankit, Theerasak},
-% year = {2003},
-% isbn = {1-59140-056-2},
-% pages = {51--74},
-% numpages = {24},
-% url = {http://portal.acm.org/citation.cfm?id=887006.887010},
-% acmid = {887010},
-% publisher = {IGI Publishing},
-% address = {Hershey, PA, USA},
-%}
-
-
-% ---------
-
-
-
-
-
-% Need inbook with num in chapter
-
-% and inbook with number in chapter
-@InBook{Kong:2004:IEC:123456.887010,
-  author =      {Kong, Wei-Chang},
-  editor =      {Theerasak Thanasankit},
-  title =       {E-commerce and cultural values - (InBook-num-in-chap)},
-  chapter =     {9},
-  year =        {2004},
-  address =     {Hershey, PA, USA},
-  publisher =   {IGI Publishing},
-  url =         {http://portal.acm.org/citation.cfm?id=887006.887010},
-  pages =       {51--74},
-  numpages =    {24},
-  acmid =       {887010},
-  isbn =        {1-59140-056-2},
-  number =      "",
-  type =        "",
-  month =       "",
-  note =        "",
-}
-
-
-% and inbook with text in chapter
-@Inbook{Kong:2005:IEC:887006.887010,
-  author =      {Kong, Wei-Chang},
-  editor =      {Theerasak Thanasankit},
-  title =       {E-commerce and cultural values (Inbook-text-in-chap)},
-  chapter =     {The implementation of electronic commerce in SMEs in Singapore},
-  year =        {2005},
-  address =     {Hershey, PA, USA},
-  publisher =   {IGI Publishing},
-  url =         {http://portal.acm.org/citation.cfm?id=887006.887010},
-  type =        {Chapter:},
-  pages =       {51--74},
-  numpages =    {24},
-  acmid =       {887010},
-  isbn =        {1-59140-056-2},
-  number =      "",
-  month =       "",
-  note =        "",
-}
-
-
-% and inbook with a num and type field
-@Inbook{Kong:2006:IEC:887006.887010,
-  author =      {Kong, Wei-Chang},
-  editor =      {Theerasak Thanasankit},
-  title =       {E-commerce and cultural values (Inbook-num chap)},
-  chapter =     {22},
-  year =        {2006},
-  address =     {Hershey, PA, USA},
-  publisher =   {IGI Publishing},
-  url =         {http://portal.acm.org/citation.cfm?id=887006.887010},
-  type =        {Chapter (in type field)},
-  pages =       {51--74},
-  numpages =    {24},
-  acmid =       {887010},
-  isbn =        {1-59140-056-2},
-  number =      "",
-  month =       "",
-  note =        "",
-}
-
-
-% and incol coz we have a BLANK chapter - due to presence of editor
-%atIncollection{Kong:2006:IEC:887006.887011,
-%  author =     {Kong, Wei-Chang},
-%  editor =     {Theerasak Thanasankit},
-%  title =      "The title"
-%  booktitle =  {E-commerce and cultural values (Incol-coz-blank-chap)},
-%  year =       {2006},
-%  address =    {Hershey, PA, USA},
-%  publisher =  {IGI Publishing},
-%  url =        {http://portal.acm.org/citation.cfm?id=887006.887010},
-%  type =       {Type!},
-%  chapter =    {},
-%  pages =      {51--74},
-%  numpages =   {24},
-%  acmid =      {887010},
-%  isbn =       {1-59140-056-2},
-%  number =     "",
-%  month =      "",
-%  note =       "",
-%}
-
-@article{SaeediMEJ10,
-            author = {Mehdi Saeedi and Morteza Saheb Zamani and Mehdi Sedighi},
-            title = {A library-based synthesis methodology for reversible logic},
-            journal = {Microelectron. J.},
-            volume = {41},
-            number = {4},
-            month = apr,
-            year = {2010},
-            pages = {185--194},
-}
-
-@ARTICLE{SaeediJETC10,
-            author = {Mehdi Saeedi and Morteza Saheb Zamani and Mehdi Sedighi and Zahra Sasanian},
-            title = {Synthesis of Reversible Circuit Using Cycle-Based Approach},
-            journal = {J. Emerg. Technol. Comput. Syst.},
-            volume = {6},
-            number = {4},
-            month = dec,
-            year = {2010}
-            }
-
-% Asad's new version
-@article{Kirschmer:2010:AEI:1958016.1958018,
- author = {Kirschmer, Markus and Voight, John},
- title = {Algorithmic Enumeration of Ideal Classes for Quaternion Orders},
- journal = {SIAM J. Comput.},
- issue_date = {January 2010},
- volume = {39},
- number = {5},
- month = jan,
- year = {2010},
- issn = {0097-5397},
- pages = {1714--1747},
- numpages = {34},
- url = {http://dx.doi.org/10.1137/080734467},
- doi = {https://doi.org/10.1137/080734467},
- acmid = {1958018},
- publisher = {Society for Industrial and Applied Mathematics},
- address = {Philadelphia, PA, USA},
- keywords = {ideal classes, maximal orders, number theory, quaternion algebras},
-}
-
-
-% incol due to presence of booktitle
-@incollection{Hoare:1972:CIN:1243380.1243382,
- author = {Hoare, C. A. R.},
- title = {Chapter II: Notes on data structuring},
- booktitle = {Structured programming (incoll)},
- editor = {Dahl, O. J. and Dijkstra, E. W. and Hoare, C. A. R.},
- year = {1972},
- isbn = {0-12-200550-3},
- pages = {83--174},
- numpages = {92},
- url = {http://portal.acm.org/citation.cfm?id=1243380.1243382},
- acmid = {1243382},
- publisher = {Academic Press Ltd.},
- address = {London, UK, UK},
-}
-
-% incol due to presence of booktitle
-@incollection{Lee:1978:TQA:800025.1198348,
- author = {Lee, Jan},
- title = {Transcript of question and answer session},
- booktitle = {History of programming languages I (incoll)},
- editor = {Wexelblat, Richard L.},
- year = {1981},
- isbn = {0-12-745040-8},
- pages = {68--71},
- numpages = {4},
- url = {http://doi.acm.org/10.1145/800025.1198348},
- doi = {http://doi.acm.org/10.1145/800025.1198348},
- acmid = {1198348},
- publisher = {ACM},
- address = {New York, NY, USA},
-}
-
-% incol due to booktitle
-@incollection{Dijkstra:1979:GSC:1241515.1241518,
- author = {Dijkstra, E.},
- title = {Go to statement considered harmful},
- booktitle = {Classics in software engineering (incoll)},
- year = {1979},
- isbn = {0-917072-14-6},
- pages = {27--33},
- numpages = {7},
- url = {http://portal.acm.org/citation.cfm?id=1241515.1241518},
- acmid = {1241518},
- publisher = {Yourdon Press},
- address = {Upper Saddle River, NJ, USA},
-}
-
-% incol due to booktitle
-@incollection{Wenzel:1992:TVA:146022.146089,
- author = {Wenzel, Elizabeth M.},
- title = {Three-dimensional virtual acoustic displays},
- booktitle = {Multimedia interface design (incoll)},
- year = {1992},
- isbn = {0-201-54981-6},
- pages = {257--288},
- numpages = {32},
- url = {http://portal.acm.org/citation.cfm?id=146022.146089},
- doi = {10.1145/146022.146089},
- acmid = {146089},
- publisher = {ACM},
- address = {New York, NY, USA},
-}
-
-% incol due to booktitle
-@incollection{Mumford:1987:MES:54905.54911,
- author = {Mumford, E.},
- title = {Managerial expert systems and organizational change: some critical research issues},
- booktitle = {Critical issues in information systems research (incoll)},
- year = {1987},
- isbn = {0-471-91281-6},
- pages = {135--155},
- numpages = {21},
- url = {http://portal.acm.org/citation.cfm?id=54905.54911},
- acmid = {54911},
- publisher = {John Wiley \& Sons, Inc.},
- address = {New York, NY, USA},
-}
-
-@book{McCracken:1990:SSC:575315,
- author = {McCracken, Daniel D. and Golden, Donald G.},
- title = {Simplified Structured COBOL with Microsoft/MicroFocus COBOL},
- year = {1990},
- isbn = {0471514071},
- publisher = {John Wiley \& Sons, Inc.},
- address = {New York, NY, USA},
-}
-
-% Let's include Boris / BBeeton entries  (multi-volume works)
-
-@book {MR781537,
-    AUTHOR = {H{\"o}rmander, Lars},
-     TITLE = {The analysis of linear partial differential operators. {III}},
-    SERIES = {Grundlehren der Mathematischen Wissenschaften [Fundamental
-              Principles of Mathematical Sciences]},
-    VOLUME = {275},
-      NOTE = {Pseudodifferential operators},
-PUBLISHER = {Springer-Verlag},
-   ADDRESS = {Berlin, Germany},
-      YEAR = {1985},
-     PAGES = {viii+525},
-      ISBN = {3-540-13828-5},
-   MRCLASS = {35-02 (35Sxx 47G05 58G15)},
-  MRNUMBER = {781536 (87d:35002a)},
-MRREVIEWER = {Min You Qi},
-}
-
-@book {MR781536,
-    AUTHOR = {H{\"o}rmander, Lars},
-     TITLE = {The analysis of linear partial differential operators. {IV}},
-    SERIES = {Grundlehren der Mathematischen Wissenschaften [Fundamental
-              Principles of Mathematical Sciences]},
-    VOLUME = {275},
-      NOTE = {Fourier integral operators},
-PUBLISHER = {Springer-Verlag},
-   ADDRESS = {Berlin, Germany},
-      YEAR = {1985},
-     PAGES = {vii+352},
-      ISBN = {3-540-13829-3},
-   MRCLASS = {35-02 (35Sxx 47G05 58G15)},
-  MRNUMBER = {781537 (87d:35002b)},
-MRREVIEWER = {Min You Qi},
-}
-
-%%%%%%%%%%%%%%%%%%%%%% Start of Aptara sample bib entries
-
-% acmsmall-sam.bib
-@InProceedings{Adya-01,
-  author        = {A. Adya and P. Bahl and J. Padhye and A.Wolman and L. Zhou},
-  title         = {A multi-radio unification protocol for {IEEE} 802.11 wireless networks},
-  booktitle     = {Proceedings of the IEEE 1st International Conference on Broadnets Networks (BroadNets'04)},
-  publisher     = "IEEE",
-  address       = "Los Alamitos, CA",
-  year          = {2004},
-  pages         = "210--217"
-}
-
-@article{Akyildiz-01,
-  author        = {I. F. Akyildiz and W. Su and Y. Sankarasubramaniam and E. Cayirci},
-  title         = {Wireless Sensor Networks: A Survey},
-  journal       = {Comm. ACM},
-  volume        = 38,
-  number        = "4",
-  year          = {2002},
-  pages         = "393--422"
-}
-
-@article{Akyildiz-02,
-  author        = {I. F. Akyildiz and T. Melodia and K. R. Chowdhury},
-  title         = {A Survey on Wireless Multimedia Sensor Networks},
-  journal       = {Computer Netw.},
-  volume        = 51,
-  number        = "4",
-  year          = {2007},
-  pages         = "921--960"
-}
-
-@InProceedings{Bahl-02,
-  author        = {P. Bahl and R. Chancre and J. Dungeon},
-  title         = {{SSCH}: Slotted Seeded Channel Hopping for Capacity Improvement in {IEEE} 802.11 Ad-Hoc Wireless Networks},
-  booktitle     = {Proceeding of the 10th International Conference on Mobile Computing and Networking (MobiCom'04)},
-  publisher     = "ACM",
-  address       = "New York, NY",
-  year          = {2004},
-  pages         = "112--117"
-}
-
-@misc{CROSSBOW,
-  key       = {CROSSBOW},
-  title     = {{XBOW} Sensor Motes Specifications},
-  note      = {http://www.xbow.com},
-  year      = 2008
-}
-
-@article{Culler-01,
-  author        = {D. Culler and D. Estrin and M. Srivastava},
-  title         = {Overview of Sensor Networks},
-  journal       = {IEEE Comput.},
-  volume        = 37,
-  number        = "8 (Special Issue on Sensor Networks)",
-  publisher     = "IEEE",
-  address       = "Los Alamitos, CA",
-  year          = {2004},
-  pages         = "41--49"
-}
-
-@misc{Harvard-01,
-    key         = {Harvard CodeBlue},
-    title       = {{CodeBlue}: Sensor Networks for Medical Care},
-    note        = {http://www.eecs.harvard.edu/mdw/ proj/codeblue/},
-    year        = 2008
-}
-
-@InProceedings{Natarajan-01,
-    author      = {A. Natarajan and M. Motani and B. de Silva and K. Yap and K. C. Chua},
-    title       = {Investigating Network Architectures for Body Sensor Networks},
-    booktitle   = {Network Architectures},
-    editor      = {G. Whitcomb and P. Neece},
-    publisher   = "Keleuven Press",
-    address     = "Dayton, OH",
-    year        = {2007},
-    pages       = "322--328",
-    eprint      = "960935712",
-    primaryclass = "cs",
-}
-
-@techreport{Tzamaloukas-01,
-  author        = {A. Tzamaloukas and J. J. Garcia-Luna-Aceves},
-  title         = {Channel-Hopping Multiple Access},
-  number =        {I-CA2301},
-  institution =   {Department of Computer Science, University of California},
-  address =       {Berkeley, CA},
-  year          = {2000}
-}
-
-@BOOK{Zhou-06,
-  author        = {G. Zhou and J. Lu and C.-Y. Wan and M. D. Yarvis and J. A. Stankovic},
-  title         = {Body Sensor Networks},
-  publisher     = "MIT Press",
-  address       = "Cambridge, MA",
-  year          = {2008}
-}
-
-@mastersthesis{ko94,
-author = "Jacob Kornerup",
-title = "Mapping Powerlists onto Hypercubes",
-school = "The University of Texas at Austin",
-note = "(In preparation)",
-year = "1994"}
-%month = "dec",}
-
-@PhdThesis{gerndt:89,
-  author =       "Michael Gerndt",
-  title =        "Automatic Parallelization for Distributed-Memory
-                  Multiprocessing Systems",
-  school =       "University of Bonn",
-  year =         1989,
-  address =      "Bonn, Germany",
-  month =        dec
-}
-
-@article{6:1:1,
-author = "J. E. {Archer, Jr.} and R. Conway and F. B. Schneider",
-title = "User recovery and reversal in interactive systems",
-journal = "ACM Trans. Program. Lang. Syst.",
-volume =  "6",
-number = "1",
-month = jan,
-year = 1984,
-pages = "1--19"}
-
-@article{7:1:137,
-author = "D. D. Dunlop and V. R. Basili",
-title = "Generalizing specifications for uniformly implemented loops",
-journal = "ACM Trans. Program. Lang. Syst.",
-volume =  "7",
-number = "1",
-month = jan,
-year = 1985,
-pages = "137--158"}
-
-@article{7:2:183,
-author = "J. Heering and P. Klint",
-title = "Towards monolingual programming environments",
-journal = "ACM Trans. Program. Lang. Syst.",
-volume =  "7",
-number = "2",
-month = apr,
-year = 1985,
-pages = "183--213"}
-
-@book{knuth:texbook,
-author = "Donald E. Knuth",
-title = "The {\TeX{}book}",
-publisher = "Addison-Wesley",
-address = "Reading, MA.",
-year = 1984}
-
-@article{6:3:380,
-author = "E. Korach and D.  Rotem and N. Santoro",
-title = "Distributed algorithms for finding centers and medians in networks",
-journal = "ACM Trans. Program. Lang. Syst.",
-volume =  "6",
-number = "3",
-month = jul,
-year = 1984,
-pages = "380--401"}
-
-@book{Lamport:LaTeX,
-author = "Leslie Lamport",
-title = "\it {\LaTeX}: A Document Preparation System",
-publisher = "Addison-Wesley",
-address = "Reading, MA.",
-year = 1986}
-
-@article{7:3:359,
-author = "F. Nielson",
-title = "Program transformations in a denotational setting",
-journal = "ACM Trans. Program. Lang. Syst.",
-volume =  "7",
-number = "3",
-month = jul,
-year = 1985,
-pages = "359--379"}
-
-%testing
-@BOOK{test,
-   author = "Donald E. Knuth",
-   title = "Seminumerical Algorithms",
-   volume = 2,
-   series = "The Art of Computer Programming",
-   publisher = "Addison-Wesley",
-   address = "Reading, MA",
-   edition = "2nd",
-   month = "10~" # jan,
-   year = "1981",
-}
-
-@inproceedings{reid:scribe,
-author = "Brian K. Reid",
-title = "A high-level approach to computer document formatting",
-booktitle = "Proceedings of the 7th Annual Symposium on Principles of
-  Programming Languages",
-month = jan,
-year = 1980,
-publisher = "ACM",
-address = "New York",
-pages = "24--31"}
-
-@article{Zhou:2010:MMS:1721695.1721705,
- author = {Zhou, Gang and Wu, Yafeng and Yan, Ting and He, Tian and Huang, Chengdu and Stankovic, John A. and Abdelzaher, Tarek F.},
- title = {A multifrequency MAC specially designed for wireless sensor network applications},
- journal = {ACM Trans. Embed. Comput. Syst.},
- issue_date = {March 2010},
- volume = 9,
- number = 4,
- month = {April},
- year = 2010,
- issn = {1539-9087},
- pages = {39:1--39:41},
- articleno = 39,
- numpages = 41,
- url = {http://doi.acm.org/10.1145/1721695.1721705},
- doi = {10.1145/1721695.1721705},
- acmid = 1721705,
- publisher = {ACM},
- address = {New York, NY, USA},
- keywords = {Wireless sensor networks, media access control, multi-channel, radio interference, time synchronization},
-}
-
-
-@online{TUGInstmem,
-  key =          {TUG},
-  year  =        2017,
-  title =        "Institutional members of the {\TeX} Users Group",
-  url =          "http://wwtug.org/instmem.html",
-  lastaccessed = "May 27, 2017",
-}
-
-@online{CTANacmart,
-  author =    {Boris Veytsman},
-  title =  {acmart---{C}lass for typesetting publications of {ACM}},
-  year = 2017,
-  url =    {http://www.ctan.org/pkg/acmart},
-  lastaccessed = {May 27, 2017}
-  }
-
-@ARTICLE{bowman:reasoning,
-    author = {Bowman, Mic and Debray, Saumya K. and Peterson, Larry L.},
-    title = {Reasoning About Naming Systems},
-    journal = {ACM Trans. Program. Lang. Syst.},
-    volume = {15},
-    number = {5},
-    pages = {795-825},
-    month = {November},
-    year = {1993},
-    doi = {10.1145/161468.161471},
-}
-
-@ARTICLE{braams:babel,
-    author = {Braams, Johannes},
-    title = {Babel, a Multilingual Style-Option System for Use with LaTeX's Standard Document Styles},
-    journal = {TUGboat},
-    volume = {12},
-    number = {2},
-    pages = {291-301},
-    month = {June},
-    year = {1991},
-}
-
-@INPROCEEDINGS{clark:pct,
-  AUTHOR = "Malcolm Clark",
-  TITLE = "Post Congress Tristesse",
-  BOOKTITLE = "TeX90 Conference Proceedings",
-  PAGES = "84-89",
-  ORGANIZATION = "TeX Users Group",
-  MONTH = "March",
-  YEAR = {1991}
-}
-
-@ARTICLE{herlihy:methodology,
-    author = {Herlihy, Maurice},
-    title = {A Methodology for Implementing Highly Concurrent Data Objects},
-    journal = {ACM Trans. Program. Lang. Syst.},
-    volume = {15},
-    number = {5},
-    pages = {745-770},
-    month = {November},
-    year = {1993},
-    doi = {10.1145/161468.161469},
-}
-
-@BOOK{salas:calculus,
-  AUTHOR = "S.L. Salas and Einar Hille",
-  TITLE = "Calculus: One and Several Variable",
-  PUBLISHER = "John Wiley and Sons",
-  ADDRESS = "New York",
-  YEAR = "1978"
-}
-
-@MANUAL{Fear05,
-  title =        {Publication quality tables in {\LaTeX}},
-  author =       {Simon Fear},
-  month =        {April},
-  year =         2005,
-  note =         {\url{http://www.ctan.org/pkg/booktabs}}
-}
-
-@Manual{Amsthm15,
-  title =        {Using the amsthm Package},
-  organization = {American Mathematical Society},
-  month =        {April},
-  year =         2015,
-  note =         {\url{http://www.ctan.org/pkg/amsthm}}
-}
-
-@ArtifactSoftware{R,
-    title = {R: A Language and Environment for Statistical Computing},
-    author = {{R Core Team}},
-    organization = {R Foundation for Statistical Computing},
-    address = {Vienna, Austria},
-    year = {2019},
-    url = {https://www.R-project.org/},
-}
-
-@ArtifactDataset{UMassCitations,
- author    =  {Sam Anzaroot and Andrew McCallum},
- title     =  {{UMass} Citation Field Extraction Dataset},
- year      = 2013,
- url       =
-    {http://www.iesl.cs.umass.edu/data/data-umasscitationfield},
- lastaccessed = {May 27, 2019}
-}
-
-@Eprint{Bornmann2019,
-       author = {Bornmann, Lutz and Wray, K. Brad and Haunschild,
-                  Robin},
-        title = {Citation concept analysis {(CCA)}---A new form of
-                  citation analysis revealing the usefulness of
-                  concepts for other researchers illustrated by two
-                  exemplary case studies including classic books by
-                  {Thomas S.~Kuhn} and {Karl R.~Popper}},
-     keywords = {Computer Science - Digital Libraries},
-         year = 2019,
-        month = "May",
-          eid = {arXiv:1905.12410},
-archivePrefix = {arXiv},
-       eprint = {1905.12410},
- primaryClass = {cs.DL},
-}
-
-@Eprint{AnzarootPBM14,
-  author    = {Sam Anzaroot and
-               Alexandre Passos and
-               David Belanger and
-               Andrew McCallum},
-  title     = {Learning Soft Linear Constraints with Application to
-                  Citation Field Extraction},
-  year      = {2014},
-  archivePrefix = {arXiv},
-  eprint    = {1403.1349},
-}
-
-@inproceedings{Hagerup1993,
-title        = {Maintaining Discrete Probability Distributions Optimally},
-author       = {Hagerup, Torben and Mehlhorn, Kurt and Munro, J. Ian},
-booktitle    = {Proceedings of the 20th International Colloquium on Automata, Languages and Programming},
-series       = {Lecture Notes in Computer Science},
-volume       = {700},
-pages        = {253--264},
-year         = {1993},
-publisher    = {Springer-Verlag},
-address      = {Berlin},
+@inproceedings{bertini_2004,
+  title = {Quality {{Metrics}} for {{2D Scatterplot Graphics}}: {{Automatically Reducing Visual Clutter}}},
+  shorttitle = {Quality {{Metrics}} for {{2D Scatterplot Graphics}}},
+  booktitle = {Smart {{Graphics}}},
+  author = {Bertini, Enrico and Santucci, Giuseppe},
+  editor = {Butz, Andreas and Kr{\"u}ger, Antonio and Olivier, Patrick},
+  year = {2004},
+  series = {Lecture {{Notes}} in {{Computer Science}}},
+  pages = {77--89},
+  publisher = {Springer},
+  address = {Berlin, Heidelberg},
+  doi = {10.1007/978-3-540-24678-7_8},
+  abstract = {The problem of visualizing huge amounts of data is very well known in the field of Computer Graphics. Visualizing large number of items (the order of millions) forces almost any kind of techniques to reveal its limits in terms of expressivity and scalability. To deal with this problem we propose a ''feature preservation'' approach, based on the idea of modelling the final visualization in a virtual space in order to analyze its features (e.g, absolute and relative density, clusters, etc.). Through this approach we provide a formal model to measure the visual clutter resulting from the representation of a large dataset on a physical device, obtaining some figures about the visualization decay and devising an automatic sampling strategy able to preserve relative densities.},
+  isbn = {978-3-540-24678-7},
+  langid = {english},
+  keywords = {Active Pixel,Data Density,Information Visualization,Quality Metrics,Relative Density}
+}
+
+@article{bobko_1979,
+  title = {The {{Perception}} of {{Pearson Product Moment Correlations}} from {{Bivariate Scatterplots}}},
+  author = {Bobko, Philip and Karren, Ronald},
+  year = {1979},
+  journal = {Personnel Psychology},
+  volume = {32},
+  number = {2},
+  pages = {313--325},
+  issn = {1744-6570},
+  doi = {10.1111/j.1744-6570.1979.tb02137.x},
+  urldate = {2022-06-14},
+  abstract = {Perceptions about the Pearson product moment correlation, r, from bivariate scatterplots were investigated through the use of a questionnaire. It was found that subjects who are relatively sophisticated in psychometric techniques tend to underestimate the magnitude of r, with most pronounced disparity in the range .2 {$<$} {\textbar}r{\textbar} \&lt .6. Additionally, estimates of r from specially designed scatterplots indicated that subjects (1) correctly estimated the effects of range restriction, (2) underestimated the effects of attenuating outliers, (3) incorrectly reduced estimates of r when the regression slope was relatively high or low, and (4) often failed to consider the effects of removing the middle third of the data. Several implications of these generally conservative estimations are discussed.},
+  langid = {english}
+}
+
+@article{champion_2017,
+  title = {Contrast Effects on Speed Perception for Linear and Radial Motion},
+  author = {Champion, Rebecca A. and Warren, Paul A.},
+  year = {2017},
+  month = nov,
+  journal = {Vision Research},
+  volume = {140},
+  pages = {66--72},
+  issn = {1878-5646},
+  doi = {10.1016/j.visres.2017.07.013},
+  abstract = {Speed perception is vital for safe activity in the environment. However, considerable evidence suggests that perceived speed changes as a function of stimulus contrast, with some investigators suggesting that this might have meaningful real-world consequences (e.g. driving in fog). In the present study we investigate whether the neural effects of contrast on speed perception occur at the level of local or global motion processing. To do this we examine both speed discrimination thresholds and contrast-dependent speed perception for two global motion configurations that have matched local spatio-temporal structure. Specifically we compare linear and radial configurations, the latter of which arises very commonly due to self-movement. In experiment 1 the stimuli comprised circular grating patches. In experiment 2, to match stimuli even more closely, motion was presented in multiple local Gabor patches equidistant from central fixation. Each patch contained identical linear motion but the global configuration was either consistent with linear or radial motion. In both experiments 1 and 2, discrimination thresholds and contrast-induced speed biases were similar in linear and radial conditions. These results suggest that contrast-based speed effects occur only at the level of local motion processing, irrespective of global structure. This result is interpreted in the context of previous models of speed perception and evidence suggesting differences in perceived speed of locally matched linear and radial stimuli.},
+  langid = {english},
+  pmid = {28822716},
+  keywords = {2D motion,Acceleration,Contrast,Contrast Sensitivity,Global motion,Humans,Local motion,Motion Perception,Psychophysics,Sensory Thresholds,Speed perception}
+}
+
+@misc{charalambides_2021,
+  title = {We Recently Went Viral on {{TikTok}} - Here's What We Learned},
+  author = {Charalambides, Nick},
+  year = {2021},
+  month = aug,
+  urldate = {2022-03-22}
+}
+
+@misc{chatgpt,
+  title = {{{ChatGPT}}},
+  author = {{version 4}},
+  year = {2024},
+  month = apr,
+  abstract = {prompt: Generate 100 statements that describe the correlation between two variables, such as :      "X is associated with a higher level of Y" or      "As X increases, Y increases".     Try to match all the statements on plausibility and emotionality.},
+  howpublished = {OpenAI}
+}
+
+@article{chmielewski_2020,
+  title = {An {{MTurk Crisis}}? {{Shifts}} in {{Data Quality}} and the {{Impact}} on {{Study Results}}},
+  shorttitle = {An {{MTurk Crisis}}?},
+  author = {Chmielewski, Michael and Kucker, Sarah C.},
+  year = {2020},
+  month = may,
+  journal = {Social Psychological and Personality Science},
+  volume = {11},
+  number = {4},
+  pages = {464--473},
+  publisher = {SAGE Publications Inc},
+  issn = {1948-5506},
+  doi = {10.1177/1948550619875149},
+  urldate = {2021-02-17},
+  abstract = {Amazon's Mechanical Turk (MTurk) is arguably one of the most important research tools of the past decade. The ability to rapidly collect large amounts of high-quality human subjects data has advanced multiple fields, including personality and social psychology. Beginning in summer 2018, concerns arose regarding MTurk data quality leading to questions about the utility of MTurk for psychological research. We present empirical evidence of a substantial decrease in data quality using a four-wave naturalistic experimental design: pre-, during, and post-summer 2018. During and to some extent post-summer 2018, we find significant increases in participants failing response validity indicators, decreases in reliability and validity of a widely used personality measure, and failures to replicate well-established findings. However, these detrimental effects can be mitigated by using response validity indicators and screening the data. We discuss implications and offer suggestions to ensure data quality.},
+  langid = {english},
+  keywords = {Amazon Mechanical Turk,data quality,online samples,replication,TurkGate}
+}
+
+@article{cleveland_1982,
+  title = {Variables on {{Scatterplots Look More Highly Correlated When}} the {{Scales Are Increased}}},
+  author = {Cleveland, W. S. and Diaconis, P. and Mcgill, R.},
+  year = {1982},
+  month = jun,
+  journal = {Science},
+  volume = {216},
+  number = {4550},
+  pages = {1138--1141},
+  issn = {0036-8075, 1095-9203},
+  doi = {10.1126/science.216.4550.1138},
+  urldate = {2021-02-08},
+  abstract = {Judged association between two variables represented on scatterplots increased when the scales on the horizontal and vertical axes were simultaneously increased so that the size of the point cloud within the frame o f t h e plot decreased. Judged association was very diferent from the correlation coeficient, r, which is the most widely used measure of association.},
+  langid = {english}
+}
+
+@article{collyer_1990,
+  title = {Psychology of the {{Scientist}}: {{LXIII}}. {{Perceiving Scattergrams}}: {{Is Visual Line Fitting Related}} to {{Estimation}} of the {{Correlation Coefficient}}?},
+  shorttitle = {Psychology of the {{Scientist}}},
+  author = {Collyer, Charles E. and Stanley, Kerrie A. and Bowater, Caroline},
+  year = {1990},
+  month = oct,
+  journal = {Perceptual and Motor Skills},
+  volume = {71},
+  number = {2},
+  pages = {371-378E},
+  publisher = {SAGE Publications Inc},
+  issn = {0031-5125},
+  doi = {10.2466/pms.1990.71.2.371},
+  urldate = {2022-09-13},
+  abstract = {Visual line fitting and direct estimation of the correlation coefficient were carried out by 50 subjects using computer-generated scattergrams as stimuli. In visual line fitting, slopes of visual lines were generally greater than the corresponding regression slopes, in agreement with the hypothesis that visual lines are placed so as to bisect the cloud of displayed points at the cloud's major axis rather than to approximate a regression line. Subjects tended to underestimate the correlation coefficient, scaling their judgments of linear structure somewhat more as if they were judging the coefficient of determination. With the actual degree of linear structure partialed out, there were no strong relationships between measures of visual line fitting and measures of estimation. While both of these tasks offer quickly-obtained correlates of linear structure in scattergrams, users should be aware of their biases. We suggest that visual lines do not approximate regression lines very well and estimates of correlation do not approximate the correlation coefficient very well, because the perceptual processes involved perform operations other than regression and correlation. In the present data, these operations appeared to be independent of each other.},
+  langid = {english}
+}
+
+@article{doherty_2007,
+  title = {The Perception of Scatterplots},
+  author = {Doherty, Michael E. and Anderson, Richard B. and Angott, Andrea M. and Klopfer, Dale S.},
+  year = {2007},
+  month = oct,
+  journal = {Perception \& Psychophysics},
+  volume = {69},
+  number = {7},
+  pages = {1261--1272},
+  issn = {0031-5117, 1532-5962},
+  doi = {10.3758/BF03193961},
+  urldate = {2022-06-15},
+  langid = {english}
+}
+
+@article{few_2008,
+  title = {Solutions to the {{Problem}} of {{Over-Plotting}} in {{Graphs}}},
+  author = {Few, Stephen},
+  year = {2008},
+  journal = {Visual Business Intelligence Newsletter},
+  langid = {english}
+}
+
+@article{garcia_2016,
+  title = {Measuring {{Graph Literacy}} without a {{Test}}: {{A Brief Subjective Assessment}}},
+  shorttitle = {Measuring {{Graph Literacy}} without a {{Test}}},
+  author = {{Garcia-Retamero}, Rocio and Cokely, Edward T. and Ghazal, Saima and Joeris, Alexander},
+  year = {2016},
+  journal = {Medical Decision Making},
+  volume = {36},
+  number = {7},
+  pages = {854--867},
+  publisher = {SAGE Publications Inc STM},
+  issn = {0272-989X},
+  doi = {10.1177/0272989X16655334},
+  urldate = {2021-04-30},
+  abstract = {Background. Visual aids tend to help diverse and vulnerable individuals understand risk communications, as long as these individuals have a basic understanding of graphs (i.e., graph literacy). Tests of objective graph literacy (OGL) can effectively identify individuals with limited skills, highlighting vulnerabilities and facilitating custom-tailored risk communication. However, the administration of these tests can be time-consuming and may evoke negative emotional reactions (e.g., anxiety). Objectives. To evaluate a brief and easy-to-use assessment of subjective graph literacy (SGL) (i.e., self-reported ability to process and use graphically presented information) and to estimate the robustness and validity of the SGL scale and compare it with the leading OGL scale in diverse samples from different cultures. Participants. Demographically diverse residents (n = 470) of the United States, young adults (n = 172) and patients (n = 175) from Spain, and surgeons (n = 175) from 48 countries. Design. A focus group and 4 studies for instrument development and initial validation (study 1), reliability and convergent and discriminant validity evaluation (study 2), and predictive validity estimation (studies 3 and 4). Measures. Psychometric properties of the scale. Results. In about 1 minute, the SGL scale provides a reliable, robust, and valid assessment of skills and risk communication preferences and evokes fewer negative emotional reactions than the OGL scale. Conclusions. The SGL scale can be suitable for use in clinical research and may be useful as a communication aid in clinical practice. Theoretical mechanisms involved in SGL, emerging applications, limitations, and open questions are discussed.},
+  langid = {english},
+  keywords = {graph literacy,medical decision making,numeracy,risk communication,risk literacy,visual aids}
+}
+
+@book{hadley_gg2016,
+  title = {Ggplot2: {{Elegant Graphics}} for {{Data Analysis}}},
+  author = {Wickham, Hadley},
+  year = {2016},
+  publisher = {Springer-Verlag New York},
+  urldate = {2022-09-14},
+  isbn = {978-3-319-24277-4},
+  langid = {english}
+}
+
+@article{harrison_2014,
+  title = {Ranking {{Visualizations}} of {{Correlation Using Weber}}'s {{Law}}},
+  author = {Harrison, L. and Yang, F. and Franconeri, S. and Chang, R.},
+  year = {2014},
+  month = dec,
+  journal = {IEEE Transactions on Visualization and Computer Graphics},
+  volume = {20},
+  number = {12},
+  pages = {1943--1952},
+  issn = {1941-0506},
+  doi = {10.1109/TVCG.2014.2346979},
+  abstract = {Despite years of research yielding systems and guidelines to aid visualization design, practitioners still face the challenge of identifying the best visualization for a given dataset and task. One promising approach to circumvent this problem is to leverage perceptual laws to quantitatively evaluate the effectiveness of a visualization design. Following previously established methodologies, we conduct a large scale (n = 1687) crowdsourced experiment to investigate whether the perception of correlation in nine commonly used visualizations can be modeled using Weber's law. The results of this experiment contribute to our understanding of information visualization by establishing that: (1) for all tested visualizations, the precision of correlation judgment could be modeled by Weber's law, (2) correlation judgment precision showed striking variation between negatively and positively correlated data, and (3) Weber models provide a concise means to quantify, compare, and rank the perceptual precision afforded by a visualization.},
+  keywords = {correlation judgment precision,correlation perception,correlation visualization ranking,Crowdsourcing,Data models,data visualisation,Data visualization,Design methodology,Evaluation,human factors,Image color analysis,information visualization,large-scale crowdsourced experiment,negatively correlated data,outsourcing,Perception,perceptual laws,perceptual precision comparison,perceptual precision quantification,perceptual precision ranking,positively correlated data,psychology,quantitative visualization design effectiveness evaluation,Testing,Visualization,Weber law,Weber models}
+}
+
+@article{healey_2011,
+  title = {Attention and {{Visual Memory}} in {{Visualization}} and {{Computer Graphics}}},
+  author = {Healey, Christopher and Enns, James},
+  year = {2011},
+  month = jul,
+  journal = {IEEE Transactions on Visualization and Computer Graphics},
+  volume = {18},
+  number = {7},
+  pages = {1170--1188},
+  issn = {1941-0506},
+  doi = {10.1109/TVCG.2011.127},
+  abstract = {A fundamental goal of visualization is to produce images of data that support visual analysis, exploration, and discovery of novel insights. An important consideration during visualization design is the role of human visual perception. How we "see'' details in an image can directly impact a viewer's efficiency and effectiveness. This paper surveys research on attention and visual perception, with a specific focus on results that have direct relevance to visualization and visual analytics. We discuss theories of low-level visual perception, then show how these findings form a foundation for more recent work on visual memory and visual attention. We conclude with a brief overview of how knowledge of visual attention and visual memory is being applied in visualization and graphics. We also discuss how challenges in visualization are motivating research in psychophysics.},
+  keywords = {Attention,Bars,color,Data visualization,Feature extraction,Humans,motion,nonphotorealism,texture,visual memory,visual perception,Visual perception,Visualization,visualization.}
+}
+
+@article{hong_2021,
+  title = {The {{Weighted Average Illusion}}: {{Biases}} in {{Perceived Mean Position}} in {{Scatterplots}}},
+  shorttitle = {The {{Weighted Average Illusion}}},
+  author = {Hong, Matt-Heun and Witt, Jessica K. and Szafir, Danielle Albers},
+  year = {2022},
+  journal = {IEEE Transactions on Visualization and Computer Graphics},
+  volume = {28},
+  number = {01},
+  pages = {987--997},
+  issn = {1077-2626, 1941-0506, 2160-9306},
+  doi = {10.1109/TVCG.2021.3114783},
+  urldate = {2021-11-01},
+  abstract = {Scatterplots can encode a third dimension by using additional channels like size or color (e.g. bubble charts). We explore a potential misinterpretation of trivariate scatterplots, which we call the weighted average illusion, where locations of larger and darker points are given more weight toward x- and y-mean estimates. This systematic bias is sensitive to a designer's choice of size or lightness ranges mapped onto the data. In this paper, we quantify this bias against varying size/lightness ranges and data correlations. We discuss possible explanations for its cause by measuring attention given to individual data points using a vision science technique called the centroid method. Our work illustrates how ensemble processing mechanisms and mental shortcuts can significantly distort visual summaries of data, and can lead to misjudgments like the demonstrated weighted average illusion.},
+  langid = {english}
+}
+
+@misc{iliada_2023,
+  title = {{{AI Code}} of {{Conduct}}},
+  author = {Eleftheriou, Iliada and Mubarik, Ajmal},
+  year = {2023},
+  month = feb,
+  urldate = {2024-05-29},
+  abstract = {AI Code of Conduct},
+  howpublished = {https://www.iliada-eleftheriou.com/AICodeOfConduct/\#how-to-cite-and-reference-chatgpt},
+  langid = {english}
+}
+
+@article{kay_2015,
+  title = {Beyond {{Weber}}'s {{Law}}: {{A Second Look}} at {{Ranking Visualizations}} of {{Correlation}}},
+  shorttitle = {Beyond {{Weber}}'s {{Law}}},
+  author = {Kay, Matthew and Heer, Jeffrey},
+  year = {2015},
+  month = aug,
+  journal = {IEEE transactions on visualization and computer graphics},
+  volume = {22},
+  number = {1},
+  pages = {469--478},
+  doi = {10.1109/TVCG.2015.2467671},
+  abstract = {Models of human perception - including perceptual "laws" - can be valuable tools for deriving visualization design recommendations. However, it is important to assess the explanatory power of such models when using them to inform design. We present a secondary analysis of data previously used to rank the effectiveness of bivariate visualizations for assessing correlation (measured with Pearson's r) according to the well-known Weber-Fechner Law. Beginning with the model of Harrison et al. [1], we present a sequence of refinements including incorporation of individual differences, log transformation, censored regression, and adoption of Bayesian statistics. Our model incorporates all observations dropped from the original analysis, including data near ceilings caused by the data collection process and entire visualizations dropped due to large numbers of observations worse than chance. This model deviates from Weber's Law, but provides improved predictive accuracy and generalization. Using Bayesian credibility intervals, we derive a partial ranking that groups visualizations with similar performance, and we give precise estimates of the difference in performance between these groups. We find that compared to other visualizations, scatterplots are unique in combining low variance between individuals and high precision on both positively- and negatively- correlated data. We conclude with a discussion of the value of data sharing and replication, and share implications for modeling similar experimental data.}
+}
+
+@article{lane_1985,
+  title = {Judging the {{Relatedness}} of {{Variables}}. {{The Psychophysics}} of {{Covariation Detection}}},
+  author = {Lane, David and Anderson, Craig and Kellam, Kathryn},
+  year = {1985},
+  month = oct,
+  journal = {Journal of Experimental Psychology: Human Perception and Performance},
+  volume = {11},
+  pages = {640--649},
+  doi = {10.1037/0096-1523.11.5.640},
+  abstract = {Conducted 3 experiments to demonstrate that because Pearson's correlation is composed of 3 distinct components (slope, error variance, and variance of  X), it is better to look at judgments as a function of these components rather than as a function of Pearson's correlation. These 3 components of Pearson's correlation and presentation format (graphical and tabular) were manipulated factorially. The 1st 2 experiments used naive Ss (79 undergraduates), and the 3rd experiment used expert Ss (25 professionals knowledgeable in statistics). Scatterplots with the same value of Pearson's correlation were judged to possess different degrees of relation if the correlations were based on different combinations of the 3 components. With Pearson's correlation held constant, the error variance was the most important component. Graphical formats led to higher judgments of relatedness than did tabular formats, with this effect being larger for naive than for expert Ss. It is also concluded that attempts to determine the psychophysical function between Pearson's correlation and judgments of relatedness are of questionable value. (10 ref) (PsycINFO Database Record (c) 2012 APA, all rights reserved)},
+  keywords = {Judgment,Psychophysiology,Statistical Correlation,Statistical Variables}
+}
+
+@article{lauer_1989,
+  title = {Density in Scatterplots and the Estimation of Correlation},
+  author = {Lauer, Thomas W. and Post, Gerald V.},
+  year = {1989},
+  month = jun,
+  journal = {Behaviour \& Information Technology},
+  volume = {8},
+  number = {3},
+  pages = {235--244},
+  issn = {0144-929X, 1362-3001},
+  doi = {10.1080/01449298908914554},
+  urldate = {2023-09-05},
+  abstract = {Abstract The construction of a graphical presentation involves the representation of information by means of visual symbols. The acquisition of information from the resultant graph is a perceptual process that involves the decoding and interpretation of the visual symbols. Hence good design decisions will be based on an understanding of the information acquisition process and in particular graphical perception. This study examines the perception of bivariate normal data presented in a scatter diagram, and creates a model that successfully explains how individuals perceive the information contained in scatterplots Subjects were shown a series of scatter diagrams on the CRT of a microcomputer and were asked to estimate correlation. Several variables were examined that explain estimated correlation including regression slope, dispersion, number of points displayed, and the size of the CRT screen. All of these factors were found to significantly affect subjects' estimates of correlation.},
+  langid = {english}
+}
+
+@article{li_2010,
+  title = {Judging {{Correlation}} from {{Scatterplots}} and {{Parallel Coordinate Plots}}},
+  author = {Li, Jing and Martens, Jean-Bernard and {van Wijk}, Jarke J},
+  year = {2010},
+  month = jan,
+  journal = {Information Visualization},
+  volume = {9},
+  number = {1},
+  pages = {13--30},
+  issn = {1473-8716, 1473-8724},
+  doi = {10.1057/ivs.2008.13},
+  urldate = {2022-06-15},
+  abstract = {Scatterplots and parallel coordinate plots (PCPs) that can both be used to assess correlation visually. In this paper, we compare these two visualization methods in a controlled user experiment. More specifically, 25 participants were asked to report observed correlation as a function of the sample correlation under varying conditions of visualization method, sample size and observation time. A statistical model is proposed to describe the correlation judgment process. The accuracy and the bias in the judgments in different conditions are established by interpreting the parameters in this model. A discriminability index is proposed to characterize the performance accuracy in each experimental condition. Moreover, a statistical test is applied to derive whether or not the human sensation scale differs from a theoretically optimal (that is, unbiased) judgment scale. Based on these analyses, we conclude that users can reliably distinguish twice as many different correlation levels when using scatterplots as when using PCPs. We also find that there is a bias towards reporting negative correlations when using PCPs. Therefore, we conclude that scatterplots are more effective than parallel plots in supporting visual correlation analysis.},
+  langid = {english},
+  keywords = {correlation visualization,evaluation of visualization,parallel coordinate plots,perception of correlation,scatterplots,statistical graphs}
+}
+
+@inproceedings{matejka_2015,
+  title = {Dynamic {{Opacity Optimization}} for {{Scatter Plots}}},
+  booktitle = {Proceedings of the 33rd {{Annual ACM Conference}} on {{Human Factors}} in {{Computing Systems}}},
+  author = {Matejka, Justin and Anderson, Fraser and Fitzmaurice, George},
+  year = {2015},
+  month = apr,
+  pages = {2707--2710},
+  publisher = {ACM},
+  address = {Seoul Republic of Korea},
+  doi = {10.1145/2702123.2702585},
+  urldate = {2021-10-18},
+  abstract = {Scatterplots are an effective and commonly used technique to show the relationship between two variables. However, as the number of data points increases, the chart suffers from ``over-plotting'' which obscures data points and makes the underlying distribution of the data difficult to discern. Reducing the opacity of the data points is an effective way to address over-plotting, however, setting the individual point opacity is a manual task performed by the chart designer. We present a user-driven model of opacity scaling for scatter plots built from crowd-sourced responses to opacity scaling tasks using several synthetic data distributions, and then test our model on a collection of real-world data sets.},
+  isbn = {978-1-4503-3145-6},
+  langid = {english}
+}
+
+@article{meyer_1992,
+  title = {Estimating {{Correlations}} from {{Scatterplots}}},
+  author = {Meyer, Joachim and Shinar, David},
+  year = {1992},
+  month = jun,
+  journal = {Human Factors},
+  volume = {34},
+  number = {3},
+  pages = {335--349},
+  publisher = {SAGE Publications Inc},
+  issn = {0018-7208},
+  doi = {10.1177/001872089203400307},
+  urldate = {2022-06-09},
+  abstract = {Previous attempts to establish the function relating intuitive estimates of correlations from scatterplots to accepted statistical measures have led to unsatisfying results. In this study two experiments dealt with the effects of the statistical training of the viewer and various characteristics of the display on estimates. Statistical knowledge was related to higher estimates of correlations and the use of a wider range of values, but people with and without statistical knowledge were equally affected by the type of dispersion of the point cloud, the mere display of the regression line, and the slope of the regression line. Results indicate that estimates of correlations from scatterplots are partly based on perceptual processes that are influenced by visual properties of the display and are unrelated to the cognitive structures created by formal statistical training.}
+}
+
+@article{meyer_1997,
+  title = {Correlation Estimates as Perceptual Judgments},
+  author = {Meyer, Joachim and Taieb, Meirav and Flascher, Ittai},
+  year = {1997},
+  journal = {Journal of Experimental Psychology: Applied},
+  volume = {3},
+  number = {1},
+  pages = {3--20},
+  publisher = {American Psychological Association},
+  address = {US},
+  issn = {1939-2192},
+  doi = {10.1037/1076-898X.3.1.3},
+  abstract = {Correlation estimates from scatterplots were studied as an example for an intuitive decision task. Three experiments showed that subjective correlation estimates are based on geometric properties of the displays. People with different levels of statistical training were found to assess correlations from scatterplots in close accordance with the power function rest{\enspace}={\enspace}1{\enspace}--{\enspace}aXb, where X is the mean of the geometrical distances between the points and the regression line or a similar central axis. Changes of the slope of the displayed point cloud and the introduction of outliers affected estimates as predicted from the function. The study demonstrated that intuitive judgments in a complex domain are based on the perception of geometric features of the relevant information. By applying these findings, graphic designers can accurately predict how changes in a display will affect viewers' impressions. (PsycINFO Database Record (c) 2016 APA, all rights reserved)},
+  keywords = {Decision Making,Graphical Displays,Intuition,Perceptual Localization,Psychophysics,Statistical Correlation,Statistical Estimation,Visual Perception}
+}
+
+@article{micallef_2017,
+  title = {Towards {{Perceptual Optimization}} of the {{Visual Design}} of {{Scatterplots}}},
+  author = {Micallef, Luana and Palmas, Gregorio and Oulasvirta, Antti and Weinkauf, Tino},
+  year = {2017},
+  month = jun,
+  journal = {IEEE Transactions on Visualization and Computer Graphics},
+  volume = {23},
+  number = {6},
+  pages = {1588--1599},
+  issn = {1941-0506},
+  doi = {10.1109/TVCG.2017.2674978},
+  abstract = {Designing a good scatterplot can be difficult for non-experts in visualization, because they need to decide on many parameters, such as marker size and opacity, aspect ratio, color, and rendering order. This paper contributes to research exploring the use of perceptual models and quality metrics to set such parameters automatically for enhanced visual quality of a scatterplot. A key consideration in this paper is the construction of a cost function to capture several relevant aspects of the human visual system, examining a scatterplot design for some data analysis task. We show how the cost function can be used in an optimizer to search for the optimal visual design for a user's dataset and task objectives (e.g., ``reliable linear correlation estimation is more important than class separation''). The approach is extensible to different analysis tasks. To test its performance in a realistic setting, we pre-calibrated it for correlation estimation, class separation, and outlier detection. The optimizer was able to produce designs that achieved a level of speed and success comparable to that of those using human-designed presets (e.g., in R or MATLAB). Case studies demonstrate that the approach can adapt a design to the data, to reveal patterns without user intervention.},
+  keywords = {Correlation,Cost function,crowdsourcing,Data analysis,Data visualization,Measurement,optimization,perception,Scatterplot,Visualization}
+}
+
+@article{osaka_1976,
+  title = {Reaction {{Time}} as a {{Function}} of {{Peripheral Retinal Locus}} around {{Fovea}}: {{Effect}} of {{Stimulus Size}}},
+  shorttitle = {Reaction {{Time}} as a {{Function}} of {{Peripheral Retinal Locus}} around {{Fovea}}},
+  author = {Osaka, Naoyuki},
+  year = {1976},
+  month = oct,
+  journal = {Perceptual and Motor Skills},
+  volume = {43},
+  number = {2},
+  pages = {603--606},
+  publisher = {SAGE Publications Inc},
+  issn = {0031-5125},
+  doi = {10.2466/pms.1976.43.2.603},
+  urldate = {2023-11-16},
+  abstract = {Using targets of four sizes between 18' and 116' at a fixed luminance of 5.8 cd/m2, human visual reaction times (RT) were measured on a circle at 30{$^\circ$} eccentric to the fovea. A foveal and 12 peripheral retinal loci were explored, covering the range between 0{$^\circ$} and 330{$^\circ$} in steps of 30{$^\circ$} units on a circle about the fovea. RT decreased significantly by the stimulation to the quadrant retinal loci between nasal and superior side. RT decreased as a function of increasing target size and the amount of decrement was relatively larger in the periphery than in the fovea.},
+  langid = {english}
+}
+
+@article{peer_2021,
+  title = {Data Quality of Platforms and Panels for Online Behavioral Research},
+  author = {Peer, Eyal and Rothschild, David and Gordon, Andrew and Evernden, Zak and Damer, Ekaterina},
+  year = {2021},
+  month = sep,
+  journal = {Behavior Research Methods},
+  volume = {54},
+  number = {4},
+  pages = {1643--1662},
+  issn = {1554-3528},
+  doi = {10.3758/s13428-021-01694-3},
+  urldate = {2022-07-05},
+  abstract = {We examine key aspects of data quality for online behavioral research between selected platforms (Amazon Mechanical Turk, CloudResearch, and Prolific) and panels (Qualtrics and Dynata). To identify the key aspects of data quality, we first engaged with the behavioral research community to discover which aspects are most critical to researchers and found that these include attention, comprehension, honesty, and reliability. We then explored differences in these data quality aspects in two studies (N\,{\textasciitilde}\,4000), with or without data quality filters (approval ratings). We found considerable differences between the sites, especially in comprehension, attention, and dishonesty. In Study 1 (without filters), we found that only Prolific provided high data quality on all measures. In Study 2 (with filters), we found high data quality among CloudResearch and Prolific. MTurk showed alarmingly low data quality even with data quality filters. We also found that while reputation (approval rating) did not predict data quality, frequency and purpose of usage did, especially on MTurk: the lowest data quality came from MTurk participants who report using the site as their main source of income but spend few hours on it per week. We provide a framework for future investigation into the ever-changing nature of data quality in online research, and how the evolving set of platforms and panels performs on these key aspects.},
+  langid = {english},
+  keywords = {Amazon mechanical turk,Attention,Comprehension,Data quality,Honesty,Online research,Prolific,Reliability}
+}
+
+@article{peircePsychoPy2ExperimentsBehavior2019,
+  title = {{{PsychoPy2}}: {{Experiments}} in Behavior Made Easy},
+  shorttitle = {{{PsychoPy2}}},
+  author = {Peirce, Jonathan and Gray, Jeremy R. and Simpson, Sol and MacAskill, Michael and H{\"o}chenberger, Richard and Sogo, Hiroyuki and Kastman, Erik and Lindel{\o}v, Jonas Kristoffer},
+  year = {2019},
+  month = feb,
+  journal = {Behavior Research Methods},
+  volume = {51},
+  number = {1},
+  pages = {195--203},
+  issn = {1554-3528},
+  doi = {10.3758/s13428-018-01193-y},
+  abstract = {PsychoPy is an application for the creation of experiments in behavioral science (psychology, neuroscience, linguistics, etc.) with precise spatial control and timing of stimuli. It now provides a choice of interface; users can write scripts in Python if they choose, while those who prefer to construct experiments graphically can use the new Builder interface. Here we describe the features that have been added over the last 10 years of its development. The most notable addition has been that Builder interface, allowing users to create studies with minimal or no programming, while also allowing the insertion of Python code for maximal flexibility. We also present some of the other new features, including further stimulus options, asynchronous time-stamped hardware polling, and better support for open science and reproducibility. Tens of thousands of users now launch PsychoPy every month, and more than 90 people have contributed to the code. We discuss the current state of the project, as well as plans for the future.},
+  langid = {english},
+  pmcid = {PMC6420413},
+  pmid = {30734206},
+  keywords = {Behavioral Research,Experiment,Humans,Open science,Open-source,Psychology,Reaction time,Reproducibility of Results,Software,Timing,User-Computer Interface}
+}
+
+@article{pollack_1960,
+  title = {Identification of Visual Correlational Scatterplots},
+  author = {Pollack, Irwin},
+  year = {1960},
+  journal = {Journal of Experimental Psychology},
+  volume = {59},
+  pages = {351--360},
+  publisher = {American Psychological Association},
+  address = {US},
+  issn = {0022-1015},
+  doi = {10.1037/h0042245},
+  abstract = {Visual correlation scattergrams were obtained by mixing a common noise source with independent noise sources and displaying the mixtures across the coordinates of an oscilloscope. The task of S was to identify whether the reference correlation or a higher correlation was presented. The results were interpreted in terms of the task of S as a tester of alternative statistical hypotheses under conditions of varying reliability of the display information. (PsycINFO Database Record (c) 2016 APA, all rights reserved)},
+  keywords = {Oscilloscopes,Visual Perception}
+}
+
+@article{rensink_2010,
+  title = {The {{Perception}} of {{Correlation}} in {{Scatterplots}}},
+  author = {Rensink, Ronald A. and Baldridge, Gideon},
+  year = {2010},
+  month = aug,
+  journal = {Computer Graphics Forum},
+  volume = {29},
+  number = {3},
+  pages = {1203--1210},
+  issn = {01677055},
+  doi = {10.1111/j.1467-8659.2009.01694.x},
+  urldate = {2021-02-02},
+  abstract = {We present a rigorous way to evaluate the visual perception of correlation in scatterplots, based on classical psychophysical methods originally developed for simple properties such as brightness. Although scatterplots are graphically complex, the quantity they convey is relatively simple. As such, it may be possible to assess the perception of correlation in a similar way.},
+  langid = {english}
+}
+
+@inproceedings{rensink_2012,
+  title = {Invariance of {{Correlation Perception}}},
+  booktitle = {Journal of {{Vision}}},
+  author = {Rensink, Ronald},
+  year = {2012},
+  month = may,
+  volume = {12},
+  pages = {433--433},
+  publisher = {Vision Sciences Society},
+  doi = {10.1167/12.9.433},
+  abstract = {Previous work has shown that the perception of correlation in scatterplots can be characterized by two simple laws: a linear Fechner-like law for precision and a logarithmic Weber-like law for accuracy (Rensink \& Baldridge, 2010). It also appears to be rapid, being largely complete within 100 ms of presentation (Rensink, 2011). This suggests that although correlation may be conveyed by a complex carrier, it nevertheless is-or at least, is based on-a relatively simple property. To investigate the nature of the process involved, two sets of experiments tested whether different kinds of visual design influence correlation perception. The first set involved scatterplots with various styles of dot (or symbol). Precision was determined via the just noticeable difference in correlation for two side-by-side scatterplots. Accuracy was determined by direct estimation, using reference scatterplots having fixed upper and lower values, and a test scatterplot adjusted to have its apparent correlation be midway between them. The second set used similar methodology but a different carrier, with the vertical position carrying the second data dimension being replaced by a simple feature such as size. Such `augmented stripplots' then conveyed correlation via the relation between horizontal position and size. Twelve observers were tested in each condition. Results showed a surprising degree of invariance for scatterplot symbol: different sizes, colors, and even shapes had little effect on precision or accuracy. This suggests that only the centers of the symbols are relevant, ruling out the involvement of simple operations such as blurring. In addition, there was also an interesting degree of invariance for carrier: accuracy and precision in augmented stripplots obeyed linear-logarithmic laws similar to those for scatterplots. These invariances suggest that correlation perception may be a general process that is both rapid and sophisticated.}
+}
+
+@incollection{rensink_2014,
+  title = {On the {{Prospects}} for a {{Science}} of {{Visualization}}},
+  booktitle = {Handbook of {{Human Centric Visualization}}},
+  author = {Rensink, Ronald A.},
+  editor = {Huang, Weidong},
+  year = {2014},
+  pages = {147--175},
+  publisher = {Springer New York},
+  address = {New York, NY},
+  doi = {10.1007/978-1-4614-7485-2_6},
+  urldate = {2022-06-15},
+  abstract = {This paper explores the extent to which a scientific framework for visualization might be possible. It presents several potential parts of a framework, illustrated by application to the visualization of correlation in scatterplots. The first is an extended-vision thesis, which posits that a viewer and visualization system can be usefully considered as a single system that perceives structure in a dataset, much like "basic" vision perceives structure in the world. This characterization is then used to suggest approaches to evaluation that take advantage of techniques used in vision science. Next, an optimal-reduction thesis is presented, which posits that an optimal visualization enables the given task to be reduced to the most suitable operations in the extended system. A systematic comparison of alternative designs is then proposed, guided by what is known about perceptual mechanisms. It is shown that these elements can be extended in various ways---some even overlapping with parts of vision science. As such, a science of some kind appears possible for at least some parts of visualization. It would remain distinct from design practice, but could nevertheless assist with the design of visualizations that better engage human perception and cognition.},
+  isbn = {978-1-4614-7484-5 978-1-4614-7485-2},
+  langid = {english}
+}
+
+@article{rensink_2017,
+  title = {The Nature of Correlation Perception in Scatterplots},
+  author = {Rensink, Ronald A.},
+  year = {2017},
+  journal = {Psychonomic Bulletin \& Review},
+  volume = {24},
+  number = {3},
+  pages = {776--797},
+  issn = {1069-9384},
+  doi = {10.3758/s13423-016-1174-7},
+  urldate = {2021-10-20},
+  abstract = {For scatterplots with gaussian distributions of dots, the perception of Pearson correlation r can be described by two simple laws: a linear one for discrimination, and a logarithmic one for perceived magnitude (Rensink \& Baldridge, ). The underlying perceptual mechanisms, however, remain poorly understood. To cast light on these, four different distributions of datapoints were examined. The first had 100 points with equal variance in both dimensions. Consistent with earlier results, just noticeable difference (JND) was a linear function of the distance away from r = 1, and the magnitude of perceived correlation a logarithmic function of this quantity. In addition, these laws were linked, with the intercept of the JND line being the inverse of the bias in perceived magnitude. Three other conditions were also examined: a dot cloud with 25 points, a horizontal compression of the cloud, and a cloud with a uniform distribution of dots. Performance was found to be similar in all conditions. The generality and form of these laws suggest that what underlies correlation perception is not a geometric structure such as the shape of the dot cloud, but the shape of the probability distribution of the dots, likely inferred via a form of ensemble coding. It is suggested that this reflects the ability of observers to perceive the information entropy in an image, with this quantity used as a proxy for Pearson correlation.},
+  pmcid = {PMC5486871},
+  pmid = {27785683}
+}
+
+@article{rensink_2022,
+  title = {Visual Features as Carriers of Abstract Quantitative Information},
+  author = {Rensink, Ronald},
+  year = {2022},
+  month = jan,
+  journal = {Journal of Experimental Psychology General},
+  volume = {151},
+  number = {8},
+  pages = {1793--1820},
+  doi = {10.1037/xge0001165},
+  abstract = {Four experiments investigated the extent to which abstract quantitative information can be conveyed by basic visual features. This was done by asking observers to estimate and discriminate Pearson correlation in graphical representations where the first data dimension of each element was encoded by its horizontal position, and the second by the value of one of its visual features; perceiving correlation then requires combining the information in the two encodings via a common abstract representation. Four visual features were examined: luminance, color, orientation, and size. All were able to support the perception of correlation. Indeed, despite the strikingly different appearances of the associated stimuli, all gave rise to performance that was much the same: Just noticeable difference was a linear function of distance from complete correlation, and estimated correlation a logarithmic function of this distance. Performance differed only with regard to the level of noise in the feature, with these values compatible with estimates of channel capacity encountered in classic experiments on absolute perceptual magnitudes. These results suggest that quantitative information can be conveyed by visual features that are abstracted at relatively low levels of visual processing, with little representation of the original sensory property. It is proposed that this is achieved via an abstract parameter space in which the values in each perceptual dimension are normalized to have the same means and variances, with perceived correlation based on the shape of the joint probability density function of the resultant elements. (PsycInfo Database Record (c) 2022 APA, all rights reserved).}
+}
+
+@article{sarikaya_2018,
+  title = {Scatterplots: {{Tasks}}, {{Data}}, and {{Designs}}},
+  shorttitle = {Scatterplots},
+  author = {Sarikaya, Alper and Gleicher, Michael},
+  year = {2018},
+  month = jan,
+  journal = {IEEE Transactions on Visualization and Computer Graphics},
+  volume = {24},
+  number = {1},
+  pages = {402--412},
+  issn = {1077-2626},
+  doi = {10.1109/TVCG.2017.2744184},
+  urldate = {2022-04-20},
+  abstract = {Traditional scatterplots fail to scale as the complexity and amount of data increases. In response, there exist many design options that modify or expand the traditional scatterplot design to meet these larger scales. This breadth of design options creates challenges for designers and practitioners who must select appropriate designs for particular analysis goals. In this paper, we help designers in making design choices for scatterplot visualizations. We survey the literature to catalog scatterplot-specific analysis tasks. We look at how data characteristics influence design decisions. We then survey scatterplot-like designs to understand the range of design options. Building upon these three organizations, we connect data characteristics, analysis tasks, and design choices in order to generate challenges, open questions, and example best practices for the effective design of scatterplots.},
+  langid = {english}
+}
+
+@article{sher_2017,
+  title = {An {{Empirical Study}} on the {{Reliability}} of {{Perceiving Correlation Indices}} Using {{Scatterplots}}},
+  author = {Sher, Varshita and Bemis, Karen G. and Liccardi, Ilaria and Chen, Min},
+  year = {2017},
+  journal = {Computer Graphics Forum},
+  volume = {36},
+  number = {3},
+  pages = {61--72},
+  issn = {1467-8659},
+  doi = {10.1111/cgf.13168},
+  urldate = {2021-02-02},
+  abstract = {Scatterplots have been in use for about two centuries, primarily for observing the relationship between two variables and commonly for supporting correlation analysis. In this paper, we report an empirical study that examines how humans' perception of correlation using scatterplots relates to the Pearson's product-moment correlation coefficient (PPMCC) -- a commonly used statistical measure of correlation. In particular, we study human participants' estimation of correlation under different conditions, e.g., different PPMCC values, different densities of data points, different levels of symmetry of data enclosures, and different patterns of data distribution. As the participants were instructed to estimate the PPMCC of each stimulus scatterplot, the difference between the estimated and actual PPMCC is referred to as an offset. The results of the study show that varying PPMCC values, symmetry of data enclosure, or data distribution does have an impact on the average offsets, while only large variations in density cause an impact that is statistically significant. This study indicates that humans' perception of correlation using scatterplots does not correlate with computed PPMCC in a consistent manner. The magnitude of offsets may be affected not only by the difference between individuals, but also by geometric features of data enclosures. It suggests that visualizing scatterplots does not provide adequate support to the task of retrieving their corresponding PPMCC indicators, while the underlying model of humans' perception of correlation using scatterplots ought to feature other variables in addition to PPMCC. The paper also includes a theoretical discussion on the cost-benefit of using scatterplots.},
+  copyright = {{\copyright} 2017 The Author(s) Computer Graphics Forum {\copyright} 2017 The Eurographics Association and John Wiley \& Sons Ltd. Published by John Wiley \& Sons Ltd.},
+  langid = {english}
+}
+
+@inproceedings{smart_2019,
+  title = {Measuring the {{Separability}} of {{Shape}}, {{Size}}, and {{Color}} in {{Scatterplots}}},
+  booktitle = {Proceedings of the 2019 {{CHI Conference}} on {{Human Factors}} in {{Computing Systems}}},
+  author = {Smart, Stephen and Szafir, Danielle Albers},
+  year = {2019},
+  month = may,
+  pages = {1--14},
+  publisher = {ACM},
+  address = {Glasgow Scotland Uk},
+  doi = {10.1145/3290605.3300899},
+  urldate = {2023-04-04},
+  isbn = {978-1-4503-5970-2},
+  langid = {english}
+}
+
+@article{stone_2008,
+  title = {Alpha, Contrast and the Perception of Visual Metadata},
+  author = {Stone, Maureen and Bartram, Lyn},
+  year = {2008},
+  journal = {Color and Imaging Conference},
+  volume = {16},
+  number = {355-355},
+  pages = {5},
+  abstract = {Visual elements such as grids, labels, and contour lines act as ``reference structures'' or ``visual metadata'' that support the primary information being presented. Such structures need to be usefully visible, but not so obtrusive that they clutter the presentation. Our goal is to determine the physical, perceptual and cognitive characteristics of such structures, ideally in a way that enables their automatic computation. We present the result of a set of experiments to determine effective display ranges, described in terms of transparency (alpha), for thin rectangular grids over scatterplot data. These show that an effective range can be defined in terms of alpha. In an effort to create a display-independent set of metrics, we analyze these results in terms of luminance contrast, with mixed results. We conclude that the appearance of transparency is an important aspect of subtle visualization.},
+  langid = {english}
+}
+
+@article{stone_2012,
+  title = {In {{Color Perception}}, {{Size Matters}}},
+  author = {Stone, Maureen},
+  year = {2012},
+  month = mar,
+  journal = {IEEE Computer Graphics and Applications},
+  volume = {32},
+  number = {2},
+  pages = {8--13},
+  issn = {1558-1756},
+  doi = {10.1109/MCG.2012.37},
+  urldate = {2023-11-10},
+  abstract = {In designing colors for digital visualization systems. one of the most critical factors is the interaction between size and color appearance. Whereas artists and visual designers understand this, recommendations for using color in visualization rarely address the issue, or even recognize it. The goal is to keep the user focused on the data, with color simply one of many tools used toward problem solving and discovery.}
+}
+
+@article{strahan_1978,
+  title = {Underestimating {{Correlation}} from {{Scatterplots}}},
+  author = {Strahan, Robert F. and Hansen, Chris J.},
+  year = {1978},
+  month = oct,
+  journal = {Applied Psychological Measurement},
+  volume = {2},
+  number = {4},
+  pages = {543--550},
+  publisher = {SAGE Publications Inc},
+  issn = {0146-6216},
+  doi = {10.1177/014662167800200409},
+  urldate = {2022-06-29},
+  abstract = {Eighty subjects estimated the correlation coeffi cient, r, for each of 13 computer-printed scatter plots. Making judgments were 46 students in a graduate-level statistics course and 34 faculty and graduate students in a department of psychology. The actual correlation values ranged from .010 to .995, with 200 observations in each scatterplot and with the order of scatterplot presentation ran domized. As predicted, subjects underestimated the degree of actual correlation. Also as predicted, but with substantial moderation by a method-of-presen tation factor, this underestimation was most pro nounced in the middle of the correlational range?between the 0 and 1 extremes. Though per ception of correlation was shown not to be veridical (i.e., in terms of r), little support was given one al ternative view?its being in terms of r 2.}
+}
+
+@article{strain_2023,
+  title = {The {{Effects}} of {{Contrast}} on {{Correlation Perception}} in {{Scatterplots}}},
+  author = {Strain, Gabriel and Stewart, Andrew J. and Warren, Paul and Jay, Caroline},
+  year = {2023},
+  month = aug,
+  journal = {International Journal of Human-Computer Studies},
+  volume = {176},
+  pages = {103040},
+  issn = {1071-5819},
+  doi = {10.1016/j.ijhcs.2023.103040},
+  urldate = {2023-04-11},
+  abstract = {Scatterplots are common data visualizations that can be used to communicate a range of ideas, the most intensively studied being the correlation between two variables. Despite their ubiquity, people typically do not perceive correlations between variables accurately from scatterplots, tending to underestimate the strength of the relationship displayed. Here we describe a two-experiment study in which we adjust the visual contrast of scatterplot points, and demonstrate a systematic approach to altering the bias. We find evidence that lowering the total visual contrast in a plot leads to increased bias in correlation estimates and show that decreasing the salience of points as a function of their distance from the regression line, by lowering their contrast, can facilitate more accurate correlation perception. We discuss the implications of these findings for visualization design, and provide a framework for online, reproducible, and large-sample-size (N = 150 per experiment) testing of the design parameters of data visualizations.},
+  langid = {english},
+  keywords = {Correlation perception,Crowdsourced,Data visualization,Scatterplot}
+}
+
+@inproceedings{strain_2023b,
+  title = {Adjusting {{Point Size}} to {{Facilitate More Accurate Correlation Perception}} in {{Scatterplots}}},
+  booktitle = {2023 {{IEEE Vis X Vision}}},
+  author = {Strain, Gabriel and Stewart, Andrew J. and Warren, Paul and Jay, Caroline},
+  year = {2023},
+  month = oct,
+  pages = {1--5},
+  publisher = {IEEE},
+  address = {Melbourne, Australia},
+  doi = {10.1109/VisXVision60716.2023.00006},
+  urldate = {2024-02-15},
+  abstract = {Viewers consistently underestimate correlation in positively correlated scatterplots. We use a novel data point size manipulation to correct for this bias. In a high-powered and fully reproducible study, we demonstrate that decreasing the size of a point on a scatterplot as a function of its distance from the regression line is able to correct for a systematic perceptual bias long present in the literature. We recommend the implementation of our technique when designing scatterplots that aim to communicate positive correlations.},
+  isbn = {9798350329841},
+  langid = {english},
+  keywords = {Correlation,Empirical studies in HCI,Empirical studies in visualization,Human computer interaction,Human-centered computing,Human-centered computing-Human computer interaction (HCI),Systematics,Visualization}
+}
+
+@inproceedings{strain_2024,
+  title = {Effects of {{Point Size}} and {{Opacity Adjustments}} in {{Scatterplots}}},
+  booktitle = {Proceedings of the {{CHI Conference}} on {{Human Factors}} in {{Computing Systems}}},
+  author = {Strain, Gabriel and Stewart, Andrew J. and Warren, Paul A. and Jay, Caroline},
+  year = {2024},
+  month = may,
+  series = {{{CHI}} '24},
+  pages = {1--13},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  doi = {10.1145/3613904.3642127},
+  urldate = {2024-05-29},
+  abstract = {Systematically changing the size and opacity of points on scatterplots can be used to induce more accurate perceptions of correlation by viewers. Evidence points to the mechanisms behind these effects being similar, so one may expect their combination to be additive regarding their effects on correlation estimation. We present a fully-reproducible study in which we combine techniques for influencing correlation perception to show that in reality, effects of changing point size and opacity interact in a non-additive fashion. We show that there is a great deal of scope for using visual features to change viewers' perceptions of data visualizations. Additionally, we use our results to further interrogate the perceptual mechanisms at play when changing point size and opacity in scatterplots.},
+  isbn = {9798400703300},
+  keywords = {correlation,crowdsourced,perception,scatterplot}
+}
+
+@article{sun_2016,
+  title = {The Centroid Paradigm: {{Quantifying}} Feature-Based Attention in Terms of Attention Filters},
+  shorttitle = {The Centroid Paradigm},
+  author = {Sun, Peng and Chubb, Charles and Wright, Charles E. and Sperling, George},
+  year = {2016},
+  month = feb,
+  journal = {Attention, Perception \& Psychophysics},
+  volume = {78},
+  number = {2},
+  pages = {474--515},
+  issn = {1943-393X},
+  doi = {10.3758/s13414-015-0978-2},
+  abstract = {This paper elaborates a recent conceptualization of feature-based attention in terms of attention filters (Drew et al., Journal of Vision, 10(10:20), 1-16, 2010) into a general purpose centroid-estimation paradigm for studying feature-based attention. An attention filter is a brain process, initiated by a participant in the context of a task requiring feature-based attention, which operates broadly across space to modulate the relative effectiveness with which different features in the retinal input influence performance. This paper describes an empirical method for quantitatively measuring attention filters. The method uses a "statistical summary representation" (SSR) task in which the participant strives to mouse-click the centroid of a briefly flashed cloud composed of items of different types (e.g., dots of different luminances or sizes), weighting some types of items more strongly than others. In different attention conditions, the target weights for different item types in the centroid task are varied. The actual weights exerted on the participant's responses by different item types in any given attention condition are derived by simple linear regression. Because, on each trial, the centroid paradigm obtains information about the relative effectiveness of all the features in the display, both target and distractor features, and because the participant's response is a continuous variable in each of two dimensions (versus a simple binary choice as in most previous paradigms), it is remarkably powerful. The number of trials required to estimate an attention filter is an order of magnitude fewer than the number required to investigate much simpler concepts in typical psychophysical attention paradigms.},
+  langid = {english},
+  pmid = {26552652},
+  keywords = {Attention,Attention filter,Centroid estimation,Feature-based attention,Humans,Methodology,Models Psychological,Photic Stimulation,Psychophysics,Selective attention,Statistical summary representations (SSRs)}
+}
+
+@article{warren_2002,
+  title = {Interpolating Sampled Contours in 3-{{D}}: Analyses of Variability and Bias},
+  shorttitle = {Interpolating Sampled Contours in 3-{{D}}},
+  author = {Warren, Paul A. and Maloney, Laurence T. and Landy, Michael S.},
+  year = {2002},
+  month = sep,
+  journal = {Vision Research},
+  volume = {42},
+  number = {21},
+  pages = {2431--2446},
+  issn = {0042-6989},
+  doi = {10.1016/S0042-6989(02)00266-3},
+  urldate = {2023-08-22},
+  abstract = {In two experiments, we examined how observers interpolated the missing parts of sampled, planar contours in 3-D space. We varied (1) contour type (linear or parabolic), (2) orientation of the plane containing the contour and (3) the number of points on a sampled contour. Interpolation performance was very accurate, comparable to results from Vernier tasks. Setting variability was highest along the line of sight and for the parabolic contour. Setting variability did not decrease with increasing number of points on either contour, suggesting that observers do not use all available, relevant information in this task.},
+  keywords = {Contour,Contour interpolation,Localization,Vernier acuity}
+}
+
+@article{warren_2004,
+  title = {Interpolating Sampled Contours in {{3D}}: Perturbation Analyses},
+  shorttitle = {Interpolating Sampled Contours in {{3D}}},
+  author = {Warren, Paul A. and Maloney, Laurence T. and Landy, Michael S.},
+  year = {2004},
+  month = apr,
+  journal = {Vision Research},
+  volume = {44},
+  number = {8},
+  pages = {815--832},
+  issn = {0042-6989},
+  doi = {10.1016/j.visres.2003.11.007},
+  urldate = {2023-08-22},
+  abstract = {In four experiments, observers interpolated parabolic sampled contours confined to planes in three-dimensional space. Each sampled contour consisted of eight visible points, placed irregularly along the otherwise invisible parabolic contour. Observers adjusted an additional point until it fell on the contour. We sought to determine how each visible point influenced interpolation by measuring the effect of slightly perturbing its location. Influence fell rapidly to zero as distance from the interpolated point increased, indicating that human visual interpolation of parabolic contours is local. We compare the measured influence for human observers to that predicted by three standard interpolation algorithms. The results were inconsistent with a fit of a quadratic to the points, but were reasonably consistent with a cubic spline and most consistent with an algorithm that minimizes the variance of angles between neighboring line segments defined by the sampled points.}
+}
+
+@article{wehrhahn_1990,
+  title = {How Vernier Acuity Depends on Contrast},
+  author = {Wehrhahn, C. and Westheimer, G.},
+  year = {1990},
+  month = may,
+  journal = {Experimental Brain Research},
+  volume = {80},
+  number = {3},
+  pages = {618--620},
+  issn = {0014-4819, 1432-1106},
+  doi = {10.1007/BF00228001},
+  urldate = {2022-11-02},
+  abstract = {Vernier a c u i t y was m e a s u r e d b y finding the just discriminable offset for an edge separating fields of different luminances. The contrast of this stimulus is easily specified b y the f o r m u l a c = (Lstim- Lsur)(Lstim 4-L{\textasciitilde}ur). Vernier thresholds are about 4-5 sec of arc for contrasts 0.22 and higher, but increase exponentially with decreasing contrast (Fig. 1). By c o m p a r i s o n , the presence of the stimulus could be detected at a contrast of 0.016. The possible role of the magnocellular and parvocellular pathways in carrying the input signals to the fine localization process is discussed.},
+  langid = {english},
+  keywords = {Contrast sensitivity,Hyperacuity,Magno- and parvocellular pathway,Vernier acuity}
+}
+
+@article{yang_2019,
+  title = {Correlation {{Judgment}} and {{Visualization Features}}: {{A Comparative Study}}},
+  shorttitle = {Correlation {{Judgment}} and {{Visualization Features}}},
+  author = {Yang, F. and Harrison, L. T. and Rensink, R. A. and Franconeri, S. L. and Chang, R.},
+  year = {2019},
+  month = mar,
+  journal = {IEEE Transactions on Visualization and Computer Graphics},
+  volume = {25},
+  number = {3},
+  pages = {1474--1488},
+  issn = {1941-0506},
+  doi = {10.1109/TVCG.2018.2810918},
+  abstract = {Recent visualization research efforts have incorporated experimental techniques and perceptual models from the vision science community. Perceptual laws such as Weber's law, for example, have been used to model the perception of correlation in scatterplots. While this thread of research has progressively refined the modeling of the perception of correlation in scatterplots, it remains unclear as to why such perception can be modeled using relatively simple functions, e.g., linear and log-linear. In this paper, we investigate a longstanding hypothesis that people use visual features in a chart as a proxy for statistical measures like correlation. For a given scatterplot, we extract 49 candidate visual features and evaluate which best align with existing models and participant judgments. The results support the hypothesis that people attend to a small number of visual features when discriminating correlation in scatterplots. We discuss how this result may account for prior conflicting findings, and how visual features provide a baseline for future model-based approaches in visualization evaluation and design.},
+  keywords = {candidate visual features,Computational modeling,Computer Graphics,Correlation,correlation judgment,Data models,data visualisation,Data visualization,evaluation/methodology,feature extraction,Feature extraction,Female,Humans,Information visualization,Judgment,model-based approaches,Models Statistical,perception and psychophysics,perceptual laws,perceptual models,power law,Psychology,Psychophysics,scatterplots,vision science community,visual perception,Visual Perception,Visualization,visualization evaluation,visualization features,Weber's law}
+}
+
+@inproceedings{zuffi_2007,
+  title = {Human {{Computer Interaction}}: {{Legibility}} and {{Contrast}}},
+  shorttitle = {Human {{Computer Interaction}}},
+  booktitle = {14th {{International Conference}} on {{Image Analysis}} and {{Processing}} ({{ICIAP}} 2007)},
+  author = {Zuffi, Silvia and Brambilla, Carla and Beretta, Giordano and Scala, Paolo},
+  year = {2007},
+  month = sep,
+  pages = {241--246},
+  doi = {10.1109/ICIAP.2007.4362786},
+  abstract = {In human computer interaction readability of textual information is one of the foremost requirements for displays designed to provide visual information. In this context it is of main interest to identify the design attributes that influence readability, and investigate their relationship with measures of ease of reading. In this paper we present results from a readability experiment focused on text contrast that we performed on the Web. Our analysis indicate that light text on dark background is more difficult to read, and that the minimum luminance contrast between foreground and background color, in terms of CIELAB lightness difference, should be about 27 units.},
+  keywords = {Character recognition,Color,Computer displays,Human computer interaction,Laboratories,Psychology,Testing,Text recognition,Visual system,Web sites}
 }

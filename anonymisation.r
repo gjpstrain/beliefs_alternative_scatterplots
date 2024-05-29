@@ -1,6 +1,6 @@
 library(tidyverse)
 
-data <- read_csv("data/pre_test_responses.csv")
+data <- read_csv("data/pre_test_raw.csv")
 
 passed <- read.csv("data/pre_test_passed.csv")
 

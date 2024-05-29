@@ -5,6 +5,20 @@ format: acm-pdf
 # which you can eventually use with TAPS
 keep-tex: true
 
+params:
+  eval_models: false
+  
+knitr:
+  opts_chunk: 
+    cache_comments: false
+    crop: true
+    
+execute: 
+  echo: false
+  warning: false
+  message: false
+  include: false
+
 bibliography: beliefs-atypical.bib
 
 title: Changing Beliefs About Correlations in Atypical Scatterplots
@@ -127,10 +141,237 @@ abstract: |
 ---
 
 ```{r}
+#| label: setup
+
+set.seed(1234) # random seed for number generation
+
+library(tidyverse)
+library(MASS)
+library(emmeans)
+library(scales)
+library(buildmer)
+library(lme4)
+library(kableExtra)
+library(papaja)
+library(qwraps2)
+library(lmerTest)
+library(ggdist)
+library(ggpubr)
+library(conflicted)
+library(ggtext)
+library(r2glmm)
+library(grid)
+library(DescTools)
+library(Matrix)
+
+# fix conflicts now using the conflicted package
+
+conflicts_prefer(dplyr::select(), dplyr::filter(), lme4::lmer(), DescTools::AUC())
+
+```
+
+```{r}
+#| label: lazyload-cache
+
+if (!params$eval_models){ lazyload_cache_dir("beliefs_attitudes_atypical_scatterplots_cache/pdf") }
+```
+
+```{r}
+#| label: load-data
+
+# load in data csvs for pre-test and main experiment
+
+pre_test_anon <- read_csv("data/pre_test_response_final.csv")
+```
+
+```{r}
+#| label: wrangle-data
+
+## NB: With the exception of anonymization, data are provided as-is from 
+## pavlovia (survey tool). Wrangling function *must* be run first to make
+## the data set usable
+
+wrangle_pre_test <- function(anon_file) {
+  
+# extract demographic information
+  
+demographics <- anon_file %>%
+  filter(!is.na(gender_slider.response)) %>%
+  select(matches(c("participant",
+                   "age_textbox.text",
+                   "gender_slider.response")))
+
+# select relevant columns
+# select only experimental items
+# change data types where appropriate
+# output this file with suffix 'tidy'
+
+anon_file %>%
+  select(c("participant",
+           "avg_corr",
+           "avg_emot",
+           "slider_emotion.response",
+           "slider_belief.response",
+           "statement",
+           "item_no",
+           "label",
+           "session"
+           )) %>%
+  filter(item_no < 26) %>%
+  full_join(demographics, by = "participant") %>%
+  select(-c("__participant")) %>%
+  assign(paste0(unique(anon_file$expName), "_tidy"),
+           value = ., envir = .GlobalEnv)
+}
+
+# use wrangling function on anonymised data file
+
+wrangle_pre_test(pre_test_anon)
+
+# check for missing age and gender id values
+
+sum(is.na(beliefs_scatterplots_pretest_tidy$gender_slider.response))
+
+sum(is.na(beliefs_scatterplots_pretest_tidy$age_textbox.text))
+
+# missing age and gender values for a single participant
+# print session with missing values
+
+beliefs_scatterplots_pretest_tidy %>%
+  filter(is.na(age_textbox.text)) %>%
+  distinct(session)
+
+# session id was used to look up age and gender identity and manually add
+# this information to the final results csv using the prolific-supplied
+# demographic information for the pretest
+# this is not included as would expose personally identifiable prolific IDs
+
+```
+
+```{r}
+#| label: author-pre-test-ratings
+
+# NB: this code is reproduced here so that test values are accessible
+# It can also be found at item_preparation/pre_test_stim.R
+
+# Create dataframes for each rater
+
+author_A_statements <- read_csv("item_preparation/statements_A.csv") %>%
+  rename(Topic_Emotionality_A = Topic_Emotionality,
+         Strength_of_Correlation_A = Strength_of_Correlation) %>%
+  select(-Notes)
+  
+
+author_B_statements <- read_csv("item_preparation/statements_B.csv") %>%
+  rename(Topic_Emotionality_B = Topic_Emotionality,
+         Strength_of_Correlation_B = Strength_of_Correlation) %>%
+  select(-Notes)
+
+# Bind dataframes together
+
+all_ratings <- left_join(author_A_statements, author_B_statements, by = c("Number", "Statements"))
+
+## IRR Calculations
+
+kappa2(matrix(c(all_ratings$Topic_Emotionality_A,
+                all_ratings$Topic_Emotionality_B), ncol = 2), "squared")    
+
+kappa2(matrix(c(all_ratings$Strength_of_Correlation_A,
+                all_ratings$Strength_of_Correlation_B), ncol = 2), "squared")    
 
 ```
 
 
 # Introduction
 
-asd
+# Related Work
+
+# Pre-Study: Investigating Beliefs About Relatedness Statements
+
+## Introduction
+
+Due to previous evidence suggesting effects of prior belief strength and topic
+emotionality on the propensity for belief change, we first aim to build a picture
+of people's thoughts and feelings along these dimensions in our population of interest.
+With the intention of testing the potential for changes in beliefs about correlations
+displayed in scatterplots depicting weak and strong correlations, and those whose
+topics were both strong and neutral in emotional valence, we began by using
+ChatGPT4 [@chatgpt] to generate 100 correlation statements using the following prompt:
+
+\begin{center}
+
+    ``Generate 100 statements that describe the correlation between two variables, such as :
+
+     "X is associated with a higher level of Y" or
+
+     "As X increases, Y increases".
+
+    Try to match all the statements on emotionality.``
+\end{center}
+
+The full list of these statements can be found in the supplementary materials. Note
+that we cite our use of ChatGPT according to the AI Code of Conduct developed by
+Iliada Eleftheriou and Ajmal Mubarik and the University of Manchester [@iliada_2023].
+Two authors rated each statement on topic emotionality and strength
+of correlation using Likert scales from 1 to 7. Topic emotionality
+had a midpoint at 4, whereas strength of correlation went from 1 (Not Related At All)
+to 7 (Strongly Related).
+
+
+## Method
+
+### Participants
+
+### Design
+
+### Procedure
+
+## Results
+
+## Discussion
+
+# Main Study: Potential for Belief Change Using Atypical Scatterplots
+
+## Introduction
+
+## Method
+
+### Participants
+
+### Design
+
+### Procedure
+
+## Results
+
+## Discussion
+
+# General Discussion
+
+# Limitations
+
+# Future Work
+
+# Conclusion
+
+# References {-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

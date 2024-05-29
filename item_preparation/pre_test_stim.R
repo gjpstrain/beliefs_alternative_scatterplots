@@ -6,22 +6,19 @@ library(irr)
 # Create dataframes for each rater
 
 author_A_statements <- read_csv("item_preparation/statements_A.csv") %>%
-  rename(Plausibility_A = Plausibility,
-         Topic_Emotionality_A = Topic_Emotionality,
+  rename(Topic_Emotionality_A = Topic_Emotionality,
          Strength_of_Correlation_A = Strength_of_Correlation) %>%
   select(-Notes)
   
 
 author_B_statements <- read_csv("item_preparation/statements_B.csv") %>%
-  rename(Plausibility_B = Plausibility,
-         Topic_Emotionality_B = Topic_Emotionality,
+  rename(Topic_Emotionality_B = Topic_Emotionality,
          Strength_of_Correlation_B = Strength_of_Correlation) %>%
   select(-Notes)
 
 # Bind dataframes together
 
 all_ratings <- left_join(author_A_statements, author_B_statements, by = c("Number", "Statements"))
-
 
 ## IRR Calculations
 
