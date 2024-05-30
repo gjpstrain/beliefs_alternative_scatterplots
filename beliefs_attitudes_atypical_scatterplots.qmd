@@ -163,6 +163,7 @@ library(r2glmm)
 library(grid)
 library(DescTools)
 library(Matrix)
+library(irr)
 
 # fix conflicts now using the conflicted package
 
@@ -273,7 +274,7 @@ all_ratings <- left_join(author_A_statements, author_B_statements, by = c("Numbe
 
 ## IRR Calculations
 
-kappa2(matrix(c(all_ratings$Topic_Emotionality_A,
+df <-kappa2(matrix(c(all_ratings$Topic_Emotionality_A,
                 all_ratings$Topic_Emotionality_B), ncol = 2), "squared")    
 
 kappa2(matrix(c(all_ratings$Strength_of_Correlation_A,
