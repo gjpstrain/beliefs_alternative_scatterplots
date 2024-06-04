@@ -349,14 +349,39 @@ perception, scatterplot, crowdsourced}
 
 \setlength{\parskip}{-0.1pt}
 
-\section{Introduction}\label{introduction}
+\section{Introduction}\label{sec-intro-main}
 
-\section{Related Work}\label{related-work}
+\section{Related Work}\label{sec-rel-work-main}
+
+\section{General Methods}\label{sec-general-methods}
+
+In this section we discuss our general research methods, including our
+implementations of open research practices, our approach to and
+justification for crowdsourcing, and our approach to stimulus
+generation.
+
+\subsection{Open Research}\label{sec-open-research}
+
+Both our pre and main studies were conducted according to the principles
+of open and reproducible research \citep{ayris_2018}. We pre-registered
+hypotheses and analysis plans with the Open Science Framework (OSF) for
+the pre-study\footnote{https://osf.io/xuf4d} and the main
+experiment\footnote{tbc}, and there were no deviations from them. All
+data and analysis code are included in a GitHub repository\footnote{https://github.com/gjpstrain/beliefs\_attitudes\_atypic}.
+This repository contains instructions for building a Docker container
+\citep{merkel_2014} that reproduces the computational environment the
+paper was written in. This allows for full replication of stimuli,
+figures, analysis, and the paper itself. Ethical approval was granted
+the (removed for anon).
 
 \section{Pre-Study: Investigating Beliefs About Relatedness
-Statements}\label{pre-study-investigating-beliefs-about-relatedness-statements}
+Statements}\label{sec-pre-study}
 
-\subsection{Introduction}\label{introduction-1}
+\subsection{Introduction}\label{sec-pre-study-intro}
+
+\subsubsection{Testing Beliefs}\label{sec-testing-beliefs}
+
+\subsubsection{Preparation of Stimuli}\label{sec-stim-prep-pre}
 
 Due to previous evidence suggesting effects of prior belief strength and
 topic emotionality on the propensity for belief change, we first aim to
@@ -377,6 +402,7 @@ using the following prompt:
      "As X increases, Y increases".
 
     Try to match all the statements on emotionality.``
+    
 \end{center}
 
 The full list of these statements can be found in the supplementary
@@ -387,15 +413,13 @@ statement on topic emotionality and strength of correlation using Likert
 scales from 1 to 7. Topic emotionality had a midpoint at 4, whereas
 strength of correlation varied between 1 (Not Related At All) and 7
 (Strongly Related). We calculated a quadratic weighted Cohen's Kappa
-between the two raters, in order to penalise larger magnitude
-disagreements more harshly. We found agreement above chance for both
-topic emotionality (\(\kappa\) = 0.49, \emph{p} \textless{} .001) and
-strength of correlation (\(\kappa\) = 0.51, \emph{p} \textless{} .001),
+between the two raters using the \textbf{irr} package (version
+0.84.1\citep{irr}), in order to penalise larger magnitude disagreements
+more harshly. We found agreement above chance for both topic
+emotionality (\(\kappa\) = 0.49, \emph{p} \textless{} .001) and strength
+of correlation (\(\kappa\) = 0.51, \emph{p} \textless{} .001),
 indicating moderate levels of agreement in both cases
-\citep{cohen_1968, fleiss_1969}. Following this, we selected strongly
-and weakly correlated statements with the highest level of absolute
-agreement, resulting in the 25 statements that can be seen in
-Table~\ref{tbl-pre-test-hi} and Table~\ref{tbl-pre-test-low}.
+\citep{cohen_1968, fleiss_1969}.
 
 \begin{table}
 
@@ -434,7 +458,7 @@ Greater regularity in sleep patterns is associated with improved mental health.\
 \begin{table}
 
 \caption{\label{tbl-pre-test-low}Pre-test statements that were rated as
-being of low strength correlation.}
+being weakly correlated.}
 
 \centering{
 
@@ -462,6 +486,74 @@ As cultural preservation efforts increase, community identity and cohesion tend 
 
 \end{table}%
 
+Following this, we selected strongly and weakly correlated statements
+with the highest level of absolute agreement, resulting in the 14
+strongly correlated statements that can be seen in
+Table~\ref{tbl-pre-test-hi} and the 11 weakly correlated statements that
+can be seen in Table~\ref{tbl-pre-test-low}. As we only needed two
+statements for each of the high and low correlation conditions in our
+main experiment, we elected to test these 25 statements with a
+representative UK sample in order to ascertain consensus on both topic
+emotionality and strength of correlation. Doing so allows us to
+effectively exclude these factors when we analyse the effects of our
+atypical scatterplot designs on the propensity for belief change in our
+main experiment.
+
+\subsection{Method}\label{sec-method-pre}
+
+\subsubsection{Participants}\label{sec-participants-pre}
+
+100 participants were recruited using the Prolific.co platform
+\citep{prolific}. English fluency and residency was required for
+participation, as our main experiment relied on familiarity with data
+visualisations from a popular British news source. In addition to 25
+experimental items, we included six attention check items, which asked
+participants to provide specific answers. No participants failed more
+than 2 out of 6 attention check items, and therefore data from all 100
+were included in the full analysis (52.0\% male and 48.0\% female.
+Participants' mean age was 41.1 (\emph{SD} = 12.3). The average time
+taken to complete the survey was 7.6 minutes (\emph{SD} = 2.9 minutes).
+
+\subsubsection{Design}\label{sec-design-pre}
+
+Each participant saw all survey items(Table~\ref{tbl-pre-test-hi} and
+\textbf{?@tbl-pre-test-lo}), along with the six attention check items,
+in a fully randomised order. All experimental code, materials, and
+instructions are hosted on GitLab\footnote{https://gitlab.pavlovia.org/Strain/beliefs\_scatterplots\_pretest}.
+
+\subsubsection{Procedure}\label{sec-procedure-pre}
+
+The experiment was built using Psychopy \citep{pierce_2019} and hosted
+on Pavlovia.org. Participants were permitted to complete the experiment
+using a phone, tablet, desktop, or laptop computer. Participants were
+first shown the participant information sheet and were asked to provide
+consent through key presses in response to consent statements. They were
+asked to provide their age in a free text box, followed by their gender
+identity. Participants were told that they would be asked to read
+statements about the relatedness between a pair of variables, after
+which they would have to indicate their beliefs about topic emotionality
+and the strength of correlation suggested. To familiarize themselves
+with the slider, they were asked to complete a practice round in
+response to the statement ``As participation in online experiments
+increases, society becomes happier.''
+
+\subsection{Results}\label{sec-results-pre}
+
+All analyses were conducted using R (version 4.4.0). We use the
+\textbf{irr} package to calculate Fleiss' Kappa to measure interrater
+agreement on topic emotionality and strength of correlation for the 25
+experimental items. This analysis revealed that raters agreed above
+chance for both topic emotionality (\(\kappa\) = 0.07, \emph{p}
+\textless{} .001) and strength of correlation (\(\kappa\) = 0.06,
+\emph{p} \textless{} .001).
+
+\subsection{Discussion}\label{sec-discussion-pre}
+
+\section{Main Study: Potential for Belief Change Using Atypical
+Scatterplots}\label{sec-main-study}
+
+\subsection{Introduction}\label{introduction}
+
 \subsection{Method}\label{method}
 
 \subsubsection{Participants}\label{participants}
@@ -474,23 +566,6 @@ As cultural preservation efforts increase, community identity and cohesion tend 
 
 \subsection{Discussion}\label{discussion}
 
-\section{Main Study: Potential for Belief Change Using Atypical
-Scatterplots}\label{main-study-potential-for-belief-change-using-atypical-scatterplots}
-
-\subsection{Introduction}\label{introduction-2}
-
-\subsection{Method}\label{method-1}
-
-\subsubsection{Participants}\label{participants-1}
-
-\subsubsection{Design}\label{design-1}
-
-\subsubsection{Procedure}\label{procedure-1}
-
-\subsection{Results}\label{results-1}
-
-\subsection{Discussion}\label{discussion-1}
-
 \section{General Discussion}\label{general-discussion}
 
 \section{Limitations}\label{limitations}
@@ -500,7 +575,7 @@ Scatterplots}\label{main-study-potential-for-belief-change-using-atypical-scatte
 \section{Conclusion}\label{conclusion}
 
 \bibliographystyle{ACM-Reference-Format}
-\bibliography{beliefs-atypical.bib}
+\bibliography{atypical-scatterplots.bib}
 
 %% begin pandoc before-bib
 %% end pandoc before-bib
