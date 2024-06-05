@@ -546,7 +546,6 @@ consensus_df <- avg_emot %>%
   mutate(consensus = std_dev_belief + std_dev_emot) %>% 
   arrange(consensus) %>%
   slice_head(n = 2)
-  
 ```
 
 All analyses were conducted using R (version `r paste0(R.version$major, ".", R.version$minor)`).
@@ -585,6 +584,8 @@ weakness, as we also test topic emotionality and strength of correlation with pa
 in the main study and include these ratings as part of our analysis.
 
 # Main Study: Potential for Belief Change Using Atypical Scatterplots {#sec-main-study}
+
+
 
 ## Introduction
 

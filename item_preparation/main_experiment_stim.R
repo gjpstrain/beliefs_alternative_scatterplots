@@ -71,7 +71,7 @@ plot_function_covid <- function(slopes, my_desired_r, name, size_value, theme) {
           plot.subtitle = element_text(size = 11),
           plot.caption = element_text(size = 9, hjust = -.1)) +
     labs(title = "Lockdown Gains",
-         subtitle = "More Covid-19 lockdowns were associated\nwith a higher life expectancy among the elderly",
+         subtitle = "As caffeine consumption increases, so does the average heart rate.",
          caption = "Source: NHS England") +
     annotate("text", x = 3, y = 67, label = "Fewer lockdowns") +
     annotate("text", x = 7, y = 67, label = "More lockdowns") +
