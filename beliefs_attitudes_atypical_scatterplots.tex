@@ -428,26 +428,26 @@ being strongly correlated.}
 
 \centering{
 
-\begin{tabular}[t]{l}
+\begin{tabular}[t]{rl}
 \toprule
-Statement - Strong Correlation Depicted\\
+Item Number & Statement - Strong Correlation Depicted\\
 \midrule
-Increased exposure to sunlight is correlated with higher vitamin D levels.\\
-As caffeine consumption increases, so does the average heart rate.\\
-Greater frequency of exercise is linked to a lower risk of depression.\\
-Greater use of helmets is associated with a lower incidence of head injuries in cyclists.\\
-As the quality of healthcare improves, life expectancy tends to increase.\\
+1 & Increased exposure to sunlight is correlated with higher vitamin D levels.\\
+2 & As caffeine consumption increases, so does the average heart rate.\\
+3 & Greater frequency of exercise is linked to a lower risk of depression.\\
+4 & Greater use of helmets is associated with a lower incidence of head injuries in cyclists.\\
+5 & As the quality of healthcare improves, life expectancy tends to increase.\\
 \addlinespace
-As access to clean water improves, the incidence of waterborne diseases decreases.\\
-Higher levels of empathy are linked to stronger interpersonal relationships.\\
-As soil quality degrades, agricultural productivity tends to decrease.\\
-Higher levels of civic engagement are linked to a stronger sense of community.\\
-Higher sugar consumption is associated with an increased risk of dental cavities.\\
+6 & As access to clean water improves, the incidence of waterborne diseases decreases.\\
+7 & Higher levels of empathy are linked to stronger interpersonal relationships.\\
+8 & As soil quality degrades, agricultural productivity tends to decrease.\\
+9 & Higher levels of civic engagement are linked to a stronger sense of community.\\
+10 & Higher sugar consumption is associated with an increased risk of dental cavities.\\
 \addlinespace
-Higher attendance at preventive health screenings is linked to earlier detection of diseases.\\
-Increased use of energy-efficient appliances is associated with lower electricity bills.\\
-As pedestrian-friendly infrastructure improves, urban walkability tends to increase.\\
-Greater regularity in sleep patterns is associated with improved mental health.\\
+11 & Higher attendance at preventive health screenings is linked to earlier detection of diseases.\\
+12 & Increased use of energy-efficient appliances is associated with lower electricity bills.\\
+13 & As pedestrian-friendly infrastructure improves, urban walkability tends to increase.\\
+14 & Greater regularity in sleep patterns is associated with improved mental health.\\
 \bottomrule
 \end{tabular}
 
@@ -462,23 +462,23 @@ being weakly correlated.}
 
 \centering{
 
-\begin{tabular}[t]{l}
+\begin{tabular}[t]{rl}
 \toprule
-Statement - Weak Correlation Depicted\\
+Item Number & Statement - Weak Correlation Depicted\\
 \midrule
-Greater water consumption is linked to improved kidney function.\\
-As the amount of sleep decreases, the risk of obesity increases.\\
-Greater intake of omega-3 fatty acids is associated with lower inflammation levels.\\
-Greater exposure to music education is linked to enhanced cognitive development in children.\\
-Higher exposure to air conditioning is associated with increased respiratory issues.\\
+15 & Greater water consumption is linked to improved kidney function.\\
+16 & As the amount of sleep decreases, the risk of obesity increases.\\
+17 & Greater intake of omega-3 fatty acids is associated with lower inflammation levels.\\
+18 & Greater exposure to music education is linked to enhanced cognitive development in children.\\
+19 & Higher exposure to air conditioning is associated with increased respiratory issues.\\
 \addlinespace
-Higher frequency of family meals is linked to better eating habits in children.\\
-As participation in community arts programs increases, local cultural engagement tends to rise.\\
-Higher consumption of spicy foods is associated with a lower risk of certain types of cancer.\\
-Greater adherence to a Mediterranean diet is linked to a lower risk of neurodegenerative diseases.\\
-Higher consumption of nuts and seeds is associated with reduced risk of cardiovascular diseases.\\
+20 & Higher frequency of family meals is linked to better eating habits in children.\\
+21 & As participation in community arts programs increases, local cultural engagement tends to rise.\\
+22 & Higher consumption of spicy foods is associated with a lower risk of certain types of cancer.\\
+23 & Greater adherence to a Mediterranean diet is linked to a lower risk of neurodegenerative diseases.\\
+24 & Higher consumption of nuts and seeds is associated with reduced risk of cardiovascular diseases.\\
 \addlinespace
-As cultural preservation efforts increase, community identity and cohesion tend to strengthen.\\
+25 & As cultural preservation efforts increase, community identity and cohesion tend to strengthen.\\
 \bottomrule
 \end{tabular}
 
@@ -516,8 +516,8 @@ taken to complete the survey was 7.6 minutes (\emph{SD} = 2.9 minutes).
 
 \subsubsection{Design}\label{sec-design-pre}
 
-Each participant saw all survey items(Table~\ref{tbl-pre-test-hi} and
-\textbf{?@tbl-pre-test-lo}), along with the six attention check items,
+Each participant saw all survey items (Table~\ref{tbl-pre-test-hi} and
+Table~\ref{tbl-pre-test-low}), along with the six attention check items,
 in a fully randomised order. All experimental code, materials, and
 instructions are hosted on GitLab\footnote{https://gitlab.pavlovia.org/Strain/beliefs\_scatterplots\_pretest}.
 
@@ -542,10 +542,23 @@ increases, society becomes happier.''
 All analyses were conducted using R (version 4.4.0). We use the
 \textbf{irr} package to calculate Fleiss' Kappa to measure interrater
 agreement on topic emotionality and strength of correlation for the 25
-experimental items. This analysis revealed that raters agreed above
-chance for both topic emotionality (\(\kappa\) = 0.07, \emph{p}
+experimental items. This analysis revealed that participants agreed
+above chance for both topic emotionality (\(\kappa\) = 0.07, \emph{p}
 \textless{} .001) and strength of correlation (\(\kappa\) = 0.06,
 \emph{p} \textless{} .001).
+
+\subsection{Selecting Statements for the Main
+Experiment}\label{selecting-statements-for-the-main-experiment}
+
+To control for any potential effects of topic emotionality in the main
+experiment, we first select statements that represent neutral emotional
+valence. Statements with average topic emotionality ratings between 3
+and 5 are statements 2, 10, 22, 16, and 23. To ascertain which
+statements represent the greatest consensus, we add standard deviations
+in ratings for topic emotionality and strength of correlation, then take
+the statement from each of the high and low correlation lists with the
+lowest summed standard deviation, which in this case is statements 2,
+and 22.
 
 \subsection{Discussion}\label{sec-discussion-pre}
 
