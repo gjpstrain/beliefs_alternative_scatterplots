@@ -288,11 +288,17 @@ add_and_to_numbers <- function(numbers) {
   if (len == 1) {
 
     return(num_str)
+    
+  } else if (len == 2) {
+    
+    return(paste(num_str[1], "and", num_str[2]))
+    
   } else {
 
     return(paste(paste(num_str[1:(len-1)], collapse = ", "), ", and ", num_str[len], sep = ""))
   }
 }
+
 ```
 
 ```{r}
@@ -354,8 +360,7 @@ and the paper itself. Ethical approval was granted the (removed for anon).
 
 [^1]: https://osf.io/xuf4d
 [^2]: tbc
-[^3]: https://github.com/gjpstrain/beliefs_attitudes_atypic
-
+[^3]: https://github.com/gjpstrain/beliefs_attitudes_atypical
 
 # Pre-Study: Investigating Beliefs About Relatedness Statements {#sec-pre-study}
 
@@ -395,12 +400,13 @@ by Iliada Eleftheriou and Ajmal Mubarik and the University of Manchester
 strength of correlation using Likert scales from 1 to 7. Topic emotionality
 had a midpoint at 4, whereas strength of correlation varied between 1 (Not Related At All)
 and 7 (Strongly Related). We calculated a quadratic weighted Cohen's Kappa
-between the two raters using the **irr** package (version 0.84.1[@irr]),
+between the two raters using the **irr** package (version 0.84.1 [@irr]),
 in order to penalise larger magnitude disagreements more harshly.
 We found agreement above chance for both topic emotionality
 ($\kappa$ = `r printnum(irr_emot$value, digits = 2)`, *p* `r printp(irr_emot$p.value, add_equals = TRUE)`)
 and strength of correlation ($\kappa$ = `r printnum(irr_corr$value, digits = 2)`,
-*p* `r printp(irr_corr$p.value, add_equals = TRUE)`), indicating moderate levels of agreement in both cases [@cohen_1968; @fleiss_1969].
+*p* `r printp(irr_corr$p.value, add_equals = TRUE)`), indicating moderate 
+levels of agreement in both cases [@cohen_1968; @fleiss_1969].
 
 ```{r}
 #| label: tbl-pre-test-hi
@@ -560,10 +566,23 @@ with average topic emotionality ratings between 3 and 5 are statements
 which statements represent the greatest consensus, we add standard deviations in
 ratings for topic emotionality and strength of correlation, then take the statement
 from each of the high and low correlation lists with the lowest summed standard
-deviation, which in this case is statements `r printnum(add_and_to_numbers(consensus_df$item_no), digits = 0)`.
-
+deviation, which in this case is statements `r printnum(add_and_to_numbers(consensus_df$item_no), digits = 0)`
+(see @tbl-pre-test-hi and @tbl-pre-test-low). In order to control for statement
+directionality, the wording of statement `r printnum(add_and_to_numbers(consensus_df$item_no[2]), digits = 0)`
+is changed; the final statements can be see in @sec-main-study.
 
 ## Discussion {#sec-discussion-pre}
+
+Fleiss' Kappa values for interrater agreement on both topic emotionality
+and strength of correlation scales are low ($\kappa$ = `r printnum(emot_kappa$value, digits = 2)`
+and$\kappa$ = `r printnum(belief_kappa$value, digits = 2)` respectively),
+however do exceed that which would be expected by chance. We suggest this may be
+due to Fleiss' Kappa not being designed with ordinal (Likert scales in this case) data in mind.
+In light of this we do not make decisions regarding which statements to use based 
+on the values of Fleiss' Kappa observed, but rather on the standard deviations of 
+ratings across all raters. Regardless, we do not consider this to be a particular
+weakness, as we also test topic emotionality and strength of correlation with participants
+in the main study and include these ratings as part of our analysis.
 
 # Main Study: Potential for Belief Change Using Atypical Scatterplots {#sec-main-study}
 

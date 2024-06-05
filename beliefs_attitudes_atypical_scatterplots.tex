@@ -367,7 +367,7 @@ of open and reproducible research \citep{ayris_2018}. We pre-registered
 hypotheses and analysis plans with the Open Science Framework (OSF) for
 the pre-study\footnote{https://osf.io/xuf4d} and the main
 experiment\footnote{tbc}, and there were no deviations from them. All
-data and analysis code are included in a GitHub repository\footnote{https://github.com/gjpstrain/beliefs\_attitudes\_atypic}.
+data and analysis code are included in a GitHub repository\footnote{https://github.com/gjpstrain/beliefs\_attitudes\_atypical}.
 This repository contains instructions for building a Docker container
 \citep{merkel_2014} that reproduces the computational environment the
 paper was written in. This allows for full replication of stimuli,
@@ -413,12 +413,12 @@ statement on topic emotionality and strength of correlation using Likert
 scales from 1 to 7. Topic emotionality had a midpoint at 4, whereas
 strength of correlation varied between 1 (Not Related At All) and 7
 (Strongly Related). We calculated a quadratic weighted Cohen's Kappa
-between the two raters using the \textbf{irr} package (version
-0.84.1\citep{irr}), in order to penalise larger magnitude disagreements
-more harshly. We found agreement above chance for both topic
-emotionality (\(\kappa\) = 0.49, \emph{p} \textless{} .001) and strength
-of correlation (\(\kappa\) = 0.51, \emph{p} \textless{} .001),
-indicating moderate levels of agreement in both cases
+between the two raters using the \textbf{irr} package (version 0.84.1
+\citep{irr}), in order to penalise larger magnitude disagreements more
+harshly. We found agreement above chance for both topic emotionality
+(\(\kappa\) = 0.49, \emph{p} \textless{} .001) and strength of
+correlation (\(\kappa\) = 0.51, \emph{p} \textless{} .001), indicating
+moderate levels of agreement in both cases
 \citep{cohen_1968, fleiss_1969}.
 
 \begin{table}
@@ -557,10 +557,25 @@ and 5 are statements 2, 10, 22, 16, and 23. To ascertain which
 statements represent the greatest consensus, we add standard deviations
 in ratings for topic emotionality and strength of correlation, then take
 the statement from each of the high and low correlation lists with the
-lowest summed standard deviation, which in this case is statements 2,
-and 22.
+lowest summed standard deviation, which in this case is statements 2 and
+22 (see Table~\ref{tbl-pre-test-hi} and Table~\ref{tbl-pre-test-low}).
+In order to control for statement directionality, the wording of
+statement 22 is changed; the final statements can be see in
+Section~\ref{sec-main-study}.
 
 \subsection{Discussion}\label{sec-discussion-pre}
+
+Fleiss' Kappa values for interrater agreement on both topic emotionality
+and strength of correlation scales are low ((\(\kappa\) = 0.07
+and\(\kappa\) = 0.06 respectively), however do exceed that which would
+be expected by chance. We suggest this may be due to Fleiss' Kappa not
+being designed with ordinal (Likert scales in this case) data in mind.
+In light of this we do not make decisions regarding which statements to
+use based on the values of Fleiss' Kappa observed, but rather on the
+standard deviations of ratings across all raters. Regardless, we do not
+consider this to be a particular weakness, as we also test topic
+emotionality and strength of correlation with participants in the main
+study and include these ratings as part of our analysis.
 
 \section{Main Study: Potential for Belief Change Using Atypical
 Scatterplots}\label{sec-main-study}
