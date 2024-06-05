@@ -380,7 +380,8 @@ between the two raters using the **irr** package (version 0.84.1[@irr]),
 in order to penalise larger magnitude disagreements more harshly.
 We found agreement above chance for both topic emotionality
 ($\kappa$ = `r printnum(irr_emot$value, digits = 2)`, *p* `r printp(irr_emot$p.value, add_equals = TRUE)`)
-and strength of correlation ($\kappa$ = `r printnum(irr_corr$value, digits = 2)`, *p* `r printp(irr_corr$p.value, add_equals = TRUE)`), indicating moderate levels of agreement in both cases [@cohen_1968; @fleiss_1969].
+and strength of correlation ($\kappa$ = `r printnum(irr_corr$value, digits = 2)`,
+*p* `r printp(irr_corr$p.value, add_equals = TRUE)`), indicating moderate levels of agreement in both cases [@cohen_1968; @fleiss_1969].
 
 ```{r}
 #| label: tbl-pre-test-hi
