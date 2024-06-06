@@ -356,11 +356,15 @@ there were no deviations from them. All data and analysis code are included in a
 GitHub repository[^3]. This repository contains instructions for building a Docker
 container [@merkel_2014] that reproduces the computational environment the paper
 was written in. This allows for full replication of stimuli, figures, analysis,
-and the paper itself. Ethical approval was granted the (removed for anon).
+and the paper itself. Ethical approval was granted by the (removed for anon).
 
 [^1]: https://osf.io/xuf4d
 [^2]: tbc
 [^3]: https://github.com/gjpstrain/beliefs_attitudes_atypical
+
+## Crowdsourcing
+
+- section will be quite similar to crowdsourcing sections in previous papers
 
 # Pre-Study: Investigating Beliefs About Relatedness Statements {#sec-pre-study}
 
@@ -447,9 +451,8 @@ kbl(pre_test_statements_lo, booktabs = T)
 Following this, we selected strongly and weakly correlated statements with the
 highest level of absolute agreement, resulting in the 14 strongly correlated
 statements that can be seen in @tbl-pre-test-hi and the 11 weakly correlated
-statements that can be seen in @tbl-pre-test-low. As we only needed two statements
-for each of the high and low correlation conditions in our main experiment, 
-we elected to test these 25 statements with a representative UK sample in order
+statements that can be seen in @tbl-pre-test-low. We then tested these 25
+statements with a representative UK sample in order
 to ascertain consensus on both topic emotionality and strength of correlation.
 Doing so allows us to effectively exclude these factors when we analyse the effects
 of our atypical scatterplot designs on the propensity for belief change
@@ -487,8 +490,9 @@ and were asked to provide consent through key presses in response to consent sta
 They were asked to provide their age in a free text box, followed by their 
 gender identity. Participants were told that they would be asked to read statements
 about the relatedness between a pair of variables, after which they would have to 
-indicate their beliefs about topic emotionality and the strength of correlation suggested.
-To familiarize themselves with the slider, they were asked to complete a practice round
+indicate their beliefs about topic emotionality and the strength of correlation suggested
+using a pair of sliders.
+To familiarize themselves with the sliders, they were asked to complete a practice round
 in response to the statement "As participation in online experiments increases,
 society becomes happier."
 
@@ -545,7 +549,7 @@ avg_emot <- ratings_df %>%
 consensus_df <- avg_emot %>%
   mutate(consensus = std_dev_belief + std_dev_emot) %>% 
   arrange(consensus) %>%
-  slice_head(n = 2)
+  slice_head(n =  2)
 ```
 
 All analyses were conducted using R (version `r paste0(R.version$major, ".", R.version$minor)`).
@@ -563,21 +567,26 @@ we first select statements that represent neutral emotional valence. Statements
 with average topic emotionality ratings between 3 and 5 are statements 
 `r printnum(add_and_to_numbers(avg_emot$item_no), digits = 0)`. To ascertain
 which statements represent the greatest consensus, we add standard deviations in
-ratings for topic emotionality and strength of correlation, then take the statement
-from each of the high and low correlation lists with the lowest summed standard
-deviation, which in this case is statements `r printnum(add_and_to_numbers(consensus_df$item_no), digits = 0)`
-(see @tbl-pre-test-hi and @tbl-pre-test-low). In order to control for statement
-directionality, the wording of statement `r printnum(add_and_to_numbers(consensus_df$item_no[2]), digits = 0)`
-is changed; the final statements can be see in @sec-main-study.
+ratings for topic emotionality and strength of correlation. Due to concerns about experimental
+power, and in line with evidence that propensity for belief change is highest
+when prior beliefs are not strongly held [@xiong_2022],
+we elected at this point to test only the statement corresponding to weak beliefs
+about the strength of correlation between the variables in question. We therefore
+test statement number `r printnum(add_and_to_numbers(consensus_df$item_no[2]), digits = 0)`,
+"Higher consumption of spicy foods is associated with a lower risk of certain types of cancer.",
+however we modify the wording so that both variables (food consumption and cancer risk)
+are positively correlated, as previous work indicates that the manipulations we use
+in the atypical scatterplot condition are able to change estimates of correlation
+in positively correlated scatterplots.
 
 ## Discussion {#sec-discussion-pre}
 
 Fleiss' Kappa values for interrater agreement on both topic emotionality
 and strength of correlation scales are low ($\kappa$ = `r printnum(emot_kappa$value, digits = 2)`
-and$\kappa$ = `r printnum(belief_kappa$value, digits = 2)` respectively),
+and $\kappa$ = `r printnum(belief_kappa$value, digits = 2)` respectively),
 however do exceed that which would be expected by chance. We suggest this may be
 due to Fleiss' Kappa not being designed with ordinal (Likert scales in this case) data in mind.
-In light of this we do not make decisions regarding which statements to use based 
+In light of this we do not make decisions regarding which statement to use based 
 on the values of Fleiss' Kappa observed, but rather on the standard deviations of 
 ratings across all raters. Regardless, we do not consider this to be a particular
 weakness, as we also test topic emotionality and strength of correlation with participants
@@ -585,15 +594,28 @@ in the main study and include these ratings as part of our analysis.
 
 # Main Study: Potential for Belief Change Using Atypical Scatterplots {#sec-main-study}
 
-
+We test the statement that exhibited the lowest average level of belief about
+correlation, and the 2nd highest level of consensus. Modified for directionality,
+this statement is therefore: "Higher consumption of plain (non-spicy) foods
+is associated with a lower risk of certain types of cancer."
 
 ## Introduction
+
+## Stimuli
+
+- build experiment and pilot to see how many people can do 
+- then this section can be written
 
 ## Method
 
 ### Participants
 
 ### Design
+
+We employ a between-participants design. Each participants was randomly assigned
+to either group A, in which case they viewed typical scatterplots, or group B,
+in which they viewed atypical scatterplots designed deliberately to elicit higher
+levels of belief change.
 
 ### Procedure
 

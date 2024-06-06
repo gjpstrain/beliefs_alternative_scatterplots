@@ -11,12 +11,10 @@ library(gtools)
 
 set.seed(1234)
 
-high_r <- seq(0.5, 0.99, length.out = 45)
-low_r <- seq(0, 0.49, length.out = 45)
+high_r <- seq(0.6, 0.99, length.out = 45)
 
 item_no <- c(1:45)
 
-low_corr_frame <- tibble(item_no, low_r)
 high_corr_frame <- tibble(item_no, high_r)
 
 # slope generation function
@@ -49,54 +47,21 @@ slope_function <- function(my_desired_r) {
   slopes <- data_with_resid %>%
     mutate(slope_0.25 = 1-(0.25)^my_residuals) %>%
     mutate(slope_inverted = (1 + (0.25)^ my_residuals)-1) %>%
-    mutate(slope_inverted_floored = pmax(0.1,(1+(0.25)^my_residuals)-1)) %>%
-    mutate(typical = 0.033)
+    mutate(slope_inverted_floored = pmax(0.2,(1+(0.25)^my_residuals)-1)) %>%
+    mutate(typical = 0.033) %>%
+    mutate(standard_alpha = 1)
   
   return(slopes)
 }
 
-# covid plot generation function
+# spicy foods plot generation function: WEAK CORR
 
-plot_function_covid <- function(slopes, my_desired_r, name, size_value, theme) {
-  
-    p <- ggplot(slopes, aes(x = V1, y = V2)) +
-    scale_size_identity() +
-    scale_alpha_identity() +
-    geom_point(aes(size =  6*(size_value + 0.3), alpha = 1), shape = 16) +  
-    geom_hline(yintercept = 68, size = 1, colour="#333333") +
-    geom_segment(x = 0, xend = 10, y = 66.2, yend = 66.2, size = 0.3, colour="#585858") +
-    bbc_style() +
-    theme(axis.text.x = element_blank(),
-          title = element_text(size = 14),
-          plot.subtitle = element_text(size = 11),
-          plot.caption = element_text(size = 9, hjust = -.1)) +
-    labs(title = "Lockdown Gains",
-         subtitle = "As caffeine consumption increases, so does the average heart rate.",
-         caption = "Source: NHS England") +
-    annotate("text", x = 3, y = 67, label = "Fewer lockdowns") +
-    annotate("text", x = 7, y = 67, label = "More lockdowns") +
-    coord_cartesian(clip = "off")
-  
-  ggsave(p,filename=paste0(counter, "_covid_", name, ".png"),
-         device = "png",
-         bg = "white",
-         path = "item_preparation/all_plots",
-         units = "px",
-         width = 1500,
-         height = 1500,
-  )
-  
-  return(p)
-}
-
-# reading plot generation function
-
-plot_function_reading <- function(slopes, my_desired_r, name, size_value, theme) {
+plot_function_spicy <- function(slopes, my_desired_r, name, size_value, opacity_value, theme) {
   
   p <- ggplot(slopes, aes(x = V1, y = V2)) +
     scale_size_identity() +
     scale_alpha_identity() +
-    geom_point(aes(size =  6*(size_value + 0.3), alpha = 1), shape = 16) +  
+    geom_point(aes(size =  6*(size_value + 0.3), alpha = opacity_value), shape = 16) +  
     geom_hline(yintercept = 68, size = 1, colour="#333333") +
     geom_segment(x = 0, xend = 10, y = 66.2, yend = 66.2, size = 0.3, colour="#585858") +
     bbc_style() +
@@ -104,14 +69,14 @@ plot_function_reading <- function(slopes, my_desired_r, name, size_value, theme)
           title = element_text(size = 14),
           plot.subtitle = element_text(size = 11),
           plot.caption = element_text(size = 9, hjust = -.1)) +
-    labs(title = "Book Worms",
-         subtitle = "People who read more books per year tend to live longer",
-         caption = "Source: The British Library") +
-    annotate("text", x = 3, y = 67, label = "Fewer books read") +
-    annotate("text", x = 7, y = 67, label = "More books read") +
+    labs(title = "Spicy Foods",
+         subtitle = "Higher consumption of plain (non-spicy) foods\nis associated with a higher risk of certain types of cancer.",
+         caption = "Source: NHS England") +
+    annotate("text", x = 3, y = 67, label = "Less spicy-heavy diet") +
+    annotate("text", x = 7, y = 67, label = "More spicy-heavy diet") +
     coord_cartesian(clip = "off")
   
-  ggsave(p,filename=paste0(counter,"_books_", name, ".png"),
+  ggsave(p,filename=paste0(counter,"_spice_", name, ".png"),
          device = "png",
          bg = "white",
          path = "item_preparation/all_plots",
@@ -130,12 +95,13 @@ for(value in high_r) {
   
   slopes <- slope_function(value)
   slopeI <- (slopes$slope_inverted)
-  typical <- (slopes$typical)
+  slopeI_floored <- (slopes$slope_inverted_floored)
   
-  plot_function_covid(slopes, value, "A_hi", slopeI, bbc_style())
-  plot_function_covid(slopes, value, "T_hi", typical, bbc_style())
-  plot_function_reading(slopes, value, "A_hi", slopeI, bbc_style())
-  plot_function_reading(slopes, value, "T_hi", typical, bbc_style())
+  typical <- (slopes$typical)
+  standard_alpha <- (slopes$standard_alpha)
+  
+  plot_function_spicy(slopes, value, "A_hi", slopeI, slopeI_floored, bbc_style())
+  plot_function_spicy(slopes, value, "T_hi", typical, standard_alpha, bbc_style())
   
   if (counter > 0) {
     counter = counter + 1
