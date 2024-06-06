@@ -129,19 +129,61 @@ for(value in low_r) {
 
 # build csv file
 
+# grab images
+
 images_typical <- mixedsort(list.files(path = "item_preparation/all_plots", pattern = "_T_", full.names = F))
 
 images_atypical <- mixedsort(list.files(path = "item_preparation/all_plots", pattern = "_A_", full.names = F))
 
-plot_labels <- rep(c("all_plots/"), each = 180)
+# plot labels - use the same for both
 
-plots_with_labels <- paste(plot_labels, images, sep = "")
+plot_labels <- rep(c("all_plots/"), each = length(high_r))
 
-final_data <- full_data %>%
-  
-  select(-c(item_no, my_ss))
-unique_item_no <- c(1:180)
+# unique identifiers for both lists
 
-instructions <- rep(c("Please look at the following plot and use the slider to estimate the correlation"), each = 180)
+unique_item_no_A <- map_chr(1:length(high_r), ~ paste0(.x, "A"))
 
-data_with_plots <- cbind(unique_item_no, final_data, plots_with_labels, images, instructions)
+unique_item_no_T <- map_chr(1:length(high_r), ~ paste0(.x, "T"))
+
+# plots with labels vector; this is easier for psychopy to deal with later
+
+plots_with_labels_A <- paste(plot_labels, images_atypical, sep = "")
+
+plots_with_labels_T <- paste(plot_labels, images_typical, sep = "")
+
+# we need this to diff text in AT items
+
+colour <- rep("black", times = length(high_r))
+
+# instructions for experimental items
+
+instructions <- rep(c("Please look at the following plot and use the slider to estimate the correlation"), each = length(high_r))
+
+exp_data_A <- cbind(unique_item_no_A, images_atypical, plots_with_labels_A, colour, instructions)
+
+exp_data_T <- cbind(unique_item_no_T, images_typical, plots_with_labels_T, colour, instructions)
+
+## Attention check df 
+
+unique_item_no_A <- map_chr(46:51, ~ paste0(.x, "A"))
+
+unique_item_no_T <- map_chr(46:51, ~ paste0(.x, "T"))
+
+images_typical <- head(images_typical)
+
+images_atypical <- head(images_atypical)
+
+plots_with_labels_A <- head(plots_with_labels_A)
+
+plots_with_labels_T <- head(plots_with_labels_T)
+
+colour <- rep("red", times = 6)
+
+instructions <- rep(c("Please IGNORE the plot and set the slider to 0.",
+                      "Please IGNORE the plot and set the slider to 1."),
+                    times = c(3, 3))
+
+attention_check_df_A <- cbind(unique_item_no_A, )
+
+
+
