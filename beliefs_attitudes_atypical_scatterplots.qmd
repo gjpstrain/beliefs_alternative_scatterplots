@@ -279,6 +279,8 @@ time_taken_pre <- distinct(beliefs_scatterplots_pretest_tidy, participant,
 ```{r}
 #| label: format-numbers-function
 
+# function to format numbers when papaja prints them
+
 add_and_to_numbers <- function(numbers) {
 
   num_str <- as.character(numbers)
@@ -364,7 +366,18 @@ and the paper itself. Ethical approval was granted by the (removed for anon).
 
 ## Crowdsourcing
 
-- section will be quite similar to crowdsourcing sections in previous papers
+While much prior work into correlation perception in scatterplots has taken place
+in person, there is precedence for work that explores cognition to take place
+online using crowdsourced participants [@xiong_2022]. Crowdsourcing not only 
+affords us recruitment of samples from across our lay population of interest,
+it is considerably quicker and less expensive than in-person testing. We therefore choose
+to crowdsource all participants. Previous work has reported issues of data quality
+and skewed demographics [@chmielewski_2020; @charalambides_2021; @peer_2021], so
+we follow published guidelines [@peer_2021] to give us the best chance of collecting
+high quality data. We use the Prolific.co platform [@prolific] with strict pre-screening
+criteria; participants were required to have completed at least 100 studies
+using Prolific, and were required to have a Prolific score of 100, representing a 99%
+approval rate.
 
 # Pre-Study: Investigating Beliefs About Relatedness Statements {#sec-pre-study}
 
