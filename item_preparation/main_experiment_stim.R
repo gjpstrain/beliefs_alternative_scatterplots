@@ -54,7 +54,7 @@ slope_function <- function(my_desired_r) {
   return(slopes)
 }
 
-# spicy foods plot generation function: WEAK CORR
+# spicy foods plot generation function
 
 plot_function_spicy <- function(slopes, my_desired_r, name, size_value, opacity_value, theme) {
   
@@ -108,24 +108,6 @@ for(value in high_r) {
   }
 }
 
-# create plots for low r
-
-counter = 1
-for(value in low_r) {
-  
-  slopes <- slope_function(value)
-  slopeI <- (slopes$slope_inverted)
-  typical <- (slopes$typical)
-  
-  plot_function(slopes, value, "A_lo", slopeI, bbc_style())
-  plot_function(slopes, value, "T_lo", typical, bbc_style())
-  plot_function_reading(slopes, value, "A_lo", slopeI, bbc_style())
-  plot_function_reading(slopes, value, "T_lo", typical, bbc_style())
-  
-  if (counter > 0) {
-    counter = counter + 1
-  }
-}
 
 # build csv file
 
@@ -183,7 +165,16 @@ instructions <- rep(c("Please IGNORE the plot and set the slider to 0.",
                       "Please IGNORE the plot and set the slider to 1."),
                     times = c(3, 3))
 
-attention_check_df_A <- cbind(unique_item_no_A, )
+attention_check_df_A <- cbind(unique_item_no_A, images_atypical, plots_with_labels_A, colour, instructions)
 
+attention_check_df_T <- cbind(unique_item_no_T, images_typical, plots_with_labels_T, colour, instructions)
 
+# rbind AC dfs with experimental data dfs for final csvs, then write 
 
+final_exp_data_A <- as_tibble(rbind(exp_data_A, attention_check_df_A))
+
+final_exp_data_T <- as_tibble(rbind(exp_data_T, attention_check_df_T))
+
+write_csv(final_exp_data_A, "data/final_exp_data_A.csv")
+
+write_csv(final_exp_data_T, "data/final_exp_data_T.csv")
