@@ -3,6 +3,7 @@ format: acm-pdf
 
 # use keep-tex to cause quarto to generate a .tex file
 # which you can eventually use with TAPS
+
 keep-tex: true
 
 params:
@@ -504,8 +505,7 @@ They were asked to provide their age in a free text box, followed by their
 gender identity. Participants were told that they would be asked to read statements
 about the relatedness between a pair of variables, after which they would have to 
 indicate their beliefs about topic emotionality and the strength of correlation suggested
-using a pair of sliders.
-To familiarize themselves with the sliders, they were asked to complete a practice round
+using a pair of sliders. To familiarize themselves with the sliders, they were asked to complete a practice round
 in response to the statement "As participation in online experiments increases,
 society becomes happier."
 
@@ -590,7 +590,8 @@ test statement number `r printnum(add_and_to_numbers(consensus_df$item_no[2]), d
 however we modify the wording so that both variables (food consumption and cancer risk)
 are positively correlated, as previous work indicates that the manipulations we use
 in the atypical scatterplot condition are able to change estimates of correlation
-in positively correlated scatterplots.
+in positively correlated scatterplots; no work regarding the effects of these
+manipulations in negatively correlated scatterplots has been completed.
 
 ## Discussion {#sec-discussion-pre}
 
@@ -613,6 +614,17 @@ this statement is therefore: "Higher consumption of plain (non-spicy) foods
 is associated with a lower risk of certain types of cancer."
 
 ## Introduction
+
+### Defensive Confidence
+
+In line with evidence that those who are more confident in their ability to defend
+their own positions are more susceptible to having those positions changed [@albarracin_2004],
+we test participants' defensive confidence using a 12-item scale. This scale is 
+replicated from previous work in the supplemental material, and has additionally
+been utilized more recently [@markant_2023] to explore the potential for attitude
+change specifically with regards to correlations in scatterplots.
+
+- don't forget about reverse scoring items
 
 ## Stimuli
 

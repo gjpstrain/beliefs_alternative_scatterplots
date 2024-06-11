@@ -371,8 +371,26 @@ data and analysis code are included in a GitHub repository\footnote{https://gith
 This repository contains instructions for building a Docker container
 \citep{merkel_2014} that reproduces the computational environment the
 paper was written in. This allows for full replication of stimuli,
-figures, analysis, and the paper itself. Ethical approval was granted
+figures, analysis, and the paper itself. Ethical approval was granted by
 the (removed for anon).
+
+\subsection{Crowdsourcing}\label{crowdsourcing}
+
+While much prior work into correlation perception in scatterplots has
+taken place in person, there is precedence for work that explores
+cognition to take place online using crowdsourced participants
+\citep{xiong_2022}. Crowdsourcing not only affords us recruitment of
+samples from across our lay population of interest, it is considerably
+quicker and less expensive than in-person testing. We therefore choose
+to crowdsource all participants. Previous work has reported issues of
+data quality and skewed demographics
+\citep{chmielewski_2020, charalambides_2021, peer_2021}, so we follow
+published guidelines \citep{peer_2021} to give us the best chance of
+collecting high quality data. We use the Prolific.co platform
+\citep{prolific} with strict pre-screening criteria; participants were
+required to have completed at least 100 studies using Prolific, and were
+required to have a Prolific score of 100, representing a 99\% approval
+rate.
 
 \section{Pre-Study: Investigating Beliefs About Relatedness
 Statements}\label{sec-pre-study}
@@ -530,10 +548,10 @@ asked to provide their age in a free text box, followed by their gender
 identity. Participants were told that they would be asked to read
 statements about the relatedness between a pair of variables, after
 which they would have to indicate their beliefs about topic emotionality
-and the strength of correlation suggested. To familiarize themselves
-with the slider, they were asked to complete a practice round in
-response to the statement ``As participation in online experiments
-increases, society becomes happier.''
+and the strength of correlation suggested using a pair of sliders. To
+familiarize themselves with the sliders, they were asked to complete a
+practice round in response to the statement ``As participation in online
+experiments increases, society becomes happier.''
 
 \subsection{Results}\label{sec-results-pre}
 
@@ -553,22 +571,20 @@ experiment, we first select statements that represent neutral emotional
 valence. Statements with average topic emotionality ratings between 3
 and 5 are statements 2, 10, 22, 16, and 23. To ascertain which
 statements represent the greatest consensus, we add standard deviations
-in ratings for topic emotionality and strength of correlation, then take
-the statement from each of the high and low correlation lists with the
-lowest summed standard deviation, which in this case is statements 2 and
-22 (see Table~\ref{tbl-pre-test-hi} and Table~\ref{tbl-pre-test-low}).
-Due to concerns about experimental power, and in line with evidence that
+in ratings for topic emotionality and strength of correlation. Due to
+concerns about experimental power, and in line with evidence that
 propensity for belief change is highest when prior beliefs are not
-strongly held \citep[more citations needed]{xiong_2022}, we elected at
-this point to test only the statement corresponding to weak beliefs
-about the strength of correlation between the variables in question. We
-therefore test statement number 22, ``Higher consumption of spicy foods
-is associated with a lower risk of certain types of cancer.'', however
-we modify the wording so that both variables (food consumption and
-cancer risk) are positively correlated, as previous work indicates that
-the manipulations we use in the atypical scatterplot condition are able
-to change estimates of correlation in positively correlated
-scatterplots.
+strongly held \citep{xiong_2022}, we elected at this point to test only
+the statement corresponding to weak beliefs about the strength of
+correlation between the variables in question. We therefore test
+statement number 22, ``Higher consumption of spicy foods is associated
+with a lower risk of certain types of cancer.'', however we modify the
+wording so that both variables (food consumption and cancer risk) are
+positively correlated, as previous work indicates that the manipulations
+we use in the atypical scatterplot condition are able to change
+estimates of correlation in positively correlated scatterplots; no work
+regarding the effects of these manipulations in negatively correlated
+scatterplots has been completed.
 
 \subsection{Discussion}\label{sec-discussion-pre}
 
@@ -595,11 +611,43 @@ of cancer.''
 
 \subsection{Introduction}\label{introduction}
 
+\subsubsection{Defensive Confidence}\label{defensive-confidence}
+
+In line with evidence that those who are more confident in their ability
+to defend their own positions are more susceptible to having those
+positions changed \citep{albarracin_2004}, we test participants'
+defensive confidence using a 12-item scale. This scale is replicated
+from previous work in the supplemental material, and has additionally
+been utilized more recently \citep{markant_2023} to explore the
+potential for attitude change specifically with regards to correlations
+in scatterplots.
+
+\begin{itemize}
+\tightlist
+\item
+  don't forget about reverse scoring items
+\end{itemize}
+
+\subsection{Stimuli}\label{stimuli}
+
+\begin{itemize}
+\tightlist
+\item
+  build experiment and pilot to see how many people can do
+\item
+  then this section can be written
+\end{itemize}
+
 \subsection{Method}\label{method}
 
 \subsubsection{Participants}\label{participants}
 
 \subsubsection{Design}\label{design}
+
+We employ a between-participants design. Each participants was randomly
+assigned to either group A, in which case they viewed typical
+scatterplots, or group B, in which they viewed atypical scatterplots
+designed deliberately to elicit higher levels of belief change.
 
 \subsubsection{Procedure}\label{procedure}
 
