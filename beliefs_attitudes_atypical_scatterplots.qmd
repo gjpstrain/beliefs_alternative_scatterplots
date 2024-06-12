@@ -622,7 +622,9 @@ their own positions are more susceptible to having those positions changed [@alb
 we test participants' defensive confidence using a 12-item scale. This scale is 
 replicated from previous work in the supplemental material, and has additionally
 been utilized more recently [@markant_2023] to explore the potential for attitude
-change specifically with regards to correlations in scatterplots.
+change specifically with regards to correlations in scatterplots. Participants
+provide answers to the 12 scale items using a 5 point Likert scale ranging from 1
+(*not at all characteristic of me*) to 5 (*extremely characteristic of me*).
 
 - don't forget about reverse scoring items
 
