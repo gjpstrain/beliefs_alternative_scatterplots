@@ -72,8 +72,8 @@ plot_function_spicy <- function(slopes, my_desired_r, name, size_value, opacity_
     labs(title = "Spicy Foods",
          subtitle = "Higher consumption of plain (non-spicy) foods\nis associated with a higher risk of certain types of cancer.",
          caption = "Source: NHS England") +
-    annotate("text", x = 3, y = 67, label = "Less spicy-heavy diet") +
-    annotate("text", x = 7, y = 67, label = "More spicy-heavy diet") +
+    annotate("text", x = 3, y = 67, label = "Less plain diet") +
+    annotate("text", x = 7, y = 67, label = "More plain diet") +
     coord_cartesian(clip = "off")
   
   ggsave(p,filename=paste0(counter,"_spice_", name, ".png"),
