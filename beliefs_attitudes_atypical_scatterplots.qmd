@@ -347,8 +347,8 @@ irr_corr <- kappa2(matrix(c(all_ratings$Strength_of_Correlation_A,
 # General Methods {#sec-general-methods}
 
 In this section we discuss our general research methods, including our implementations
-of open research practices, our approach to and justification for crowdsourcing, 
-and our approach to stimulus generation.
+of open research practices, our approach to and justification for crowdsourcing, and our 
+use of the ChatGPT4 LLM in preparing parts of our stimuli. 
 
 ## Open Research {#sec-open-research}
 
@@ -379,6 +379,12 @@ high quality data. We use the Prolific.co platform [@prolific] with strict pre-s
 criteria; participants were required to have completed at least 100 studies
 using Prolific, and were required to have a Prolific score of 100, representing a 99%
 approval rate.
+
+## Use of Large Language Models
+
+ - issues regarding stimulus generation normally
+ - advantages conferred by using ChatGPT
+ - reproducibility issues?
 
 # Pre-Study: Investigating Beliefs About Relatedness Statements {#sec-pre-study}
 
@@ -615,6 +621,9 @@ is associated with a lower risk of certain types of cancer."
 
 ## Introduction
 
+ - hypotheses
+ - 
+
 ### Defensive Confidence
 
 In line with evidence that those who are more confident in their ability to defend
@@ -637,6 +646,13 @@ provide answers to the 12 scale items using a 5 point Likert scale ranging from 
 
 ### Participants
 
+Participants were recruited using Prolific.co [@prolific]. English fluency and UK
+residency was required for participation, as well as normal or corrected-to-normal
+vision, and having not participated in any of our previous studies regarding 
+correlation perception in scatterplots, as these represented earlier testing 
+of the alternative designs we employ in the atypical scatterplot condition. In addition
+to 45(?) experimental items, we also included 6 attention check trials...
+
 ### Design
 
 We employ a between-participants design. Each participants was randomly assigned
@@ -645,6 +661,25 @@ in which they viewed atypical scatterplots designed deliberately to elicit highe
 levels of belief change.
 
 ### Procedure
+
+Again, we use PsychoPy [@pierce_2019] to build our experiment and Pavlovia.org
+to host it. Participants were permitted to complete the experiment on a desktop
+or laptop computer. We elected to prevent participants from using a phone or
+tablet to complete the experiment in line with evidence that differences in on-screen sizes
+of data visualizations can alter perception [cleveland_1982]. Participants were
+first shown the participant information sheet and asked to provide consent
+through key presses in response to consent statements. They were, again,
+asked to provide their age and gender identity. Participants then completed the 12-item
+Defensive Confidence scale described by Albarracín and Mitchell [@albarracin_2004].
+Following instructions, which included descriptions of scatterplots and Pearson's *r*.
+In order to give legitimacy to our data visualizations with the hope of maximising
+any potential belief change, participants were told that the graphs were taken
+from a well-known British news source, but that the identity of this source had 
+been obscured. They then had a chance to practice using the slider, before being 
+asked their belief about topic emotionality and the relatedness between variables
+described in our chosen statement. Following the completion of 45(?) experimental
+trials, participants were tested again on their beliefs about relatedness, and 
+then debriefed that the data they saw were fictional.
 
 ## Results
 

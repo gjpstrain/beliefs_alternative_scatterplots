@@ -66,14 +66,17 @@ plot_function_spicy <- function(slopes, my_desired_r, name, size_value, opacity_
     geom_segment(x = 0, xend = 10, y = 66.2, yend = 66.2, size = 0.3, colour="#585858") +
     bbc_style() +
     theme(axis.text.x = element_blank(),
+          axis.text.y = element_blank(),
           title = element_text(size = 14),
           plot.subtitle = element_text(size = 11),
           plot.caption = element_text(size = 9, hjust = -.1)) +
     labs(title = "Spicy Foods",
          subtitle = "Higher consumption of plain (non-spicy) foods\nis associated with a higher risk of certain types of cancer.",
          caption = "Source: NHS England") +
-    annotate("text", x = 3, y = 67, label = "Less plain diet") +
-    annotate("text", x = 7, y = 67, label = "More plain diet") +
+    annotate("text", x = 3, y = 67, label = "Less plain Diet") +
+    annotate("text", x = 7, y = 67, label = "More plain Diet") +
+    annotate("text", x = 1, y = 71, label = "Fewer Cancer\nDiagnoses", angle = 90) +
+    annotate("text", x = 1, y = 80, label = "More Cancer\nDiagnoses", angle = 90) +
     coord_cartesian(clip = "off")
   
   ggsave(p,filename=paste0(counter,"_spice_", name, ".png"),
