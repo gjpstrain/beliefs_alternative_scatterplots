@@ -69,7 +69,7 @@ plot_function_spicy <- function(slopes, my_desired_r, name, size_value, opacity_
           axis.text.y = element_blank(),
           title = element_text(size = 14),
           plot.subtitle = element_text(size = 11),
-          plot.caption = element_text(size = 9, hjust = -.1)) +
+          plot.caption = element_text(size = 9, hjust = -0.02)) +
     labs(title = "Spicy Foods",
          subtitle = "Higher consumption of plain (non-spicy) foods\nis associated with a higher risk of certain types of cancer.",
          caption = "Source: NHS England") +
@@ -142,7 +142,7 @@ colour <- rep("black", times = length(high_r))
 
 # instructions for experimental items
 
-instructions <- rep(c("Please look at the following plot and use the slider to estimate the correlation"), each = length(high_r))
+instructions <- rep(c("Please look at the following plot and use the slider to estimate the level of relatedness."), each = length(high_r))
 
 exp_data_A <- cbind(unique_item_no_A, images_atypical, plots_with_labels_A, colour, instructions)
 
