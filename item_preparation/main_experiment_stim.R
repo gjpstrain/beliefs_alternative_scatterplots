@@ -150,23 +150,23 @@ exp_data_T <- cbind(unique_item_no_T, images_typical, plots_with_labels_T, colou
 
 ## Attention check df 
 
-unique_item_no_A <- map_chr(46:51, ~ paste0(.x, "A"))
+unique_item_no_A <- map_chr(46:49, ~ paste0(.x, "A"))
 
-unique_item_no_T <- map_chr(46:51, ~ paste0(.x, "T"))
+unique_item_no_T <- map_chr(46:49, ~ paste0(.x, "T"))
 
-images_typical <- head(images_typical)
+images_typical <- head(images_typical, n = 4)
 
-images_atypical <- head(images_atypical)
+images_atypical <- head(images_atypical, n = 4)
 
-plots_with_labels_A <- head(plots_with_labels_A)
+plots_with_labels_A <- head(plots_with_labels_A, n = 4)
 
-plots_with_labels_T <- head(plots_with_labels_T)
+plots_with_labels_T <- head(plots_with_labels_T, n = 4)
 
-colour <- rep("red", times = 6)
+colour <- rep("red", times = 4)
 
 instructions <- rep(c("Please IGNORE the plot and set the slider to 0.",
                       "Please IGNORE the plot and set the slider to 1."),
-                    times = c(3, 3))
+                    times = c(2, 2))
 
 attention_check_df_A <- cbind(unique_item_no_A, images_atypical, plots_with_labels_A, colour, instructions)
 

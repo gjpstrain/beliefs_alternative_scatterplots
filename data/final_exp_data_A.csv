@@ -46,7 +46,5 @@ unique_item_no_A,images_atypical,plots_with_labels_A,colour,instructions
 45A,45_spice_A_hi.png,all_plots/45_spice_A_hi.png,black,Please look at the following plot and use the slider to estimate the level of relatedness.
 46A,1_spice_A_hi.png,all_plots/1_spice_A_hi.png,red,Please IGNORE the plot and set the slider to 0.
 47A,2_spice_A_hi.png,all_plots/2_spice_A_hi.png,red,Please IGNORE the plot and set the slider to 0.
-48A,3_spice_A_hi.png,all_plots/3_spice_A_hi.png,red,Please IGNORE the plot and set the slider to 0.
+48A,3_spice_A_hi.png,all_plots/3_spice_A_hi.png,red,Please IGNORE the plot and set the slider to 1.
 49A,4_spice_A_hi.png,all_plots/4_spice_A_hi.png,red,Please IGNORE the plot and set the slider to 1.
-50A,5_spice_A_hi.png,all_plots/5_spice_A_hi.png,red,Please IGNORE the plot and set the slider to 1.
-51A,6_spice_A_hi.png,all_plots/6_spice_A_hi.png,red,Please IGNORE the plot and set the slider to 1.

@@ -46,7 +46,5 @@ unique_item_no_T,images_typical,plots_with_labels_T,colour,instructions
 45T,45_spice_T_hi.png,all_plots/45_spice_T_hi.png,black,Please look at the following plot and use the slider to estimate the level of relatedness.
 46T,1_spice_T_hi.png,all_plots/1_spice_T_hi.png,red,Please IGNORE the plot and set the slider to 0.
 47T,2_spice_T_hi.png,all_plots/2_spice_T_hi.png,red,Please IGNORE the plot and set the slider to 0.
-48T,3_spice_T_hi.png,all_plots/3_spice_T_hi.png,red,Please IGNORE the plot and set the slider to 0.
+48T,3_spice_T_hi.png,all_plots/3_spice_T_hi.png,red,Please IGNORE the plot and set the slider to 1.
 49T,4_spice_T_hi.png,all_plots/4_spice_T_hi.png,red,Please IGNORE the plot and set the slider to 1.
-50T,5_spice_T_hi.png,all_plots/5_spice_T_hi.png,red,Please IGNORE the plot and set the slider to 1.
-51T,6_spice_T_hi.png,all_plots/6_spice_T_hi.png,red,Please IGNORE the plot and set the slider to 1.
