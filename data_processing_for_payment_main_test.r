@@ -8,9 +8,9 @@ main_test_A <- read_csv("data/main_test_A.csv") %>%
   mutate(unique_item_no_A = str_replace_all(unique_item_no_A, "[A-Za-z]", "")) %>%
   rename(unique_item_no = unique_item_no_A)
 
-main_test_T <- read_csv("data/main_test_T") %>%
-  mutate(unique_item_no_A = str_replace_all(unique_item_no_A, "[A-Za-z]", "")) %>%
-  mutate(rename(unique_item_no = unique_item_no_T))
+main_test_T <- read_csv("data/main_test_T.csv") %>%
+  mutate(unique_item_no_T = str_replace_all(unique_item_no_T, "[A-Za-z]", "")) %>%
+  rename(unique_item_no = unique_item_no_T)
 
 # function to output passed dfs
 
