@@ -185,9 +185,9 @@ if (!params$eval_models){ lazyload_cache_dir("beliefs_attitudes_atypical_scatter
 
 pre_test_anon <- read_csv("data/pre_test_response_final.csv")
 
-main_exp_A <- read_csv("data/main_test_A.csv")
+main_exp_A <- read_csv("data/main_test_A_final.csv")
 
-main_exp_T <- read_csv("data/main_test_T.csv")
+main_exp_T <- read_csv("data/main_test_T_final.csv")
 ```
 
 ```{r}
@@ -266,8 +266,23 @@ literacy <- anon_file %>%
 # split unique item no column into number (dataset used) and letter (condition)
 
 anon_file <- anon_file %>%
-  separate(starts_with("unique"), into = c("item_no", "condition"), sep = "(?<=\\d)(?=\\D)") %>%
-  mutate(belief_diff = slider_belief_post.response - slider_belief_pre.response)
+  separate(starts_with("unique"), into = c("item_no", "condition"), sep = "(?<=\\d)(?=\\D)")
+
+# extract pre belief, post belief, and belief_diff
+
+belief <- anon_file %>%
+  group_by(participant) %>%
+  summarise(
+    pre_bel = sum(slider_belief.response, na.rm = T),
+    post_bel = sum(slider_belief_post.response, na.rm = T)
+  ) %>%
+  mutate(belief_diff = post_bel - pre_bel) %>%
+  select(participant, belief_diff, pre_bel, post_bel)
+
+emotion <- anon_file %>%
+  filter(!is.na(slider_emotion.response)) %>%
+  group_by(participant) %>%
+  select(participant, slider_emotion.response)
 
 # select relevant columns
 # select only experimental items
@@ -278,8 +293,6 @@ anon_file %>%
   select(c("participant",
            "item_no",
            "condition",
-           "belief_diff",
-           "slider_emotion.response",
            "slider.response",
            "trials.thisN"
            )) %>%
@@ -289,6 +302,8 @@ anon_file %>%
   filter(item_no < 46) %>%
   inner_join(literacy, by = "participant") %>%
   inner_join(demographics, by = "participant") %>%
+  inner_join(belief, by = "participant") %>%
+  inner_join(emotion, by = "participant") %>%
   mutate(across(matches(c("item_no", "condition")), as_factor)) %>%
   mutate(trials.thisN = as.integer(trials.thisN)) %>%
   select(-c("__participant")) %>%
@@ -301,7 +316,7 @@ anon_file %>%
 
 wrangle_pre_test(pre_test_anon)
 
-mapply(wrangle_main_exp, main_exp_A, main_exp_T)
+wrangle_main_exp(main_exp_A)
 
 # check for missing age and gender id values
 
