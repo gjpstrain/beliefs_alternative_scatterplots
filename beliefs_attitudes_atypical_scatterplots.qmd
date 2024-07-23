@@ -369,6 +369,14 @@ main_exp_T <- main_exp_T %>% mutate(participant = participant + 75)
 main_exp_tidy <- rbind(atypical_scatterplots_main_test_A_tidy,
                        atypical_scatterplots_main_test_T_tidy)
 
+
+main_exp_tidy <- main_exp_tidy %>%
+  mutate(dc_section = case_when(
+    dc_score < 20 ~ "low",
+    dc_score > 20 & dc_score < 40 ~ "average",
+    dc_score > 40 ~ "high"
+  ))
+
 # check for missing age and gender id values
 
 sum(is.na(beliefs_scatterplots_pretest_tidy$gender_slider.response))
@@ -792,12 +800,8 @@ change specifically with regards to correlations in scatterplots. Participants
 provide answers to the 12 scale items using a 5 point Likert scale ranging from 1
 (*not at all characteristic of me*) to 5 (*extremely characteristic of me*).
 
-- don't forget about reverse scoring items
 
 ## Stimuli
-
-- build experiment and pilot to see how many people can do 
-- then this section can be written
 
 ## Method
 
@@ -829,7 +833,7 @@ through key presses in response to consent statements. They were, again,
 asked to provide their age and gender identity. Participants then completed the 12-item
 Defensive Confidence scale described by Albarracín and Mitchell [@albarracin_2004].
 Following instructions, which included descriptions of scatterplots and Pearson's *r*.
-In order to give legitimacy to our data visualizations with the hope of maximising
+In order to give legitimacy to our data visualizations with the hope of maximizing
 any potential belief change, participants were told that the graphs were taken
 from a well-known British news source, but that the identity of this source had 
 been obscured. They then had a chance to practice using the slider, before being 
@@ -843,13 +847,14 @@ then debriefed that the data they saw were fictional.
 All analyses were conducted using R (version `r paste0(R.version$major, ".", R.version$minor)`).
 
 
-```{r}
-model_main_test <- buildmer(belief_diff ~ condition + dc_score +
+```{r modelling}
+model_main_test <- buildmer(belief_diff ~ condition*dc_section +
                               (1 | participant) +
                               (1 + condition | item_no),
                             data = main_exp_tidy)
-```
 
+model1 <- model_main_test@model
+```
 
 ## Discussion
 
