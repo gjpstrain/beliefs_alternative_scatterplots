@@ -304,6 +304,7 @@ anon_file %>%
   inner_join(demographics, by = "participant") %>%
   inner_join(belief, by = "participant") %>%
   inner_join(emotion, by = "participant") %>%
+  full_join(time_taken, by = "participant") %>%
   mutate(across(matches(c("item_no", "condition")), as_factor)) %>%
   mutate(trials.thisN = as.integer(trials.thisN)) %>%
   select(-c("__participant")) %>%
@@ -312,11 +313,18 @@ anon_file %>%
 
 }
 
-# use wrangling function on anonymised data file
+# use wrangling function on anonymised data files
 
 wrangle_pre_test(pre_test_anon)
 
 wrangle_main_exp(main_exp_A)
+
+wrangle_main_exp(main_exp_T)
+
+# main experiment is between participants, so rbind main_exp dfs together
+
+main_exp_tidy <- rbind(atypical_scatterplots_main_test_A_tidy,
+                       atypical_scatterplots_main_test_T_tidy)
 
 # check for missing age and gender id values
 
@@ -336,7 +344,7 @@ beliefs_scatterplots_pretest_tidy %>%
 # demographic information for the pretest
 # this is not included as would expose personally identifiable prolific IDs
 
-# Extract gender data into separate df
+# Extract gender data into separate dfS
 
 gender_pre <- distinct(beliefs_scatterplots_pretest_tidy, participant,
                       .keep_all = TRUE) %>%
@@ -344,9 +352,20 @@ gender_pre <- distinct(beliefs_scatterplots_pretest_tidy, participant,
   summarise(perc = n()/nrow(.)*100) %>%
   pivot_wider(names_from = gender_slider.response, values_from = perc)
 
-# extract age data into separate df
+gender_main <- distinct(main_exp_tidy, participant,
+                      .keep_all = TRUE) %>%
+  group_by(gender_slider.response) %>%
+  summarise(perc = n()/nrow(.)*100) %>%
+  pivot_wider(names_from = gender_slider.response, values_from = perc)
+
+# extract age data into separate dfS
 
 age_pre <- distinct(beliefs_scatterplots_pretest_tidy, participant,
+                .keep_all = TRUE) %>%
+  summarise(mean = mean(age_textbox.text, na.rm = TRUE),
+            sd = sd(age_textbox.text, na.rm = TRUE))
+
+age_main <- distinct(main_exp_tidy, participant,
                 .keep_all = TRUE) %>%
   summarise(mean = mean(age_textbox.text, na.rm = TRUE),
             sd = sd(age_textbox.text, na.rm = TRUE)) 
@@ -357,6 +376,19 @@ time_taken_pre <- distinct(beliefs_scatterplots_pretest_tidy, participant,
                 .keep_all = TRUE) %>%
   summarise(mean = mean(final.stopped/60, na.rm = TRUE),
             sd = sd(final.stopped/60, na.rm = TRUE)) 
+
+time_taken_main <- distinct(main_exp_tidy, participant,
+                .keep_all = TRUE) %>%
+  summarise(mean = mean(final.stopped/60, na.rm = TRUE),
+            sd = sd(final.stopped/60, na.rm = TRUE))
+
+# remove all superfluous dfs
+
+rm(main_exp_A,
+   main_exp_T,
+   atypical_scatterplots_main_test_A_tidy,
+   atypical_scatterplots_main_test_T_tidy,
+   pre_test_anon)
 ```
 
 ```{r}
@@ -759,11 +791,13 @@ any potential belief change, participants were told that the graphs were taken
 from a well-known British news source, but that the identity of this source had 
 been obscured. They then had a chance to practice using the slider, before being 
 asked their belief about topic emotionality and the relatedness between variables
-described in our chosen statement. Following the completion of 45(?) experimental
+described in our chosen statement. Following the completion of 45 experimental
 trials, participants were tested again on their beliefs about relatedness, and 
 then debriefed that the data they saw were fictional.
 
 ## Results
+
+
 
 ## Discussion
 
