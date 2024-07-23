@@ -181,7 +181,7 @@ if (!params$eval_models){ lazyload_cache_dir("beliefs_attitudes_atypical_scatter
 ```{r}
 #| label: load-data
 
-# load in data csvs for pre-test and main experiment
+# load in data csvs for pre-test and main experiment, remove the "__participant" column now 
 
 pre_test_anon <- read_csv("data/pre_test_response_final.csv") %>% select(-"__participant")
 
@@ -194,8 +194,8 @@ main_exp_T <- read_csv("data/main_test_T_final.csv") %>% select(-"__participant"
 #| label: wrangle-data
 
 ## NB: With the exception of anonymization, data are provided as-is from 
-## pavlovia (survey tool). Wrangling function *must* be run first to make
-## the data set usable
+## pavlovia (survey tool). Wrangling functions *must* be run first to make
+## the data sets usable
 
 wrangle_pre_test <- function(anon_file) {
   
@@ -231,7 +231,6 @@ anon_file %>%
   filter(item_no < 26) %>%
   full_join(demographics, by = "participant") %>%
   full_join(time_taken, by = "participant") %>%
-  select(-c("__participant")) %>%
   assign(paste0(unique(anon_file$expName), "_tidy"),
            value = ., envir = .GlobalEnv)
 }
@@ -254,7 +253,7 @@ time_taken <- anon_file %>%
 
 # extract defensive confidence testing scores
 
-defensive_confidence <- main_exp_A %>%
+defensive_confidence <- anon_file %>%
   select(contains(c("DC", "participant"))) %>% 
   select(-contains(c("stopped", "started"))) %>%
   rename(DC_1 = q1_slider_DC.response,
@@ -269,14 +268,24 @@ defensive_confidence <- main_exp_A %>%
          DC_10 = q2_slider_DC_3.response,
          DC_11 = q3_slider_DC_3.response,
          DC_12 = q4_slider_DC_3.response) %>%
-  mutate(DC_3 = 6 - DC_3,
+  mutate(DC_3 = 6 - DC_3,                # reverse score items 3, 4, 10, 12
          DC_4 = 6 - DC_4,
          DC_10 = 6 - DC_10,
          DC_12 = 6 - DC_12) %>%
   group_by(participant) %>%
   summarise(
     dc_score = sum(DC_1,
+                   DC_2,
+                   DC_3,
+                   DC_4,
+                   DC_5,
                    DC_6,
+                   DC_7,
+                   DC_8,
+                   DC_9,
+                   DC_10,
+                   DC_11,
+                   DC_12,
                    na.rm = T)
   )
 
@@ -334,22 +343,26 @@ anon_file %>%
   inner_join(demographics, by = "participant") %>%
   inner_join(belief, by = "participant") %>%
   inner_join(emotion, by = "participant") %>%
+  inner_join(defensive_confidence, by = "participant") %>%
   full_join(time_taken, by = "participant") %>%
   mutate(across(matches(c("item_no", "condition")), as_factor)) %>%
   mutate(trials.thisN = as.integer(trials.thisN)) %>%
-  select(-c("__participant")) %>%
   assign(paste0(unique(anon_file$expName), "_tidy"),
            value = ., envir = .GlobalEnv)
 
 }
 
-# use wrangling function on anonymised data files
+# use wrangling function on anonymized data files
 
 wrangle_pre_test(pre_test_anon)
 
 wrangle_main_exp(main_exp_A)
 
 wrangle_main_exp(main_exp_T)
+
+# add 75 to each participant number for main_exp_T
+
+main_exp_T <- main_exp_T %>% mutate(participant = participant + 75)
 
 # main experiment is between participants, so rbind main_exp dfs together
 
@@ -412,7 +425,7 @@ time_taken_main <- distinct(main_exp_tidy, participant,
   summarise(mean = mean(final.stopped/60, na.rm = TRUE),
             sd = sd(final.stopped/60, na.rm = TRUE))
 
-# remove all superfluous dfs
+# remove all intermediate dfs
 
 rm(main_exp_A,
    main_exp_T,
@@ -628,7 +641,7 @@ in our main experiment.
 
 100 participants were recruited using the Prolific.co platform [@prolific]. English fluency and
 residency was required for participation, as our main experiment relied on familiarity
-with data visualisations from a popular British news source. In addition to 25
+with data visualizations from a popular British news source. In addition to 25
 experimental items, we included six attention check items, which asked participants
 to provide specific answers. No participants failed more than 2 out of 6 attention
 check items, and therefore data from all 100 were included in the full analysis
@@ -827,9 +840,12 @@ then debriefed that the data they saw were fictional.
 
 ## Results
 
+All analyses were conducted using R (version `r paste0(R.version$major, ".", R.version$minor)`).
+
+
 ```{r}
-model_main_test <- buildmer(belief_diff ~ condition* +
-                              (1 + condition | participant) +
+model_main_test <- buildmer(belief_diff ~ condition + dc_score +
+                              (1 | participant) +
                               (1 + condition | item_no),
                             data = main_exp_tidy)
 ```
