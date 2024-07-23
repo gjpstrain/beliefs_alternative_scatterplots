@@ -183,11 +183,11 @@ if (!params$eval_models){ lazyload_cache_dir("beliefs_attitudes_atypical_scatter
 
 # load in data csvs for pre-test and main experiment
 
-pre_test_anon <- read_csv("data/pre_test_response_final.csv")
+pre_test_anon <- read_csv("data/pre_test_response_final.csv") %>% select(-"__participant")
 
-main_exp_A <- read_csv("data/main_test_A_final.csv")
+main_exp_A <- read_csv("data/main_test_A_final.csv") %>% select(-"__participant")
 
-main_exp_T <- read_csv("data/main_test_T_final.csv")
+main_exp_T <- read_csv("data/main_test_T_final.csv") %>% select(-"__participant")
 ```
 
 ```{r}
@@ -246,9 +246,39 @@ demographics <- anon_file %>%
                    "age_textbox.text",
                    "gender_slider.response")))
 
+# extract time taken information
+
 time_taken <- anon_file %>%
   filter(!is.na(final.stopped)) %>%
   select(c("participant", "final.stopped"))
+
+# extract defensive confidence testing scores
+
+defensive_confidence <- main_exp_A %>%
+  select(contains(c("DC", "participant"))) %>% 
+  select(-contains(c("stopped", "started"))) %>%
+  rename(DC_1 = q1_slider_DC.response,
+         DC_2 = q2_slider_DC.response,
+         DC_3 = q3_slider_DC.response,
+         DC_4 = q4_slider_DC.response,
+         DC_5 = q1_slider_DC_2.response,
+         DC_6 = q2_slider_DC_2.response,
+         DC_7 = q3_slider_DC_2.response,
+         DC_8 = q4_slider_DC_2.response,
+         DC_9 = q1_slider_DC_3.response,
+         DC_10 = q2_slider_DC_3.response,
+         DC_11 = q3_slider_DC_3.response,
+         DC_12 = q4_slider_DC_3.response) %>%
+  mutate(DC_3 = 6 - DC_3,
+         DC_4 = 6 - DC_4,
+         DC_10 = 6 - DC_10,
+         DC_12 = 6 - DC_12) %>%
+  group_by(participant) %>%
+  summarise(
+    dc_score = sum(DC_1,
+                   DC_6,
+                   na.rm = T)
+  )
 
 # extract literacy info
 
@@ -797,6 +827,12 @@ then debriefed that the data they saw were fictional.
 
 ## Results
 
+```{r}
+model_main_test <- buildmer(belief_diff ~ condition* +
+                              (1 + condition | participant) +
+                              (1 + condition | item_no),
+                            data = main_exp_tidy)
+```
 
 
 ## Discussion
