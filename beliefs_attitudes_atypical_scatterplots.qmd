@@ -165,6 +165,7 @@ library(grid)
 library(DescTools)
 library(Matrix)
 library(irr)
+library(bbplot)
 
 # fix conflicts now using the conflicted package
 
@@ -369,6 +370,10 @@ main_exp_T <- main_exp_T %>% mutate(participant = participant + 75)
 main_exp_tidy <- rbind(atypical_scatterplots_main_test_A_tidy,
                        atypical_scatterplots_main_test_T_tidy)
 
+# set deviation coding for experimental model
+
+contrasts(main_exp_tidy$condition) <- matrix(c(.5, -.5))
+
 
 main_exp_tidy <- main_exp_tidy %>%
   mutate(dc_section = case_when(
@@ -432,6 +437,12 @@ time_taken_main <- distinct(main_exp_tidy, participant,
                 .keep_all = TRUE) %>%
   summarise(mean = mean(final.stopped/60, na.rm = TRUE),
             sd = sd(final.stopped/60, na.rm = TRUE))
+
+# extract literacy data into separate df
+
+literacy <- distinct(main_exp_tidy, participant,
+                        .keep_all = TRUE) %>%
+  summarise(mean = mean(literacy), sd = sd(literacy))
 
 # remove all intermediate dfs
 
@@ -798,10 +809,170 @@ replicated from previous work in the supplemental material, and has additionally
 been utilized more recently [@markant_2023] to explore the potential for attitude
 change specifically with regards to correlations in scatterplots. Participants
 provide answers to the 12 scale items using a 5 point Likert scale ranging from 1
-(*not at all characteristic of me*) to 5 (*extremely characteristic of me*).
-
+(*not at all characteristic of me*) to 5 (*extremely characteristic of me*). Analysis
+including participants' defensive confidence scores is included in @sec-additional-analyses.
 
 ## Stimuli
+
+Recent work has shown that estimates of correlation can be altered when point opacities
+and sizes are systematically varied in scatterplots [@strain_2023; @strain_2023b; @strain_2024].
+These manipulations have been used in an attempt to correct for a long-standing
+underestimation bias observed in correlation perception as it pertains to scatterplots.
+As we now aim to test the propensity of these manipulations to affect participants'
+beliefs about levels of relatedness, we choose the set of manipulations that
+has previously produced the most dramatic effect on correlation estimates; namely,
+the combination of typical orientation size and opacity manipulations provided
+by Strain et al., 2024[@strain_2024]. Here, the size and opacity of a certain
+scatterplot point is lowered as a function of that point's residual error using
+equation 1:
+
+\begin{equation}
+  point_{size/opacity} = 1 - b^{residual}
+\end{equation}
+
+In order to facilitate comparison to this work, we use the same protocol to produce
+scatterplots for our atypical condition. This includes creating scatterplots
+with 128 points, using *b* = 0.25, employing a scaling factor and constant for point size, and using an opacity
+floor to ensure point visibility, as this has been an issue in previous work. As there
+is evidence that people are less likely to update strongly held beliefs following
+viewing scatterplot visualizations [@markant_2023 look for more], we selected a
+correlative statement that was judged as representing weakly correlated variables.
+Thus, in order to induce belief change, participants only viewed scatterplots
+representing **strongly** correlated variables (0.6 > *r* > 0.99). We used **ggplot**
+in R to create plots that echoed the style of a British news broadcaster and fictitiously
+claimed the data to be provided by the British National Health service. Examples
+of typical and atypical data-identical scatterplots can be seen in @fig-main-examples.
+
+```{r}
+#| label: fig-example-plots
+#| include: true
+#| out-width: "100%"
+#| fig-cap: Examples of the experimental stimuli used with an \textit{r} value of 0.6.
+
+# function for making slopes df
+
+slope_function <- function(my_desired_r) {
+  set.seed(1234)
+  
+  my_sample_size = 128
+  
+  mean_variable_1 = 5
+  sd_variable_1 = 1
+  
+  mean_variable_2 = 76
+  sd_variable_2 = 5
+  
+  mu <- c(mean_variable_1, mean_variable_2) 
+  
+  myr <- my_desired_r * sqrt(sd_variable_1) * sqrt(sd_variable_2)
+  
+  mysigma <- matrix(c(sd_variable_1, myr, myr, sd_variable_2), 2, 2) 
+  
+  corr_data = as_tibble(mvrnorm(my_sample_size, mu, mysigma, empirical = TRUE))
+  
+  corr_model <- lm(V2 ~ V1, data = corr_data)
+  
+  my_residuals <- abs(residuals(corr_model))
+  
+  data_with_resid <- round(cbind(corr_data, my_residuals), 2)
+  
+  slopes <- data_with_resid %>%
+    mutate(slope_0.25 = 1-(0.25)^my_residuals) %>%
+    mutate(slope_inverted = (1 + (0.25)^ my_residuals)-1) %>%
+    mutate(slope_inverted_floored = pmax(0.2,(1+(0.25)^my_residuals)-1)) %>%
+    mutate(typical = 0.033) %>%
+    mutate(standard_alpha = 1)
+  
+  return(slopes)
+}
+
+# manually specify variables from slopes df
+
+slopes <- slope_function(0.6)
+slopeI <- (slopes$slope_inverted)
+slopeI_floored <- (slopes$slope_inverted_floored)
+typical <- (slopes$typical)
+standard_alpha <- (slopes$standard_alpha)
+
+# function for creating example plots
+
+example_plot_function <- function(slopes, my_desired_r, size_value, opacity_value, theme) {
+  
+  p <- ggplot(slopes, aes(x = V1, y = V2)) +
+    scale_size_identity() +
+    scale_alpha_identity() +
+    geom_point(aes(size =  6*(size_value + 0.3), alpha = opacity_value), shape = 16) +  
+    geom_hline(yintercept = 68, size = 1, colour="#333333") +
+    geom_segment(x = 0, xend = 10, y = 66.2, yend = 66.2, size = 0.3, colour="#585858") +
+    bbc_style() +
+    theme(axis.text.x = element_blank(),
+          axis.text.y = element_blank(),
+          title = element_text(size = 14),
+          plot.subtitle = element_text(size = 9),
+          plot.caption = element_text(size = 9, hjust = -0.02),
+          plot.margin = unit(c(0,0,1,0), "cm")) +
+    labs(title = "Spicy Foods",
+         subtitle = "Higher consumption of plain (non-spicy) foods\nis associated with a higher risk of certain types of cancer.",
+         caption = "Source: NHS England") +
+    annotate("text", x = 3, y = 67, label = "Less plain Diet") +
+    annotate("text", x = 7, y = 67, label = "More plain Diet") +
+    annotate("text", x = 1, y = 71, label = "Fewer Cancer\nDiagnoses", angle = 90) +
+    annotate("text", x = 1, y = 80, label = "More Cancer\nDiagnoses", angle = 90) +
+    coord_cartesian(clip = "off")
+  
+  return(p)
+  
+}
+
+# use ggarrange to arrange plots, include annotation geoms for plot titles
+
+example_plots <- ggarrange(example_plot_function(slopes, 0.6, typical, standard_alpha, bbc_style()),
+                        example_plot_function(slopes, 0.6, slopeI, slopeI_floored, bbc_style()),nrow = 1) +
+  annotate(geom = "text",
+           label = "Typical Scatterplot",
+           x = 0.25,
+           y = 0.04,
+           size = 7) +
+  annotate(geom = "text",
+           label = "Atypical Scatterplot",
+           x = 0.75,
+           y = 0.04,
+           size = 7) +
+    annotate(geom = "segment",
+           x = 0.077,
+           xend = 0,
+           y = 0.04,
+           yend = 0.04,
+           size = 0.6,
+           colour = "grey",
+           arrow = arrow(length = unit(0.15, "cm"), angle = 90)) +
+  annotate(geom = "segment",
+           x = 0.935,
+           xend = 1,
+           y = 0.04,
+           yend = 0.04,
+           size = 0.6,
+           colour = "grey",
+           arrow = arrow(length = unit(0.15, "cm"), angle = 90)) +
+      annotate(geom = "segment",
+           x = 0.43,
+           xend = 0.5,
+           y = 0.04,
+           yend = 0.04,
+           size = 0.6,
+           colour = "grey",
+           arrow = arrow(length = unit(0.15, "cm"), angle = 90)) +
+  annotate(geom = "segment",
+           x = 0.565,
+           xend = 0.5,
+           y = 0.04,
+           yend = 0.04,
+           size = 0.6,
+           colour = "grey",
+           arrow = arrow(length = unit(0.15, "cm"), angle = 90))
+
+example_plots
+```
 
 ## Method
 
@@ -810,50 +981,82 @@ provide answers to the 12 scale items using a 5 point Likert scale ranging from 
 Participants were recruited using Prolific.co [@prolific]. English fluency and UK
 residency was required for participation, as well as normal or corrected-to-normal
 vision, and having not participated in any of our previous studies regarding 
-correlation perception in scatterplots, as these represented earlier testing 
-of the alternative designs we employ in the atypical scatterplot condition. In addition
-to 45(?) experimental items, we also included 6 attention check trials...
+correlation perception in scatterplots [@strain], as these represented earlier testing 
+of the alternative designs we employ in the atypical scatterplot condition. Data were
+collected from 77 participants for each condition. 2 participants failed more than
+2 out of 4 attention check questions for each condition, meaning their data were
+excluded per pre-registration stipulations. Data from the remaining 150 participants
+were included in the full analysis (`r printnum(gender_main$Male, digits = 1)`% male,
+`r printnum(gender_main$Female, digits = 1)`% female, and `r printnum(gender_main$'Non-binary', digits = 1)`% non-binary).
+Participants' mean age was `r printnum(age_main$mean, digits = 1)`
+(*SD* = `r printnum(age_main$sd, digits = 1)`). Participants' mean graph literacy
+score was `r printnum(literacy$mean, digits = 1)` (*SD* = `r printnum(literacy$sd, digits = 1)`)
+out of 30. On average, participants took `r printnum(time_taken_main$mean, digits = 1)`
+minutes to complete the experiment (*SD* = `r printnum(time_taken_main$sd)`).
 
 ### Design
 
-We employ a between-participants design. Each participants was randomly assigned
+We employed a between-participants design. Each participants was randomly assigned
 to either group A, in which case they viewed typical scatterplots, or group B,
 in which they viewed atypical scatterplots designed deliberately to elicit higher
-levels of belief change.
+levels of belief change. Participant saw all experimental items for their group, along
+with 4 attention check items, in a fully randomised order. All experimental code, 
+materials, and instructions are hosted on GitLab as two separate experiments[insert]
 
 ### Procedure
 
-Again, we use PsychoPy [@pierce_2019] to build our experiment and Pavlovia.org
+We use PsychoPy [@pierce_2019] to build our experiment and Pavlovia.org
 to host it. Participants were permitted to complete the experiment on a desktop
 or laptop computer. We elected to prevent participants from using a phone or
 tablet to complete the experiment in line with evidence that differences in on-screen sizes
-of data visualizations can alter perception [cleveland_1982]. Participants were
+of data visualizations can alter perceptions [cleveland_1982]. Participants were
 first shown the participant information sheet and asked to provide consent
 through key presses in response to consent statements. They were, again,
 asked to provide their age and gender identity. Participants then completed the 12-item
-Defensive Confidence scale described by Albarracín and Mitchell [@albarracin_2004].
+Defensive Confidence scale described by Albarracín and Mitchell [@albarracin_2004]
+and the 5-item Subjective Graph Literacy scale [@garcia_2016][^5].
 Following instructions, which included descriptions of scatterplots and Pearson's *r*.
 In order to give legitimacy to our data visualizations with the hope of maximizing
 any potential belief change, participants were told that the graphs were taken
 from a well-known British news source, but that the identity of this source had 
-been obscured. They then had a chance to practice using the slider, before being 
+been obscured. In order to promote participant engagement with the visualizations,
+participants were instructed to use a slider to estimate the correlation displayed
+in each scatterplot; no hypotheses were made based on these data, however they
+are discussed in light of recent literature in @sec-correlation-ratings.
+Participants then had a chance to practice using the slider, before being 
 asked their belief about topic emotionality and the relatedness between variables
-described in our chosen statement. Following the completion of 45 experimental
+described in our chosen statement. Following the completion of the experimental
 trials, participants were tested again on their beliefs about relatedness, and 
-then debriefed that the data they saw were fictional.
+then debriefed that the data they saw were fictional. Interspersed among
+the experimental items were 4 attention check trials which explicitly
+asked participants to set the slider to 0 or 1.
+
+[^5]: The inclusion of this scale was not specified in the pre-registration.
 
 ## Results
 
 All analyses were conducted using R (version `r paste0(R.version$major, ".", R.version$minor)`).
+The **buildmer** (version 2.11 [@buildmer]) and **lme4** (version 1.1-35.3 [@lme4])
+packages were used to build a linear mixed effects model where participants' changes
+in belief strength were predicted by the scatterplot condition they were assigned to.
+Semi-partial R^2^, which is presented in lieu of traditional measures of effect size,
+was calculated using the **r2glmm** package (version 0.1.2 [@r2glmm]).
 
 
-```{r modelling}
-model_main_test <- buildmer(belief_diff ~ condition*dc_section +
+```{r}
+#| label: model
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
+
+# modelling effect of condition on difference between belief strength before and
+# after viewing plots
+
+model_main_test <- buildmer(belief_diff ~ condition +
                               (1 | participant) +
                               (1 + condition | item_no),
                             data = main_exp_tidy)
 
-model1 <- model_main_test@model
+model_main_test <- model_main_test@model
 ```
 
 ## Discussion

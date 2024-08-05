@@ -357,8 +357,8 @@ perception, scatterplot, crowdsourced}
 
 In this section we discuss our general research methods, including our
 implementations of open research practices, our approach to and
-justification for crowdsourcing, and our approach to stimulus
-generation.
+justification for crowdsourcing, and our use of the ChatGPT4 LLM in
+preparing parts of our stimuli.
 
 \subsection{Open Research}\label{sec-open-research}
 
@@ -391,6 +391,19 @@ collecting high quality data. We use the Prolific.co platform
 required to have completed at least 100 studies using Prolific, and were
 required to have a Prolific score of 100, representing a 99\% approval
 rate.
+
+\subsection{Use of Large Language
+Models}\label{use-of-large-language-models}
+
+\begin{itemize}
+\tightlist
+\item
+  issues regarding stimulus generation normally
+\item
+  advantages conferred by using ChatGPT
+\item
+  reproducibility issues?
+\end{itemize}
 
 \section{Pre-Study: Investigating Beliefs About Relatedness
 Statements}\label{sec-pre-study}
@@ -522,7 +535,7 @@ change in our main experiment.
 100 participants were recruited using the Prolific.co platform
 \citep{prolific}. English fluency and residency was required for
 participation, as our main experiment relied on familiarity with data
-visualisations from a popular British news source. In addition to 25
+visualizations from a popular British news source. In addition to 25
 experimental items, we included six attention check items, which asked
 participants to provide specific answers. No participants failed more
 than 2 out of 6 attention check items, and therefore data from all 100
@@ -555,7 +568,7 @@ experiments increases, society becomes happier.''
 
 \subsection{Results}\label{sec-results-pre}
 
-All analyses were conducted using R (version 4.4.0). We use the
+All analyses were conducted using R (version 4.4.1). We use the
 \textbf{irr} package to calculate Fleiss' Kappa to measure interrater
 agreement on topic emotionality and strength of correlation for the 25
 experimental items. This analysis revealed that participants agreed
@@ -611,6 +624,13 @@ of cancer.''
 
 \subsection{Introduction}\label{introduction}
 
+\begin{itemize}
+\tightlist
+\item
+  hypotheses
+\item
+\end{itemize}
+
 \subsubsection{Defensive Confidence}\label{defensive-confidence}
 
 In line with evidence that those who are more confident in their ability
@@ -620,38 +640,132 @@ defensive confidence using a 12-item scale. This scale is replicated
 from previous work in the supplemental material, and has additionally
 been utilized more recently \citep{markant_2023} to explore the
 potential for attitude change specifically with regards to correlations
-in scatterplots.
-
-\begin{itemize}
-\tightlist
-\item
-  don't forget about reverse scoring items
-\end{itemize}
+in scatterplots. Participants provide answers to the 12 scale items
+using a 5 point Likert scale ranging from 1 (\emph{not at all
+characteristic of me}) to 5 (\emph{extremely characteristic of me}).
+Analysis including participants' defensive confidence scores is included
+in \textbf{?@sec-additional-analyses}.
 
 \subsection{Stimuli}\label{stimuli}
 
-\begin{itemize}
-\tightlist
-\item
-  build experiment and pilot to see how many people can do
-\item
-  then this section can be written
-\end{itemize}
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{beliefs_attitudes_atypical_scatterplots_files/figure-pdf/fig-example-plots-1.pdf}
+
+}
+
+\caption{\label{fig-example-plots}Examples of the experimental stimuli
+used with an \textit{r} value of 0.6.}
+
+\end{figure}%
+
+Recent work has shown that estimates of correlation can be altered when
+point opacities and sizes are systematically varied in scatterplots
+\citep{strain_2023, strain_2023b, strain_2024}. These manipulations have
+been used in an attempt to correct for a long-standing underestimation
+bias observed in correlation perception as it pertains to scatterplots.
+As we now aim to test the propensity of these manipulations to affect
+participants' beliefs about levels of relatedness, we choose the set of
+manipulations that has previously produced the most dramatic effect on
+correlation estimates; namely, the combination of typical orientation
+size and opacity manipulations provided by Strain et al.,
+2024\citep{strain_2024}. Here, the size and opacity of a certain
+scatterplot point is lowered as a function of that point's residual
+error using equation 1.
+
+\begin{equation}
+  point_{size/opacity} = 1 - b^{residual}
+\end{equation}
+
+In order to facilitate comparison to this work, we use the same protocol
+to produce scatterplots for our atypical condition. This includes
+creating scatterplots with 128 points, using a scaling factor and
+constant for point size, and using an opacity floor to ensure point
+visibility, as this has been an issue in previous work. As there is
+evidence that people are less likely to update strongly held beliefs
+following viewing scatterplot visualizations \citep[ look for
+more]{markant_2023}, we selected a correlative statement that was judged
+as representing weakly correlated variables. Thus, in order to induce
+belief change, participants only viewed scatterplots representing
+\textbf{strongly} correlated variables (0.6 \textgreater{} \emph{r}
+\textgreater{} 0.99). We used \textbf{ggplot} in R to create plots that
+echoed the style of a British news broadcaster and fictitiously claimed
+the data to be provided by the British National Health service. Examples
+of typical and atypical data-identical scatterplots can be seen in
+\textbf{?@fig-main-examples}.
 
 \subsection{Method}\label{method}
 
 \subsubsection{Participants}\label{participants}
 
+Participants were recruited using Prolific.co \citep{prolific}. English
+fluency and UK residency was required for participation, as well as
+normal or corrected-to-normal vision, and having not participated in any
+of our previous studies regarding correlation perception in scatterplots
+\citep{strain}, as these represented earlier testing of the alternative
+designs we employ in the atypical scatterplot condition. Data were
+collected from 77 participants for each condition. 2 participants failed
+more than 2 out of 4 attention check questions for each condition,
+meaning their data were excluded per pre-registration stipulations. Data
+from the remaining 150 participants were included in the full analysis
+(46.7\% male, 52.0\% female, and 1.3\% non-binary). Participants' mean
+age was 37.3 (\emph{SD} = 11.3). Participants' mean graph literacy score
+was 22.1 (\emph{SD} = 3.9) out of 30. On average, participants took 15.1
+minutes to complete the experiment (\emph{SD} = 7.70).
+
 \subsubsection{Design}\label{design}
 
-We employ a between-participants design. Each participants was randomly
-assigned to either group A, in which case they viewed typical
+We employed a between-participants design. Each participants was
+randomly assigned to either group A, in which case they viewed typical
 scatterplots, or group B, in which they viewed atypical scatterplots
 designed deliberately to elicit higher levels of belief change.
+Participant saw all experimental items for their group, along with 4
+attention check items, in a fully randomised order. All experimental
+code, materials, and instructions are hosted on GitLab as two separate
+experiments{[}insert{]}
 
 \subsubsection{Procedure}\label{procedure}
 
+Again, we use PsychoPy \citep{pierce_2019} to build our experiment and
+Pavlovia.org to host it. Participants were permitted to complete the
+experiment on a desktop or laptop computer. We elected to prevent
+participants from using a phone or tablet to complete the experiment in
+line with evidence that differences in on-screen sizes of data
+visualizations can alter perceptions {[}cleveland\_1982{]}. Participants
+were first shown the participant information sheet and asked to provide
+consent through key presses in response to consent statements. They
+were, again, asked to provide their age and gender identity.
+Participants then completed the 12-item Defensive Confidence scale
+described by Albarracín and Mitchell \citep{albarracin_2004} and the
+5-item Subjective Graph Literacy scale \citep{garcia_2016}\footnote{The
+  inclusion of this scale was not specified in the pre-registration.}.
+Following instructions, which included descriptions of scatterplots and
+Pearson's \emph{r}. In order to give legitimacy to our data
+visualizations with the hope of maximizing any potential belief change,
+participants were told that the graphs were taken from a well-known
+British news source, but that the identity of this source had been
+obscured. In order to promote participant engagement with the
+visualizations, participants were instructed to use a slider to estimate
+the correlation displayed in each scatterplot; no hypotheses were made
+based on these data, however they are discussed in light of recent
+literature in \textbf{?@sec-correlation-ratings}. Participants then had
+a chance to practice using the slider, before being asked their belief
+about topic emotionality and the relatedness between variables described
+in our chosen statement. Following the completion of the experimental
+trials, participants were tested again on their beliefs about
+relatedness, and then debriefed that the data they saw were fictional.
+Interspersed among the experimental items were 4 attention check trials
+which explicitly asked participants to set the slider to 0 or 1.
+
 \subsection{Results}\label{results}
+
+All analyses were conducted using R (version 4.4.1). The
+\textbf{buildmer} (version 2.11 \citep{buildmer}) and \textbf{lme4}
+(version 1.1-35.3 \citep{lme4}) packages were used to build a linear
+mixed effects model where participants' changes in belief strength were
+predicted by the scatterplot condition they were assigned to.
 
 \subsection{Discussion}\label{discussion}
 
