@@ -7,7 +7,7 @@ format: acm-pdf
 keep-tex: true
 
 params:
-  eval_models: false
+  eval_models: true
   
 knitr:
   opts_chunk: 
@@ -361,9 +361,9 @@ wrangle_main_exp(main_exp_A)
 
 wrangle_main_exp(main_exp_T)
 
-# add 75 to each participant number for main_exp_T
+# add 75 to each participant number for second part of main exp
 
-main_exp_T <- main_exp_T %>% mutate(participant = participant + 75)
+atypical_scatterplots_main_test_T_tidy <- atypical_scatterplots_main_test_T_tidy %>% mutate(participant = participant + 75)
 
 # main experiment is between participants, so rbind main_exp dfs together
 
@@ -514,6 +514,107 @@ irr_emot <- kappa2(matrix(c(all_ratings$Topic_Emotionality_A,
 irr_corr <- kappa2(matrix(c(all_ratings$Strength_of_Correlation_A,
                 all_ratings$Strength_of_Correlation_B), ncol = 2), "squared")    
 
+```
+
+```{r}
+#| label: comparison-function
+
+# this function takes a model and creates a nested model with the fixed effects 
+# terms removed for anova comparison
+
+comparison <- function(model) {
+  
+  parens <- function(x) paste0("(",x,")")
+  onlyBars <- function(form) reformulate(sapply(findbars(form),
+                                              function(x)  parens(deparse(x))),
+                                       response=".")
+  onlyBars(formula(model))
+  cmpr_model <- update(model,onlyBars(formula(model)))
+  
+  return(cmpr_model)
+  
+}
+```
+
+```{r}
+#| label: anova-results-function
+
+# this function takes two nested models, runs an anova, and the outputs the 
+# Chi-square statistic, the degrees of freedom, and the p value to the global 
+# environment
+
+anova_results <- function(model, cmpr_model) {
+  
+  model_name <- deparse(substitute(model))
+  
+  if (class(model) == "buildmer") model <- model@model
+  if (class(cmpr_model) == "buildmer") cmpr_model <- cmpr_model@model
+  
+  anova_output <- anova(model, cmpr_model)
+  
+  assign(paste0(model_name, ".Chisq"),
+         anova_output$Chisq[2],
+         envir = .GlobalEnv)
+  assign(paste0(model_name, ".df"),
+         anova_output$Df[2],
+         envir = .GlobalEnv)
+  assign(paste0(model_name, ".p"),
+         anova_output$`Pr(>Chisq)`[2],
+         envir = .GlobalEnv)
+  
+}
+```
+
+```{r}
+#| label: make-sig-table-lm
+
+# function to create table with fixed effects and interactions for LMM
+# first do function for absolute differences model (H1)
+
+make_sig_table_abso <- function (model) {
+  
+  # buildmer class models need reassigned to lmer class for further use
+  
+  if (class(model) == "buildmer") model <- model@model
+  
+  # subset model summary to get list of fixed/interaction effects
+  # then make this a data frame, rename columns, fix p value formatting
+  
+  table_df <- as.data.frame(summary(model)[10]) %>%
+    rename("Estimate" = "coefficients.Estimate",
+           "Standard Error" = "coefficients.Std..Error",
+           "df" = "coefficients.df",
+           "t-value" = "coefficients.t.value",
+           "p" = "coefficients.Pr...t..") %>%
+    mutate(p = scales::pvalue(p)) %>%
+    rename("\\textit{p}" = "p")
+  
+  # get semi-partial r^2, rename rows so they match with sig table
+  # take the last 3 rows corresponding to fixed effects and interaction term
+  # remove first cell of r^2
+  # reformat text for latex output
+  
+  r_squared <- r2beta(model, method = "nsj") %>%
+    mutate("Effect" = recode(Effect,
+                             "rating_timepre_bel" = "Rating Time")) %>%
+    select(c("Effect", "Rsq")) %>%
+    mutate(Rsq = round(Rsq, 3)) %>%
+    mutate(Rsq = ifelse(row_number() == 1, "", Rsq)) %>%
+    rename("R\\textsuperscript{2}" = "Rsq") 
+    
+  # tidy up row names
+  
+  rownames(table_df) <- c("(Intercept)",
+                          "Rating Time")
+  
+  sig_and_squared <- cbind(table_df, r_squared) %>% select(-c("Effect")) 
+  
+  table <- kbl(sig_and_squared, booktabs = T, digits = c(2,3,2,2,2,2,3), escape = F)
+  
+  return(table)
+}
+
+# next, do function for differences in belief model (H2)
 ```
 
 # Introduction {#sec-intro-main}
@@ -822,7 +923,7 @@ As we now aim to test the propensity of these manipulations to affect participan
 beliefs about levels of relatedness, we choose the set of manipulations that
 has previously produced the most dramatic effect on correlation estimates; namely,
 the combination of typical orientation size and opacity manipulations provided
-by Strain et al., 2024[@strain_2024]. Here, the size and opacity of a certain
+by Strain et al [@strain_2024]. Here, the size and opacity of a certain
 scatterplot point is lowered as a function of that point's residual error using
 equation 1:
 
@@ -971,6 +1072,8 @@ example_plots <- ggarrange(example_plot_function(slopes, 0.6, typical, standard_
            colour = "grey",
            arrow = arrow(length = unit(0.15, "cm"), angle = 90))
 
+rm(slopeI, slopeI_floored, typical, standard_alpha, slopes) # clean up
+
 example_plots
 ```
 
@@ -1035,12 +1138,91 @@ asked participants to set the slider to 0 or 1.
 
 ## Results
 
+```{r}
+#| label: model-rating-absolute
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
+
+# first re-wrangle the df into long format with regards to ratings
+
+diff_abso_df_long <- main_exp_tidy %>%
+  filter(condition == "T") %>%
+  pivot_longer(cols = c("pre_bel", "post_bel"),
+               values_to = "rating",
+               names_to = "rating_time")
+
+# create model
+
+diff_abso_model <- buildmer(rating ~ rating_time +
+                         (1 | participant) +
+                         (1 + condition | item_no),
+                       data = diff_abso_df_long)
+```
+
+```{r}
+#| label: assign-slot-absolute
+
+# assign to slot for further use
+
+diff_abso_model <- diff_abso_model@model
+```
+
+```{r}
+#| label: model-cmpr-diff-abso
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
+
+# build comparison model with fixed effects term removed
+
+diff_abso_model_cmpr <- comparison(diff_abso_model)
+```
+
+```{r}
+#| label: anova-diff-abso
+
+# run ANOVA between experimental and comparison models, ouputs stats in global env
+
+anova_results(diff_abso_model, diff_abso_model_cmpr)
+```
+
 All analyses were conducted using R (version `r paste0(R.version$major, ".", R.version$minor)`).
 The **buildmer** (version 2.11 [@buildmer]) and **lme4** (version 1.1-35.3 [@lme4])
-packages were used to build a linear mixed effects model where participants' changes
+packages were used to build linear mixed effects models. Semi-partial R^2^,
+which is presented in lieu of traditional measures of effect size,
+was calculated using the **r2glmm** package (version 0.1.2 [@r2glmm]). To test the first hypothesis,
+that ratings of strength of relatedness would be different before and after participants
+viewed experimental items, we build a model whereby the rating is predicted by the point
+in time the participant made it. Our first hypothesis was supported; there was a 
+significant difference in ratings of strength of relatedness made before and after
+participants viewed the experimental plots.
+
+```{r}
+#| label: tbl-abso-diff
+#| include: true
+#| tbl-cap: Statistics for the significant main effect of rating time. Semi-partial R^2^ is also incuded.
+
+make_sig_table_abso(diff_abso_model)
+```
+
+
+
+
+
+
+
+
+A likelihood ratio test revealed that the model
+including time of rating as a predictor explained significantly more variance than
+the null  ($\chi^2$(`r in_paren(diff_abso_model.df)`) = `r printnum(diff_abso_model.Chisq)`,
+*p* `r printp(diff_abso_model.p, add_equals = TRUE)`).
+
+
+where participants' changes
 in belief strength were predicted by the scatterplot condition they were assigned to.
 Semi-partial R^2^, which is presented in lieu of traditional measures of effect size,
 was calculated using the **r2glmm** package (version 0.1.2 [@r2glmm]).
+
+
 
 
 ```{r}

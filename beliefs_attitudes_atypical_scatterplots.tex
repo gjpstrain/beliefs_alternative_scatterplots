@@ -648,6 +648,41 @@ in \textbf{?@sec-additional-analyses}.
 
 \subsection{Stimuli}\label{stimuli}
 
+Recent work has shown that estimates of correlation can be altered when
+point opacities and sizes are systematically varied in scatterplots
+\citep{strain_2023, strain_2023b, strain_2024}. These manipulations have
+been used in an attempt to correct for a long-standing underestimation
+bias observed in correlation perception as it pertains to scatterplots.
+As we now aim to test the propensity of these manipulations to affect
+participants' beliefs about levels of relatedness, we choose the set of
+manipulations that has previously produced the most dramatic effect on
+correlation estimates; namely, the combination of typical orientation
+size and opacity manipulations provided by Strain et al
+\citep{strain_2024}. Here, the size and opacity of a certain scatterplot
+point is lowered as a function of that point's residual error using
+equation 1:
+
+\begin{equation}
+  point_{size/opacity} = 1 - b^{residual}
+\end{equation}
+
+In order to facilitate comparison to this work, we use the same protocol
+to produce scatterplots for our atypical condition. This includes
+creating scatterplots with 128 points, using \emph{b} = 0.25, employing
+a scaling factor and constant for point size, and using an opacity floor
+to ensure point visibility, as this has been an issue in previous work.
+As there is evidence that people are less likely to update strongly held
+beliefs following viewing scatterplot visualizations \citep[ look for
+more]{markant_2023}, we selected a correlative statement that was judged
+as representing weakly correlated variables. Thus, in order to induce
+belief change, participants only viewed scatterplots representing
+\textbf{strongly} correlated variables (0.6 \textgreater{} \emph{r}
+\textgreater{} 0.99). We used \textbf{ggplot} in R to create plots that
+echoed the style of a British news broadcaster and fictitiously claimed
+the data to be provided by the British National Health service. Examples
+of typical and atypical data-identical scatterplots can be seen in
+\textbf{?@fig-main-examples}.
+
 \begin{figure}
 
 \centering{
@@ -660,41 +695,6 @@ in \textbf{?@sec-additional-analyses}.
 used with an \textit{r} value of 0.6.}
 
 \end{figure}%
-
-Recent work has shown that estimates of correlation can be altered when
-point opacities and sizes are systematically varied in scatterplots
-\citep{strain_2023, strain_2023b, strain_2024}. These manipulations have
-been used in an attempt to correct for a long-standing underestimation
-bias observed in correlation perception as it pertains to scatterplots.
-As we now aim to test the propensity of these manipulations to affect
-participants' beliefs about levels of relatedness, we choose the set of
-manipulations that has previously produced the most dramatic effect on
-correlation estimates; namely, the combination of typical orientation
-size and opacity manipulations provided by Strain et al.,
-2024\citep{strain_2024}. Here, the size and opacity of a certain
-scatterplot point is lowered as a function of that point's residual
-error using equation 1.
-
-\begin{equation}
-  point_{size/opacity} = 1 - b^{residual}
-\end{equation}
-
-In order to facilitate comparison to this work, we use the same protocol
-to produce scatterplots for our atypical condition. This includes
-creating scatterplots with 128 points, using a scaling factor and
-constant for point size, and using an opacity floor to ensure point
-visibility, as this has been an issue in previous work. As there is
-evidence that people are less likely to update strongly held beliefs
-following viewing scatterplot visualizations \citep[ look for
-more]{markant_2023}, we selected a correlative statement that was judged
-as representing weakly correlated variables. Thus, in order to induce
-belief change, participants only viewed scatterplots representing
-\textbf{strongly} correlated variables (0.6 \textgreater{} \emph{r}
-\textgreater{} 0.99). We used \textbf{ggplot} in R to create plots that
-echoed the style of a British news broadcaster and fictitiously claimed
-the data to be provided by the British National Health service. Examples
-of typical and atypical data-identical scatterplots can be seen in
-\textbf{?@fig-main-examples}.
 
 \subsection{Method}\label{method}
 
@@ -710,10 +710,10 @@ collected from 77 participants for each condition. 2 participants failed
 more than 2 out of 4 attention check questions for each condition,
 meaning their data were excluded per pre-registration stipulations. Data
 from the remaining 150 participants were included in the full analysis
-(46.7\% male, 52.0\% female, and 1.3\% non-binary). Participants' mean
-age was 37.3 (\emph{SD} = 11.3). Participants' mean graph literacy score
-was 22.1 (\emph{SD} = 3.9) out of 30. On average, participants took 15.1
-minutes to complete the experiment (\emph{SD} = 7.70).
+(48.7\% male, 48.7\% female, and 2.7\% non-binary). Participants' mean
+age was 39.3 (\emph{SD} = 11.5). Participants' mean graph literacy score
+was 21.3 (\emph{SD} = 4.3) out of 30. On average, participants took 14.2
+minutes to complete the experiment (\emph{SD} = 6.41).
 
 \subsubsection{Design}\label{design}
 
@@ -728,7 +728,7 @@ experiments{[}insert{]}
 
 \subsubsection{Procedure}\label{procedure}
 
-Again, we use PsychoPy \citep{pierce_2019} to build our experiment and
+We use PsychoPy \citep{pierce_2019} to build our experiment and
 Pavlovia.org to host it. Participants were permitted to complete the
 experiment on a desktop or laptop computer. We elected to prevent
 participants from using a phone or tablet to complete the experiment in
@@ -763,9 +763,46 @@ which explicitly asked participants to set the slider to 0 or 1.
 
 All analyses were conducted using R (version 4.4.1). The
 \textbf{buildmer} (version 2.11 \citep{buildmer}) and \textbf{lme4}
-(version 1.1-35.3 \citep{lme4}) packages were used to build a linear
-mixed effects model where participants' changes in belief strength were
-predicted by the scatterplot condition they were assigned to.
+(version 1.1-35.3 \citep{lme4}) packages were used to build linear mixed
+effects models. Semi-partial R\textsuperscript{2}, which is presented in
+lieu of traditional measures of effect size, was calculated using the
+\textbf{r2glmm} package (version 0.1.2 \citep{r2glmm}). To test the
+first hypothesis, that ratings of strength of relatedness would be
+different before and after participants viewed experimental items, we
+build a model whereby the rating is predicted by the point in time the
+participant made it. Our first hypothesis was supported; there was a
+significant difference in ratings of strength of relatedness made before
+and after participants viewed the experimental plots.
+
+\begin{table}
+
+\caption{\label{tbl-abso-diff}Statistics for the significant main effect
+of rating time. Semi-partial R\textsuperscript{2} is also incuded.}
+
+\centering{
+
+\begin{tabular}[t]{lrrrrll}
+\toprule
+  & Estimate & Standard Error & df & t-value & \textit{p} & R\textsuperscript{2}\\
+\midrule
+(Intercept) & 4.93 & 0.117 & 75.49 & 42.04 & <0.001 & \\
+Rating Time & -1.53 & 0.023 & 5924.00 & -65.61 & <0.001 & 0.243\\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+A likelihood ratio test revealed that the model including time of rating
+as a predictor explained significantly more variance than the null
+(\(\chi^2\)(1) = 3,236.13, \emph{p} \textless{} .001).
+
+where participants' changes in belief strength were predicted by the
+scatterplot condition they were assigned to. Semi-partial
+R\textsuperscript{2}, which is presented in lieu of traditional measures
+of effect size, was calculated using the \textbf{r2glmm} package
+(version 0.1.2 \citep{r2glmm}).
 
 \subsection{Discussion}\label{discussion}
 
