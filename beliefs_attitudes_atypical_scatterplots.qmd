@@ -537,13 +537,13 @@ comparison <- function(model) {
 ```
 
 ```{r}
-#| label: anova-results-function
+#| label: anova-results-functions
 
 # this function takes two nested models, runs an anova, and the outputs the 
-# Chi-square statistic, the degrees of freedom, and the p value to the global 
+# test statistic, the degrees of freedom, and the p value to the global 
 # environment
 
-anova_results <- function(model, cmpr_model) {
+anova_results_mixed <- function(model, cmpr_model) {
   
   model_name <- deparse(substitute(model))
   
@@ -563,12 +563,33 @@ anova_results <- function(model, cmpr_model) {
          envir = .GlobalEnv)
   
 }
+
+anova_results_linear <- function(cmpr_model, model) {
+  
+  model_name <- deparse(substitute(model))
+  
+  if (class(model) == "buildmer") model <- model@model
+  if (class(cmpr_model) == "buildmer") cmpr_model <- cmpr_model@model
+  
+  anova_output <- anova(cmpr_model, model)
+  
+  assign(paste0(model_name, ".F"),
+         anova_output$'F'[2],
+         envir = .GlobalEnv)
+  assign(paste0(model_name, ".df"),
+         anova_output$Df[2],
+         envir = .GlobalEnv)
+  assign(paste0(model_name, ".p"),
+         anova_output$`Pr(>F)`[2],
+         envir = .GlobalEnv)
+  
+}
 ```
 
 ```{r}
 #| label: make-sig-table-lm
 
-# function to create table with fixed effects and interactions for LMM
+# function to create tables with fixed effects and interactions for LMM
 # first do function for absolute differences model (H1)
 
 make_sig_table_abso <- function (model) {
@@ -614,7 +635,56 @@ make_sig_table_abso <- function (model) {
   return(table)
 }
 
-# next, do function for differences in belief model (H2)
+# next, do function for relative differences in belief model (H2)
+
+make_sig_table_rel <- function (model) {
+  
+  # buildmer class models need reassigned to lmer class for further use
+  
+  if (class(model) == "buildmer") model <- model@model
+  
+  # subset model summary to get list of fixed/interaction effects
+  # then make this a data frame, rename columns, fix p value formatting
+  
+  table_df <- as.data.frame(summary(model)[4]) %>%
+    rename("Estimate" = "coefficients.Estimate",
+           "Standard Error" = "coefficients.Std..Error",
+           "t-value" = "coefficients.t.value",
+           "p" = "coefficients.Pr...t..") %>%
+    mutate(p = scales::pvalue(p)) %>%
+    rename("\\textit{p}" = "p")
+  
+  # extract degrees of freedom and join them
+
+DoF <- as.data.frame(summary(model)[7]) %>% head(2)
+
+table_df <- cbind(table_df, DoF) %>% relocate(df, .after = "Standard Error")
+
+ 	
+  # get semi-partial r^2, rename rows so they match with sig table
+  # take the last 3 rows corresponding to fixed effects and interaction term
+  # remove first cell of r^2
+  # reformat text for latex output
+  
+  r_squared <- r2beta(model, method = "nsj") %>%
+    mutate("Effect" = recode(Effect,
+                             "condition1" = "Condition")) %>%
+    select(c("Effect", "Rsq")) %>%
+    mutate(Rsq = round(Rsq, 3)) %>%
+    mutate(Rsq = ifelse(row_number() == 1, "", Rsq)) %>%
+    rename("R\\textsuperscript{2}" = "Rsq") 
+    
+  # tidy up row names
+  
+  rownames(table_df) <- c("(Intercept)",
+                          "Condition")
+  
+  sig_and_squared <- cbind(table_df, r_squared) %>% select(-c("Effect")) 
+  
+  table <- kbl(sig_and_squared, booktabs = T, digits = c(2,3,2,2,2,2,3), escape = F)
+  
+  return(table)
+}
 ```
 
 # Introduction {#sec-intro-main}
@@ -681,7 +751,7 @@ neutral in emotional valence, we began by using ChatGPT4 [@chatgpt] to
 generate 100 correlation statements using the following prompt:
 
 ```{=tex}
-\begin{center}
+\begin{flushleft}
 
     ``Generate 100 statements that describe the correlation between two variables, such as :
 
@@ -691,7 +761,7 @@ generate 100 correlation statements using the following prompt:
 
     Try to match all the statements on emotionality.``
     
-\end{center}
+\end{flushleft}
 ```
 
 The full list of these statements can be found in the supplementary materials.
@@ -1146,7 +1216,6 @@ asked participants to set the slider to 0 or 1.
 # first re-wrangle the df into long format with regards to ratings
 
 diff_abso_df_long <- main_exp_tidy %>%
-  filter(condition == "T") %>%
   pivot_longer(cols = c("pre_bel", "post_bel"),
                values_to = "rating",
                names_to = "rating_time")
@@ -1154,7 +1223,7 @@ diff_abso_df_long <- main_exp_tidy %>%
 # create model
 
 diff_abso_model <- buildmer(rating ~ rating_time +
-                         (1 | participant) +
+                         (1  | participant) +
                          (1 + condition | item_no),
                        data = diff_abso_df_long)
 ```
@@ -1182,7 +1251,7 @@ diff_abso_model_cmpr <- comparison(diff_abso_model)
 
 # run ANOVA between experimental and comparison models, ouputs stats in global env
 
-anova_results(diff_abso_model, diff_abso_model_cmpr)
+anova_results_mixed(diff_abso_model, diff_abso_model_cmpr)
 ```
 
 All analyses were conducted using R (version `r paste0(R.version$major, ".", R.version$minor)`).
@@ -1204,42 +1273,140 @@ participants viewed the experimental plots.
 make_sig_table_abso(diff_abso_model)
 ```
 
+```{r}
+#| label: fig-abso-descriptives
+#| include: true
+#| out-width: "100%"
+#| fig-asp: 0.5
+#| fig-cap: Boxplots showing ranges, interquartile ranges, medians (vertical lines) and means for participants' ratings of strength of relatedness before and after viewing either typical or atypical scatterplots.
 
-
-
-
-
-
+diff_abso_df_long %>%
+  mutate("condition" = recode(condition,
+                            "A" = "Atypical\nScatterplot",
+                            "T" = "Typical\nScatterplot"),
+         "rating_time" = recode(rating_time,
+                                "pre_bel" = "Pre",
+                                "post_bel" = "Post")) %>%
+  ggplot(aes(x = condition, y = rating, fill = rating_time)) +
+  geom_boxplot(outliers = F, key_glyph = "polygon") +
+  scale_color_brewer(palette = "Dark2", aesthetics = "fill") +
+  stat_summary(fun.y = mean, geom = "point", shape = 15, size = 4, position = position_dodge(0.75)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 7)) +
+  labs(x = "",
+       y = "Rating",
+       fill = "Rating Time") +
+  theme_ggdist() +
+  theme(legend.position = c(0.13, 0.12),
+        legend.direction = "horizontal",
+        legend.box = "horizontal",
+        legend.key.size = unit(1.15, "line"),
+        legend.title.position = "top",
+        axis.line.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.y = element_text(size = 11),
+        axis.text.x = element_text(size = 11)) +
+  guides(shape = F) +
+  guides(fill = guide_legend(override.aes = list(shape = NA), reverse = T)) + 
+  coord_flip() 
+```
 
 A likelihood ratio test revealed that the model
 including time of rating as a predictor explained significantly more variance than
-the null  ($\chi^2$(`r in_paren(diff_abso_model.df)`) = `r printnum(diff_abso_model.Chisq)`,
-*p* `r printp(diff_abso_model.p, add_equals = TRUE)`).
-
-
-where participants' changes
-in belief strength were predicted by the scatterplot condition they were assigned to.
-Semi-partial R^2^, which is presented in lieu of traditional measures of effect size,
-was calculated using the **r2glmm** package (version 0.1.2 [@r2glmm]).
-
-
-
+the null ($\chi^2$(`r in_paren(diff_abso_model.df)`) = `r printnum(diff_abso_model.Chisq)`,
+*p* `r printp(diff_abso_model.p, add_equals = TRUE)`). This model had random
+intercepts for participants. Statistical testing providing
+support for this hypothesis is shown in @tbl-abso-diff. @fig-abso-descriptives
+shows means and boxplots for ratings of strength of relatedness before and after
+viewing scatterplots in either the typical or atypical condition.
 
 ```{r}
-#| label: model
+#| label: model-relative
 #| eval: !expr params$eval_models
 #| cache: !expr params$eval_models
 
 # modelling effect of condition on difference between belief strength before and
 # after viewing plots
 
-model_main_test <- buildmer(belief_diff ~ condition +
+relative_model <- buildmer(belief_diff ~ condition +
                               (1 | participant) +
                               (1 + condition | item_no),
                             data = main_exp_tidy)
-
-model_main_test <- model_main_test@model
 ```
+
+```{r}
+#| label: model-relative-assign-slot
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
+
+# assign relative model to slot for further use
+
+relative_model <- relative_model@model
+```
+
+```{r}
+#| label: model-relative-cmpr
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
+
+# build null model for comparison. Model has no random effects terms, so do it manually
+
+relative_model_cmpr <- lm(belief_diff ~ 1, data = main_exp_tidy)
+```
+
+```{r}
+#| label: model-relative-results
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
+
+# extract ANOVA results for relative vs null model comparison
+
+anova_results_linear(relative_model_cmpr, relative_model)
+```
+
+Our second hypothesis, that the difference between ratings of strength of relatedness
+before and after viewing experimental plots would be greater when participants
+were assigned to the atypical scatterplot condition, also received support. We built
+a linear mixed effects model whereby the difference was predicted by the condition
+the participant was assigned to. A likelihood ratio test revealed that the model
+including condition as a predictor explained significantly more variance than the null
+($F$(`r in_paren(relative_model.df)`) = `r printnum(relative_model.F)`,
+*p* `r printp(relative_model.p, add_equals = TRUE)`). This model contains no
+random effects terms. Statistics, along with semi-partial R^2^ can be seen in @tbl-rel.
+
+```{r}
+#| label: tbl-rel
+#| include: true
+#| tbl-cap: Statistics for the significant main effect of condition on the difference between pre and post scatterplot viewing ratings for typical and atypical plots. Semi-partial R^2^ is also incuded.
+
+make_sig_table_rel(relative_model)
+```
+
+```{r}
+#| label: add-analyses
+#| eval: !expr params$eval_models
+#| cache: !expr params$eval_models
+
+lit <- lm(add.terms(formula(relative_model), "literacy"),
+          data = main_exp_tidy)
+
+anova_results_linear(relative_model, lit)
+
+dc <- lm(add.terms(formula(relative_model), "dc_score"),
+          data = main_exp_tidy)
+
+anova_results_linear(relative_model, dc)
+
+```
+
+### Additional Analyses
+
+We find no effect of participants' scores on a Defensive Confidence test 
+($F$(`r in_paren(dc.df)`) = `r printnum(dc.F)`,
+*p* `r printp(dc.p, add_equals = TRUE)`). We find a significant effect of 
+participants' scores on a graph literacy test [@garcia_2016] 
+($F$(`r in_paren(lit.df)`) = `r printnum(lit.F)`,
+*p* `r printp(lit.p, add_equals = TRUE)`). Participants
+
 
 ## Discussion
 

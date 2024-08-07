@@ -424,7 +424,7 @@ topics were both strong and neutral in emotional valence, we began by
 using ChatGPT4 \citep{chatgpt} to generate 100 correlation statements
 using the following prompt:
 
-\begin{center}
+\begin{flushleft}
 
     ``Generate 100 statements that describe the correlation between two variables, such as :
 
@@ -434,7 +434,7 @@ using the following prompt:
 
     Try to match all the statements on emotionality.``
     
-\end{center}
+\end{flushleft}
 
 The full list of these statements can be found in the supplementary
 materials. Note that we cite our use of ChatGPT according to the AI Code
@@ -785,8 +785,8 @@ of rating time. Semi-partial R\textsuperscript{2} is also incuded.}
 \toprule
   & Estimate & Standard Error & df & t-value & \textit{p} & R\textsuperscript{2}\\
 \midrule
-(Intercept) & 4.93 & 0.117 & 75.49 & 42.04 & <0.001 & \\
-Rating Time & -1.53 & 0.023 & 5924.00 & -65.61 & <0.001 & 0.243\\
+(Intercept) & 4.98 & 0.083 & 151.69 & 59.76 & <0.001 & \\
+Rating Time & -1.72 & 0.016 & 11849.00 & -109.29 & <0.001 & 0.295\\
 \bottomrule
 \end{tabular}
 
@@ -794,15 +794,69 @@ Rating Time & -1.53 & 0.023 & 5924.00 & -65.61 & <0.001 & 0.243\\
 
 \end{table}%
 
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{beliefs_attitudes_atypical_scatterplots_files/figure-pdf/fig-abso-descriptives-1.pdf}
+
+}
+
+\caption{\label{fig-abso-descriptives}Boxplots showing ranges,
+interquartile ranges, medians (vertical lines) and means for
+participants' ratings of strength of relatedness before and after
+viewing either typical or atypical scatterplots.}
+
+\end{figure}%
+
 A likelihood ratio test revealed that the model including time of rating
 as a predictor explained significantly more variance than the null
-(\(\chi^2\)(1) = 3,236.13, \emph{p} \textless{} .001).
+(\(\chi^2\)(1) = 8,261.07, \emph{p} \textless{} .001). This model had
+random intercepts for participants. Statistical testing providing
+support for this hypothesis is shown in Table~\ref{tbl-abso-diff}.
+Figure~\ref{fig-abso-descriptives} shows means and boxplots for ratings
+of strength of relatedness before and after viewing scatterplots in
+either the typical or atypical condition.
 
-where participants' changes in belief strength were predicted by the
-scatterplot condition they were assigned to. Semi-partial
-R\textsuperscript{2}, which is presented in lieu of traditional measures
-of effect size, was calculated using the \textbf{r2glmm} package
-(version 0.1.2 \citep{r2glmm}).
+Our second hypothesis, that the difference between ratings of strength
+of relatedness before and after viewing experimental plots would be
+greater when participants were assigned to the atypical scatterplot
+condition, also received support. We built a linear mixed effects model
+whereby the difference was predicted by the condition the participant
+was assigned to. A likelihood ratio test revealed that the model
+including condition as a predictor explained significantly more variance
+than the null (\(F\)(1) = 72.07, \emph{p} \textless{} .001). This model
+contains no random effects terms. Statistics, along with semi-partial
+R\textsuperscript{2} can be seen in Table~\ref{tbl-rel}.
+
+\begin{table}
+
+\caption{\label{tbl-rel}Statistics for the significant main effect of
+condition on the difference between pre and post scatterplot viewing
+ratings for typical and atypical plots. Semi-partial
+R\textsuperscript{2} is also incuded.}
+
+\centering{
+
+\begin{tabular}[t]{lrrrrll}
+\toprule
+  & Estimate & Standard Error & df & t-value & \textit{p} & R\textsuperscript{2}\\
+\midrule
+(Intercept) & 1.72 & 0.022 & 2 & 78.22 & <0.001 & \\
+Condition & 0.37 & 0.044 & 5998 & 8.49 & <0.001 & 0.012\\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
+\subsubsection{Additional Analyses}\label{additional-analyses}
+
+We find no effect of participant's scores on a Defensive Confidence test
+(\(F\)(1) = 3.22, \emph{p} = .073). We find a significant effect of
+participants' scores on a graph literacy test \citep{garcia_2016}
+(\(F\)(1) = 15.78, \emph{p} \textless{} .001)
 
 \subsection{Discussion}\label{discussion}
 
