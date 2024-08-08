@@ -166,7 +166,6 @@ library(DescTools)
 library(Matrix)
 library(irr)
 library(bbplot)
-library(geomtextpath)
 
 # fix conflicts now using the conflicted package
 
@@ -768,6 +767,7 @@ make_sig_table_dc <- function (model) {
 }
 ```
 
+
 # Introduction {#sec-intro-main}
 
 # Related Work {#sec-rel-work-main}
@@ -831,6 +831,7 @@ weak and strong correlations, and those whose topics were both strong and
 neutral in emotional valence, we began by using ChatGPT4 [@chatgpt] to
 generate 100 correlation statements using the following prompt:
 
+
 ```{=tex}
 \begin{flushleft}
 
@@ -844,6 +845,7 @@ generate 100 correlation statements using the following prompt:
     
 \end{flushleft}
 ```
+
 
 The full list of these statements can be found in the supplementary materials.
 Note that we cite our use of ChatGPT according to the AI Code of Conduct developed
@@ -859,6 +861,7 @@ We found agreement above chance for both topic emotionality
 and strength of correlation ($\kappa$ = `r printnum(irr_corr$value, digits = 2)`,
 *p* `r printp(irr_corr$p.value, add_equals = TRUE)`), indicating moderate 
 levels of agreement in both cases [@cohen_1968; @fleiss_1969].
+
 
 ```{r}
 #| label: tbl-pre-test-hi
@@ -895,6 +898,7 @@ pre_test_statements_lo <- read_csv("data/pre_test_data.csv") %>%
 
 kbl(pre_test_statements_lo, booktabs = T)
 ```
+
 
 Following this, we selected strongly and weakly correlated statements with the
 highest level of absolute agreement, resulting in the 14 strongly correlated
@@ -944,6 +948,7 @@ in response to the statement "As participation in online experiments increases,
 society becomes happier."
 
 ## Results {#sec-results-pre}
+
 
 ```{r}
 #| label: kappa-pre-test
@@ -998,6 +1003,7 @@ consensus_df <- avg_emot %>%
   arrange(consensus) %>%
   slice_head(n =  2)
 ```
+
 
 All analyses were conducted using R (version `r paste0(R.version$major, ".", R.version$minor)`).
 We use the **irr** package to calculate Fleiss' Kappa to measure interrater agreement
@@ -1094,6 +1100,7 @@ representing **strongly** correlated variables (0.6 > *r* > 0.99). We used **ggp
 in R to create plots that echoed the style of a British news broadcaster and fictitiously
 claimed the data to be provided by the British National Health service. Examples
 of typical and atypical data-identical scatterplots can be seen in @fig-main-examples.
+
 
 ```{r}
 #| label: fig-example-plots
@@ -1228,6 +1235,7 @@ rm(slopeI, slopeI_floored, typical, standard_alpha, slopes) # clean up
 example_plots
 ```
 
+
 ## Method
 
 ### Participants
@@ -1289,6 +1297,7 @@ asked participants to set the slider to 0 or 1.
 
 ## Results
 
+
 ```{r}
 #| label: model-rating-absolute
 #| eval: !expr params$eval_models
@@ -1335,6 +1344,7 @@ diff_abso_model_cmpr <- comparison(diff_abso_model)
 anova_results_mixed(diff_abso_model, diff_abso_model_cmpr)
 ```
 
+
 All analyses were conducted using R (version `r paste0(R.version$major, ".", R.version$minor)`).
 The **buildmer** (version 2.11 [@buildmer]) and **lme4** (version 1.1-35.3 [@lme4])
 packages were used to build linear mixed effects models. Semi-partial R^2^,
@@ -1345,6 +1355,7 @@ viewed experimental items, we build a model whereby the rating is predicted by t
 in time the participant made it. Our first hypothesis was supported; there was a 
 significant difference in ratings of strength of relatedness made before and after
 participants viewed the experimental plots.
+
 
 ```{r}
 #| label: tbl-abso-diff
@@ -1391,6 +1402,7 @@ diff_abso_df_long %>%
   coord_flip() 
 ```
 
+
 A likelihood ratio test revealed that the model
 including time of rating as a predictor explained significantly more variance than
 the null ($\chi^2$(`r in_paren(diff_abso_model.df)`) = `r printnum(diff_abso_model.Chisq)`,
@@ -1399,6 +1411,7 @@ intercepts for participants. Statistical testing providing
 support for this hypothesis is shown in @tbl-abso-diff. @fig-abso-descriptives
 shows means and boxplots for ratings of strength of relatedness before and after
 viewing scatterplots in either the typical or atypical condition.
+
 
 ```{r}
 #| label: model-relative
@@ -1444,6 +1457,7 @@ relative_model_cmpr <- lm(belief_diff ~ 1, data = main_exp_tidy)
 anova_results_linear(relative_model_cmpr, relative_model)
 ```
 
+
 Our second hypothesis, that the difference between ratings of strength of relatedness
 before and after viewing experimental plots would be greater when participants
 were assigned to the atypical scatterplot condition, also received support. We built
@@ -1453,6 +1467,7 @@ including condition as a predictor explained significantly more variance than th
 ($F$(`r in_paren(relative_model.df)`) = `r printnum(relative_model.F)`,
 *p* `r printp(relative_model.p, add_equals = TRUE)`). This model contains no
 random effects terms. Statistics, along with semi-partial R^2^ can be seen in @tbl-rel.
+
 
 ```{r}
 #| label: tbl-rel
@@ -1481,7 +1496,9 @@ dc_model <- lm(belief_diff ~ 1 + condition * dc_score,
 anova_results_linear(relative_model, dc_model)
 ```
 
+
 ### Additional Analyses
+
 
 ```{r}
 #| label: tbl-lit-stat
@@ -1505,16 +1522,12 @@ make_sig_table_dc(dc_model)
 main_exp_tidy %>%
   ggplot(aes(x = literacy, y = belief_diff)) +
   geom_smooth(se = F, span = 1, colour = "black", method = "loess") +
-    geom_textpath(stat = "smooth",
+    geom_line(stat = "smooth",
             method = "loess",
             alpha = 0.5,
             span = 1,
-            aes(colour = condition, label = condition)) +
-  theme_ggdist() +
-  theme(legend.position = "none") +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 15)) +
-  labs(x = "Subjective Graph Literacy Score (/30)",
-       y = "Difference in Beliefs about Strength of Relatedness")
+            aes(colour = condition)) +
+  theme_ggdist()
 ```
 
 ```{r}
@@ -1530,6 +1543,7 @@ main_exp_tidy %>%
             aes(colour = condition)) +
   theme_ggdist()
 ```
+
 
 We find effects of participants' scores on a Defensive Confidence test 
 ($F$(`r in_paren(dc_model.df)`) = `r printnum(dc_model.F)`,
@@ -1557,3 +1571,4 @@ to focus on the interactions themselves.
 # Conclusion
 
 # References {.unnumbered}
+
