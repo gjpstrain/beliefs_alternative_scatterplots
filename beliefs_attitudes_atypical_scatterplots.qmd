@@ -1503,18 +1503,29 @@ make_sig_table_dc(dc_model)
 #| label: fig-lit-smooth
 #| include: true
 main_exp_tidy %>%
+  mutate("condition" = recode(condition,
+                              "A" = "Atypical",
+                              "T" = "Typical")) %>%
   ggplot(aes(x = literacy, y = belief_diff)) +
   geom_smooth(se = F, span = 1, colour = "black", method = "loess") +
     geom_textpath(stat = "smooth",
             method = "loess",
-            alpha = 0.5,
             span = 1,
+            vjust = -0.3,
+            hjust = 1,
+            size = 5,
             aes(colour = condition, label = condition)) +
+  scale_color_brewer(palette = "Set2", aesthetics = "color") +
   theme_ggdist() +
   theme(legend.position = "none") +
   scale_x_continuous(breaks = scales::pretty_breaks(n = 15)) +
   labs(x = "Subjective Graph Literacy Score (/30)",
-       y = "Difference in Beliefs about Strength of Relatedness")
+       y = "Difference in Beliefs about Strength of Relatedness") +
+  annotate(geom = "text",
+           label = "Grand Mean",
+           x = 29, y = 1.65, angle = -20
+           
+           )
 ```
 
 ```{r}
