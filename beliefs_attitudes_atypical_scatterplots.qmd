@@ -1452,7 +1452,7 @@ the participant was assigned to. A likelihood ratio test revealed that the model
 including condition as a predictor explained significantly more variance than the null
 ($F$(`r in_paren(relative_model.df)`) = `r printnum(relative_model.F)`,
 *p* `r printp(relative_model.p, add_equals = TRUE)`). This model contains no
-random effects terms. Statistics, along with semi-partial R^2^ can be seen in @tbl-rel.
+random effects terms. Test statistics, along with semi-partial R^2^ can be seen in @tbl-rel.
 
 ```{r}
 #| label: tbl-rel
@@ -1487,7 +1487,7 @@ anova_results_linear(relative_model, dc_model)
 #| label: tbl-lit-stat
 #| include: true
 #| tbl-cap: Statistics for main effects and interactions when scores on the Subjective Graph Literacy test are included in the model.
-#| 
+
 make_sig_table_lit(lit_model)
 ```
 
@@ -1507,7 +1507,6 @@ main_exp_tidy %>%
                               "A" = "Atypical",
                               "T" = "Typical")) %>%
   ggplot(aes(x = literacy, y = belief_diff)) +
-  geom_smooth(se = F, span = 1, colour = "black", method = "loess") +
     geom_textpath(stat = "smooth",
             method = "loess",
             span = 1,
@@ -1515,17 +1514,32 @@ main_exp_tidy %>%
             hjust = 1,
             size = 5,
             aes(colour = condition, label = condition)) +
+    geom_textpath(stat = "smooth",
+            method = "loess",
+            span = 1,
+            vjust = -0.3,
+            hjust = 1,
+            size = 5,
+            aes(x = literacy, y = belief_diff, label = "Grand Mean")) +
   scale_color_brewer(palette = "Set2", aesthetics = "color") +
   theme_ggdist() +
   theme(legend.position = "none") +
   scale_x_continuous(breaks = scales::pretty_breaks(n = 15)) +
   labs(x = "Subjective Graph Literacy Score (/30)",
        y = "Difference in Beliefs about Strength of Relatedness") +
+  annotate(geom = "segment",
+           x = 9,
+           y = 1.25,
+           xend = 9,
+           yend = 0.75,
+           size = 0.8,
+           colour = "black",
+           arrow = arrow(length = unit(.25, "cm"), angle = 45)) +
   annotate(geom = "text",
-           label = "Grand Mean",
-           x = 29, y = 1.65, angle = -20
-           
-           )
+           x = 13,
+           y = 1,
+           label = "Lower numbers represent\nsmaller changes in belief",
+           colour = "black")
 ```
 
 ```{r}
@@ -1553,6 +1567,25 @@ confidence. @tbl-lit-stat and @tbl-dc-stat contain statistics, including partial
 R^2^ for both factors respectively. Given the low estimates and effects sizes
 associated with the fixed effects of both of these factors, we instead choose
 to focus on the interactions themselves.
+
+#### Graph Literacy
+
+Mean differences in pre and post plot-viewing ratings of strength of relatedness
+can be seen in @fig-lit-smooth. Generally, participants who scored higher on
+a graph literacy test experienced smaller changes in their ratings of strength
+of relatedness. While the effect size associated with this interaction is small
+(~0.01, see @tbl-lit-stat), and does not alter the overall pattern of results, 
+it is in line with previous work suggesting that those with higher levels of
+graph or visualization literacy show better performance in inference tasks
+related to visualizations [@canham_2010], are more capable of describing effects
+that visualisations aim to communicate [@shah_2011], and are able to preferentially
+attend to relevant features to a greater degree [@okan_2015], than those with
+lower levels of graph literacy. In the present study, we provide evidence
+that those with greater levels of graph literacy are *less susceptible* to 
+
+
+are able to attend to the relevant features of
+a visualization to a greater extent [@okan_2015]
 
 
 
