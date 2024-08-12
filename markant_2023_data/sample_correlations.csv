@@ -1,0 +1,13 @@
+,var,x,y,r,CI_lower,CI_upper
+0,Union Membership Rate_Income Inequality,%Mem19,Income Inequality,-0.016,-0.225,0.222
+1,Union Membership Rate_Median Income,%Mem19,Median Income 2019,0.461,0.288,0.649
+2,Union Membership Rate_Poverty Rate,%Mem19,Poverty Rate 2019,-0.416,-0.562,-0.246
+3,Union Membership Rate_Proportion Uninsured,%Mem19,% Uninsured 2019,-0.515,-0.686,-0.297
+4,Union Membership Rate_State GDP Growth,%Mem19,GDP Growth 2019,-0.113,-0.391,0.2
+5,Union Membership Rate_Unemployment Rate,%Mem19,Unemployment Rate 2019,0.126,-0.161,0.425
+6,Vaccination Rate_Adverse Vaccination Events,metrics.vaccinationsCompletedRatio,vaers_total,0.128,-0.067,0.338
+7,Vaccination Rate_Case Density,metrics.vaccinationsCompletedRatio,metrics.caseDensity,-0.372,-0.568,-0.151
+8,Vaccination Rate_Death Rate,metrics.vaccinationsCompletedRatio,deaths_per_capita_new,-0.662,-0.783,-0.512
+9,Vaccination Rate_I.C.U. Capacity Ratio,metrics.vaccinationsCompletedRatio,metrics.icuCapacityRatio,-0.135,-0.441,0.192
+10,Vaccination Rate_Infection Rate,metrics.vaccinationsCompletedRatio,metrics.infectionRate,0.494,0.333,0.67
+11,Vaccination Rate_Test Positivity Ratio,metrics.vaccinationsCompletedRatio,metrics.testPositivityRatio,-0.525,-0.725,-0.273

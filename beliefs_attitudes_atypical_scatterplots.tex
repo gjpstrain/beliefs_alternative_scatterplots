@@ -366,8 +366,9 @@ Both our pre and main studies were conducted according to the principles
 of open and reproducible research \citep{ayris_2018}. We pre-registered
 hypotheses and analysis plans with the Open Science Framework (OSF) for
 the pre-study\footnote{https://osf.io/xuf4d} and the main
-experiment\footnote{tbc}, and there were no deviations from them. All
-data and analysis code are included in a GitHub repository\footnote{https://github.com/gjpstrain/beliefs\_attitudes\_atypical}.
+experiment\footnote{https://osf.io/anmez}, and there were no deviations
+from them. All data and analysis code are included in a GitHub
+repository\footnote{https://github.com/gjpstrain/beliefs\_attitudes\_atypical}.
 This repository contains instructions for building a Docker container
 \citep{merkel_2014} that reproduces the computational environment the
 paper was written in. This allows for full replication of stimuli,
@@ -898,30 +899,6 @@ Condition * Defensive Confidence & 0.04 & 0.007 & 5996 & 6.57 & <0.001 & 0.007\\
 
 \end{table}%
 
-\begin{figure}
-
-\centering{
-
-\captionsetup{labelsep=none}\includegraphics{beliefs_attitudes_atypical_scatterplots_files/figure-pdf/fig-lit-smooth-1.pdf}
-
-}
-
-\caption{\label{fig-lit-smooth}}
-
-\end{figure}%
-
-\begin{figure}
-
-\centering{
-
-\captionsetup{labelsep=none}\includegraphics{beliefs_attitudes_atypical_scatterplots_files/figure-pdf/fig-dc-smooth-1.pdf}
-
-}
-
-\caption{\label{fig-dc-smooth}}
-
-\end{figure}%
-
 We find effects of participants' scores on a Defensive Confidence test
 (\(F\)(2) = 23.23, \emph{p} \textless{} .001) and of participants'
 scores on a graph literacy test \citep{garcia_2016} (\(F\)(2) = 39.23,
@@ -931,15 +908,69 @@ Table~\ref{tbl-lit-stat} and Table~\ref{tbl-dc-stat} contain statistics,
 including partial R\textsuperscript{2} for both factors respectively.
 Given the low estimates and effects sizes associated with the fixed
 effects of both of these factors, we instead choose to focus on the
-interactions themselves.
+interactions themselves; see Section~\ref{sec-add-analyses} for further
+discussion of these effects.
 
-\paragraph{Graph Literacy}\label{graph-literacy}
+\subsection{Discussion}\label{discussion}
+
+\subsubsection{Graph Literacy \& Defensive
+Confidence}\label{sec-add-analyses}
+
+\begin{figure}
+
+\centering{
+
+\includegraphics{beliefs_attitudes_atypical_scatterplots_files/figure-pdf/fig-lit-smooth-1.pdf}
+
+}
+
+\caption{\label{fig-lit-smooth}Illustrating how differences in beliefs
+about strength of relatedness change as a function of partcipants'
+scores on the subjective graph literacy test; smoothed curves are shown
+for the grand mean, as well as separately for atypical and typical
+scatterplot presentation conditions.}
+
+\end{figure}%
 
 Mean differences in pre and post plot-viewing ratings of strength of
 relatedness can be seen in Figure~\ref{fig-lit-smooth}. Generally,
-participants who scored higher on a graph literacy test
+participants who scored higher on a graph literacy test experienced
+smaller changes in their ratings of strength of relatedness. While the
+effect size associated with this interaction is small
+(\textasciitilde0.01, see Table~\ref{tbl-lit-stat}), and does not alter
+the overall pattern of results, it is in line with previous work
+suggesting that those with higher levels of graph or visualization
+literacy show better performance in inference tasks related to
+visualizations \citep{canham_2010}, are more capable of describing
+effects that visualisations aim to communicate \citep{shah_2011}, and
+are able to preferentially attend to relevant features of visualizations
+to a greater degree \citep{okan_2015}, than those with lower levels of
+graph literacy. In the present study, we provide evidence that those
+with greater levels of graph literacy are \emph{less susceptible} to
+having their beliefs changed by visualizations, although this difference
+is somewhat negated if participants viewed atypical scatterplots, in
+which case levels of belief change were relatively consistent. We
+hypothesize that this is due to the non-standard nature of the atypical
+scatterplots used in that condition.
 
-\subsection{Discussion}\label{discussion}
+\begin{figure}
+
+\centering{
+
+\includegraphics{beliefs_attitudes_atypical_scatterplots_files/figure-pdf/fig-dc-smooth-1.pdf}
+
+}
+
+\caption{\label{fig-dc-smooth}Illustrating how differences in beliefs
+about strength of relatedness change as a function of partcipants'
+scores on the defensive confidence test; smoothed curves are shown for
+the grand mean, as well as separately for atypical and typical
+scatterplot presentation conditions.}
+
+\end{figure}%
+
+are able to attend to the relevant features of a visualization to a
+greater extent \citep{okan_2015}
 
 \section{General Discussion}\label{general-discussion}
 
