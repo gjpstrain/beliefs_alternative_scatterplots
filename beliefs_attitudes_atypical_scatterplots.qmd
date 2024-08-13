@@ -447,6 +447,18 @@ literacy <- distinct(main_exp_tidy, participant,
                         .keep_all = TRUE) %>%
   summarise(mean = mean(literacy), sd = sd(literacy))
 
+# extract defensive confidence data into separate df
+
+def_con <- distinct(main_exp_tidy, participant,
+                        .keep_all = TRUE) %>%
+  summarise(mean = mean(dc_score), sd = sd(dc_score))
+
+# extract topic emotionality data into separate df
+
+topic_emo <- distinct(main_exp_tidy, participant,
+                        .keep_all = TRUE) %>%
+  summarise(mean = mean(slider_emotion.response), sd = sd(slider_emotion.response))
+
 # remove all intermediate dfs
 
 rm(main_exp_A,
@@ -732,7 +744,7 @@ make_sig_table_dc <- function (model) {
   # subset model summary to get list of fixed/interaction effects
   # then make this a data frame, rename columns, fix p value formatting
   
-  model_summary <- summary(dc_model)
+  model_summary <- summary(model)
   
   coef_table <- model_summary$coefficients
 
@@ -766,11 +778,87 @@ make_sig_table_dc <- function (model) {
   
   return(table)
 }
+
+make_sig_table_emo <- function (model) {
+  
+  # buildmer class models need reassigned to lmer class for further use
+  
+  if (class(model) == "buildmer") model <- model@model
+  
+  # subset model summary to get list of fixed/interaction effects
+  # then make this a data frame, rename columns, fix p value formatting
+  
+  model_summary <- summary(model)
+  
+  coef_table <- model_summary$coefficients
+
+  df_residual <- model_summary$df[2]
+  df_model <- model_summary$df[1]
+  
+  coef_table <- cbind(coef_table, "df" = c(rep(df_model, nrow(coef_table) - 1), df_residual))
+
+  df <- as_tibble(coef_table, rownames = "Effect") %>%
+    rename("Standard Error" = "Std. Error",
+           "t-value" = "t value",
+    "p" = "Pr(>|t|)") %>%
+    mutate(p = scales::pvalue(p)) %>%
+    rename("\\textit{p}" = "p") %>%
+    relocate(df, .after = "Standard Error") 
+  
+    r_squared <- r2beta(model, method = "nsj") %>%
+    select(c("Effect", "Rsq")) %>%
+    mutate(Rsq = round(Rsq, 3)) %>%
+    mutate(Rsq = ifelse(row_number() == 1, "", Rsq)) %>%
+    rename("R\\textsuperscript{2}" = "Rsq") 
+    
+    df <- left_join(df, r_squared, by = "Effect") %>%
+      mutate("Effect" = recode(Effect,
+                               "condition1" = "Condition",
+                               "slider_emotion.response" = "Topic Emotionality Rating",
+                               "condition1:slider_emotion.response" = "Condition * Topic Emotionality Rating")) %>%
+      column_to_rownames(var = "Effect")
+  
+  table <- kbl(df, booktabs = T, digits = c(2,3,2,2,2,2,3), escape = F)
+  
+  return(table)
+}
 ```
 
 # Introduction {#sec-intro-main}
 
+- scatterplots are used for
+- scatterplots display/communicate
+- key issue: correlation is underestimated in scatterplots
+- this is problematic as normal people have to use them
+- responsibility of data viz designers etc
+- recent work has atttempted to address these issues
+- and has seen success by using point size and opacity manipulations
+- as of writing, this work has only provided evidence about perceptual effects using a simple estimation paradigm
+- and has not investigated whether these effects can extend to cognition about relatedness between real variables
+- this is important wrt the potential for using the manipulations to improve visualisations
+- we present a 2 experiment study in which we first use novel research methods and
+crowdsourcing to select a statement about relatedness that is agreed upon (phrasing),
+then we test the propensity for previously described visual manipulations to 
+alter beliefs about relatedness, taking into account various additional participant qualities.
+
 # Related Work {#sec-rel-work-main}
+
+- Correlation Perception
+  Testing
+  Drivers
+- Scatterplots
+  Opacity Adjustments in Scatterplots
+  Point Size Adjustments in Scatterplots
+- Perception & Cognition in Data Visualization
+  Differences between them
+  Why study the extension from one to the other?
+  Beliefs changing as a result of viewing visualisations
+    the persuasive power of data viz
+    why this is important over just presenting numbers
+    maybe something specifically about scatterplots
+    lead onto the primary motivation of this study
+  hypotheses- statement  
+    
 
 # General Methods {#sec-general-methods}
 
@@ -789,9 +877,9 @@ container [@merkel_2014] that reproduces the computational environment the paper
 was written in. This allows for full replication of stimuli, figures, analysis,
 and the paper itself. Ethical approval was granted by the (removed for anon).
 
-[^1]: https://osf.io/xuf4d
-[^2]: https://osf.io/anmez
-[^3]: https://github.com/gjpstrain/beliefs_attitudes_atypical
+[^1]: removed for anon
+[^2]: removed for anon
+[^3]: removed for anon
 
 ## Crowdsourcing
 
@@ -1245,7 +1333,11 @@ were included in the full analysis (`r printnum(gender_main$Male, digits = 1)`% 
 Participants' mean age was `r printnum(age_main$mean, digits = 1)`
 (*SD* = `r printnum(age_main$sd, digits = 1)`). Participants' mean graph literacy
 score was `r printnum(literacy$mean, digits = 1)` (*SD* = `r printnum(literacy$sd, digits = 1)`)
-out of 30. On average, participants took `r printnum(time_taken_main$mean, digits = 1)`
+out of 30, their mean defensive confidence score was `r printnum(def_con$mean, digits = 1)`
+(*SD* = `r printnum(def_con$sd, digits = 1)`) out of 60, and their mean rating of 
+topic emotionality was `r printnum(topic_emo$mean, digits = 1)`
+(*SD* = `r printnum(topic_emo$sd, digits = 1)`) on a 7 point Likert scale.
+On average, participants took `r printnum(time_taken_main$mean, digits = 1)`
 minutes to complete the experiment (*SD* = `r printnum(time_taken_main$sd)`).
 
 ### Design
@@ -1465,6 +1557,8 @@ random effects terms. Test statistics, along with semi-partial R^2^ can be seen 
 make_sig_table_rel(relative_model)
 ```
 
+### Additional Analyses
+
 ```{r}
 #| label: add-analyses
 #| eval: !expr params$eval_models
@@ -1482,9 +1576,13 @@ dc_model <- lm(belief_diff ~ 1 + condition * dc_score,
           data = main_exp_tidy)
 
 anova_results_linear(relative_model, dc_model)
+
+emo_model <- lm(belief_diff ~ 1 + condition * slider_emotion.response,
+                data = main_exp_tidy)
+
+anova_results_linear(relative_model, emo_model)
 ```
 
-### Additional Analyses
 
 ```{r}
 #| label: tbl-lit-stat
@@ -1502,22 +1600,35 @@ make_sig_table_lit(lit_model)
 make_sig_table_dc(dc_model)
 ```
 
+```{r}
+#| label: tbl-emo-stat
+#| include: true
+#| tbl-cap: Statistics for main effects and interactions when likert ratings of topic emotionality are included in the model.
+
+make_sig_table_emo(emo_model)
+```
+
 We find effects of participants' scores on a Defensive Confidence test 
 ($F$(`r in_paren(dc_model.df)`) = `r printnum(dc_model.F)`,
-*p* `r printp(dc_model.p, add_equals = TRUE)`) and of 
-participants' scores on a graph literacy test [@garcia_2016] 
-($F$(`r in_paren(lit_model.df)`) = `r printnum(lit_model.F)`,
-*p* `r printp(lit_model.p, add_equals = TRUE)`). There are significant fixed
+*p* `r printp(dc_model.p, add_equals = TRUE)`), participants' scores on a graph
+literacy test [@garcia_2016] ($F$(`r in_paren(lit_model.df)`) = `r printnum(lit_model.F)`,
+*p* `r printp(lit_model.p, add_equals = TRUE)`), and of how emotional participants'
+rated the chosen correlative statement before beginning the block of trials
+($F$(`r in_paren(emo_model.df)`) = `r printnum(emo_model.F)`,
+*p* `r printp(emo_model.p, add_equals = TRUE)`). There are significant fixed
 and interactive effects present for both graph literacy and defensive
 confidence. @tbl-lit-stat and @tbl-dc-stat contain statistics, including partial
-R^2^ for both factors respectively. Given the low estimates and effects sizes
-associated with the fixed effects of both of these factors, we instead choose
+R^2^ for both factors respectively. We found no significant fixed effect of 
+emotionality ratings, but an interaction was observed, which can be see in 
+@tbl-emo-stat. Given the low estimates and effects sizes
+associated with the fixed effects of defensive confidence and graph literacy,
+and the the absence of a fixed effect of emotionality, we instead choose
 to focus on the interactions themselves; see @sec-add-analyses for further discussion
 of these effects.
 
 ## Discussion
 
-### Graph Literacy & Defensive Confidence {#sec-add-analyses}
+### Graph Literacy, Defensive Confidence, and Topic Emotionality {#sec-add-analyses}
 
 ```{r}
 #| label: fig-lit-smooth
@@ -1659,18 +1770,92 @@ who formed the typical scatterplot presentation group had a more restricted rang
 of defensive confidence scores, topping out at `r printnum(dc_max_typical$max, digits = 0)`;
 and secondly, that the unfamiliar nature of the atypical scatterplots was protective
 against against an unexpected, standard behaviour whereby very high levels of 
-defensive confidence decrease susceptibility to belief change. Further experimental
-work would be required to provide concrete explanations for the interactive
-effects of graph literacy and defensive confidence in the current experimental
-paradigm.
+defensive confidence decrease susceptibility to belief change. 
 
 [^1]: The GitHub repository associated with this paper contains an R script that performs this analysis.
- 
+
+
+```{r}
+#| label: fig-emo-smooth
+#| include: true
+#| fig-cap: Illustrating how differences in beliefs about strength of relatedness change as a function of partcipants' scores on the subjective graph literacy test; smoothed curves are shown for the grand mean, as well as separately for atypical and typical scatterplot presentation conditions.
+
+main_exp_tidy %>%
+  mutate("condition" = recode(condition,
+                              "A" = "Atypical",
+                              "T" = "Typical")) %>%
+  ggplot(aes(x = slider_emotion.response, y = belief_diff)) +
+    geom_textpath(stat = "smooth",
+            method = "loess",
+            span = 1,
+            vjust = 1.4,
+            hjust = .95,
+            size = 5,
+            aes(colour = condition, label = condition)) +
+    geom_textpath(stat = "smooth",
+            method = "loess",
+            span = 1,
+            vjust = -0.3,
+            hjust = 1,
+            size = 5,
+            aes(x = slider_emotion.response, y = belief_diff, label = "Grand Mean")) +
+  scale_color_brewer(palette = "Set2", aesthetics = "color") +
+  theme_ggdist() +
+  theme(legend.position = "none") +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 7)) +
+  labs(x = "Topic Emotionality Rating (/7)",
+       y = "Difference in Beliefs about Strength of Relatedness") +
+  annotate(geom = "segment",
+           x = 1.5,
+           y = 1.25,
+           xend = 1.5,
+           yend = 0.75,
+           size = 0.8,
+           colour = "black",
+           arrow = arrow(length = unit(.25, "cm"), angle = 45)) +
+  annotate(geom = "text",
+           x = 2.75,
+           y = 1,
+           label = "Lower numbers represent\nsmaller changes in belief",
+           colour = "black")
+```
+
+Examining @fig-emo-smooth, it would appear that the interaction we see between 
+belief change and topic emotionality is driven by those participants who
+rated the statement low on emotionality having different levels of belief change
+between atypical and typical scatterplot presentation conditions; in this case levels 
+of belief change were much higher for the group that viewed the atypical 
+scatterplot designs. There is a broad research space regarding emotionality and
+data visualization [@lan_2023], and it is clear from previous work that emotion
+affects perception, cognition, and behaviour [@phelps_2006; @harrison_2013, probably look for more]
+with regard to data visualization. Harrison et al. [@harrison _2013] found that 
+participants who were positively primed performed better on a low-level
+visual judgement task. Comparison of this work to the current is difficult, as
+*success* on our task is hard to define. From our data, it is unclear why participants
+who rated the correlative statement as "strongly negative" experienced significantly
+higher levels of belief change when they viewed atypical scatterplots. We decided to
+capture the emotionality of the statement simply because we had done so in
+the pre-study; we made no predictions based on it, and chose a broad measure of
+emotionality, meaning we did not capture intensity separately from valence. It 
+may be that the strong negative emotion amplified the effect of scatterplot condition
+in a way that strong positive emotion did not, although it is unclear why this has occurred.
+Further experimental work is required to provide concrete explanations for the interactive
+effects of graph literacy, defensive confidence, and statement emotionality
+in the current experimental paradigm; as the investigation of these is not the prime
+goal of the present study, however, we do not conisder this a shortcoming.
+
+
+
 # General Discussion
 
 # Limitations
 
 # Future Work
+
+- maybe something about attitudes
+- understanding how DC and literacy interact
+- extending beliefs and attitudes to behavioural change (golden ticket really)
+
 
 # Conclusion
 

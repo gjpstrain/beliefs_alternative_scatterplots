@@ -351,7 +351,56 @@ perception, scatterplot, crowdsourced}
 
 \section{Introduction}\label{sec-intro-main}
 
+\begin{itemize}
+\tightlist
+\item
+  scatterplots are used for
+\item
+  scatterplots display/communicate
+\item
+  key issue: correlation is underestimated in scatterplots
+\item
+  this is problematic as normal people have to use them
+\item
+  responsibility of data viz designers etc
+\item
+  recent work has atttempted to address these issues
+\item
+  and has seen success by using point size and opacity manipulations
+\item
+  as of writing, this work has only provided evidence about perceptual
+  effects using a simple estimation paradigm
+\item
+  and has not investigated whether these effects can extend to cognition
+  about relatedness between real variables
+\item
+  this is important wrt the potential for using the manipulations to
+  improve visualisations
+\item
+  we present a 2 experiment study in which we first use novel research
+  methods and crowdsourcing to select a statement about relatedness that
+  is agreed upon (phrasing), then we test the propensity for previously
+  described visual manipulations to alter beliefs about relatedness,
+  taking into account various additional participant qualities.
+\end{itemize}
+
 \section{Related Work}\label{sec-rel-work-main}
+
+\begin{itemize}
+\tightlist
+\item
+  Correlation Perception Testing Drivers
+\item
+  Scatterplots Opacity Adjustments in Scatterplots Point Size
+  Adjustments in Scatterplots
+\item
+  Perception \& Cognition in Data Visualization Differences between them
+  Why study the extension from one to the other? Beliefs changing as a
+  result of viewing visualisations the persuasive power of data viz why
+  this is important over just presenting numbers maybe something
+  specifically about scatterplots lead onto the primary motivation of
+  this study hypotheses- statement
+\end{itemize}
 
 \section{General Methods}\label{sec-general-methods}
 
@@ -367,14 +416,13 @@ of open and reproducible research \citep{ayris_2018}. We pre-registered
 hypotheses and analysis plans with the Open Science Framework (OSF) for
 the pre-study\footnote{The GitHub repository associated with this paper
   contains an R script that performs this analysis.} and the main
-experiment\footnote{https://osf.io/anmez}, and there were no deviations
-from them. All data and analysis code are included in a GitHub
-repository\footnote{https://github.com/gjpstrain/beliefs\_attitudes\_atypical}.
-This repository contains instructions for building a Docker container
-\citep{merkel_2014} that reproduces the computational environment the
-paper was written in. This allows for full replication of stimuli,
-figures, analysis, and the paper itself. Ethical approval was granted by
-the (removed for anon).
+experiment\footnote{removed for anon}, and there were no deviations from
+them. All data and analysis code are included in a GitHub
+repository\footnote{removed for anon}. This repository contains
+instructions for building a Docker container \citep{merkel_2014} that
+reproduces the computational environment the paper was written in. This
+allows for full replication of stimuli, figures, analysis, and the paper
+itself. Ethical approval was granted by the (removed for anon).
 
 \subsection{Crowdsourcing}\label{crowdsourcing}
 
@@ -714,8 +762,11 @@ meaning their data were excluded per pre-registration stipulations. Data
 from the remaining 150 participants were included in the full analysis
 (48.7\% male, 48.7\% female, and 2.7\% non-binary). Participants' mean
 age was 39.3 (\emph{SD} = 11.5). Participants' mean graph literacy score
-was 21.3 (\emph{SD} = 4.3) out of 30. On average, participants took 14.2
-minutes to complete the experiment (\emph{SD} = 6.41).
+was 21.3 (\emph{SD} = 4.3) out of 30, their mean defensive confidence
+score was 43.0 (\emph{SD} = 6.8) out of 60, and their mean rating of
+topic emotionality was 2.9 (\emph{SD} = 1.3) on a 7 point Likert scale.
+On average, participants took 14.2 minutes to complete the experiment
+(\emph{SD} = 6.41).
 
 \subsubsection{Design}\label{design}
 
@@ -726,7 +777,9 @@ designed deliberately to elicit higher levels of belief change.
 Participant saw all experimental items for their group, along with 4
 attention check items, in a fully randomised order. All experimental
 code, materials, and instructions are hosted on GitLab as two separate
-experiments{[}insert{]}
+experiments \footnote{The GitHub repository associated with this paper
+  contains an R script that performs this analysis.} \footnote{removed
+  for anon}
 
 \subsubsection{Procedure}\label{procedure}
 
@@ -900,22 +953,50 @@ Condition * Defensive Confidence & 0.04 & 0.007 & 5996 & 6.57 & <0.001 & 0.007\\
 
 \end{table}%
 
+\begin{table}
+
+\caption{\label{tbl-emo-stat}Statistics for main effects and
+interactions when likert ratings of topic emotionality are included in
+the model.}
+
+\centering{
+
+\begin{tabular}[t]{lrrrrll}
+\toprule
+  & Estimate & Standard Error & df & t-value & \textit{p} & R\textsuperscript{2}\\
+\midrule
+(Intercept) & 1.79 & 0.054 & 4 & 33.48 & <0.001 & \\
+Condition & 0.68 & 0.107 & 4 & 6.33 & <0.001 & 0.007\\
+Topic Emotionality Rating & -0.03 & 0.017 & 4 & -1.58 & 0.115 & 0\\
+Condition * Topic Emotionality Rating & -0.11 & 0.034 & 5996 & -3.15 & 0.002 & 0.002\\
+\bottomrule
+\end{tabular}
+
+}
+
+\end{table}%
+
 We find effects of participants' scores on a Defensive Confidence test
-(\(F\)(2) = 23.23, \emph{p} \textless{} .001) and of participants'
-scores on a graph literacy test \citep{garcia_2016} (\(F\)(2) = 39.23,
-\emph{p} \textless{} .001). There are significant fixed and interactive
+(\(F\)(2) = 23.23, \emph{p} \textless{} .001), participants' scores on a
+graph literacy test \citep{garcia_2016} (\(F\)(2) = 39.23, \emph{p}
+\textless{} .001), and of how emotional participants' rated the chosen
+correlative statement before beginning the block of trials (\(F\)(2) =
+5.45, \emph{p} = .004). There are significant fixed and interactive
 effects present for both graph literacy and defensive confidence.
 Table~\ref{tbl-lit-stat} and Table~\ref{tbl-dc-stat} contain statistics,
-including partial R\textsuperscript{2} for both factors respectively.
+including partial R\textsuperscript{2} for both factors respectively. We
+found no significant fixed effect of emotionality ratings, but an
+interaction was observed, which can be see in Table~\ref{tbl-emo-stat}.
 Given the low estimates and effects sizes associated with the fixed
-effects of both of these factors, we instead choose to focus on the
+effects of defensive confidence and graph literacy, and the the absence
+of a fixed effect of emotionality, we instead choose to focus on the
 interactions themselves; see Section~\ref{sec-add-analyses} for further
 discussion of these effects.
 
 \subsection{Discussion}\label{discussion}
 
-\subsubsection{Graph Literacy \& Defensive
-Confidence}\label{sec-add-analyses}
+\subsubsection{Graph Literacy, Defensive Confidence, and Topic
+Emotionality}\label{sec-add-analyses}
 
 \begin{figure}
 
@@ -997,15 +1078,75 @@ that despite following the normal pattern of results for low to moderate
 levels of defensive confidence, those participants who viewed the
 typical scatterplots experienced a drop in belief change as defensive
 confidence increased past \textasciitilde{} 36/60. There are several
-potential explanations in the data; the 75 participants who formed the
-typical scatterplot presentation group had a more restricted range of
-defensive confidence scores, topping out at 52
+potential explanations in the data; firstly, that the 75 participants
+who formed the typical scatterplot presentation group had a more
+restricted range of defensive confidence scores, topping out at 52; and
+secondly, that the unfamiliar nature of the atypical scatterplots was
+protective against against an unexpected, standard behaviour whereby
+very high levels of defensive confidence decrease susceptibility to
+belief change.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics{beliefs_attitudes_atypical_scatterplots_files/figure-pdf/fig-emo-smooth-1.pdf}
+
+}
+
+\caption{\label{fig-emo-smooth}Illustrating how differences in beliefs
+about strength of relatedness change as a function of partcipants'
+scores on the subjective graph literacy test; smoothed curves are shown
+for the grand mean, as well as separately for atypical and typical
+scatterplot presentation conditions.}
+
+\end{figure}%
+
+Examining Figure~\ref{fig-emo-smooth}, it would appear that the
+interaction we see between belief change and topic emotionality is
+driven by those participants who rated the statement low on emotionality
+having different levels of belief change between atypical and typical
+scatterplot presentation conditions; in this case levels of belief
+change were much higher for the group that viewed the atypical
+scatterplot designs. There is a broad research space regarding
+emotionality and data visualization \citep{lan_2023}, and it is clear
+from previous work that emotion affects perception, cognition, and
+behaviour \citep[probably look for more]{phelps_2006, harrison_2013}
+with regard to data visualization. Harrison et al.~{[}\citet{harrison}
+\_2013{]} found that participants who were positively primed performed
+better on a low-level visual judgement task. Comparison of this work to
+the current is difficult, as \emph{success} on our task is hard to
+define. From our data, it is unclear why participants who rated the
+correlative statement as ``strongly negative'' experienced significantly
+higher levels of belief change when they viewed atypical scatterplots.
+We decided to capture the emotionality of the statement simply because
+we had done so in the pre-study; we made no predictions based on it, and
+chose a broad measure of emotionality, meaning we did not capture
+intensity separately from valence. It may be that the strong negative
+emotion amplified the effect of scatterplot condition in a way that
+strong positive emotion did not, although it is unclear why this has
+occurred. Further experimental work is required to provide concrete
+explanations for the interactive effects of graph literacy, defensive
+confidence, and statement emotionality in the current experimental
+paradigm; as the investigation of these is not the prime goal of the
+present study, however, we do not conisder this a shortcoming.
 
 \section{General Discussion}\label{general-discussion}
 
 \section{Limitations}\label{limitations}
 
 \section{Future Work}\label{future-work}
+
+\begin{itemize}
+\tightlist
+\item
+  maybe something about attitudes
+\item
+  understanding how DC and literacy interact
+\item
+  extending beliefs and attitudes to behavioural change (golden ticket
+  really)
+\end{itemize}
 
 \section{Conclusion}\label{conclusion}
 
