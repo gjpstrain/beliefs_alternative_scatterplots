@@ -1255,7 +1255,10 @@ to either group A, in which case they viewed typical scatterplots, or group B,
 in which they viewed atypical scatterplots designed deliberately to elicit higher
 levels of belief change. Participant saw all experimental items for their group, along
 with 4 attention check items, in a fully randomised order. All experimental code, 
-materials, and instructions are hosted on GitLab as two separate experiments[insert]
+materials, and instructions are hosted on GitLab as two separate experiments [^1] [^2]
+
+[^1]: removed for anon
+[^2]: removed for anon
 
 ### Procedure
 
@@ -1478,11 +1481,6 @@ anova_results_linear(relative_model, lit_model)
 dc_model <- lm(belief_diff ~ 1 + condition * dc_score,
           data = main_exp_tidy)
 
-dc_model_rand <- lm(belief_diff ~ 1 + condition * dc_score +
-                      (1 | participant) +
-                      (1 + item_no | participant)
-          data = main_exp_tidy)
-
 anova_results_linear(relative_model, dc_model)
 ```
 
@@ -1516,7 +1514,6 @@ R^2^ for both factors respectively. Given the low estimates and effects sizes
 associated with the fixed effects of both of these factors, we instead choose
 to focus on the interactions themselves; see @sec-add-analyses for further discussion
 of these effects.
-
 
 ## Discussion
 
@@ -1593,6 +1590,7 @@ main_exp_tidy %>%
   mutate("condition" = recode(condition,
                               "A" = "Atypical",
                               "T" = "Typical")) %>%
+  #filter(dc_score < 53) %>%
   ggplot(aes(x = dc_score, y = belief_diff)) +
     geom_textpath(stat = "smooth",
             method = "loess",
@@ -1629,6 +1627,13 @@ main_exp_tidy %>%
            colour = "black")
 ```
 
+```{r}
+#| label: dc-max
+
+dc_max_typical <- main_exp_tidy %>% filter(condition == "T") %>%
+  summarise(max = max(dc_score))
+```
+
 We observe an opposing pattern of results when examining the effects of defensive confidence
 on participants' propensity for belief change. Generally, participants who scored 
 more highly on the defensive confidence test experienced greater levels of belief
@@ -1649,8 +1654,15 @@ present between defensive confidence and scatterplot condition is novel (see @fi
 It would appear that despite following the normal pattern of results for low to 
 moderate levels of defensive confidence, those participants who viewed the typical
 scatterplots experienced a drop in belief change as defensive confidence increased
-past ~ 36/60. 
-
+past ~ 36/60. There are several potential explanations in the data; firstly, that the 75 participants
+who formed the typical scatterplot presentation group had a more restricted range
+of defensive confidence scores, topping out at `r printnum(dc_max_typical$max, digits = 0)`;
+and secondly, that the unfamiliar nature of the atypical scatterplots was protective
+against against an unexpected, standard behaviour whereby very high levels of 
+defensive confidence decrease susceptibility to belief change. Further experimental
+work would be required to provide concrete explanations for the interactive
+effects of graph literacy and defensive confidence in the current experimental
+paradigm.
 
 [^1]: The GitHub repository associated with this paper contains an R script that performs this analysis.
  
