@@ -351,20 +351,67 @@ perception, scatterplot, crowdsourced}
 
 \section{Introduction}\label{sec-intro-main}
 
+Utilized for communication in a wide variety of contexts, scatterplots
+are simple representations of (usually) bivariate data. They were
+estimated in 1983 to account for between 70 and 80 percent of data
+visualizations in scientific publications \citep{tufte_1986}, and while
+there is no doubt that the range of data visualizations employed in and
+beyond science is now far broader, scatterplots remain an important tool
+for the data visualization designer. The appeal of researching
+scatterplots lies in evidence that people generally interpret them in
+similar ways \citep{kay_2015}, that they are interpreted rapidly
+\citep{rensink_2014}, and that they are ubiquitous in both academic
+\citep{tufte_1986} and non-academic contexts.
+
+While most commonly used to communicate the linear correlation, or level
+of relatedness, between a pair of variables, scatterplots can also be
+designed to facilitate the detection of outliers, to convey differences
+between clusters, or to display non-linear correlations. The suitability
+of scatteplots to such a range of tasks, and the opportunity for
+designers to design with a range of tasks in mind, plays a large part in
+their popularity. Building on previous work, we elect to focus on the
+use of scatterplots for the communication of linear, bivariate, positive
+correlation. There is evidence that, while correlation perception in
+scatterplots experiences low levels of interindividual variance
+(especially when compared to other visualizations that communicate the
+same idea {[}\citet{harrison_2014}; kay\_2015{]}), our accuracy in
+interpretation is poor. Studies asking participants to numerically
+estimate correlation
+\citep{strahan_1978, bobko_1979, cleveland_1982, lane_1985, lauer_1989, collyer_1990, meyer_1992}
+or estimate it via a bisection task \citep{rensink_2017} find consistent
+levels of underestimation, particularly when 0.2 \textless{} \emph{r}
+\textless{} 0.6. If scatterplots were used solely for communication
+between those trained in statistics and data visualization, this would
+not be especially problematic, however this is not the case, with lay
+people being expected to be able to use and interpret data
+visualizations on an almost daily basis. It is thus the duty of those
+who design such visualizations to design with the naive, inexperienced
+viewer in mind. Doing so requires us to understand \emph{how}
+visualizations work, and to gain an appreciation for the hidden
+processes that allow pictorial representations to convey much more than
+words and numbers ever could.
+
+Recent work has sought to address the correlation underestimation bias
+in positively correlated scatterplots through the use of novel point
+encodings. In 2023 and 2024, Strain et al.
+\citep{strain_2023, strain_2023b, strain_2024} began exploiting the idea
+that viewers use the width of a probability distribution conveyed by the
+arrangement of scatterplot points as a proxy for their judgements of
+correlation to successfully (albeit partially) correct for the
+underestimation bias. As of the time of writing, this work has only
+provided evidence about perceptual effects using a simple direct
+estimation paradigm, and while successful, has not investigated whether
+these techniques can influence cognition in the context of real-world
+data visualizations and the relatedness between variables. As doing this
+is crucial for providing designers with the tools to design
+visualizations that are adapted for the facilitation of more accurate
+correlation perception, we therefore present a two experiment study
+investigating the propensity for recently established scatterplot
+visualization techniques to bias participant's beliefs about levels of
+relatedness between variables.
+
 \begin{itemize}
 \tightlist
-\item
-  scatterplots are used for
-\item
-  scatterplots display/communicate
-\item
-  key issue: correlation is underestimated in scatterplots
-\item
-  this is problematic as normal people have to use them
-\item
-  responsibility of data viz designers etc
-\item
-  recent work has atttempted to address these issues
 \item
   and has seen success by using point size and opacity manipulations
 \item
@@ -385,6 +432,15 @@ perception, scatterplot, crowdsourced}
 \end{itemize}
 
 \section{Related Work}\label{sec-rel-work-main}
+
+In this section we briefly discuss related work on correlation
+perception and estimation, the history and current state of the use of
+point size and opacity adjustments in scatterplots, including how these
+visual features have been used with regards to correction for the
+underestimation bias, and perception and cognition in data
+visualization. We then review the literature around belief change as it
+pertains to data visualization, before ending with our hypotheses for
+the present study.
 
 \begin{itemize}
 \tightlist
@@ -1129,7 +1185,7 @@ occurred. Further experimental work is required to provide concrete
 explanations for the interactive effects of graph literacy, defensive
 confidence, and statement emotionality in the current experimental
 paradigm; as the investigation of these is not the prime goal of the
-present study, however, we do not conisder this a shortcoming.
+present study, however, we do not consider this a shortcoming.
 
 \section{General Discussion}\label{general-discussion}
 
