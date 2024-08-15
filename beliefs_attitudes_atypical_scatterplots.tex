@@ -367,29 +367,28 @@ While most commonly used to communicate the linear correlation, or level
 of relatedness, between a pair of variables, scatterplots can also be
 designed to facilitate the detection of outliers, to convey differences
 between clusters, or to display non-linear correlations. The suitability
-of scatteplots to such a range of tasks, and the opportunity for
-designers to design with a range of tasks in mind, plays a large part in
-their popularity. Building on previous work, we elect to focus on the
-use of scatterplots for the communication of linear, bivariate, positive
-correlation. There is evidence that, while correlation perception in
-scatterplots experiences low levels of interindividual variance
-(especially when compared to other visualizations that communicate the
-same idea {[}\citet{harrison_2014}; kay\_2015{]}), our accuracy in
-interpretation is poor. Studies asking participants to numerically
-estimate correlation
+of scatterplots to such a range of tasks, and the opportunity for
+designers to design with a multitude of tasks in mind, plays a large
+part in their popularity. Building on previous work, we elect to focus
+on the use of scatterplots for the communication of linear, bivariate,
+positive correlation. There is evidence that, while correlation
+perception in scatterplots experiences low levels of interindividual
+variance (especially when compared to other visualizations that
+communicate the same idea {[}\citet{harrison_2014}; kay\_2015{]}), our
+accuracy in interpretation is poor. Studies asking participants to
+numerically estimate correlation
 \citep{strahan_1978, bobko_1979, cleveland_1982, lane_1985, lauer_1989, collyer_1990, meyer_1992}
 or estimate it via a bisection task \citep{rensink_2017} find consistent
 levels of underestimation, particularly when 0.2 \textless{} \emph{r}
 \textless{} 0.6. If scatterplots were used solely for communication
 between those trained in statistics and data visualization, this would
-not be especially problematic, however this is not the case, with lay
-people being expected to be able to use and interpret data
-visualizations on an almost daily basis. It is thus the duty of those
-who design such visualizations to design with the naive, inexperienced
-viewer in mind. Doing so requires us to understand \emph{how}
-visualizations work, and to gain an appreciation for the hidden
-processes that allow pictorial representations to convey much more than
-words and numbers ever could.
+not be especially problematic, however this is not the case; lay people
+being expected to be able to use and interpret data visualizations on an
+almost daily basis. It is thus the duty of those who design such
+visualizations to design with the naive, inexperienced viewer in mind.
+Doing so requires us to understand \emph{how} visualizations work, and
+to gain an appreciation for the hidden processes that allow pictorial
+representations to convey much more than words and numbers ever could.
 
 Recent work has sought to address the correlation underestimation bias
 in positively correlated scatterplots through the use of novel point
@@ -441,6 +440,58 @@ underestimation bias, and perception and cognition in data
 visualization. We then review the literature around belief change as it
 pertains to data visualization, before ending with our hypotheses for
 the present study.
+
+\subsection{Correlation Perception}\label{correlation-perception}
+
+Correlation describes the level of relatedness between a number of
+variables. There are a number of different types of correlation, however
+in this work, we use the term to refer to Pearson's \emph{r}, which
+takes a positive or negative value between 0 and 1 depending on the
+direction of the relationship being described. Mechanistically, evidence
+is inconclusive regarding what drives correlation perception in
+scatterplots, however some experimental results point towards the shape
+of the underlying probability distribution as a likely candidate.
+Scatterplots with smaller point clouds produce increased judgements of
+correlation \citep{cleveland_1982}, suggesting that it is the area of
+the point cloud that may influence perception. Work exploring the
+relationship between subjective and objective \emph{r} values in
+scatterplots found that this relationship could be described by a power
+function that included the mean of the geometrical distances between
+scatterplot points and a regression line. Other work includes some
+representation of the shape of a scatterplot's point cloud in equations
+describing magnitude estimation and correlation discrimination
+\citep{meyer_1997, rensink_2017}, and work on visual features as proxies
+for correlation found that a similar quantity again is predictive of
+performance. While we cannot say that this \emph{is} the process of
+correlation perception in scatterplots, we can conclude that the shape
+of the point cloud is a good proxy for what is really occurring during
+judgements of correlation.
+
+\subsection{Scatterplots: Size, Opacity, and Recent
+Developments}\label{scatterplots-size-opacity-and-recent-developments}
+
+The idea that it is the shape of the point cloud, and the probability
+distribution it represents that is being used to inform judgements of
+correlation has received support from recent work exploiting visual
+features with the intention of making correlation estimation more
+accurate. Strain et al. \citep{strain_2023, strain_2023b, strain_2024},
+used functions that changed the sizes and opacities of points in
+scatterplots as a function of their distance from the regression line,
+and achieved success in biasing correlation estimates in positive and
+negative directions. When point opacities \citep{strain_2023} or point
+sizes \citep{strain_2023b} were reduced with residual distance,
+participants were significantly more accurate on a correlation
+estimation task; employing both of these manipulations simultaneously
+\citep{strain_2024} resulted in an overshoot of correction, biasing
+participants further. \textbf{?@fig-previous-manipulations} contains a
+summary of previously tested scatterplot manipulations and their effects
+on performance on a correlation estimation task
+
+\subsection{Perception \& Cognition in Data
+Visualization}\label{perception-cognition-in-data-visualization}
+
+\subsection{Persuasion \& Belief Change in Data
+Visualization}\label{persuasion-belief-change-in-data-visualization}
 
 \begin{itemize}
 \tightlist

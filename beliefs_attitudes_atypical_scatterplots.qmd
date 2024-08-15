@@ -839,8 +839,8 @@ and non-academic contexts.
 While most commonly used to communicate the linear correlation, or level of relatedness,
 between a pair of variables, scatterplots can also be designed to facilitate the
 detection of outliers, to convey differences between clusters, or to display
-non-linear correlations. The suitability of scatteplots to such a range of tasks,
-and the opportunity for designers to design with a range of tasks in mind, plays
+non-linear correlations. The suitability of scatterplots to such a range of tasks,
+and the opportunity for designers to design with a multitude of tasks in mind, plays
 a large part in their popularity. Building on previous work, we elect to focus
 on the use of scatterplots for the communication of linear, bivariate, positive correlation.
 There is evidence that, while correlation perception in scatterplots experiences
@@ -852,7 +852,7 @@ is poor. Studies asking participants to numerically estimate correlation
 levels of underestimation, particularly when 0.2 < *r* < 0.6. If scatterplots
 were used solely for communication between those trained in statistics and data
 visualization, this would not be especially problematic, however this is not
-the case, with lay people being expected to be able to use and interpret data visualizations
+the case; lay people being expected to be able to use and interpret data visualizations
 on an almost daily basis. It is thus the duty of those who design such visualizations
 to design with the naive, inexperienced viewer in mind. Doing so requires us to 
 understand *how* visualizations work, and to gain an appreciation for the hidden processes
@@ -894,6 +894,78 @@ with regards to correction for the underestimation bias, and perception and cogn
 in data visualization. We then review the literature around belief change
 as it pertains to data visualization, before ending with our hypotheses for the
 present study.
+
+## Correlation Perception
+
+Correlation describes the level of relatedness between a number of variables. There
+are a number of different types of correlation, however in this work, we use the
+term to refer to Pearson's *r*, which takes a positive or negative value between
+0 and 1 depending on the direction of the relationship being described. Mechanistically,
+evidence is inconclusive regarding what drives correlation perception in scatterplots,
+however some experimental results point towards the shape of the underlying probability
+distribution as a likely candidate. Scatterplots with smaller point clouds produce
+increased judgements of correlation [@cleveland_1982], suggesting that it is the area
+of the point cloud that may influence perception. Work exploring the relationship
+between subjective and objective *r* values in scatterplots found that this relationship
+could be described by a power function that included the mean of the geometrical
+distances between scatterplot points and a regression line. Other work includes
+some representation of the shape of a scatterplot's point cloud in equations
+describing magnitude estimation and correlation discrimination [@meyer_1997;@rensink_2017],
+and work on visual features as proxies for correlation found that a similar
+quantity again is predictive of performance. While we cannot say that this *is*
+the process of correlation perception in scatterplots, we can conclude that the 
+shape of the point cloud is a good proxy for what is really occurring during
+judgements of correlation.
+
+## Scatterplots: Size, Opacity, and Recent Developments
+
+Changing the opacities and sizes of points in scatterplots are standard practices.
+Regarding opacity, this is often uniformly lowered to address overplotting [matejka_2015]
+issues that arise when visualizing very large datasets. Similarly, scatterplots
+of large datasets tend to have smaller points to maintain individual point
+discriminability. Point size has also been used to encode an additional third
+variable in what is known as *bubble charts*. Despite these techniques being
+established, there is relatively little experimental work on the effects of 
+changing point opacities and sizes on correlation estimation. Some studies find
+that correlation estimation is invariant to changes in point opacities and sizes
+[@rensink_2014; @rensink_2017], while more recent work reports strong effects
+of the systematic adjustment of each visual feature [@strain_2023; @strain_2023b;
+@strain_2024].
+
+The idea that it is the shape of the point cloud, and the probability distribution it
+represents that is being used to inform judgements of correlation has received
+support from recent work exploiting visual features with the intention of making
+correlation estimation more accurate. Strain et al. [@strain_2023; @strain_2023b;
+@strain_2024], used functions that changed the sizes and opacities of points
+in scatterplots as a function of their distance from the regression line, and
+achieved success in biasing correlation estimates in positive and negative
+directions. When point opacities [@strain_2023] or point sizes [@strain_2023b]
+were reduced with residual distance, participants were significantly more accurate
+on a correlation estimation task; employing both of these manipulations simultaneously
+[@strain_2024] resulted in an overshoot of correction, biasing participants
+further. @fig-previous-manipulations contains a summary of previously tested
+scatterplot manipulations and their effects on performance on a correlation 
+estimation task.
+
+```{r}
+#| label: fig-previous-manipulations
+#| include: true
+
+
+```
+
+
+
+
+
+## Perception & Cognition in Data Visualization
+
+## Persuasion & Belief Change in Data Visualization
+
+
+
+
+
 
 - Correlation Perception
   Testing
