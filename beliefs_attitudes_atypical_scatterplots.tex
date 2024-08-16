@@ -470,6 +470,20 @@ judgements of correlation.
 \subsection{Scatterplots: Size, Opacity, and Recent
 Developments}\label{scatterplots-size-opacity-and-recent-developments}
 
+Changing the opacities and sizes of points in scatterplots are standard
+practices. Regarding opacity, this is often uniformly lowered to address
+overplotting {[}matejka\_2015{]} issues that arise when visualizing very
+large datasets. Similarly, scatterplots of large datasets tend to have
+smaller points to maintain individual point discriminability. Point size
+has also been used to encode an additional third variable in what is
+known as \emph{bubble charts}. Despite these techniques being
+established, there is relatively little experimental work on the effects
+of changing point opacities and sizes on correlation estimation. Some
+studies find that correlation estimation is invariant to changes in
+point opacities and sizes \citep{rensink_2014, rensink_2017}, while more
+recent work reports strong effects of the systematic adjustment of each
+visual feature \citep{strain_2023, strain_2023b, strain_2024}.
+
 The idea that it is the shape of the point cloud, and the probability
 distribution it represents that is being used to inform judgements of
 correlation has received support from recent work exploiting visual
@@ -485,7 +499,27 @@ estimation task; employing both of these manipulations simultaneously
 \citep{strain_2024} resulted in an overshoot of correction, biasing
 participants further. \textbf{?@fig-previous-manipulations} contains a
 summary of previously tested scatterplot manipulations and their effects
-on performance on a correlation estimation task
+on performance on a correlation estimation task.
+
+\begin{verbatim}
+Converting page 1 to fig.png... done!
+\end{verbatim}
+
+\begin{verbatim}
+[1] "fig.png"
+\end{verbatim}
+
+\begin{figure}
+
+\centering{
+
+\includegraphics{beliefs_attitudes_atypical_scatterplots_files/figure-pdf/fig-est-prev-1.pdf}
+
+}
+
+\caption{\label{fig-est-prev}placeholder}
+
+\end{figure}%
 
 \subsection{Perception \& Cognition in Data
 Visualization}\label{perception-cognition-in-data-visualization}
