@@ -510,6 +510,7 @@ set.seed(1234)
   
   ggplot(data, aes(x = V1, y = V2)) +
   scale_size_identity() +
+  scale_alpha_identity() +
   geom_point(aes(size = 2*(size + 0.1),
                  alpha = opacity),
              shape = 16)  +
@@ -517,7 +518,7 @@ set.seed(1234)
   theme(axis.text = element_blank(),
         plot.margin = unit(c(0,0,0,0), "cm"),
         legend.position = "none",
-        plot.title = element_text(size = 6.5, vjust = -0.1),
+        plot.title = element_text(size = 8.5, vjust = -0.1),
         axis.title.x = element_blank(),
         axis.title.y = element_blank(),
         axis.line = element_line(linewidth = 0.25),
@@ -526,7 +527,6 @@ set.seed(1234)
 
 } 
 ```
-
 
 ```{r}
 #| label: format-numbers-function
@@ -1008,22 +1008,21 @@ scatterplot manipulations and their effects on performance on a correlation
 estimation task.
 
 ```{r}
-#| label: fig-est-multi-exp
+#| label: fig-previous-manipulations
 #| fig-env: "figure*"
-#| include: false
+#| include: true
 #| out-width: "100%"
 #| fig-asp: 0.5
+#| fig-cap: "Top row: Examples of scatterplot manipulations from previous work using an \\textit{r} value of 0.6. Bottom row: the corresponding correlation estimation behaviour. The dashed diagonal line represents perfect estimation."
+
 # dataframe containing values from previous work and the current is included
 # in the data folder 
 
 # set facet orders
 
-labels_all_exp <- c(additive_manipulation = "Size and Opacity Manipulated",
-                    opacity_manipulated = "Opacity Manipulated",
-                    size_manipulated = "Size Manipulated",
-                    standard_plot = "Standard Behaviour")
-
 facet_order <- c("standard_plot", "opacity_manipulated", "size_manipulated", "additive_manipulation")
+
+# make data frame of behaviours observed with standard plot
 
 standard_alone <- read_csv("data/all_exp.csv") %>%
     drop_na() %>%
@@ -1094,24 +1093,23 @@ plot_est_prev_no_y <- function(filter) {
   return(plot)
 }
 
-
 example_plots_prev <- ggarrange(
                       plot_example_function(slopes,
                       (0.05),
                       (1),
-                      "Typical Orientation Size\nTypical Orientation Opacity"),
+                      "Standard Scatterplot"),
                       plot_example_function(slopes,
                       (0.05),
                       (1-slopes$slope_0.25),
-                      "Typical Orientation Size\nTypical Orientation Opacity"),
+                      "Opacity Manipulation"),
                       plot_example_function(slopes,
                       (1-slopes$slope_0.25),
                       (1),
-                      "Typical Orientation Size\nTypical Orientation Opacity"),
+                      "Size Manipulation"),
                       plot_example_function(slopes,
                       (1-slopes$slope_0.25),
                       (1-slopes$slope_0.25),
-                      "Typical Orientation Size\nTypical Orientation Opacity"), nrow = 1)
+                      "Both Manipulations"), nrow = 1)
 
 est_prev <- ggarrange(
   plot_est_prev_no_y("standard_plot"),
@@ -1120,7 +1118,15 @@ est_prev <- ggarrange(
   plot_est_prev_no_y("additive_manipulation"), nrow = 1
 )
 
-ggarrange(example_plots_prev, est_prev, nrow = 2)
+p <- ggarrange(example_plots_prev, est_prev, nrow = 2)
+
+x_label <- text_grob(expression("Objective " * italic("r") * " value"))
+y_label <- text_grob(expression("Subjective " * italic("r") * " value"),
+                     rot = 90, hjust = 0.9)
+
+annotate_figure(p,
+                bottom = x_label,
+                left = y_label)
 ```
 
 ## Perception & Cognition in Data Visualization
