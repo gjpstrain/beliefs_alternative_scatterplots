@@ -905,7 +905,7 @@ a large part in their popularity. Building on previous work, we elect to focus
 on the use of scatterplots for the communication of linear, bivariate, positive correlation.
 There is evidence that, while correlation perception in scatterplots experiences
 low levels of interindividual variance (especially when compared to other visualizations
-that communicate the same idea [@harrison_2014; kay_2015]), our accuracy in interpretation
+that communicate the same idea [@harrison_2014; @kay_2015]), our accuracy in interpretation
 is poor. Studies asking participants to numerically estimate correlation 
 [@strahan_1978; @bobko_1979; @cleveland_1982; @lane_1985; @lauer_1989; @collyer_1990;
 @meyer_1992] or estimate it via a bisection task [@rensink_2017] find consistent
@@ -934,16 +934,6 @@ that are adapted for the facilitation of more accurate correlation perception, w
 therefore present a two experiment study investigating the propensity for recently
 established scatterplot visualization techniques to bias participant's beliefs
 about levels of relatedness between variables. 
-
-
-- and has seen success by using point size and opacity manipulations
-- as of writing, this work has only provided evidence about perceptual effects using a simple estimation paradigm
-- and has not investigated whether these effects can extend to cognition about relatedness between real variables
-- this is important wrt the potential for using the manipulations to improve visualisations
-- we present a 2 experiment study in which we first use novel research methods and
-crowdsourcing to select a statement about relatedness that is agreed upon (phrasing),
-then we test the propensity for previously described visual manipulations to 
-alter beliefs about relatedness, taking into account various additional participant qualities.
 
 # Related Work {#sec-rel-work-main}
 
@@ -980,7 +970,7 @@ judgements of correlation.
 ## Scatterplots: Size, Opacity, and Recent Developments
 
 Changing the opacities and sizes of points in scatterplots are standard practices.
-Regarding opacity, this is often uniformly lowered to address overplotting [matejka_2015]
+Regarding opacity, this is often uniformly lowered to address overplotting [@matejka_2015]
 issues that arise when visualizing very large datasets. Similarly, scatterplots
 of large datasets tend to have smaller points to maintain individual point
 discriminability. Point size has also been used to encode an additional third
@@ -996,7 +986,7 @@ The idea that it is the shape of the point cloud, and the probability distributi
 represents that is being used to inform judgements of correlation has received
 support from recent work exploiting visual features with the intention of making
 correlation estimation more accurate. Strain et al. [@strain_2023; @strain_2023b;
-@strain_2024], used functions that changed the sizes and opacities of points
+@strain_2024], changed the sizes and opacities of points
 in scatterplots as a function of their distance from the regression line, and
 achieved success in biasing correlation estimates in positive and negative
 directions. When point opacities [@strain_2023] or point sizes [@strain_2023b]
@@ -1013,7 +1003,7 @@ estimation task.
 #| include: true
 #| out-width: "100%"
 #| fig-asp: 0.5
-#| fig-cap: "Top row: Examples of scatterplot manipulations from previous work using an \\textit{r} value of 0.6. Bottom row: the corresponding correlation estimation behaviour. The dashed diagonal line represents perfect estimation."
+#| fig-cap: "Top row: Examples of scatterplot manipulations from previous work using an \\textit{r} value of 0.6. Bottom row: the corresponding correlation estimation behaviour across values of \\textit{r} between 0.2 and 0.99. The dashed diagonal line represents perfect estimation."
 
 # dataframe containing values from previous work and the current is included
 # in the data folder 
@@ -1129,31 +1119,46 @@ annotate_figure(p,
                 left = y_label)
 ```
 
+Ultimately, it is not the aim of the present work to comment on what truly drives
+correlation perception in scatterplots, but rather to attempt to extend previously
+tested techniques to influence cognitions about relatedness.
+
 ## Perception & Cognition in Data Visualization
+
+Interacting with data visualization is a complex process involving bottom-up and
+top-down mechanisms [@shah_2011; @franconeri_2021; @xiong_2022]. Previous work 
+investigating alternative scatterplot designs has confined itself to exploring
+perception only; here we introduce the potential for top-down effects to bias
+participants. Despite this, we take measures to ensure that these potential top-down
+effects are minimised, namely by crowdsourcing the creation of our stimuli and
+by including by-participant effects in our modelling. Nevertheless, we acknowledge
+that we introduce the potential for murkiness regarding our conclusions; we 
+argue this is necessary to gain a deeper understanding of how we interact
+with data visualizations and how designers can improve their craft. 
 
 ## Persuasion & Belief Change in Data Visualization
 
-
-
-
-
-
-- Correlation Perception
-  Testing
-  Drivers
-- Scatterplots
-  Opacity Adjustments in Scatterplots
-  Point Size Adjustments in Scatterplots
-- Perception & Cognition in Data Visualization
-  Differences between them
-  Why study the extension from one to the other?
-  Beliefs changing as a result of viewing visualisations
-    the persuasive power of data viz
-    why this is important over just presenting numbers
-    maybe something specifically about scatterplots
-    lead onto the primary motivation of this study
-  hypotheses- statement  
-    
+Data visualization is a powerful tool. After all, if numerical data were sufficient
+for understanding, there would be no need to visualize data beyond aesthetic 
+preference. Patter recognition, attention, and familiarity are all aspects of human
+perception and cognition that can be exploited by visualization designers to 
+facilitate more efficient, enjoyable, and effective communication [@franconeri_2021].
+This power is a double-edged sword, however; poor design, be it malevolent
+or misguided, can cause distrust, confusion, and misunderstanding amongst viewers.
+It is for both of these reasons that we choose to study belief change in scatterplots
+as a consequence of alternative designs. Scatterplots, like many other data 
+visualizations, have been admitted as evidence in court cases [@bobko_1979], and
+play key roles in organizational decision making, including in healthcare [@wang_2021].
+It is a reasonable assumption to make that data visualizations, including scatterplots,
+are used to make decisions that result in positive or negative outcomes
+with regards to health and policy more generally. Studying the potential for new
+designs to alter beliefs about relatedness facilitates not only the exploitation
+of these new designs for better visualizations, but also allows us to understand
+how these designs might be used by malevolent actors. To this end, we present a two
+experiment study. First, we first use crowdsourcing to select part of our experimental
+stimuli, then we test the propensity for previously established alternative scatterplot
+designs to alter beliefs about relatedness, taking into account a range of additional
+participant qualities.
 
 # General Methods {#sec-general-methods}
 
@@ -1192,6 +1197,17 @@ using Prolific, and were required to have a Prolific score of 100, representing 
 approval rate.
 
 ## Use of Large Language Models
+
+The goal of the present study is to investigate to what extent a novel scatterplot
+design can alter participants' beliefs about the level of relatedness between variables.
+There is evidence that belief change can be affected by prior beliefs and attitudes
+[@xiong_2022; @markant_2023], and that emotion, including the content of a visualization
+[@phelps_2006; @harrison_2013] and the emotional state of a participant [@thoresen_2017]
+
+
+can depend on prior beliefs and
+attitudes about the variables in question  thus we 
+took steps to minimise the potential for this confounding factor. 
 
  - issues regarding stimulus generation normally
  - advantages conferred by using ChatGPT
@@ -1432,9 +1448,6 @@ this statement is therefore: "Higher consumption of plain (non-spicy) foods
 is associated with a lower risk of certain types of cancer."
 
 ## Introduction
-
- - hypotheses
- - 
 
 ### Defensive Confidence
 
@@ -2122,7 +2135,7 @@ between atypical and typical scatterplot presentation conditions; in this case l
 of belief change were much higher for the group that viewed the atypical 
 scatterplot designs. There is a broad research space regarding emotionality and
 data visualization [@lan_2023], and it is clear from previous work that emotion
-affects perception, cognition, and behaviour [@phelps_2006; @harrison_2013, probably look for more]
+affects perception, cognition, and behaviour [@phelps_2006; @harrison_2013; @thoresen]
 with regard to data visualization. Harrison et al. [@harrison _2013] found that 
 participants who were positively primed performed better on a low-level
 visual judgement task. Comparison of this work to the current is difficult, as
