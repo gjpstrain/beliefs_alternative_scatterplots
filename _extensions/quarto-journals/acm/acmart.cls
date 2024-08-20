@@ -2830,7 +2830,7 @@
           \centering
           \textcolor{white}{\LARGE\sffamily\bfseries\@acmArticle}}}}
   \end{picture}\fi}
-
+\usepackage[vskip=1em,font=itshape,leftmargin=2em,rightmargin=2em]{quoting}
 \AtBeginDocument{%
 \fancypagestyle{firstpagestyle}{%
   \fancyhf{}%
