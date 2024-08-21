@@ -22,7 +22,7 @@ execute:
 
 bibliography: atypical-scatterplots.bib
 
-title: Changing Beliefs About Correlations in Atypical Scatterplots
+title: Effects of Alternative Scatterplots Designs on Belief Change
 
 # if short-title is defined, then it's used
 short-title: 
@@ -662,9 +662,10 @@ anova_results_linear <- function(cmpr_model, model) {
 ```
 
 ```{r}
-#| label: make-sig-table-lm
+#| label: make-sig-tables
 
-# function to create tables with fixed effects and interactions for LMM
+# functions to create tables with fixed effects and interactions for models
+
 # first do function for absolute differences model (H1)
 
 make_sig_table_abso <- function (model) {
@@ -888,19 +889,19 @@ make_sig_table_emo <- function (model) {
 
 Utilized for communication in a wide variety of contexts, scatterplots are simple
 representations of (usually) bivariate data. They were estimated in 1983 to account
-for between 70 and 80 percent of data visualizations in scientific publications [@tufte_1986],
+for between 70 and 80 percent of data visualizations in scientific publications [@tufte_1983],
 and while there is no doubt that the range of data visualizations employed in and
 beyond science is now far broader, scatterplots remain an important tool for the
 visualization designer. The appeal of researching scatterplots lies in evidence that
 people generally interpret them in similar ways [@kay_2015], that they are interpreted
-rapidly [@rensink_2014], and that they are ubiquitous in both academic [@tufte_1986]
+rapidly [@rensink_2014], and that they are ubiquitous in both academic [@tufte_1983]
 and non-academic contexts.
 
 While most commonly used to communicate the linear correlation, or level of relatedness,
 between a pair of variables, scatterplots can also be designed to facilitate the
 detection of outliers, to convey differences between clusters, or to display
 non-linear correlations. The suitability of scatterplots to such a range of tasks,
-and the opportunity for designers to design with a multiple tasks in mind, plays
+and the opportunity for designers to design with multiple tasks in mind, plays
 a large part in their popularity. Building on previous work, we elect to focus
 on the use of scatterplots for the communication of linear, bivariate, positive correlation.
 There is evidence that, while correlation perception in scatterplots experiences
@@ -916,7 +917,7 @@ the case; lay people are expected to be able to use and interpret data visualiza
 on an almost daily basis. It is thus the duty of those who design such visualizations
 to design with the naive, inexperienced viewer in mind. Doing so requires us to 
 understand *how* visualizations work, and to gain an appreciation for the hidden processes
-that allow pictorial representations to convey much more than words and numbers
+that allow pictorial representations to convey more than words and numbers
 ever could.
 
 Recent work has sought to address the correlation underestimation bias in
@@ -930,8 +931,8 @@ effects using a simple direct estimation paradigm, and while successful, has not
 investigated whether these techniques can influence cognition in the context
 of real-world data visualizations and the relatedness between variables. As
 doing this is crucial for providing designers with the tools to design visualizations
-that are adapted for the facilitation of more accurate correlation perception, we
-therefore present a two experiment study investigating the propensity for recently
+work as intended in the field, we therefore present a two experiment 
+study investigating the propensity for recently
 established scatterplot visualization techniques to bias participant's beliefs
 about the levels of relatedness between variables. 
 
@@ -964,7 +965,11 @@ and work on visual features as proxies for correlation found that a similar
 quantity again is predictive of performance. While we cannot say that this *is*
 the process of correlation perception in scatterplots, we can conclude that the 
 shape of the point cloud is a good proxy for what is really occurring during
-judgements of correlation.
+judgements of correlation. The goal of this work is not to further illuminate
+what drives the perception of correlation in scatterplots, but rather to investigate
+whether proven perceptual effects can be extended into a cognitive space. For this 
+reason, we do not explore these mechanisms further, but rather refer the reader
+to previous literature which focuses on these questions [@rensink_2010; @rensink_2017; @strain_2023; @strain_2024].
 
 ## Scatterplots: Size, Opacity, and Recent Developments {#sec-scatterplots}
 
@@ -979,9 +984,7 @@ changing point opacities and sizes on correlation estimation. Some studies find
 that correlation estimation is invariant to changes in point opacities and sizes
 [@rensink_2014; @rensink_2017], while more recent work reports strong effects
 of the systematic adjustment of each visual feature [@strain_2023; @strain_2023b;
-@strain_2024].
-
-The idea that it is the shape of the point cloud, and the probability distribution it
+@strain_2024]. The idea that it is the shape of the point cloud, and the probability distribution it
 represents that is being used to inform judgements of correlation has received
 support from recent work exploiting visual features with the intention of making
 correlation estimation more accurate. Strain et al. [@strain_2023; @strain_2023b;
@@ -994,7 +997,25 @@ on a correlation estimation task; employing both of these manipulations simultan
 [@strain_2024] resulted in an overshoot of correction, biasing participants
 further. @fig-previous-manipulations contains a summary of previously tested
 scatterplot manipulations and their effects on performance on a correlation 
-estimation task.
+estimation task. In that work, the opacities and sizes of scatterplot points are changed using
+equation 1:
+
+\begin{equation}
+  point_{size/opacity} = 1 - b^{residual}
+\end{equation}
+
+In order to facilitate comparison, and as the aim of our study
+is not to investigate the use of equation 1, rather the potential for alternative
+designs to have effects on cognition, we utilize the same protocol here to produce
+the stimuli for our main study, including the number of points (n = 128),
+the value of *b* (0.25), and the size scaling factor and opacity floor.
+For our atypical scatterplot condition, we choose
+to use the previously established manipulation that has demonstrated the most dramatic
+change in participants' estimates of correlation: a combination of point opacity
+and size adjustments [@strain_2024] (see the right pair of plots in @fig-previous-manipulations).
+While this manipulation has not produced the most accurate estimates of correlation
+in previous work, we hope to give ourselves the greatest chance of finding an effect,
+should one exist.
 
 ```{r}
 #| label: fig-previous-manipulations
@@ -1123,9 +1144,6 @@ annotate_figure(p,
                 left = y_label)
 ```
 
-Ultimately, it is not the aim of the present work to comment on what truly drives
-correlation perception in scatterplots, but rather to attempt to extend previously
-tested techniques to influence cognitions about relatedness.
 
 ## Perception & Cognition in Data Visualization {#sec-perception-cognition}
 
@@ -1133,8 +1151,8 @@ Interacting with data visualization is a complex process involving bottom-up and
 top-down mechanisms [@shah_2011; @franconeri_2021; @xiong_2022]. Previous work 
 investigating alternative scatterplot designs has confined itself to exploring
 perception only; here we introduce the potential for top-down effects to bias
-participants. These cognitive factors are not our object of study, however we 
-take measures to ensure that they are minimised,namely by crowdsourcing the creation
+participants. The influence of these cognitive factors are not our object of study, so we 
+take measures to ensure that they are minimised, namely by crowdsourcing the creation
 of our stimuli and by including by-participant effects in our modelling. Nevertheless,
 we acknowledge that we introduce the potential for murkiness regarding our conclusions; we 
 argue this is necessary to gain a deeper understanding of how we interact
@@ -1152,7 +1170,7 @@ or misguided, can cause distrust, confusion, and misunderstanding amongst viewer
 It is for both of these reasons that we choose to study belief change in scatterplots
 as a consequence of alternative designs. Scatterplots, like many other data 
 visualizations, have been admitted as evidence in court cases [@bobko_1979], and
-play key roles in organizational decision making, including in healthcare [@wang_2021].
+play key roles in organizational decision making, including in healthcare [@poly_2019].
 It is a reasonable assumption to make that data visualizations
 are used to make decisions that result in positive or negative outcomes
 with regards to health and policy more generally. Studying the potential for new
@@ -1177,7 +1195,7 @@ with the Open Science Framework (OSF) for the pre-study[^1] and the main experim
 there were no deviations from them. All data and analysis code are included in a 
 GitHub repository[^3]. This repository contains instructions for building a Docker
 container [@merkel_2014] that reproduces the computational environment the paper
-was written in. This allows for full replication of stimuli, figures, analysis,
+was written in. This allows for full replication of stimuli, figures, analyses,
 and the paper itself. Ethical approval was granted by the (removed for anon).
 
 [^1]: removed for anon
@@ -1205,13 +1223,13 @@ The goal of the present study is to investigate to what extent a novel scatterpl
 design can alter participants' beliefs about the level of relatedness between variables.
 There is evidence that belief change can be affected by prior beliefs and attitudes
 [@xiong_2022; @markant_2023], and that emotion, including the content of a visualization
-[@phelps_2006; @harrison_2013] and the emotional state of a participant [@thoresen_2017]
-can have perceptual and cognitive effects on participants' behaviours. We were unable
+[@phelps_2006; @harrison_2013] and the emotional state of a participant [@thoresen_2016]
+can have perceptual and cognitive effects on participants. We were unable
 to find resources for correlative statements that included ratings for belief strength
 and topic emotionality, so elected to create our own. In order
 to control for these factors as much as possible, we ran our pre-study with the intent
 of finding a correlative statement that was matched on emotional content and
-level of belief strength. Instead of creating these statements ourselves, we elected
+level of belief strength. Instead of creating these statements ourselves, we chose
 to streamline the process by using the ChatGPT4 Large Language Model. We used
 the following prompt:
 
@@ -1234,8 +1252,8 @@ The full list of these statements can be found in the supplementary materials.
 Note that we cite our use of ChatGPT according to the AI Code of Conduct developed
 by Iliada Eleftheriou and Ajmal Mubarik and the University of Manchester
 [@iliada_2023]. Two authors rated each statement on topic emotionality and
-strength of correlation using Likert scales from 1 to 7. Topic emotionality
-had a midpoint at 4, whereas strength of correlation varied between 1 (Not Related At All)
+strength of relatedness using Likert scales from 1 to 7. Topic emotionality
+had a midpoint at 4, whereas strength of relatedness varied between 1 (Not Related At All)
 and 7 (Strongly Related). We calculated a quadratic weighted Cohen's Kappa
 between the two raters using the **irr** package (version 0.84.1 [@irr]),
 in order to penalise larger magnitude disagreements more harshly.
@@ -1243,7 +1261,19 @@ We found agreement above chance for both topic emotionality
 ($\kappa$ = `r printnum(irr_emot$value, digits = 2)`, *p* `r printp(irr_emot$p.value, add_equals = TRUE)`)
 and strength of correlation ($\kappa$ = `r printnum(irr_corr$value, digits = 2)`,
 *p* `r printp(irr_corr$p.value, add_equals = TRUE)`), indicating moderate 
-levels of agreement in both cases [@cohen_1968; @fleiss_1969].
+levels of agreement in both cases [@cohen_1968; @fleiss_1969].Following this,
+we selected strongly and weakly correlated statements with the highest level of
+absolute agreement, resulting in the 14 strongly correlated
+statements that can be seen in @tbl-pre-test-hi and the 11 weakly correlated
+statements that can be seen in @tbl-pre-test-low. We then tested these 25
+statements with a representative UK sample in order
+to ascertain consensus on both topic emotionality and strength of relatedness.
+Doing so allows us to effectively exclude these factors when we analyse the effects
+of our atypical scatterplot designs on the propensity for belief change
+in our main experiment. We hypothesized that H1: there will be a significant
+difference in average ratings of topic emotionality between statements, and that H2: there
+will be a significant difference between average ratings of strength of relatedness 
+between statements.
 
 ```{r}
 #| label: tbl-pre-test-hi
@@ -1281,19 +1311,6 @@ pre_test_statements_lo <- read_csv("data/pre_test_data.csv") %>%
 kbl(pre_test_statements_lo, booktabs = T)
 ```
 
-Following this, we selected strongly and weakly correlated statements with the
-highest level of absolute agreement, resulting in the 14 strongly correlated
-statements that can be seen in @tbl-pre-test-hi and the 11 weakly correlated
-statements that can be seen in @tbl-pre-test-low. We then tested these 25
-statements with a representative UK sample in order
-to ascertain consensus on both topic emotionality and strength of correlation.
-Doing so allows us to effectively exclude these factors when we analyse the effects
-of our atypical scatterplot designs on the propensity for belief change
-in our main experiment. We hypothesized that H1: there will be a significant
-difference in ratings of topic emotionality between statements, and H2: there
-will be a significant difference between average ratings of strength of relatedness 
-between statements.
-
 ## Method {#sec-method-pre}
 
 ### Participants {#sec-participants-pre}
@@ -1326,7 +1343,7 @@ and were asked to provide consent through key presses in response to consent sta
 They were asked to provide their age in a free text box, followed by their 
 gender identity. Participants were told that they would be asked to read statements
 about the relatedness between a pair of variables, after which they would have to 
-indicate their beliefs about topic emotionality and the strength of correlation suggested
+indicate their beliefs about topic emotionality and the strength of relatedness suggested
 using a pair of sliders. To familiarize themselves with the sliders, they were asked to complete a practice round
 in response to the statement "As participation in online experiments increases,
 society becomes happier."
@@ -1402,17 +1419,17 @@ we first select statements that represent neutral emotional valence. Statements
 with average topic emotionality ratings between 3 and 5 are statements 
 `r printnum(add_and_to_numbers(avg_emot$item_no), digits = 0)`. To ascertain
 which statements represent the greatest consensus, we add standard deviations in
-ratings for topic emotionality and strength of correlation. Due to concerns about experimental
+ratings for topic emotionality and strength of relatedness. Due to concerns about experimental
 power, and in line with evidence that propensity for belief change is highest
-when prior beliefs are not strongly held [@xiong_2022],
+when prior beliefs are not strongly held [@xiong_2022; @markant_2023],
 we elected at this point to test only the statement corresponding to weak beliefs
 about the strength of correlation between the variables in question. We therefore
 test statement number `r printnum(add_and_to_numbers(consensus_df$item_no[2]), digits = 0)`,
 "Higher consumption of spicy foods is associated with a lower risk of certain types of cancer",
 however we modify the wording so that both variables (food consumption and cancer risk)
-are positively correlated, as previous work indicates that the manipulations we use
+are positively correlated, as while the manipulations we use
 in the atypical scatterplot condition are able to change estimates of correlation
-in positively correlated scatterplots; no work regarding the effects of these
+in positively correlated scatterplots, no work regarding the effects of these
 manipulations in negatively correlated scatterplots has been completed.
 
 ## Discussion {#sec-discussion-pre}
@@ -1435,7 +1452,8 @@ correlation, and the 2nd highest level of consensus. Modified for directionality
 this statement is therefore: "Higher consumption of plain (non-spicy) foods
 is associated with a lower risk of certain types of cancer." To give ourselves
 the best chance of detecting an effect of viewing atypical scatterplots, we elected
-to design our scatterplots based on a popular British news source. Participants
+to design our scatterplots based on a popular British news source and to falsely
+credit the data as being provided by the British National Health Service (NHS). Participants
 were informed that said news source had requested that their identity were obscured,
 and were debriefed that this was not the case, and that the data were fictional,
 following completion of the experiment. We hypothesized that H1: there will be a significant
@@ -1457,35 +1475,15 @@ including participants' defensive confidence scores is included in @sec-add-anal
 
 ## Stimuli {#sec-stimuli-main}
 
-Recent work has shown that estimates of correlation can be altered when point opacities
-and sizes are systematically varied in scatterplots [@strain_2023; @strain_2023b; @strain_2024].
-These manipulations have been used in an attempt to correct for a long-standing
-underestimation bias observed in correlation perception as it pertains to scatterplots.
-As we now aim to test the propensity of these manipulations to affect participants'
-beliefs about levels of relatedness, we choose the set of manipulations that
-has previously produced the most dramatic effect on correlation estimates; namely,
-the combination of typical orientation size and opacity manipulations provided
-by Strain et al. [@strain_2024]. Here, the size and opacity of a certain
-scatterplot point is lowered as a function of that point's residual error using
-equation 1:
-
-\begin{equation}
-  point_{size/opacity} = 1 - b^{residual}
-\end{equation}
-
-In order to facilitate comparison to this work, we use the same protocol to produce
-scatterplots for our atypical condition. This includes creating scatterplots
-with 128 points, using *b* = 0.25, employing a scaling factor and constant 
-for point size, and using an opacity floor to ensure point visibility, 
-as this has been an issue in previous work. 
-As there is evidence that people are less likely to update strongly held beliefs following
-viewing scatterplot visualizations [@markant_2023 look for more], we selected a
-correlative statement that was judged as representing weakly correlated variables.
-Thus, in order to induce belief change, participants only viewed scatterplots
-representing **strongly** correlated variables (0.6 > *r* > 0.99). We used **ggplot**
-in R to create plots that echoed the style of a British news broadcaster and fictitiously
-claimed the data to be provided by the British National Health service. Examples
-of typical and atypical data-identical scatterplots can be seen in @fig-main-examples.
+Having selecting a correlative statement describing a weak relationship and with
+a high level of consensus between participants in the pre-study, we used **ggplot2**
+(version 3.5.1 [@ggplot]) in R to create our stimuli; scripts for the creation
+of stimuli can be found in the repository associated with this project.
+As our statement was rated as describing a low level of relatedness, we utilize scatterplots that describe a 
+strong relationship (0.6 > *r* > 0.99) in order to induce belief change. Our plots
+were created in line with guidance provided by previous research and detailed in
+@sec-scatterplots. Examples of stimuli using an *r* value of 0.6 for both the
+typical and atypical scatterplot conditions can be seen in @fig-main-examples.
 
 ```{r}
 #| label: fig-main-examples
@@ -1651,10 +1649,10 @@ to either group A, in which case they viewed typical scatterplots, or group B,
 in which they viewed atypical scatterplots designed deliberately to elicit higher
 levels of belief change. Participant saw all experimental items for their group, along
 with 4 attention check items, in a fully randomised order. All experimental code, 
-materials, and instructions are hosted on GitLab as two separate experiments [^1] [^2]
+materials, and instructions are hosted on GitLab as two separate experiments [^5] [^6]
 
-[^1]: removed for anon
-[^2]: removed for anon
+[^5]: removed for anon
+[^6]: removed for anon
 
 ### Procedure {#sec-procedure-main}
 
@@ -1667,15 +1665,14 @@ first shown the participant information sheet and asked to provide consent
 through key presses in response to consent statements. They were, again,
 asked to provide their age and gender identity. Participants then completed the 12-item
 Defensive Confidence scale described by Albarracín and Mitchell [@albarracin_2004]
-and the 5-item Subjective Graph Literacy scale [@garcia_2016] [^5].
+and the 5-item Subjective Graph Literacy scale [@garcia_2016] [^7].
 In order to give legitimacy to our data visualizations with the hope of maximizing
 any potential belief change, participants were told that the graphs were taken
 from a well-known British news source, but that the identity of this source had 
 been obscured. In order to promote participant engagement with the visualizations,
 participants were instructed to use a slider to estimate the correlation displayed
 in each scatterplot; no hypotheses were made based on these data and therefore we
-do not analyse them further.
-Following instructions, which included descriptions of scatterplots and Pearson's *r*,
+do not analyse them further. Following instructions, which included descriptions of scatterplots and Pearson's *r*,
 participants had a chance to practice using the slider, before being 
 asked their belief about topic emotionality and the relatedness between variables
 described in our chosen statement. After completing the experimental
@@ -1684,7 +1681,7 @@ then debriefed that the data they were shown were fictional. Interspersed among
 the experimental items were 4 attention check trials which explicitly
 asked participants to set the slider to 0 or 1.
 
-[^5]: The inclusion of this scale was not specified in the pre-registration.
+[^7]: The inclusion of this scale was not specified in the pre-registration.
 
 ## Results {#sec-results-main}
 
@@ -1782,7 +1779,7 @@ diff_abso_df_long %>%
         legend.title.position = "top",
         axis.line.y = element_blank(),
         axis.ticks.y = element_blank(),
-        axis.text.y = element_text(size = 11),
+        axis.text.y = element_text(size = 11, colour = "black"),
         axis.text.x = element_text(size = 11)) +
   guides(shape = F) +
   guides(fill = guide_legend(override.aes = list(shape = NA), reverse = T)) + 
@@ -1807,8 +1804,7 @@ viewing scatterplots in either the typical or atypical condition.
 # after viewing plots
 
 relative_model <- buildmer(belief_diff ~ condition +
-                              (1 | participant) +
-                              (1 + condition | item_no),
+                              (1 | participant),
                             data = main_exp_tidy)
 ```
 
@@ -1858,6 +1854,16 @@ random effects terms. Test statistics, along with semi-partial R^2^ can be seen 
 #| tbl-cap: Statistics for the significant main effect of condition on the difference between pre and post scatterplot viewing ratings for typical and atypical plots. Semi-partial R^2^ is also incuded.
 
 make_sig_table_rel(relative_model)
+
+# get estimate
+
+summary <- summary(relative_model)
+
+coef <- summary$coefficients
+
+condition_estimate <- coef[2]
+
+rm(summary, coef)
 ```
 
 ### Additional Analyses {#sec-add-analyses}
@@ -1925,13 +1931,22 @@ emotionality ratings, but an interaction was observed, which can be seen in
 @tbl-emo-stat. Given the low estimates and effects sizes
 associated with the fixed effects of defensive confidence and graph literacy,
 and the the absence of a fixed effect of emotionality, we instead choose
-to focus on the interactions themselves; see @sec-add-analyses for further discussion
+to focus on the interactions themselves; see @sec-add-analyses-discussion for further discussion
 of these effects.
 
 ## Discussion {#sec-main-discussion}
 
-  - some more viz
-  - summary of results and implications
+Both of our hypotheses were supported in this experiment. Participants reliably 
+updated their beliefs after viewing scatterplots, and the difference between 
+pre and post-viewing beliefs was greatest for the participants who viewed scatterplots
+in the atypical condition by, on average, `r printnum(condition_estimate, digits = 2)`.
+These results suggest that the perceptual effects described
+in previous work can be extended to bias participants' cognitions about the levels
+of relatedness between pairs of variables. These findings are encouraging for 
+data visualization designers who wish to design scatterplots such that correlation
+perception more closely matches the underlying statistics, however much more work
+would be required to begin producing guidelines for the use of alternative 
+scatterplot designs with regards to producing more persuasive(?) visualizations.
 
 ### Graph Literacy, Defensive Confidence, and Topic Emotionality {#sec-add-analyses-discussion}
 
@@ -1990,7 +2005,7 @@ it is in line with previous work suggesting that those with higher levels of
 graph or visualization literacy show better performance in inference tasks
 related to visualizations [@canham_2010], are more capable of describing effects
 that visualisations aim to communicate [@shah_2011], and are able to preferentially
-attend to relevant features of visualizations to a greater degree [@okan_2015], than those with
+attend to relevant features of visualizations to a greater degree [@okan_2016], than those with
 lower levels of graph literacy. In the present study, we provide evidence
 that those with greater levels of graph literacy are *less susceptible* to having
 their beliefs changed by visualizations, although this difference is somewhat
@@ -2059,7 +2074,7 @@ ability to defend their own beliefs are more liable to having those beliefs chan
 in light of evidence [@albarracin_2004]. An extended analysis of the defensive
 confidence data collected by Markant et al. [@markant_2023] revealed a similar
 pattern of results; participants who scored more highly on a defensive confidence
-test experienced greater levels of belief change after viewing scatterplot visualizations[^1],
+test experienced greater levels of belief change after viewing scatterplot visualizations[^7],
 although the effect in that case is much less pronounced due to differences
 in study design. This effect is explained as being due to those with a greater degree
 of confidence in their own ability to defend their ideas engaging with information
@@ -2078,7 +2093,7 @@ and secondly, that the unfamiliar nature of the atypical scatterplots was protec
 against against an unexpected, standard behaviour whereby very high levels of 
 defensive confidence decrease susceptibility to belief change. 
 
-[^1]: The GitHub repository associated with this paper contains an R script that performs this analysis.
+[^7]: The GitHub repository associated with this paper contains an R script that performs this analysis.
 
 
 ```{r}
@@ -2151,6 +2166,10 @@ in the current experimental paradigm; as the investigation of these is not the p
 goal of the present study, however, we do not consider this a shortcoming.
 
 # General Discussion {#sec-general-discussion}
+
+The most parsimonious explanation for the results we observe in the present study
+is as follows; things that look more related will be judged as being more related
+
 
   - why has a perceptual effect been translated into cognition?
   - brief review of why we think the manipulations work in the way they do
