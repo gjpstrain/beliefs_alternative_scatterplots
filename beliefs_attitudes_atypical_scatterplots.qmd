@@ -2168,7 +2168,15 @@ goal of the present study, however, we do not consider this a shortcoming.
 # General Discussion {#sec-general-discussion}
 
 The most parsimonious explanation for the results we observe in the present study
-is as follows; things that look more related will be judged as being more related
+is as follows; things that *look* more related will be *judged* as being more related.
+As simple and obvious as this sounds, testing it empirically is a necessary step
+in broadening the data visualization design space and bringing novel designs
+closer towards real-life use cases while maintaining a strong foundation of experimental
+evidence. Having controlled as far as possible for factors such as the emotional
+content of the graph, the general consensus on how related the variables in question
+were, and the general design (bar the points themselves) of the scatterplot,
+we can conclude with strong evidence that atypical scatterplot design was responsible
+for increasing the level of belief change amongst participants.
 
 
   - why has a perceptual effect been translated into cognition?
@@ -2182,10 +2190,13 @@ is as follows; things that look more related will be judged as being more relate
 # Limitations {#sec-limitations}
 
   - design issues
+    - granted we did take loads of steps to help persuade people.
   - are our results as a result of people being persuaded by design?
 
 # Future Work {#sec-future-work}
 
+
+  - 
   - maybe something about attitudes
   - understanding how DC, literacy, and emotion interact
   - extension to statements that describe negative correlations
