@@ -1173,7 +1173,8 @@ visualizations, have been admitted as evidence in court cases [@bobko_1979], and
 play key roles in organizational decision making, including in healthcare [@poly_2019].
 It is a reasonable assumption to make that data visualizations
 are used to make decisions that result in positive or negative outcomes
-with regards to health and policy more generally. Studying the potential for new
+with regards to health and policy more generally, especially given findings that, in certain
+contexts, they are more persuasive than textual information [@pandey_2014]. Studying the potential for new
 designs to alter beliefs about relatedness facilitates not only the exploitation
 of these new designs for better visualizations, but also allows us to understand
 how these designs might be used by malevolent actors. To this end, we present a two
@@ -2074,7 +2075,7 @@ ability to defend their own beliefs are more liable to having those beliefs chan
 in light of evidence [@albarracin_2004]. An extended analysis of the defensive
 confidence data collected by Markant et al. [@markant_2023] revealed a similar
 pattern of results; participants who scored more highly on a defensive confidence
-test experienced greater levels of belief change after viewing scatterplot visualizations[^7],
+test experienced greater levels of belief change after viewing scatterplot visualizations [^7],
 although the effect in that case is much less pronounced due to differences
 in study design. This effect is explained as being due to those with a greater degree
 of confidence in their own ability to defend their ideas engaging with information
@@ -2178,6 +2179,68 @@ were, and the general design (bar the points themselves) of the scatterplot,
 we can conclude with strong evidence that atypical scatterplot design was responsible
 for increasing the level of belief change amongst participants.
 
+Previous work has concluded with support for the idea that it is the shape of the
+point cloud, more specifically, the width of the probability distribution it
+represents, that drives correlation perception in scatterplots. Our present
+results do not allow us to comment further on the particularities of that mechanism;
+if this mechanism were valid, however, our results would be expected. These 
+results are broadly consequential. For data visualization designers, they provide
+strong evidence that utilizing alternative scatterplot designs described here
+and in previous work can affect beliefs about levels of relatedness without
+requiring the removal of data. For researchers, these results pave the way for work
+in a number of directions, which we discuss in @sec-future-work.
+
+# Future Work {#sec-future-work}
+
+Because alternative scatterplot designs have not been tested before with regards
+to belief change, we elected to design our study with the intention of capturing
+effects, should they exist. This meant that our design was simple; we did not investigate
+multiple correlative statements, the propensity for strongly held beliefs to 
+be changed, nor the effect of topics with strong or polarised emotional
+components. We chose to use a simple, blunt measure of belief about relatedness,
+and did not investigate variations within the alternative scatterplot design space.
+Each of these components deserves study, and each is ripe for future work to
+investigate the contributions of each factor to the effects we have seen here.
+
+In @sec-additional-analyses-discussion, we describe the effects that graph literacy,
+defensive confidence, and participants' ratings of the emotionality of the correlative
+statement on the propensity for belief change. Our results do not allow us to comment
+further on this, but future work may wish to investigate these factors. Xiong et al.
+[@xiong_2022] describe how correlation estimation may be effected by meaningful and 
+generic statements; this could be extended to instead investigate statements with
+differing emotional contents and how alternative scatterplot designs might interact
+with emotional valence. Similarly, selecting matched participant groups with
+low or high graph literacy or defensive confidence would facilitate understanding 
+of how we might use alternative designs to cater for people with different levels of experience,
+or who differ in terms of their faith in their own ideas and abilities. 
+
+Previous work investigating beliefs with regards to correlation estimation have made
+distinctions between beliefs and attitudes [@xiong_2022; @markant_2023]. We elected
+not to do so due to our utilization of alternative designs. Markant et al. [@markant_2013]
+found that while beliefs about correlations changed in participants as a result of
+interacting with scatterplots, attitudes did not. Future work may wish to investigate
+whether this finding would persist with scatterplots utilizing the alternative
+designs described here. The finding
+
+
+
+
+
+Ultimately,
+the present work contributes to a body of literature that
+
+by, for example,
+using correlative statements with different levels of topic emotionality
+  
+  - maybe something about attitudes
+  - understanding how DC, literacy, and emotion interact
+  - extension to statements that describe negative correlations
+  - extension of framework to other novel visualisation types
+  - more work describing how differences in visual features can effect perceptions
+  and cognition
+  - qualitative study on the use of novel viusualizations/perceptions of deception 
+  - extending beliefs and attitudes to behavioural change (golden ticket really)
+
 
   - why has a perceptual effect been translated into cognition?
   - brief review of why we think the manipulations work in the way they do
@@ -2192,18 +2255,9 @@ for increasing the level of belief change amongst participants.
   - design issues
     - granted we did take loads of steps to help persuade people.
   - are our results as a result of people being persuaded by design?
+  - bound: difficluty in trying to capture beliefs from 1 to 7
+  
 
-# Future Work {#sec-future-work}
-
-
-  - 
-  - maybe something about attitudes
-  - understanding how DC, literacy, and emotion interact
-  - extension to statements that describe negative correlations
-  - extension of framework to other novel visualisation types
-  - more work describing how differences in visual features can effect perceptions
-  and cognition
-  - extending beliefs and attitudes to behavioural change (golden ticket really)
 
 # Conclusion {#sec-conclusion}
 
