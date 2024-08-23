@@ -78,7 +78,7 @@ acm-metadata:
   final: false
 
   # comment this out to specify detailed document options
-  # acmart-options: sigconf, review  
+  acmart-options: sigconf  
 
   # acm preamble information
   copyright-year: 2018
@@ -931,9 +931,9 @@ effects using a simple direct estimation paradigm, and while successful, has not
 investigated whether these techniques can influence cognition in the context
 of real-world data visualizations and the relatedness between variables. As
 doing this is crucial for providing designers with the tools to design visualizations
-work as intended in the field, we therefore present a two experiment 
+that work as intended in the field, we therefore present a two experiment 
 study investigating the propensity for recently
-established scatterplot visualization techniques to bias participant's beliefs
+established scatterplot visualization techniques to bias participants' beliefs
 about the levels of relatedness between variables. 
 
 # Related Work {#sec-rel-work-main}
@@ -958,11 +958,11 @@ increased judgements of correlation [@cleveland_1982], suggesting that it is the
 of the point cloud that may influence perception. Work exploring the relationship
 between subjective and objective *r* values in scatterplots found that this relationship
 could be described by a power function that included the mean of the geometrical
-distances between scatterplot points and a regression line. Other work includes
+distances between scatterplot points and a regression line [@meyer_1997]. Other work includes
 some representation of the shape of a scatterplot's point cloud in equations
 describing magnitude estimation and correlation discrimination [@meyer_1997;@rensink_2017],
 and work on visual features as proxies for correlation found that a similar
-quantity again is predictive of performance. While we cannot say that this *is*
+quantity again is predictive of performance[@yang_2019]. While we cannot say that this *is*
 the process of correlation perception in scatterplots, we can conclude that the 
 shape of the point cloud is a good proxy for what is really occurring during
 judgements of correlation. The goal of this work is not to further illuminate
@@ -974,13 +974,13 @@ to previous literature which focuses on these questions [@rensink_2010; @rensink
 ## Scatterplots: Size, Opacity, and Recent Developments {#sec-scatterplots}
 
 Changing the opacities and sizes of points in scatterplots are standard practices.
-Regarding opacity, this is often uniformly lowered to address overplotting [@matejka_2015]
-issues that arise when visualizing very large datasets. Similarly, scatterplots
-of large datasets tend to have smaller points to maintain individual point
+Regarding opacity, this is often uniformly lowered to address overplotting
+issues that arise when visualizing very large datasets [@matejka_2015]. Similarly, scatterplots
+describing large datasets tend to have smaller points to maintain individual point
 discriminability. Point size has also been used to encode an additional third
 variable in what is known as *bubble charts*. Despite these techniques being
 established, there is relatively little experimental work on the effects of 
-changing point opacities and sizes on correlation estimation. Some studies find
+changing point opacities and sizes on correlation estimation. Some studies have found
 that correlation estimation is invariant to changes in point opacities and sizes
 [@rensink_2014; @rensink_2017], while more recent work reports strong effects
 of the systematic adjustment of each visual feature [@strain_2023; @strain_2023b;
@@ -988,7 +988,7 @@ of the systematic adjustment of each visual feature [@strain_2023; @strain_2023b
 represents that is being used to inform judgements of correlation has received
 support from recent work exploiting visual features with the intention of making
 correlation estimation more accurate. Strain et al. [@strain_2023; @strain_2023b;
-@strain_2024], changed the sizes and opacities of points
+@strain_2024] changed the sizes and opacities of points
 in scatterplots as a function of their distance from the regression line, and
 achieved success in biasing correlation estimates in positive and negative
 directions. When point opacities [@strain_2023] or point sizes [@strain_2023b]
@@ -997,7 +997,7 @@ on a correlation estimation task; employing both of these manipulations simultan
 [@strain_2024] resulted in an overshoot of correction, biasing participants
 further. @fig-previous-manipulations contains a summary of previously tested
 scatterplot manipulations and their effects on performance on a correlation 
-estimation task. In that work, the opacities and sizes of scatterplot points are changed using
+estimation task. In those works, the opacities and sizes of scatterplot points are changed using
 equation 1:
 
 \begin{equation}
@@ -1128,16 +1128,16 @@ est_prev <- ggarrange(
   plot_est_prev_no_y("additive_manipulation"), nrow = 1
 )
 
-p <- ggarrange(example_plots_prev, est_prev, nrow = 2)
+p <- ggarrange(example_plots_prev, est_prev, nrow = 2) +  annotate("line", x = 0, end = 1, y = 0.5, yend = 0)
 
 x_label <- text_grob(expression("Objective " * italic("r") * " value"))
 y_label <- text_grob(expression("Subjective " * italic("r") * " value"),
                      rot = 90, hjust = 0.9)
 
-rm(example_plots_prev, plot_prev_est_no_y,    # trying to prevent env clogging
-   plot_prev_est, plotting_df,                # up when working on paper
-   all_exp_df, standard_alone,
-   facet_order)
+#rm(example_plots_prev, plot_prev_est_no_y,    # trying to prevent env clogging
+ #  plot_prev_est, plotting_df,                # up when working on paper
+  # all_exp_df, standard_alone,
+   #facet_order)
 
 annotate_figure(p,
                 bottom = x_label,
@@ -2198,21 +2198,23 @@ effects, should they exist. This meant that our design was simple; we did not in
 multiple correlative statements, the propensity for strongly held beliefs to 
 be changed, nor the effect of topics with strong or polarised emotional
 components. We chose to use a simple, blunt measure of belief about relatedness,
-and did not investigate variations within the alternative scatterplot design space.
+and did not investigate variations within the alternative scatterplot design space,
+such as using different values of equation 1, or using opacity or size manipulations in isolation.
 Each of these components deserves study, and each is ripe for future work to
 investigate the contributions of each factor to the effects we have seen here.
 
 In @sec-additional-analyses-discussion, we describe the effects that graph literacy,
 defensive confidence, and participants' ratings of the emotionality of the correlative
-statement on the propensity for belief change. Our results do not allow us to comment
-further on this, but future work may wish to investigate these factors. Xiong et al.
-[@xiong_2022] describe how correlation estimation may be effected by meaningful and 
-generic statements; this could be extended to instead investigate statements with
+statement on the propensity for belief change. Future work may wish to investigate these factors,
+along with others, such as educational background or spatial abilities that also
+affect perceptions of correlation [@tandon_2024]. Xiong et al.
+[@xiong_2022] describe how correlation estimation may differ according to the
+context the data are presented in; this could be extended to instead investigate statements with
 differing emotional contents and how alternative scatterplot designs might interact
 with emotional valence. Similarly, selecting matched participant groups with
 low or high graph literacy or defensive confidence would facilitate understanding 
 of how we might use alternative designs to cater for people with different levels of experience,
-or who differ in terms of their faith in their own ideas and abilities. 
+or who differ in terms of their faith in their own ideas and abilities.
 
 Previous work investigating beliefs with regards to correlation estimation have made
 distinctions between beliefs and attitudes [@xiong_2022; @markant_2023]. We elected
@@ -2220,45 +2222,39 @@ not to do so due to our utilization of alternative designs. Markant et al. [@mar
 found that while beliefs about correlations changed in participants as a result of
 interacting with scatterplots, attitudes did not. Future work may wish to investigate
 whether this finding would persist with scatterplots utilizing the alternative
-designs described here. The finding
-
-
-
-
-
-Ultimately,
-the present work contributes to a body of literature that
-
-by, for example,
-using correlative statements with different levels of topic emotionality
-  
-  - maybe something about attitudes
-  - understanding how DC, literacy, and emotion interact
-  - extension to statements that describe negative correlations
-  - extension of framework to other novel visualisation types
-  - more work describing how differences in visual features can effect perceptions
-  and cognition
-  - qualitative study on the use of novel viusualizations/perceptions of deception 
-  - extending beliefs and attitudes to behavioural change (golden ticket really)
-
-
-  - why has a perceptual effect been translated into cognition?
-  - brief review of why we think the manipulations work in the way they do
-  - what are the consequences of this?
-    - for designers?
-    - for viewers?
-    - for researchers?
-  - similarity of effect size to previous perceptual work     
+designs described here. Finally, while changing perceptions, beliefs, and attitudes
+are promising early steps, changing people's behaviours would be the real test
+of the power of alternative visualization techniques.
 
 # Limitations {#sec-limitations}
 
-  - design issues
-    - granted we did take loads of steps to help persuade people.
-  - are our results as a result of people being persuaded by design?
-  - bound: difficluty in trying to capture beliefs from 1 to 7
-  
-
+Our commitment to finding an effect, should one exist, is also our biggest
+limitation. The exploratory nature of the work results in us being unable to 
+comment specifically on how different forms of size and opacity manipulation in 
+scatterplots may change beliefs in different ways, although addressing this using
+the framework we present here would be simple to accomplish. To this date, there
+has been no qualitative work performed on alternative scatterplot designs such
+as those we utilize here; it may be that any perceptual or cognitive benefits
+are outweighed by distrust or unfamiliarity with novel designs. We chose to use 
+a simple, blunt, 7-point Likert scale. While we argue that this is not particularly
+problematic given that we intended only to find an effect (and succeeded in that),
+future work may wish to use techniques that provide further scope for analysis,
+such as the graphical elicitation method developed by Karduni et al. [@karduni_2021;
+@karduni_2023].
 
 # Conclusion {#sec-conclusion}
+
+We investigated the effects of alternative scatterplot designs that vary the opacities
+and sizes of points as a function of their distance from the regression line on 
+the propensity for belief change following visualization viewing. We presented these
+designs, and corresponding typical scatterplots, as if they were part of a news item
+and used a real-world variable pair that had been selected by our population of interest
+as being representative of a weakly-held, emotionally neutral correlation. We found 
+that participants who viewed scatterplots employing alternative designs detailed 
+above experienced greater levels of belief change than those who viewed typical
+plots. In addition, we found small interactive effects of a number of participant
+characteristics. Our results suggest that visualization techniques that have
+previously been employed to improve perception amongst participants are deserving
+of study with regards to their potential to change beliefs.
 
 # References {.unnumbered}
