@@ -2,7 +2,7 @@ library(tidyverse)
 
 # read in dataframes, select relevant columns
 
-beliefs <- read_csv("markant_2023_data/belief_df_noexclusions.csv") %>%
+beliefs <- read_csv("data/markant_2023_data/belief_df_noexclusions.csv") %>%
   select(c("user_token", "pre_attitude",
            "post_attitude", "pre_belief",
            "post_belief", "var",
@@ -10,7 +10,7 @@ beliefs <- read_csv("markant_2023_data/belief_df_noexclusions.csv") %>%
   mutate(belief_diff = post_belief - pre_belief,
          attitude_diff = post_attitude - pre_attitude)
 
-dc_data <- read_csv("markant_2023_data/survey_df_noexclusions.csv") %>%
+dc_data <- read_csv("data/markant_2023_data/survey_df_noexclusions.csv") %>%
   select(c("user_token","defensive_confidence"))
 
 # combine for plotting

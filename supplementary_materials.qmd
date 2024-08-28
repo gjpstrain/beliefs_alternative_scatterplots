@@ -1,0 +1,109 @@
+---
+title: "Supplementary Materials"
+format: pdf
+
+knitr:
+  opts_chunk: 
+    cache_comments: false
+    crop: true
+    
+execute: 
+  echo: false
+  warning: false
+  message: false
+  include: false
+---
+
+```{r}
+#| label: setup
+
+library(tidyverse)
+library(kableExtra)
+```
+
+# Tables of Correlative Statements
+
+```{r}
+#| label: full-list
+#| include: true
+#| tbl-cap: Numbered full list of statements.
+
+full_list <- read.csv("data/full_list.csv")
+
+knitr::kable(full_list, booktabs = T, table.env = "table*") %>% kable_styling(latex_options = "scale_down", font_size = 9)
+```
+
+```{r}
+#| label: tbl-pre-test-hi
+#| include: true
+#| tbl-cap: Pre-test statements that were rated as being strongly correlated.
+
+# read in pre-test csv data
+
+pre_test_statements_hi <- read_csv("data/pre_test_data.csv") %>%
+  filter(label == "high_corr") %>%
+  select(c("item_no","statement")) %>%
+  rename("Statement - Strong Correlation Depicted" = "statement",
+         "Item Number" = "item_no")
+
+# make table
+
+knitr::kable(pre_test_statements_hi, booktabs = T, table.env = "table*") %>% kable_styling(latex_options = "scale_down", font_size = 9)
+```
+
+```{=latex}
+\pagebreak
+```
+
+
+```{r}
+#| label: tbl-pre-test-low
+#| include: true
+#| tbl-cap: Pre-test statements that were rated as being weakly correlated.
+
+# read in pre-test csv data
+
+pre_test_statements_lo <- read_csv("data/pre_test_data.csv") %>%
+  filter(label == "low_corr") %>%
+  select(c("item_no","statement")) %>% 
+  rename("Statement - Weak Correlation Depicted" = "statement",
+         "Item Number" = "item_no")
+
+# make table
+
+knitr::kable(pre_test_statements_lo, booktabs = T, table.env = "table*") %>% kable_styling(latex_options = "scale_down", font_size = 9)
+```
+
+# Full Defensive Confidence Scale
+
+Participants answered each item using ausing a 5 point Likert scale ranging from 1
+(*not at all characteristic of me*) to 5 (*extremely characteristic of me*).
+
+```{r}
+#| label: def-con-scale
+#| include: true
+#| tbl-cap: Defensive Confidence Scale items. Reverse scored items are specified.
+
+def_con <- read_csv("data/defensive_confidence_scale.csv")
+
+knitr::kable(def_con, booktabs = T, table.env = "table*") %>%
+  kable_styling(latex_options = "scale_down", font_size = 9) %>%
+  column_spec(2, width = "50em")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
