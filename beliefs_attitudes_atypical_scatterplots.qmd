@@ -167,8 +167,7 @@ library(Matrix)
 library(irr)
 library(bbplot)
 library(geomtextpath)
-library(pdftools)
-library(png)
+library(ggh4x)
 
 # fix conflicts now using the conflicted package
 
@@ -471,6 +470,30 @@ rm(main_exp_A,
 ```
 
 ```{r}
+#| label: contrasts-extract
+
+# this function extracts test statistics and p values from model summaries
+
+contrasts_extract <- function(model) {
+  
+  model_name <- deparse(substitute(model))
+  
+  if (class(model) == "buildmer") model <- model@model
+  
+  EMMs <- emmeans(model, pairwise ~ rating_time * condition)
+  
+  contrast_df <- as.data.frame(EMMs[2]) %>%
+                            rename_with(str_replace,
+                                        pattern = "contrasts.", replacement = "",
+                                        matches("contrasts")) %>%
+                            rename_with(str_to_title, !starts_with("p")) %>%
+                            select(c("Contrast", "Z.ratio", "p.value"))
+  
+  return(contrast_df)
+}
+```
+
+```{r}
 #| label: plot-examples-function
   
   set.seed(1234)
@@ -702,7 +725,7 @@ make_sig_table_abso <- function (model) {
     
     df <- left_join(df, r_squared, by = "Effect") %>%
       mutate("Effect" = recode(Effect,
-                               "rating_timepre_bel" = "Rating Time")) %>%
+                               "rating_timepost_bel" = "Rating Time")) %>%
       column_to_rownames(var = "Effect")
  
   table <- kbl(df, booktabs = T, digits = c(2,3,2,2,2,2,3), escape = F)
@@ -744,7 +767,9 @@ make_sig_table_rel <- function (model) {
     
     df <- left_join(df, r_squared, by = "Effect") %>%
       mutate("Effect" = recode(Effect,
-                               "condition1" = "Condition")) %>%
+                               "condition1" = "Condition",
+                               "rating_time1" = "Rating Time",
+                               "rating_time1:condition1" = "Rating Time * Condition")) %>%
       column_to_rownames(var = "Effect")
  
   table <- kbl(df, booktabs = T, digits = c(2,3,2,2,2,2,3), escape = F)
@@ -922,8 +947,8 @@ ever could.
 
 Recent work has sought to address the correlation underestimation bias in
 positively correlated scatterplots through the use of novel point encodings. In 
-2023 and 2024, Strain et al. [@strain_2023; @strain_2023b; @strain_2024] began
-exploiting the notion that viewers use the width of a probability distribution 
+2023 and 2024, Strain et al. [@strain_2023; @strain_2023b; @strain_2024]
+exploited the notion that viewers use the width of a probability distribution 
 conveyed by the arrangement of scatterplot points as a proxy for their judgements
 of correlation to successfully correct for the underestimation bias.
 At the time of writing, this work has only provided evidence about perceptual
@@ -965,11 +990,13 @@ and work on visual features as proxies for correlation found that a similar
 quantity again is predictive of performance [@yang_2019]. While we cannot say that this *is*
 the process of correlation perception in scatterplots, we can conclude that the 
 shape of the point cloud is a good proxy for what is really occurring during
-judgements of correlation. The goal of this work is not to further illuminate
+judgements of correlation. The goal of the work presented in this paper is not to further illuminate
 what drives the perception of correlation in scatterplots, but rather to investigate
-whether proven perceptual effects can be extended into a cognitive space. For this 
-reason, we do not explore these mechanisms further, but rather refer the reader
-to previous literature which focuses on these questions [@rensink_2010; @rensink_2017; @strain_2023; @strain_2024].
+whether proven perceptual effects can be extended into a cognitive space. 
+
+<!-- For this -->
+<!-- reason, we do not explore these mechanisms further, but rather refer the reader -->
+<!-- to previous literature which focuses on these questions [@rensink_2010; @rensink_2017; @strain_2023; @strain_2024]. -->
 
 ## Scatterplots: Opacity, Size, and Recent Developments {#sec-scatterplots}
 
@@ -978,7 +1005,7 @@ Regarding opacity, this is often uniformly lowered to address overplotting
 issues that arise when visualizing very large datasets [@matejka_2015]. Similarly, scatterplots
 describing large datasets tend to have smaller points to maintain individual point
 discriminability. Point size has also been used to encode an additional third
-variable in what is known as *bubble charts*. Despite these techniques being
+variable in what are known as *bubble charts*. Despite these techniques being
 established, there is relatively little experimental work on the effects of 
 changing point opacities and sizes on correlation estimation. Some studies have found
 that correlation estimation is invariant to changes in point opacities and sizes
@@ -1167,11 +1194,11 @@ perception and cognition that can be exploited by visualization designers to
 facilitate more efficient, enjoyable, and effective communication [@franconeri_2021].
 This is a double-edged sword, however; poor design, be it malevolent
 or misguided, can cause distrust, confusion, and misunderstanding amongst viewers.
-It is for both of these reasons that we choose to study belief change in scatterplots
+It is for these reasons that we choose to study belief change in scatterplots
 as a consequence of alternative designs. Scatterplots, like many other data 
-visualizations, have been admitted as evidence in court cases [@bobko_1979], and
+visualizations, have been submitted as evidence in court cases [@bobko_1979], and
 play key roles in organizational decision making, including in healthcare [@poly_2019].
-It is a reasonable assumption to make that data visualizations
+It is a reasonable to assume that data visualizations
 are used to make decisions that result in positive or negative outcomes
 with regards to health and policy more generally, especially given findings that, in certain
 contexts, they are more persuasive than textual information [@pandey_2014]. Studying the potential for new
@@ -1179,7 +1206,7 @@ designs to alter beliefs about relatedness facilitates not only the exploitation
 of these new designs for better visualizations, but also allows us to understand
 how these designs might be used by malevolent actors with a view to inoculating
 those who engage with them. To this end, we present a two
-experiment study. First, we first use crowdsourcing to select part of our experimental
+experiment study. First, we use crowdsourcing to select part of our experimental
 stimuli, then we test the propensity for previously established alternative scatterplot
 designs to alter beliefs about relatedness, taking into account a range of additional
 participant qualities.
@@ -1191,7 +1218,7 @@ of open research practices and our approach to and justification for crowdsourci
 
 ## Open Research {#sec-open-research}
 
-Both our pre and main studies were conducted according to the principles of open
+Both our pre- and main studies were conducted according to the principles of open
 and reproducible research [@ayris_2018]. We pre-registered hypotheses and analysis plans
 with the Open Science Framework (OSF) for the pre-study[^1] and the main experiment[^2], and 
 there were no deviations from them. All data and analysis code are included in a 
@@ -1480,10 +1507,13 @@ Having selecting a correlative statement describing a weak relationship and with
 a high level of consensus between participants in the pre-study, we used **ggplot2**
 (version 3.5.1 [@ggplot]) in R to create our stimuli; scripts for the creation
 of stimuli can be found in the repository associated with this project.
-As our statement was rated as describing a low level of relatedness, we utilize scatterplots that describe a 
-strong relationship (0.6 > *r* > 0.99) in order to induce belief change. Our plots
+As our statement was rated as describing a low level of relatedness,
+we utilize scatterplots that describe a strong relationship (0.6 > *r* > 0.99)
+in order to induce belief change. Our plots
 were created in line with guidance provided by previous research and detailed in
-@sec-scatterplots. Examples of stimuli using an *r* value of 0.6 for both the
+@sec-scatterplots. We used 45 values of *r* uniformly distributed between 0.6
+and 0.99 to create 45 scatterplots for each condition.
+Examples of stimuli using an *r* value of 0.6 for both the
 typical and atypical scatterplot conditions can be seen in @fig-main-examples.
 
 ```{r}
@@ -1648,7 +1678,7 @@ minutes to complete the experiment (*SD* = `r printnum(time_taken_main$sd)`).
 We employed a between-participants design. Each participant was randomly assigned
 to either group A, in which case they viewed typical scatterplots, or group B,
 in which they viewed atypical scatterplots designed deliberately to elicit higher
-levels of belief change. Participant saw all experimental items for their group, along
+levels of belief change. Participants saw all 45 experimental items for their group, along
 with 4 attention check items, in a fully randomised order. All experimental code, 
 materials, and instructions are hosted on GitLab as two separate experiments [^5] [^6]
 
@@ -1696,7 +1726,8 @@ asked participants to set the slider to 0 or 1.
 diff_abso_df_long <- main_exp_tidy %>%
   pivot_longer(cols = c("pre_bel", "post_bel"),
                values_to = "rating",
-               names_to = "rating_time")
+               names_to = "rating_time") %>%
+  mutate(rating_time = as_factor(rating_time))
 
 # create model
 
@@ -1726,7 +1757,7 @@ diff_abso_model_cmpr <- comparison(diff_abso_model)
 ```{r}
 #| label: anova-diff-abso
 
-# run ANOVA between experimental and comparison models, ouputs stats in global env
+# run ANOVA between experimental and comparison models, outputs stats in global env
 
 anova_results_mixed(diff_abso_model, diff_abso_model_cmpr)
 ```
@@ -1737,8 +1768,9 @@ packages were used to build linear mixed effects models. Semi-partial R^2^,
 which is presented in lieu of traditional measures of effect size,
 was calculated using the **r2glmm** package (version 0.1.2 [@r2glmm]). To test the first hypothesis,
 that ratings of strength of relatedness would be different before and after participants
-viewed experimental items, we build a model whereby the rating is predicted by the point
-in time the participant made it. Our first hypothesis was supported; there was a 
+viewed experimental items, we build a model whereby the rating of strength of relatedness
+the participant made is predicted by whether it was made before or after viewing 
+the experimental items. Our first hypothesis was supported; there was a 
 significant difference in ratings of strength of relatedness made before and after
 participants viewed the experimental plots. A likelihood ratio test revealed that the model
 including time of rating as a predictor explained significantly more variance than
@@ -1802,19 +1834,16 @@ diff_abso_df_long %>%
 # modelling effect of condition on difference between belief strength before and
 # after viewing plots
 
-relative_model <- buildmer(belief_diff ~ condition +
+# set deviation coding contrasts first
+
+contrasts(diff_abso_df_long$rating_time) <- matrix(c(.5, -.5))
+contrasts(diff_abso_df_long$condition) <- matrix(c(.5, -.5))
+
+# build model 
+
+relative_model <- buildmer(rating ~ rating_time*condition +
                               (1 | participant),
-                            data = main_exp_tidy)
-```
-
-```{r}
-#| label: model-relative-assign-slot
-#| eval: !expr params$eval_models
-#| cache: !expr params$eval_models
-
-# assign relative model to slot for further use
-
-relative_model <- relative_model@model
+                            data = diff_abso_df_long)
 ```
 
 ```{r}
@@ -1822,9 +1851,9 @@ relative_model <- relative_model@model
 #| eval: !expr params$eval_models
 #| cache: !expr params$eval_models
 
-# build null model for comparison. Model has no random effects terms, so do it manually
+# build null model for comparison
 
-relative_model_cmpr <- lm(belief_diff ~ 1, data = main_exp_tidy)
+relative_model_cmpr <- comparison(relative_model)
 ```
 
 ```{r}
@@ -1834,18 +1863,28 @@ relative_model_cmpr <- lm(belief_diff ~ 1, data = main_exp_tidy)
 
 # extract ANOVA results for relative vs null model comparison
 
-anova_results_linear(relative_model_cmpr, relative_model)
+anova_results_mixed(relative_model, relative_model_cmpr)
 ```
 
 Our second hypothesis, that the difference between ratings of strength of relatedness
 before and after viewing experimental plots would be greater when participants
-were assigned to the atypical scatterplot condition, also received support. We built
-a linear mixed effects model whereby the difference was predicted by the condition
-the participant was assigned to. A likelihood ratio test revealed that the model
-including condition as a predictor explained significantly more variance than the null
-($F$(`r in_paren(relative_model.df)`) = `r printnum(relative_model.F)`,
-*p* `r printp(relative_model.p, add_equals = TRUE)`). This model contains no
-random effects terms. Test statistics, along with semi-partial R^2^ can be seen in @tbl-rel.
+were assigned to the atypical scatterplot condition, also received support.
+Deviation coding was used for each of the experimental factors of rating time (pre or post)
+and condition, which allows us to compare means of ratings to the grand mean. We built
+a linear mixed effects model whereby the rating of strength of relatedness the participant
+made was predicted by the condition the participant was assigned to and the time
+they made the rating. A likelihood ratio test revealed that the model
+including condition and rating time as a predictor explained significantly more variance than the null
+($F$(`r in_paren(relative_model.df)`) = `r printnum(relative_model.Chisq)`,
+*p* `r printp(relative_model.p, add_equals = TRUE)`). This model had random
+intercepts for participants. We again found a main effect of rating time,
+found no main effect of condition, and found an interaction between
+rating time and condition. Test statistics, along with semi-partial R^2^ can be
+seen in @tbl-rel. To further explore the interaction, we used the **emmeans**
+package (version 1.10.3 [@emmeans]) to calculate pairwise comparisons between 
+levels of the condition and rating time factors, which can be see in @tbl-pairwise.
+The interaction we found is driven by participants beliefs changing more between
+pre-viewing and post-viewing times for atypical as opposed to typical plots.
 
 ```{r}
 #| label: tbl-rel
@@ -1865,6 +1904,26 @@ condition_estimate <- coef[2]
 rm(summary, coef)
 ```
 
+```{r}
+#| label: tbl-pairwise
+#| include: true 
+#| tbl-cap: placeholder
+
+contrast_table_df <- contrasts_extract(relative_model) %>%
+  mutate(p.value = scales::pvalue(p.value)) %>%
+  rename("\\textit{p}" = "p.value",
+         "Z ratio" = "Z.ratio") %>%
+  mutate('Contrast' = recode(Contrast,
+         "pre_bel A - post_bel A" = "Pre-Viewing x Atypical | Post-Viewing x Atypical",
+         "pre_bel A - pre_bel T" = "Pre-Viewing x Atypical | Pre-Viewing x Typical",
+         "pre_bel A - post_bel T" = "Pre-Viewing x Atypical | Post-Viewing x Typical",
+         "post_bel A - pre_bel T" = "Post-Viewing x Atypical | Pre-Viewing x Typical",
+         "post_bel A - post_bel T" = "Post-Viewing x Atypical | Post-Viewing x Typical",
+         "pre_bel T - post_bel T" = "Pre-Viewing x Typical | Post-Viewing x Typical"))
+
+kbl(contrast_table_df, booktabs = TRUE, digits = c(0,2,3), escape = FALSE)
+```
+
 ### Additional Analyses {#sec-add-analyses}
 
 ```{r}
@@ -1872,66 +1931,35 @@ rm(summary, coef)
 #| eval: !expr params$eval_models
 #| cache: !expr params$eval_models
 
-# I don't know a way to do this programmatically, as we're doing interactive effects
-# so for now just do it manually
+lit_model <- lmer(rating ~ 1 + condition + rating_time + condition:rating_time * literacy +
+                         (1  | participant), 
+          data = diff_abso_df_long)
 
-lit_model <- lm(belief_diff ~ 1 + condition * literacy ,
-          data = main_exp_tidy)
+anova_results_mixed(lit_model, relative_model)
 
-anova_results_linear(relative_model, lit_model)
+dc_model <- lmer(rating ~ 1 + condition + rating_time + condition:rating_time * dc_score +
+                         (1  | participant), 
+          data = diff_abso_df_long)
 
-dc_model <- lm(belief_diff ~ 1 + condition * dc_score,
-          data = main_exp_tidy)
+anova_results_mixed(dc_model, relative_model)
 
-anova_results_linear(relative_model, dc_model)
+emo_model <- lmer(rating ~ 1 + condition + rating_time + condition:rating_time * slider_emotion.response +
+                         (1  | participant), 
+          data = diff_abso_df_long)
 
-emo_model <- lm(belief_diff ~ 1 + condition * slider_emotion.response,
-                data = main_exp_tidy)
-
-anova_results_linear(relative_model, emo_model)
-```
-
-```{r}
-#| label: tbl-lit-stat
-#| include: true
-#| tbl-cap: Statistics for main effects and interactions when scores on the Subjective Graph Literacy test are included in the model.
-
-make_sig_table_lit(lit_model)
-```
-
-```{r}
-#| label: tbl-dc-stat
-#| include: true
-#| tbl-cap: Statistics for main effects and interactions when scores on the Defensive Confidence test are included in the model.
-
-make_sig_table_dc(dc_model)
-```
-
-```{r}
-#| label: tbl-emo-stat
-#| include: true
-#| tbl-cap: Statistics for main effects and interactions when likert ratings of topic emotionality are included in the model.
-
-make_sig_table_emo(emo_model)
+anova_results_mixed(emo_model, relative_model)
 ```
 
 We find effects of participants' scores on a Defensive Confidence test 
-($F$(`r in_paren(dc_model.df)`) = `r printnum(dc_model.F)`,
+($F$(`r in_paren(dc_model.df)`) = `r printnum(dc_model.Chisq)`,
 *p* `r printp(dc_model.p, add_equals = TRUE)`), participants' scores on a graph
-literacy test [@garcia_2016] ($F$(`r in_paren(lit_model.df)`) = `r printnum(lit_model.F)`,
+literacy test [@garcia_2016] ($F$(`r in_paren(lit_model.df)`) = `r printnum(lit_model.Chisq)`,
 *p* `r printp(lit_model.p, add_equals = TRUE)`), and of how emotional participants'
 rated the chosen correlative statement before beginning the block of trials
-($F$(`r in_paren(emo_model.df)`) = `r printnum(emo_model.F)`,
-*p* `r printp(emo_model.p, add_equals = TRUE)`). There are significant fixed
-and interactive effects present for both graph literacy and defensive
-confidence. @tbl-lit-stat and @tbl-dc-stat contain statistics, including partial
-R^2^ for both factors respectively. We found no significant fixed effect of 
-emotionality ratings, but an interaction was observed, which can be seen in 
-@tbl-emo-stat. Given the low estimates and effects sizes
-associated with the fixed effects of defensive confidence and graph literacy,
-and the the absence of a fixed effect of emotionality, we instead choose
-to focus on the interactions themselves; see @sec-add-analyses-discussion for further discussion
-of these effects.
+($F$(`r in_paren(emo_model.df)`) = `r printnum(emo_model.Chisq)`,
+*p* `r printp(emo_model.p, add_equals = TRUE)`). We discuss the interactions
+between graph literacy, defensive confidence, and statement emotionality in
+@sec-add-analyses-discussion
 
 ## Discussion {#sec-main-discussion}
 
@@ -1949,153 +1977,86 @@ scatterplot designs with regards to producing more persuasive(?) visualizations.
 
 ### Graph Literacy, Defensive Confidence, and Topic Emotionality {#sec-add-analyses-discussion}
 
+```{r}
+#| label: fig-add-analyses-plots
+#| include: true
+#| fig-asp: 0.4
+#| fig-cap: Illustrating how differences in beliefs about strength of relatedness change as a function of participants' scores on the graph literacy test (Left), their scores on the defensive confidence test (Middle), and their ratings of statement emotionality (Right). Localled smoothed cruves are shown separately for typical and atypucal scatterplot viewing conditions.
+
+add_analyses_plotting_df <- main_exp_tidy %>%
+  mutate("condition" = recode(condition,
+                              "A" = "Atypical",
+                              "T" = "Typical")) %>%
+  pivot_longer(cols = c("literacy", "dc_score", "slider_emotion.response"),
+               names_to = "add_variable",
+               values_to = "variable_score") %>%
+  mutate("add_variable" = recode(add_variable,
+                                 "literacy" = "Graph Literacy (/30)",
+                                 "dc_score" = "Defensive Confidence (/60)",
+                                 "slider_emotion.response" = "Emotion Rating (1 to 7)")) %>%
+  mutate(add_variable = as_factor(add_variable))
+
+ggplot(aes(x = variable_score, y = belief_diff, colour = condition), data = add_analyses_plotting_df) +
+    geom_textpath(stat = "smooth",
+            method = "loess",
+            span = 1,
+            vjust = -0.3,
+            hjust = 1,
+            size = 3.5,
+            aes(colour = condition, label = condition)) +
+  scale_color_brewer(palette = "Set2", aesthetics = "color") +
+  theme_ggdist() +
+  ggh4x::facet_wrap2(~factor(add_variable, c("Graph Literacy (/30)",
+                                             "Defensive Confidence (/60)",
+                                             "Emotion Rating (1 to 7)")), scales = "free_x") +
+  theme(legend.position = "none",
+        axis.title.y = element_text(size = 12),
+        strip.text = element_text(size = 8)) +
+  labs(x = "",
+       y = "Difference in Belief") +
+  ggh4x::facetted_pos_scales(
+    x = list(
+      scale_x_continuous(breaks = scales::pretty_breaks(n = 7)),
+      scale_x_continuous(limits = c(20,60)),
+      scale_x_continuous(breaks = scales::pretty_breaks(n = 7)) 
+    )
+  )
+```
+
 Mean differences in pre and post plot-viewing ratings of strength of relatedness
-by Subjective Graph Literacy score can be seen in @fig-lit-smooth.
-Generally, participants who scored higher on
-a graph literacy test experienced smaller changes in their ratings of strength
-of relatedness. While the effect size associated with this interaction is small
-(~ 0.01, see @tbl-lit-stat), and does not alter the overall pattern of results, 
-it is in line with previous work suggesting that those with higher levels of
-graph or visualization literacy show better performance in inference tasks
-related to visualizations [@canham_2010], are more capable of describing effects
-that visualisations aim to communicate [@shah_2011], and are able to preferentially
-attend to relevant features of visualizations to a greater degree [@okan_2016], than those with
-lower levels of graph literacy. In the present study, we provide evidence
-that those with greater levels of graph literacy are *less susceptible* to having
+by Subjective Graph Literacy score can be seen in @fig-add-analyses-plots. Generally, 
+participants who scored higher on a graph literacy test experienced smaller changes
+in their ratings of strength of relatedness. While the effect size associated 
+with this interaction is small (~ 0.01), it is in line with
+previous work suggesting that those with higher levels of graph or visualization
+literacy show better performance in inference tasks related to visualizations 
+[@canham_2010], are more capable of describing effects that visualisations aim
+to communicate [@shah_2011], and are able to preferentially attend to relevant 
+features of visualizations to a greater degree [@okan_2016], than those with 
+lower levels of graph literacy. In the present study, we provide evidence that
+those with greater levels of graph literacy are *less susceptible* to having 
 their beliefs changed by visualizations, although this difference is somewhat
-negated if participants viewed atypical scatterplots, in which case levels
-of belief change were relatively consistent. We hypothesize that this is due
-to the non-standard nature of the atypical scatterplots used in that condition.
-If the techniques we present here are able to maintain comparable levels of belief
-change between those of low and high graph literacy, the question becomes one of
-whether using these techniques is honest (more comparable belief changes across
-levels of graph literacy), or not (using non-standard visual techniques to overcome
-a proven effect of experience)?
+reduced if participants viewed atypical scatterplots, in which case levels
+of belief change were relatively consistent.
 
-```{r}
-#| label: fig-lit-smooth
-#| include: true
-#| fig-cap: Illustrating how differences in beliefs about strength of relatedness change as a function of partcipants' scores on the subjective graph literacy test; smoothed curves are shown for the grand mean, as well as separately for atypical and typical scatterplot presentation conditions.
-
-main_exp_tidy %>%
-  mutate("condition" = recode(condition,
-                              "A" = "Atypical",
-                              "T" = "Typical")) %>%
-  ggplot(aes(x = literacy, y = belief_diff)) +
-    geom_textpath(stat = "smooth",
-            method = "loess",
-            span = 1,
-            vjust = -0.3,
-            hjust = 1,
-            size = 5,
-            aes(colour = condition, label = condition)) +
-    geom_textpath(stat = "smooth",
-            method = "loess",
-            span = 1,
-            vjust = -0.3,
-            hjust = 1,
-            size = 5,
-            aes(x = literacy, y = belief_diff, label = "Grand Mean")) +
-  scale_color_brewer(palette = "Set2", aesthetics = "color") +
-  theme_ggdist() +
-  theme(legend.position = "none") +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 15)) +
-  labs(x = "Subjective Graph Literacy Score (/30)",
-       y = "Difference in Beliefs about Strength of Relatedness") +
-  annotate(geom = "segment",
-           x = 9,
-           y = 1.25,
-           xend = 9,
-           yend = 0.75,
-           size = 0.8,
-           colour = "black",
-           arrow = arrow(length = unit(.25, "cm"), angle = 45)) +
-  annotate(geom = "text",
-           x = 13,
-           y = 1,
-           label = "Lower numbers represent\nsmaller changes in belief",
-           colour = "black")
-```
-```{r}
-#| label: dc-max
-
-dc_max_typical <- main_exp_tidy %>% filter(condition == "T") %>%
-  summarise(max = max(dc_score))
-```
-
-We observe an opposing pattern of results when examining the effects of defensive confidence
-on participants' propensity for belief change. Generally, participants who scored 
-more highly on the defensive confidence test experienced greater levels of belief
-change. This is in line with evidence that those who are more confidence in their
-ability to defend their own beliefs are more liable to having those beliefs changed
-in light of evidence [@albarracin_2004]. An extended analysis of the defensive
-confidence data collected by Markant et al. [@markant_2023] revealed a similar
-pattern of results; participants who scored more highly on a defensive confidence
-test experienced greater levels of belief change after viewing scatterplot visualizations [^8],
-although the effect in that case is much less pronounced due to differences
-in study design. This effect is explained as being due to those with a greater degree
+We observe an opposing pattern of results when examining the effects of
+defensive confidence on participants' propensity for belief change. Generally,
+participants who scored more highly on the defensive confidence test experienced
+greater levels of belief change. This is in line with evidence that those who 
+are more confidence in their ability to defend their own beliefs are more liable
+to having those beliefs changed in light of evidence [@albarracin_2004]. This
+effect has previously been explained as being due to those with a greater degree
 of confidence in their own ability to defend their ideas engaging with information
-with lower levels of attention to the fact it opposes their beliefs. The present
-study provides evidence in favour of this phenomenon. While the general pattern
-of results is expected based on previous work, the interaction
-present between defensive confidence and scatterplot condition is novel (see @fig-dc-smooth).
-It would appear that despite following the normal pattern of results for low to 
-moderate levels of defensive confidence, those participants who viewed the typical
-scatterplots experienced a drop in belief change as defensive confidence increased
-past ~ 36/60. There are several potential explanations in the data; firstly, that the 75 participants
-who formed the typical scatterplot presentation group had a more restricted range
-of defensive confidence scores, topping out at `r printnum(dc_max_typical$max, digits = 0)`;
-and secondly, that the unfamiliar nature of the atypical scatterplots was protective
-against against an unexpected, standard behaviour whereby very high levels of 
-defensive confidence decrease susceptibility to belief change. 
-
-[^8]: The GitHub repository associated with this paper contains an R script that performs this analysis.
-
-```{r}
-#| label: fig-dc-smooth
-#| include: true
-#| fig-cap: Illustrating how differences in beliefs about strength of relatedness change as a function of partcipants' scores on the defensive confidence test; smoothed curves are shown for the grand mean, as well as separately for atypical and typical scatterplot presentation conditions.
-
-main_exp_tidy %>%
-  mutate("condition" = recode(condition,
-                              "A" = "Atypical",
-                              "T" = "Typical")) %>%
-  #filter(dc_score < 53) %>%
-  ggplot(aes(x = dc_score, y = belief_diff)) +
-    geom_textpath(stat = "smooth",
-            method = "loess",
-            span = 1,
-            vjust = -0.3,
-            hjust = 1,
-            size = 5,
-            aes(colour = condition, label = condition)) +
-    geom_textpath(stat = "smooth",
-            method = "loess",
-            span = 1,
-            vjust = 1.3,
-            hjust = 0.8,
-            size = 5,
-            aes(x = dc_score, y = belief_diff, label = "Grand Mean")) +
-  scale_color_brewer(palette = "Set2", aesthetics = "color") +
-  theme_ggdist() +
-  theme(legend.position = "none") +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 15)) +
-  labs(x = "Defensive Confidence Score (/60)",
-       y = "Difference in Beliefs about Strength of Relatedness") +
-  annotate(geom = "segment",
-           x = 25,
-           y = 1.25,
-           xend = 25,
-           yend = 0.75,
-           size = 0.8,
-           colour = "black",
-           arrow = arrow(length = unit(.25, "cm"), angle = 45)) +
-  annotate(geom = "text",
-           x = 33,
-           y = 1,
-           label = "Lower numbers represent\nsmaller changes in belief",
-           colour = "black")
-```
+with lower levels of attention to the fact it opposes their beliefs. The present 
+study provides additional evidence in favour of this phenomenon. While the general
+pattern of results is expected based on previous work, the interaction present 
+between defensive confidence and scatterplot condition is novel (see @fig-add-analyses-plots).
+It would appear that despite following the normal pattern of results for
+low to moderate levels of defensive confidence, those participants who viewed
+the typical scatterplots experienced a drop in belief change as defensive 
+confidence increased past ~ 36/60. We suggest that the unfamiliar nature of 
+the atypical scatterplots was protective against an unexpected, standard behaviour
+whereby very high levels of defensive confidence decrease susceptibility to belief change. 
 
 Examining @fig-emo-smooth, it would appear that the interaction we see between 
 belief change and topic emotionality is driven by those participants who
@@ -2121,50 +2082,10 @@ effects of graph literacy, defensive confidence, and statement emotionality
 in the current experimental paradigm; as the investigation of these is not the prime
 goal of the present study, however, we do not consider this a shortcoming.
 
-```{r}
-#| label: fig-emo-smooth
-#| include: true
-#| fig-cap: Illustrating how differences in beliefs about strength of relatedness change as a function of partcipants' scores on the subjective graph literacy test; smoothed curves are shown for the grand mean, as well as separately for atypical and typical scatterplot presentation conditions.
-
-main_exp_tidy %>%
-  mutate("condition" = recode(condition,
-                              "A" = "Atypical",
-                              "T" = "Typical")) %>%
-  ggplot(aes(x = slider_emotion.response, y = belief_diff)) +
-    geom_textpath(stat = "smooth",
-            method = "loess",
-            span = 1,
-            vjust = 1.4,
-            hjust = .95,
-            size = 5,
-            aes(colour = condition, label = condition)) +
-    geom_textpath(stat = "smooth",
-            method = "loess",
-            span = 1,
-            vjust = -0.3,
-            hjust = 1,
-            size = 5,
-            aes(x = slider_emotion.response, y = belief_diff, label = "Grand Mean")) +
-  scale_color_brewer(palette = "Set2", aesthetics = "color") +
-  theme_ggdist() +
-  theme(legend.position = "none") +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 7)) +
-  labs(x = "Topic Emotionality Rating (/7)",
-       y = "Difference in Beliefs about Strength of Relatedness") +
-  annotate(geom = "segment",
-           x = 1.5,
-           y = 1.25,
-           xend = 1.5,
-           yend = 0.75,
-           size = 0.8,
-           colour = "black",
-           arrow = arrow(length = unit(.25, "cm"), angle = 45)) +
-  annotate(geom = "text",
-           x = 2.75,
-           y = 1,
-           label = "Lower numbers represent\nsmaller changes in belief",
-           colour = "black")
-```
+Further experimental work is required to provide concrete explanations for the
+interactive effects of graph literacy, defensive confidence, and statement
+emotionality in the current experimental paradigm; as the investigation of
+these is not the prime goal of the present study.
 
 # General Discussion {#sec-general-discussion}
 
