@@ -917,10 +917,11 @@ representations of (usually) bivariate data. They were estimated in 1983 to acco
 for between 70 and 80 percent of data visualizations in scientific publications [@tufte_1983],
 and while there is no doubt that the range of data visualizations employed in and
 beyond science is now far broader, scatterplots remain an important tool for the
-visualization designer. The appeal of researching scatterplots lies in evidence that
-people generally interpret them in similar ways [@kay_2015], that they are interpreted
-rapidly [@rensink_2014], and that they are ubiquitous in both academic [@tufte_1983]
-and non-academic contexts.
+visualization designer. Evidence that scatterplots are interpreted rapidly [@rensink_2014]
+facilitates the quick collection of large amounts of data, and their ubiquity
+[@tufte_1983] and low levels of interindividual variance [@kay_2015] make 
+them particularly suitable for studying perceptual and cognitive phenomena
+regarding data visualization.
 
 While most commonly used to communicate the linear correlation, or level of relatedness,
 between a pair of variables, scatterplots can also be designed to facilitate the
@@ -1259,7 +1260,7 @@ and topic emotionality, so elected to create our own. In order
 to control for these factors as much as possible, we ran our pre-study with the intent
 of finding a correlative statement that was matched on emotional content and
 level of belief strength. Instead of creating these statements ourselves, we chose
-to streamline the process by using the ChatGPT4 Large Language Model. We used
+to streamline the process by using the ChatGPT4 Large Language Model [@chat_gpt]. We used
 the following prompt:
 
 ```{=tex}
@@ -1278,9 +1279,7 @@ the following prompt:
 ```
 
 The full list of these statements can be found in the supplementary materials.
-Note that we cite our use of ChatGPT according to the AI Code of Conduct developed
-by Iliada Eleftheriou and Ajmal Mubarik of the University of Manchester
-[@iliada_2023]. Two authors rated each statement on topic emotionality and
+Two authors rated each statement on topic emotionality and
 strength of relatedness using Likert scales from 1 to 7. Topic emotionality
 had a midpoint at 4, whereas strength of relatedness varied between 1 (Not Related At All)
 and 7 (Strongly Related). We calculated a quadratic weighted Cohen's Kappa
@@ -1298,9 +1297,10 @@ We then tested these 25 statements with a representative UK sample in order
 to ascertain consensus on both topic emotionality and strength of relatedness.
 Doing so allows us to control for these factors when we analyse the effects
 of our atypical scatterplot designs on the propensity for belief change
-in our main experiment. We hypothesized that H1: there will be a significant
-difference in average ratings of topic emotionality between statements, and that H2: there
-will be a significant difference between average ratings of strength of relatedness 
+in our main experiment. We hypothesized that:
+
+  - H1: there will be a significant difference in average ratings of topic emotionality between statements. 
+  - H2: there will be a significant difference between average ratings of strength of relatedness 
 between statements.
 
 ```{r}
@@ -1350,14 +1350,14 @@ experimental items, we included six attention check items, which asked participa
 to provide specific answers. No participants failed more than 2 out of 6 attention
 check items, and therefore data from all 100 were included in the full analysis
 (`r printnum(gender_pre$Male, digits = 1)`% male and `r printnum(gender_pre$Female, digits = 1)`% 
-female. Participants' mean age was `r printnum(age_pre$mean, digits = 1)` (*SD* = 
+female). Participants' mean age was `r printnum(age_pre$mean, digits = 1)` (*SD* = 
 `r printnum(age_pre$sd, digits = 1)`). The average time taken to complete the survey was
 `r printnum(time_taken_pre$mean, digits = 1)` minutes (*SD* = `r printnum(time_taken_pre$sd, digits = 1)` minutes).
 
 ### Design {#sec-design-pre}
 
 Each participant saw all survey items (see supplementary material),
-along with the six attention check items, in a fully randomised order. All
+along with the six attention check items, in a fully randomized order. All
 experimental code, materials, and instructions are hosted on GitLab[^4].
 
 [^4]: removed for anon
@@ -1373,7 +1373,7 @@ gender identity. Participants were told that they would be asked to read stateme
 about the relatedness between a pair of variables, after which they would have to 
 indicate their beliefs about topic emotionality and the strength of relatedness suggested
 using a pair of sliders. To familiarize themselves with the sliders, they were asked to complete a practice round
-in response to the statement "As participation in online experiments increases,
+in response to the statement: "As participation in online experiments increases,
 society becomes happier."
 
 ## Results {#sec-results-pre}
@@ -1484,10 +1484,12 @@ to design our scatterplots based on a popular British news source and to falsely
 credit the data as being provided by the British National Health Service (NHS). Participants
 were informed that said news source had requested that their identity were obscured,
 and were debriefed that this was not the case, and that the data were fictional,
-following completion of the experiment. We hypothesized that H1: there will be a significant
-difference in ratings of strength of relatedness before and after participants
-viewed the experimental items, and H2: that this difference will be greatest when
-participants are exposed to scatterplots in the atypical condition.
+following completion of the experiment. We hypothesized that:
+
+  - H1: there will be a significant difference in ratings of strength of
+  relatedness before and after participants viewed the experimental items.
+  - H2: that this difference will be greatest when participants are exposed
+  to scatterplots in the atypical condition.
 
 ### Defensive Confidence {#sec-def-con}
 
@@ -1679,8 +1681,12 @@ We employed a between-participants design. Each participant was randomly assigne
 to either group A, in which case they viewed typical scatterplots, or group B,
 in which they viewed atypical scatterplots designed deliberately to elicit higher
 levels of belief change. Participants saw all 45 experimental items for their group, along
-with 4 attention check items, in a fully randomised order. All experimental code, 
-materials, and instructions are hosted on GitLab as two separate experiments [^5] [^6]
+with 4 attention check items, in a fully randomised order. Our dependent variable 
+was the level of belief change induced by viewing the scatterplot visualizations,
+so participants were tested on how strongly related they believed the variables 
+described by the correlative statement were **before** and **after** viewing the
+experimental items. All experimental code, materials, and instructions are 
+hosted on GitLab as two separate experiments [^5] [^6]
 
 [^5]: removed for anon
 [^6]: removed for anon
@@ -1700,7 +1706,7 @@ and the 5-item Subjective Graph Literacy scale [@garcia_2016] [^7].
 In order to give legitimacy to our data visualizations with the hope of maximizing
 any potential belief change, participants were told that the graphs were taken
 from a well-known British news source, but that the identity of this source had 
-been obscured. In order to promote participant engagement with the visualizations,
+been obscured. In order to promote engagement with the visualizations,
 participants were instructed to use a slider to estimate the correlation displayed
 in each scatterplot; no hypotheses were made based on these data and therefore we
 do not analyse them further. Following instructions, which included descriptions of scatterplots and Pearson's *r*,
@@ -1769,13 +1775,13 @@ which is presented in lieu of traditional measures of effect size,
 was calculated using the **r2glmm** package (version 0.1.2 [@r2glmm]). To test the first hypothesis,
 that ratings of strength of relatedness would be different before and after participants
 viewed experimental items, we build a model whereby the rating of strength of relatedness
-the participant made is predicted by whether it was made before or after viewing 
+the participant made is predicted by whether it was made **before** or **after** viewing 
 the experimental items. Our first hypothesis was supported; there was a 
 significant difference in ratings of strength of relatedness made before and after
 participants viewed the experimental plots. A likelihood ratio test revealed that the model
 including time of rating as a predictor explained significantly more variance than
 the null ($\chi^2$(`r in_paren(diff_abso_model.df)`) = `r printnum(diff_abso_model.Chisq)`,
-*p* `r printp(diff_abso_model.p, add_equals = TRUE)`). This model had random
+*p* `r printp(diff_abso_model.p, add_equals = TRUE)`). This model has random
 intercepts for participants. Statistical testing providing
 support for this hypothesis is shown in @tbl-abso-diff. @fig-abso-descriptives
 shows means and boxplots for ratings of strength of relatedness before and after
@@ -1812,11 +1818,13 @@ diff_abso_df_long %>%
        y = "Rating",
        fill = "Rating Time") +
   theme_ggdist() +
-  theme(legend.position = c(0.13, 0.12),
+  theme(legend.position = c(0.1, 0.1),
+        legend.background = element_rect(fill = NA),
         legend.direction = "horizontal",
         legend.box = "horizontal",
-        legend.key.size = unit(1.15, "line"),
+        legend.key.size = unit(1., "line"),
         legend.title.position = "top",
+        legend.title = element_text(size = 10),
         axis.line.y = element_blank(),
         axis.ticks.y = element_blank(),
         axis.text.y = element_text(size = 11, colour = "black"),
@@ -1895,19 +1903,19 @@ make_sig_table_rel(relative_model)
 
 # get estimate
 
-summary <- summary(relative_model)
+#summary <- summary(relative_model)
 
-coef <- summary$coefficients
+#coef <- summary$coefficients
 
-condition_estimate <- coef[2]
+#condition_estimate <- coef[2]
 
-rm(summary, coef)
+#rm(summary, coef)
 ```
 
 ```{r}
 #| label: tbl-pairwise
 #| include: true 
-#| tbl-cap: placeholder
+#| tbl-cap: Pairwise comparisons. The interaction is driven by there being greater differences in ratings of belief strength made before and after viewing plots in the atypical condition compared to the typical.
 
 contrast_table_df <- contrasts_extract(relative_model) %>%
   mutate(p.value = scales::pvalue(p.value)) %>%
@@ -1953,27 +1961,26 @@ anova_results_mixed(emo_model, relative_model)
 We find effects of participants' scores on a Defensive Confidence test 
 ($F$(`r in_paren(dc_model.df)`) = `r printnum(dc_model.Chisq)`,
 *p* `r printp(dc_model.p, add_equals = TRUE)`), participants' scores on a graph
-literacy test [@garcia_2016] ($F$(`r in_paren(lit_model.df)`) = `r printnum(lit_model.Chisq)`,
+literacy test ($F$(`r in_paren(lit_model.df)`) = `r printnum(lit_model.Chisq)`,
 *p* `r printp(lit_model.p, add_equals = TRUE)`), and of how emotional participants'
 rated the chosen correlative statement before beginning the block of trials
 ($F$(`r in_paren(emo_model.df)`) = `r printnum(emo_model.Chisq)`,
 *p* `r printp(emo_model.p, add_equals = TRUE)`). We discuss the interactions
-between graph literacy, defensive confidence, and statement emotionality in
-@sec-add-analyses-discussion
+between the main effect and  graph literacy, defensive confidence, and statement emotionality in
+@sec-add-analyses-discussion.
 
 ## Discussion {#sec-main-discussion}
 
 Both of our hypotheses were supported in this experiment. Participants reliably 
 updated their beliefs after viewing scatterplots, and the difference between 
-pre and post-viewing beliefs was greatest for the participants who viewed scatterplots
-in the atypical condition by, on average, `r printnum(condition_estimate, digits = 2)`.
-These results suggest that the perceptual effects described
+pre- and post-viewing beliefs was greatest for the participants who viewed scatterplots
+in the atypical condition. These results suggest that the perceptual effects described
 in previous work can be extended to bias participants' cognitions about the levels
 of relatedness between pairs of variables. These findings are encouraging for 
 data visualization designers who wish to design scatterplots such that correlation
 perception more closely matches the underlying statistics, however much more work
 would be required to begin producing guidelines for the use of alternative 
-scatterplot designs with regards to producing more persuasive(?) visualizations.
+scatterplot designs with regards to producing more persuasive visualizations.
 
 ### Graph Literacy, Defensive Confidence, and Topic Emotionality {#sec-add-analyses-discussion}
 
@@ -1981,7 +1988,7 @@ scatterplot designs with regards to producing more persuasive(?) visualizations.
 #| label: fig-add-analyses-plots
 #| include: true
 #| fig-asp: 0.4
-#| fig-cap: Illustrating how differences in beliefs about strength of relatedness change as a function of participants' scores on the graph literacy test (Left), their scores on the defensive confidence test (Middle), and their ratings of statement emotionality (Right). Localled smoothed cruves are shown separately for typical and atypucal scatterplot viewing conditions.
+#| fig-cap: Illustrating how differences in beliefs about strength of relatedness change as a function of participants' scores on the graph literacy test (Left), their scores on the defensive confidence test (Middle), and their ratings of statement emotionality (Right). Localled smoothed cruves are shown separately for typical and atypical scatterplot viewing conditions. Lower ratings of Difference in Belief ($y$ axis) correspond to lower levels of belief change between pre- and post- scatterplot viewing times.
 
 add_analyses_plotting_df <- main_exp_tidy %>%
   mutate("condition" = recode(condition,
@@ -2023,14 +2030,14 @@ ggplot(aes(x = variable_score, y = belief_diff, colour = condition), data = add_
   )
 ```
 
-Mean differences in pre and post plot-viewing ratings of strength of relatedness
+Mean differences in pre- and post plot-viewing ratings of strength of relatedness
 by Subjective Graph Literacy score can be seen in @fig-add-analyses-plots. Generally, 
 participants who scored higher on a graph literacy test experienced smaller changes
 in their ratings of strength of relatedness. While the effect size associated 
 with this interaction is small (~ 0.01), it is in line with
 previous work suggesting that those with higher levels of graph or visualization
 literacy show better performance in inference tasks related to visualizations 
-[@canham_2010], are more capable of describing effects that visualisations aim
+[@canham_2010], are more capable of describing effects that visualizations aim
 to communicate [@shah_2011], and are able to preferentially attend to relevant 
 features of visualizations to a greater degree [@okan_2016], than those with 
 lower levels of graph literacy. In the present study, we provide evidence that
@@ -2043,7 +2050,7 @@ We observe an opposing pattern of results when examining the effects of
 defensive confidence on participants' propensity for belief change. Generally,
 participants who scored more highly on the defensive confidence test experienced
 greater levels of belief change. This is in line with evidence that those who 
-are more confidence in their ability to defend their own beliefs are more liable
+are more confident in their ability to defend their own beliefs are more liable
 to having those beliefs changed in light of evidence [@albarracin_2004]. This
 effect has previously been explained as being due to those with a greater degree
 of confidence in their own ability to defend their ideas engaging with information
@@ -2058,29 +2065,14 @@ confidence increased past ~ 36/60. We suggest that the unfamiliar nature of
 the atypical scatterplots was protective against an unexpected, standard behaviour
 whereby very high levels of defensive confidence decrease susceptibility to belief change. 
 
-Examining @fig-emo-smooth, it would appear that the interaction we see between 
-belief change and topic emotionality is driven by those participants who
-rated the statement low on emotionality having different levels of belief change
-between atypical and typical scatterplot presentation conditions; in this case levels 
-of belief change were much higher for the group that viewed the atypical 
-scatterplot designs. There is a broad research space regarding emotionality and
+The effect of statement emotionality on belief change is also illustrated in
+@fig-add-analyses-plots. There is a broad research space regarding emotionality and
 data visualization [@lan_2023], and it is clear from previous work that emotion
 affects perception, cognition, and behaviour [@phelps_2006; @harrison_2013; @thoresen_2016]
 with regard to data visualization. Harrison et al. [@harrison_2013] found that 
 participants who were positively primed performed better on a low-level
 visual judgement task. Comparison of this work to the current is difficult, as
-*success* on our task is hard to define. From our data, it is unclear why participants
-who rated the correlative statement as "strongly negative" experienced significantly
-higher levels of belief change when they viewed atypical scatterplots. We decided to
-capture the emotionality of the statement simply because we had done so in
-the pre-study; we made no predictions based on it, and chose a broad measure of
-emotionality, meaning we did not capture intensity separately from valence. It 
-may be that the strong negative emotion amplified the effect of scatterplot condition
-in a way that strong positive emotion did not, although it is unclear why this has occurred.
-Further experimental work is required to provide concrete explanations for the interactive
-effects of graph literacy, defensive confidence, and statement emotionality
-in the current experimental paradigm; as the investigation of these is not the prime
-goal of the present study, however, we do not consider this a shortcoming.
+*success* on our task is hard to define.
 
 Further experimental work is required to provide concrete explanations for the
 interactive effects of graph literacy, defensive confidence, and statement
@@ -2117,7 +2109,7 @@ Because alternative scatterplot designs have not been tested before with regards
 to belief change, we elected to design our study with the intention of capturing
 effects, should they exist. This meant that our design was simple; we did not investigate
 multiple correlative statements, the propensity for strongly held beliefs to 
-be changed, nor the effect of topics with strong or polarised emotional
+be changed, nor the effect of topics with strong or polarized emotional
 components. We chose to use a simple, blunt measure of belief about relatedness,
 and did not investigate variations within the alternative scatterplot design space,
 such as using different values of equation 1, or using opacity or size manipulations in isolation.
