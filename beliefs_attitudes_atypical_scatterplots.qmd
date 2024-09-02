@@ -137,7 +137,7 @@ acm-metadata:
     - crowdsourced
   
 abstract: |
-  abstract goes here
+  Viewers tend to underestimate correlation in positively correlated scatterplots. The systematic change of the sizes and opacities of scatterplot points can be used to bias estimates upwards and correct for the underestimation, although this has only been demonstrated with regards to a simple estimation paradigm. We present a fully-reproducible study in which we demonstrate that the same techniques that can correct for the underestimation bias can also be used to induce stronger levels of belief change compared to typical scatterplots presenting identical data. We show that novel visualization techniques can be utilized to effect belief change, and suggest future directions for extending this work with regards to changing people's attitudes and behaviours.
 
 ---
 
@@ -168,6 +168,7 @@ library(irr)
 library(bbplot)
 library(geomtextpath)
 library(ggh4x)
+library(ordinal)
 
 # fix conflicts now using the conflicted package
 
@@ -352,6 +353,11 @@ anon_file %>%
   full_join(time_taken, by = "participant") %>%
   mutate(across(matches(c("item_no", "condition")), as_factor)) %>%
   mutate(trials.thisN = as.integer(trials.thisN)) %>%
+  pivot_longer(cols = c("pre_bel", "post_bel"),
+               values_to = "rating",
+               names_to = "rating_time") %>%
+  mutate(rating_time = as_factor(rating_time)) %>%
+  mutate(across(c("rating"), as.ordered)) %>%
   assign(paste0(unique(anon_file$expName), "_tidy"),
            value = ., envir = .GlobalEnv)
 
@@ -459,6 +465,11 @@ def_con <- distinct(main_exp_tidy, participant,
 topic_emo <- distinct(main_exp_tidy, participant,
                         .keep_all = TRUE) %>%
   summarise(mean = mean(slider_emotion.response), sd = sd(slider_emotion.response))
+
+# set deviation coding contrasts
+
+contrasts(main_exp_tidy$rating_time) <- matrix(c(.5, -.5))
+contrasts(main_exp_tidy$condition) <- matrix(c(.5, -.5))
 
 # remove all intermediate dfs
 
@@ -648,21 +659,37 @@ anova_results_mixed <- function(model, cmpr_model) {
   if (class(model) == "buildmer") model <- model@model
   if (class(cmpr_model) == "buildmer") cmpr_model <- cmpr_model@model
   
+  if (class(model) == "clmm") {
+  
+  anova_output <- ordinal:::anova.clm(model, cmpr_model)
+  
+  assign(paste0(model_name, ".LR"),
+         anova_output$LR.stat[2],
+         envir = .GlobalEnv)
+  assign(paste0(model_name, ".df"),
+         anova_output$df[2],
+         envir = .GlobalEnv)
+  assign(paste0(model_name, ".p"),
+         anova_output$`Pr(>Chisq)`[2],
+         envir = .GlobalEnv)
+  }
+  
+  else
+    
   anova_output <- anova(model, cmpr_model)
   
   assign(paste0(model_name, ".Chisq"),
          anova_output$Chisq[2],
          envir = .GlobalEnv)
   assign(paste0(model_name, ".df"),
-         anova_output$Df[2],
+         anova_output$df[2],
          envir = .GlobalEnv)
   assign(paste0(model_name, ".p"),
          anova_output$`Pr(>Chisq)`[2],
          envir = .GlobalEnv)
-  
 }
 
-anova_results_linear <- function(cmpr_model, model) {
+anova_results_linear <- function(cmpr_model, model) { # currently unused
   
   model_name <- deparse(substitute(model))
   
@@ -681,7 +708,7 @@ anova_results_linear <- function(cmpr_model, model) {
          anova_output$`Pr(>F)`[2],
          envir = .GlobalEnv)
   
-}
+} # currently unused
 ```
 
 ```{r}
@@ -702,26 +729,26 @@ make_sig_table_abso <- function (model) {
   
   model_summary <- summary(model)
   
-  coef_table <- model_summary$coefficients
-
-  df_residual <- model_summary$df[2]
-  df_model <- model_summary$df[1]
+  coef_table <- model_summary$coefficients %>% tail(1)
   
-  coef_table <- cbind(coef_table, "df" = c(rep(df_model, nrow(coef_table) - 1), df_residual))
+  CIs <- confint(diff_abso_model) %>% tail(1) %>%
+    as_data_frame() %>%
+    unite(col = "95% CI", sep = ", ") %>%
+    mutate(`95% CI` = paste0("[", `95% CI`, "]"))
 
   df <- as_tibble(coef_table, rownames = "Effect") %>%
     rename("Standard Error" = "Std. Error",
-           "t-value" = "t value",
-    "p" = "Pr(>|t|)") %>%
+           "Z-value" = "z value",
+    "p" = "Pr(>|z|)") %>%
     mutate(p = scales::pvalue(p)) %>%
     rename("\\textit{p}" = "p") %>%
-    relocate(df, .after = "Standard Error") 
+    cbind(CIs)
   
-    r_squared <- r2beta(model, method = "nsj") %>%
-    select(c("Effect", "Rsq")) %>%
-    mutate(Rsq = round(Rsq, 3)) %>%
-    mutate(Rsq = ifelse(row_number() == 1, "", Rsq)) %>%
-    rename("R\\textsuperscript{2}" = "Rsq") 
+    #r_squared <- r2beta(diff_abso_model, method = "nsj") %>%
+    #select(c("Effect", "Rsq")) %>%
+    #mutate(Rsq = round(Rsq, 3)) %>%
+    #mutate(Rsq = ifelse(row_number() == 1, "", Rsq)) %>%
+    #rename("R\\textsuperscript{2}" = "Rsq") 
     
     df <- left_join(df, r_squared, by = "Effect") %>%
       mutate("Effect" = recode(Effect,
@@ -732,6 +759,8 @@ make_sig_table_abso <- function (model) {
   
   return(table)
 }
+
+# currently unused functions for sig tables re additional analyses
 
 make_sig_table_rel <- function (model) {
   
@@ -909,6 +938,7 @@ make_sig_table_emo <- function (model) {
   return(table)
 }
 ```
+
 
 # Introduction {#sec-intro}
 
@@ -1603,7 +1633,7 @@ example_plot_function <- function(slopes, my_desired_r, size_value, opacity_valu
 # use ggarrange to arrange plots, include annotation geoms for plot titles
 
 example_plots <- ggarrange(example_plot_function(slopes, 0.6, typical, standard_alpha, bbc_style()),
-                        example_plot_function(slopes, 0.6, slopeI, slopeI_floored, bbc_style()),nrow = 1) +
+                           example_plot_function(slopes, 0.6, slopeI, slopeI_floored, bbc_style()),nrow = 1) +
   annotate(geom = "text",
            label = "Typical Scatterplot",
            x = 0.25,
@@ -1727,19 +1757,11 @@ asked participants to set the slider to 0 or 1.
 #| eval: !expr params$eval_models
 #| cache: !expr params$eval_models
 
-# first re-wrangle the df into long format with regards to ratings
-
-diff_abso_df_long <- main_exp_tidy %>%
-  pivot_longer(cols = c("pre_bel", "post_bel"),
-               values_to = "rating",
-               names_to = "rating_time") %>%
-  mutate(rating_time = as_factor(rating_time))
-
 # create model
 
-diff_abso_model <- buildmer(rating ~ rating_time +
+diff_abso_model <- buildclmm(rating ~ rating_time +
                          (1  | participant),
-                       data = diff_abso_df_long)
+                       data = main_exp_tidy)
 ```
 
 ```{r}
@@ -1780,7 +1802,7 @@ the experimental items. Our first hypothesis was supported; there was a
 significant difference in ratings of strength of relatedness made before and after
 participants viewed the experimental plots. A likelihood ratio test revealed that the model
 including time of rating as a predictor explained significantly more variance than
-the null ($\chi^2$(`r in_paren(diff_abso_model.df)`) = `r printnum(diff_abso_model.Chisq)`,
+the null ($\chi^2$(`r in_paren(diff_abso_model.df)`) = `r printnum(diff_abso_model.LR)`,
 *p* `r printp(diff_abso_model.p, add_equals = TRUE)`). This model has random
 intercepts for participants. Statistical testing providing
 support for this hypothesis is shown in @tbl-abso-diff. @fig-abso-descriptives
@@ -1840,18 +1862,11 @@ diff_abso_df_long %>%
 #| cache: !expr params$eval_models
 
 # modelling effect of condition on difference between belief strength before and
-# after viewing plots
+# after viewing plot
 
-# set deviation coding contrasts first
-
-contrasts(diff_abso_df_long$rating_time) <- matrix(c(.5, -.5))
-contrasts(diff_abso_df_long$condition) <- matrix(c(.5, -.5))
-
-# build model 
-
-relative_model <- buildmer(rating ~ rating_time*condition +
+relative_model <- buildclmm(rating ~ rating_time*condition +
                               (1 | participant),
-                            data = diff_abso_df_long)
+                            data = main_exp_tidy)
 ```
 
 ```{r}
@@ -1883,7 +1898,7 @@ a linear mixed effects model whereby the rating of strength of relatedness the p
 made was predicted by the condition the participant was assigned to and the time
 they made the rating. A likelihood ratio test revealed that the model
 including condition and rating time as a predictor explained significantly more variance than the null
-($F$(`r in_paren(relative_model.df)`) = `r printnum(relative_model.Chisq)`,
+($F$(`r in_paren(relative_model.df)`) = `r printnum(relative_model.LR)`,
 *p* `r printp(relative_model.p, add_equals = TRUE)`). This model had random
 intercepts for participants. We again found a main effect of rating time,
 found no main effect of condition, and found an interaction between
@@ -1917,7 +1932,7 @@ make_sig_table_rel(relative_model)
 #| include: true 
 #| tbl-cap: Pairwise comparisons. The interaction is driven by there being greater differences in ratings of belief strength made before and after viewing plots in the atypical condition compared to the typical.
 
-contrast_table_df <- contrasts_extract(relative_model) %>%
+contrast_table_df <- contrasts_extract(model_ord) %>%
   mutate(p.value = scales::pvalue(p.value)) %>%
   rename("\\textit{p}" = "p.value",
          "Z ratio" = "Z.ratio") %>%
@@ -1939,19 +1954,19 @@ kbl(contrast_table_df, booktabs = TRUE, digits = c(0,2,3), escape = FALSE)
 #| eval: !expr params$eval_models
 #| cache: !expr params$eval_models
 
-lit_model <- lmer(rating ~ 1 + condition + rating_time + condition:rating_time * literacy +
+lit_model <- clmm(rating ~ 1 + condition + rating_time + condition:rating_time * literacy +
                          (1  | participant), 
           data = diff_abso_df_long)
 
 anova_results_mixed(lit_model, relative_model)
 
-dc_model <- lmer(rating ~ 1 + condition + rating_time + condition:rating_time * dc_score +
+dc_model <- clmm(rating ~ 1 + condition + rating_time + condition:rating_time * dc_score +
                          (1  | participant), 
           data = diff_abso_df_long)
 
 anova_results_mixed(dc_model, relative_model)
 
-emo_model <- lmer(rating ~ 1 + condition + rating_time + condition:rating_time * slider_emotion.response +
+emo_model <- clmm(rating ~ 1 + condition + rating_time + condition:rating_time * slider_emotion.response +
                          (1  | participant), 
           data = diff_abso_df_long)
 
@@ -1959,12 +1974,12 @@ anova_results_mixed(emo_model, relative_model)
 ```
 
 We find effects of participants' scores on a Defensive Confidence test 
-($F$(`r in_paren(dc_model.df)`) = `r printnum(dc_model.Chisq)`,
+($F$(`r in_paren(dc_model.df)`) = `r printnum(dc_model.LR)`,
 *p* `r printp(dc_model.p, add_equals = TRUE)`), participants' scores on a graph
-literacy test ($F$(`r in_paren(lit_model.df)`) = `r printnum(lit_model.Chisq)`,
+literacy test ($F$(`r in_paren(lit_model.df)`) = `r printnum(lit_model.LR)`,
 *p* `r printp(lit_model.p, add_equals = TRUE)`), and of how emotional participants'
 rated the chosen correlative statement before beginning the block of trials
-($F$(`r in_paren(emo_model.df)`) = `r printnum(emo_model.Chisq)`,
+($F$(`r in_paren(emo_model.df)`) = `r printnum(emo_model.LR)`,
 *p* `r printp(emo_model.p, add_equals = TRUE)`). We discuss the interactions
 between the main effect and  graph literacy, defensive confidence, and statement emotionality in
 @sec-add-analyses-discussion.
@@ -2165,8 +2180,8 @@ the propensity for belief change following visualization viewing. We presented t
 designs, and corresponding typical scatterplots, as if they were part of a news item
 and used a real-world variable pair that had been selected by our population of interest
 as being representative of a weakly-held, emotionally neutral correlation. We found 
-that participants who viewed scatterplots employing alternative designs detailed 
-above experienced greater levels of belief change than those who viewed typical
+that participants who viewed scatterplots employing alternative designs
+experienced greater levels of belief change than those who viewed typical
 plots. In addition, we found small interactive effects of a number of participant
 characteristics. Our results suggest that visualization techniques that have
 previously been employed to improve perception amongst participants are deserving
