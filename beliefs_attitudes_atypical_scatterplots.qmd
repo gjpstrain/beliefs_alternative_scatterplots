@@ -357,7 +357,8 @@ anon_file %>%
                values_to = "rating",
                names_to = "rating_time") %>%
   mutate(rating_time = as_factor(rating_time)) %>%
-  mutate(across(c("rating"), as.ordered)) %>%
+  mutate(rating_time = fct_relevel(rating_time, "post_bel", "pre_bel")) %>% # reverse code factor levels so that clmm
+  mutate(across(c("rating"), as.ordered)) %>%                               # interprets before viewing as reference level
   assign(paste0(unique(anon_file$expName), "_tidy"),
            value = ., envir = .GlobalEnv)
 
@@ -689,7 +690,7 @@ anova_results_mixed <- function(model, cmpr_model) {
          envir = .GlobalEnv)
 }
 
-anova_results_linear <- function(cmpr_model, model) { # currently unused
+anova_results_linear <- function(cmpr_model, model) { # currently unused, left it for the craic
   
   model_name <- deparse(substitute(model))
   
@@ -730,11 +731,6 @@ make_sig_table_abso <- function (model) {
   model_summary <- summary(model)
   
   coef_table <- model_summary$coefficients %>% tail(1)
-  
-  CIs <- confint(diff_abso_model) %>% tail(1) %>%
-    as_data_frame() %>%
-    unite(col = "95% CI", sep = ", ") %>%
-    mutate(`95% CI` = paste0("[", `95% CI`, "]"))
 
   df <- as_tibble(coef_table, rownames = "Effect") %>%
     rename("Standard Error" = "Std. Error",
@@ -742,19 +738,12 @@ make_sig_table_abso <- function (model) {
     "p" = "Pr(>|z|)") %>%
     mutate(p = scales::pvalue(p)) %>%
     rename("\\textit{p}" = "p") %>%
-    cbind(CIs)
-  
-    #r_squared <- r2beta(diff_abso_model, method = "nsj") %>%
-    #select(c("Effect", "Rsq")) %>%
-    #mutate(Rsq = round(Rsq, 3)) %>%
-    #mutate(Rsq = ifelse(row_number() == 1, "", Rsq)) %>%
-    #rename("R\\textsuperscript{2}" = "Rsq") 
-    
-    df <- left_join(df, r_squared, by = "Effect") %>%
-      mutate("Effect" = recode(Effect,
-                               "rating_timepost_bel" = "Rating Time")) %>%
-      column_to_rownames(var = "Effect")
- 
+    mutate("Odds Ratio" = exp(Estimate)) %>%
+    mutate("Cohen's \\textit{d}" = effectsize::oddsratio_to_d(`Odds Ratio`)) %>%
+    mutate("Effect" = recode(Effect,
+                               "rating_time1" = "Rating Time")) %>%
+    column_to_rownames(var = "Effect")
+
   table <- kbl(df, booktabs = T, digits = c(2,3,2,2,2,2,3), escape = F)
   
   return(table)
@@ -773,33 +762,22 @@ make_sig_table_rel <- function (model) {
   
   model_summary <- summary(model)
   
-  coef_table <- model_summary$coefficients
+  coef_table <- model_summary$coefficients %>% tail(3)
 
-  df_residual <- model_summary$df[2]
-  df_model <- model_summary$df[1]
-  
-  coef_table <- cbind(coef_table, "df" = c(rep(df_model, nrow(coef_table) - 1), df_residual))
 
   df <- as_tibble(coef_table, rownames = "Effect") %>%
     rename("Standard Error" = "Std. Error",
-           "t-value" = "t value",
-    "p" = "Pr(>|t|)") %>%
+           "Z-value" = "z value",
+    "p" = "Pr(>|z|)") %>%
     mutate(p = scales::pvalue(p)) %>%
     rename("\\textit{p}" = "p") %>%
-    relocate(df, .after = "Standard Error") 
-  
-    r_squared <- r2beta(model, method = "nsj") %>%
-    select(c("Effect", "Rsq")) %>%
-    mutate(Rsq = round(Rsq, 3)) %>%
-    mutate(Rsq = ifelse(row_number() == 1, "", Rsq)) %>%
-    rename("R\\textsuperscript{2}" = "Rsq") 
-    
-    df <- left_join(df, r_squared, by = "Effect") %>%
-      mutate("Effect" = recode(Effect,
-                               "condition1" = "Condition",
+    mutate("Odds Ratio" = exp(Estimate)) %>%
+    mutate("Cohen's \\textit{d}" = effectsize::oddsratio_to_d(`Odds Ratio`)) %>%
+    mutate("Effect" = recode(Effect,
                                "rating_time1" = "Rating Time",
-                               "rating_time1:condition1" = "Rating Time * Condition")) %>%
-      column_to_rownames(var = "Effect")
+                               "condition1" = "Condition",
+                               "rating_time1:condition1" = "Rating Time x Condition")) %>%
+    column_to_rownames(var = "Effect")
  
   table <- kbl(df, booktabs = T, digits = c(2,3,2,2,2,2,3), escape = F)
   
