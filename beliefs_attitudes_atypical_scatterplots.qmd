@@ -137,8 +137,7 @@ acm-metadata:
     - crowdsourced
   
 abstract: |
-  Viewers tend to underestimate correlation in positively correlated scatterplots. The systematic change of the sizes and opacities of scatterplot points can be used to bias estimates upwards and correct for the underestimation, although this has only been demonstrated with regards to a simple estimation paradigm. We present a fully-reproducible study in which we demonstrate that the same techniques that can correct for the underestimation bias can also be used to induce stronger levels of belief change compared to typical scatterplots presenting identical data. We show that novel visualization techniques can be utilized to effect belief change, and suggest future directions for extending this work with regards to changing people's attitudes and behaviours.
-
+  Viewers tend to underestimate correlation in positively correlated scatterplots. However, systematically changing the size and opacity of scatterplot points can bias estimates upwards, correcting this underestimation in a simple estimation paradigm. Here we examine whether application of these visualization techniques goes beyond a simple perceptual effect and could actually influence beliefs about information from trusted news sources. We present a fully-reproducible study in which we demonstrate that scatterplot manipulations that can correct for the correlation underestimation bias can also induce stronger levels of belief change compared to unadapted scatterplots presenting identical data. Consequently, we show that novel visualization techniques can be used to drive belief change, and suggest future directions for extending this work with regards to altering attitudes and behaviours.
 ---
 
 ```{r}
@@ -771,7 +770,7 @@ make_sig_table_rel <- function (model) {
     "p" = "Pr(>|z|)") %>%
     mutate(p = scales::pvalue(p)) %>%
     rename("\\textit{p}" = "p") %>%
-    mutate("Odds Ratio" = exp(Estimate)) %>%
+    mutate("Odds Ratio" = exp(abs(Estimate))) %>%
     mutate("Cohen's \\textit{d}" = effectsize::oddsratio_to_d(`Odds Ratio`)) %>%
     mutate("Effect" = recode(Effect,
                                "rating_time1" = "Rating Time",
@@ -907,8 +906,8 @@ make_sig_table_emo <- function (model) {
     df <- left_join(df, r_squared, by = "Effect") %>%
       mutate("Effect" = recode(Effect,
                                "condition1" = "Condition",
-                               "slider_emotion.response" = "Topic Emotionality Rating",
-                               "condition1:slider_emotion.response" = "Condition * Topic Emotionality Rating")) %>%
+                               "slider_emotion.response" = "Statement Emotionality Rating",
+                               "condition1:slider_emotion.response" = "Condition * Statement Emotionality Rating")) %>%
       column_to_rownames(var = "Effect")
   
   table <- kbl(df, booktabs = T, digits = c(2,3,2,2,2,2,3), escape = F)
@@ -996,7 +995,7 @@ distances between scatterplot points and a regression line [@meyer_1997]. Other 
 some representation of the shape of a scatterplot's point cloud in equations
 describing magnitude estimation and correlation discrimination [@meyer_1997;@rensink_2017],
 and work on visual features as proxies for correlation found that a similar
-quantity again is predictive of performance [@yang_2019]. While we cannot say that this *is*
+quantity again is predictive of performance on correlation judgement tasks [@yang_2019]. While we cannot say that this *is*
 the process of correlation perception in scatterplots, we can conclude that the 
 shape of the point cloud is a good proxy for what is really occurring during
 judgements of correlation. The goal of the work presented in this paper is not to further illuminate
@@ -1223,16 +1222,15 @@ participant qualities.
 # General Methods {#sec-general-methods}
 
 In this section we discuss our general research methods, including our implementations
-of open research practices and our approach to and justification for crowdsourcing. 
+of open research practices and our approach to and justification for crowdsourcing.
 
 ## Open Research {#sec-open-research}
 
 Both our pre- and main studies were conducted according to the principles of open
 and reproducible research [@ayris_2018]. We pre-registered hypotheses and analysis plans
-with the Open Science Framework (OSF) for the pre-study[^1] and the main experiment[^2], and 
-there were no deviations from them. All data and analysis code are included in a 
-GitHub repository[^3]. This repository contains instructions for building a Docker
-container [@merkel_2014] that reproduces the computational environment the paper
+with the Open Science Framework (OSF) for the pre-study[^1] and the main experiment[^2].
+All data and analysis code are included in a GitHub repository[^3]. This repository 
+contains instructions for building a Docker container [@merkel_2014] that reproduces the computational environment the paper
 was written in. This allows for full replication of stimuli, figures, analyses,
 and the paper itself. Ethical approval was granted by the (removed for anon).
 
@@ -1243,7 +1241,7 @@ and the paper itself. Ethical approval was granted by the (removed for anon).
 ## Crowdsourcing {#sec-crowdsourcing}
 
 While much prior work into correlation perception in scatterplots has taken place
-in person, there is precedence for work that explores cognition and perception to take place
+in person, there is precedent for work that explores cognition and perception to take place
 online using crowdsourced participants [@xiong_2022]. Crowdsourcing not only 
 affords us recruitment of samples from across our lay population of interest,
 it is considerably quicker and less expensive than in-person testing.
@@ -1264,7 +1262,7 @@ There is evidence that belief change can be affected by prior beliefs and attitu
 [@phelps_2006; @harrison_2013] and the emotional state of a participant [@thoresen_2016]
 can have perceptual and cognitive effects on participants. We were unable
 to find resources for correlative statements that included ratings for belief strength
-and topic emotionality, so elected to create our own. In order
+and statement emotionality, so elected to create our own. In order
 to control for these factors as much as possible, we ran our pre-study with the intent
 of finding a correlative statement that was matched on emotional content and
 level of belief strength. Instead of creating these statements ourselves, we chose
@@ -1287,13 +1285,14 @@ the following prompt:
 ```
 
 The full list of these statements can be found in the supplementary materials.
-Two authors rated each statement on topic emotionality and
-strength of relatedness using Likert scales from 1 to 7. Topic emotionality
-had a midpoint at 4, whereas strength of relatedness varied between 1 (Not Related At All)
-and 7 (Strongly Related). We calculated a quadratic weighted Cohen's Kappa
+Two authors rated each statement on emotionality and
+strength of relatedness using Likert scales from 1 to 7. Both statement emotionality
+and strength of relatedness were anchored at points 1 and 7: *Very Negative* and
+*Very Positive* for the former, and *Not Related At All* and *Strongly Related* for
+the latter. All other points were unlabelled. We calculated a quadratic weighted Cohen's Kappa
 between the two raters using the **irr** package (version 0.84.1 [@irr])
 in order to penalize larger magnitude disagreements more harshly.
-We found agreement above chance for both topic emotionality
+We found agreement above chance for both statement emotionality
 ($\kappa$ = `r printnum(irr_emot$value, digits = 2)`, *p* `r printp(irr_emot$p.value, add_equals = TRUE)`)
 and strength of correlation ($\kappa$ = `r printnum(irr_corr$value, digits = 2)`,
 *p* `r printp(irr_corr$p.value, add_equals = TRUE)`), indicating moderate 
@@ -1302,12 +1301,12 @@ we selected strongly and weakly correlated statements with the highest level of
 absolute agreement, resulting in 14 strongly correlated
 statements and 11 weakly correlated statements that can be seen in the supplementary materials.
 We then tested these 25 statements with a representative UK sample in order
-to ascertain consensus on both topic emotionality and strength of relatedness.
+to ascertain consensus on both statement emotionality and strength of relatedness.
 Doing so allows us to control for these factors when we analyse the effects
-of our atypical scatterplot designs on the propensity for belief change
+of atypical scatterplot design on the propensity for belief change
 in our main experiment. We hypothesized that:
 
-  - H1: there will be a significant difference in average ratings of topic emotionality between statements. 
+  - H1: there will be a significant difference in average ratings of emotionality between statements. 
   - H2: there will be a significant difference between average ratings of strength of relatedness 
 between statements.
 
@@ -1352,12 +1351,12 @@ kbl(pre_test_statements_lo, booktabs = T)
 ### Participants {#sec-participants-pre}
 
 100 participants were recruited using the Prolific.co platform [@prolific]. English fluency and
-residency was required for participation, as our main experiment relied on familiarity
+UK residency was required for participation, as our main experiment relied on familiarity
 with data visualizations from a popular British news source. In addition to 25
-experimental items, we included six attention check items, which asked participants
-to provide specific answers. No participants failed more than 2 out of 6 attention
+experimental items, we included six attention check items asking participants
+to ignore the scatterplot and provide specific answers. No participants failed more than 2 out of 6 attention
 check items, and therefore data from all 100 were included in the full analysis
-(`r printnum(gender_pre$Male, digits = 1)`% male and `r printnum(gender_pre$Female, digits = 1)`% 
+(`r printnum(gender_pre$Male, digits = 0)`% male and `r printnum(gender_pre$Female, digits = 0)`% 
 female). Participants' mean age was `r printnum(age_pre$mean, digits = 1)` (*SD* = 
 `r printnum(age_pre$sd, digits = 1)`). The average time taken to complete the survey was
 `r printnum(time_taken_pre$mean, digits = 1)` minutes (*SD* = `r printnum(time_taken_pre$sd, digits = 1)` minutes).
@@ -1379,10 +1378,11 @@ and were asked to provide consent through key presses in response to consent sta
 They were asked to provide their age in a free text box, followed by their 
 gender identity. Participants were told that they would be asked to read statements
 about the relatedness between a pair of variables, after which they would have to 
-indicate their beliefs about topic emotionality and the strength of relatedness suggested
+indicate their beliefs about statement emotionality and the strength of relatedness suggested
 using a pair of sliders. To familiarize themselves with the sliders, they were asked to complete a practice round
 in response to the statement: "As participation in online experiments increases,
-society becomes happier."
+society becomes happier." The Likert scales used in the online experiment were
+identical to those described in @sec-pre-study.
 
 ## Results {#sec-results-pre}
 
@@ -1442,27 +1442,27 @@ consensus_df <- avg_emot %>%
 
 All analyses were conducted using R (version `r paste0(R.version$major, ".", R.version$minor)`).
 We use the **irr** package to calculate Fleiss' Kappa to measure interrater agreement
-on topic emotionality and strength of correlation for the 25 experimental items.
-This analysis revealed that participants agreed above chance on topic emotionality
+on statement emotionality and strength of relatedness for the 25 experimental items.
+This analysis revealed that participants agreed above chance on statement emotionality
 ($\kappa$ = `r printnum(emot_kappa$value, digits = 2)`, *p* `r printp(emot_kappa$p.value, add_equals = TRUE)`)
 and strength of correlation ($\kappa$ = `r printnum(belief_kappa$value, digits = 2)`,
 *p* `r printp(belief_kappa$p.value, add_equals = TRUE)`).
 
 ## Selecting Statements for the Main Experiment {#sec-selecting-statements}
 
-To control for the potential effects of topic emotionality in the main experiment,
+To control for the potential effects of statement emotionality in the main experiment,
 we first select statements that represent neutral emotional valence. Statements
-with average topic emotionality ratings between 3 and 5 are statements 
+with average emotionality ratings between 3 and 5 are statements 
 `r printnum(add_and_to_numbers(avg_emot$item_no), digits = 0)`. To ascertain
 which statements represent the greatest consensus, we add standard deviations in
-ratings for topic emotionality and strength of relatedness. Due to concerns about experimental
+ratings for statement emotionality and strength of relatedness. Due to concerns about experimental
 power, and in line with evidence that propensity for belief change is highest
 when prior beliefs are not strongly held [@xiong_2022; @markant_2023],
 we elected at this point to test only the statement corresponding to weak beliefs
 about the strength of correlation between the variables in question. We therefore
 test statement number `r printnum(add_and_to_numbers(consensus_df$item_no[2]), digits = 0)`,
 "Higher consumption of spicy foods is associated with a lower risk of certain types of cancer",
-however we modify the wording so that both variables (food consumption and cancer risk)
+however we modify the wording so that the variables (food consumption and cancer risk)
 are positively correlated, as while the manipulations we use
 in the atypical scatterplot condition are able to change estimates of correlation
 in positively correlated scatterplots, no work regarding the effects of these
@@ -1470,7 +1470,7 @@ manipulations in negatively correlated scatterplots has been completed.
 
 ## Discussion {#sec-discussion-pre}
 
-Fleiss' Kappa values for interrater agreement on both topic emotionality
+Fleiss' Kappa values for interrater agreement on both statement emotionality
 and strength of correlation scales are low ($\kappa$ = `r printnum(emot_kappa$value, digits = 2)`
 and $\kappa$ = `r printnum(belief_kappa$value, digits = 2)` respectively),
 however do exceed that which would be expected by chance. We suggest this may be
@@ -1478,13 +1478,13 @@ due to Fleiss' Kappa not being designed with ordinal (Likert scales in this case
 In light of this we do not make decisions regarding which statement to use based 
 on the values of Fleiss' Kappa observed, but rather on the standard deviations of 
 ratings across all raters. Regardless, we do not consider this to be a particular
-weakness, as we also test topic emotionality and strength of correlation with participants
+weakness, as we also test statement emotionality and strength of correlation with participants
 in the main study and include these ratings as part of our analysis.
 
 # Main Study: Potential for Belief Change Using Atypical Scatterplots {#sec-main-study}
 
 We test the statement that exhibited the lowest average level of belief about
-correlation, and the 2nd highest level of consensus. Modified for directionality,
+correlation and the 2nd highest level of consensus. Modified for directionality,
 this statement is therefore: "Higher consumption of plain (non-spicy) foods
 is associated with a lower risk of certain types of cancer." To give ourselves
 the best chance of detecting an effect of viewing atypical scatterplots, we elected
@@ -1507,8 +1507,8 @@ we test participants' defensive confidence using a 12-item scale. This scale is
 replicated from previous work in the supplemental material, and has additionally
 been utilized more recently [@markant_2023] to explore the potential for attitude
 change specifically with regards to correlations in scatterplots. Participants
-provide answers to the 12 scale items using a 5 point Likert scale ranging from 1
-(*not at all characteristic of me*) to 5 (*extremely characteristic of me*). Analysis
+provide answers to the 12 scale items using a 5 point Likert scale anchored at points 1
+(*not at all characteristic of me*) and 5 (*extremely characteristic of me*). Analysis
 including participants' defensive confidence scores is included in @sec-add-analyses-discussion.
 
 ## Stimuli {#sec-stimuli-main}
@@ -1678,7 +1678,7 @@ Participants' mean age was `r printnum(age_main$mean, digits = 1)`
 score was `r printnum(literacy$mean, digits = 1)` (*SD* = `r printnum(literacy$sd, digits = 1)`)
 out of 30, their mean defensive confidence score was `r printnum(def_con$mean, digits = 1)`
 (*SD* = `r printnum(def_con$sd, digits = 1)`) out of 60, and their mean rating of 
-topic emotionality was `r printnum(topic_emo$mean, digits = 1)`
+statement emotionality was `r printnum(topic_emo$mean, digits = 1)`
 (*SD* = `r printnum(topic_emo$sd, digits = 1)`) on a 7 point Likert scale.
 On average, participants took `r printnum(time_taken_main$mean, digits = 1)`
 minutes to complete the experiment (*SD* = `r printnum(time_taken_main$sd)`).
@@ -1719,8 +1719,9 @@ participants were instructed to use a slider to estimate the correlation display
 in each scatterplot; no hypotheses were made based on these data and therefore we
 do not analyse them further. Following instructions, which included descriptions of scatterplots and Pearson's *r*,
 participants had a chance to practice using the slider, before being 
-asked their belief about topic emotionality and the relatedness between variables
-described in our chosen statement. After completing the experimental
+asked to indicate their belief about emotionality and the relatedness between variables
+described in our chosen statement. We captured these data using Likert scales
+identical to those described in #sec-pre-study. After completing the experimental
 trials, participants were tested again on their beliefs about relatedness, and 
 then debriefed that the data they were shown were fictional. Interspersed among
 the experimental items were 4 attention check trials which explicitly
@@ -1769,10 +1770,19 @@ anova_results_mixed(diff_abso_model, diff_abso_model_cmpr)
 ```
 
 All analyses were conducted using R (version `r paste0(R.version$major, ".", R.version$minor)`).
-The **buildmer** (version 2.11 [@buildmer]) and **lme4** (version 1.1-35.3 [@lme4])
-packages were used to build linear mixed effects models. Semi-partial R^2^,
-which is presented in lieu of traditional measures of effect size,
-was calculated using the **r2glmm** package (version 0.1.2 [@r2glmm]). To test the first hypothesis,
+Likert scales capture whether one rating is higher or lower than another, however
+they do not quantify the difference between levels of rating. Analysis with metric
+models, such as linear regression, which assumes equal levels of difference between
+ratings, is therefore inappropriate [@liddell_2018]. We therefore use the **ordinal**
+package (version 2023.12-4.1 [@ordinal]) to build cumulative link mixed effects
+models to analyse Likert scale data. We use the **buildmer** (version 2.11 [@buildmer])
+package to automate the selection of the random effects structure; here, we provide a
+maximal model, which includes random intercepts for participants, and **buildmer**
+identifies the most complex model that successfully converges. We present odds ratios and equivalent
+Cohen's *d* effect sizes that were calculated using the **effectsize** package
+(version 0.8.9 [@effectsize]). 
+
+To test the first hypothesis,
 that ratings of strength of relatedness would be different before and after participants
 viewed experimental items, we build a model whereby the rating of strength of relatedness
 the participant made is predicted by whether it was made **before** or **after** viewing 
@@ -1802,13 +1812,14 @@ make_sig_table_abso(diff_abso_model)
 #| fig-asp: 0.5
 #| fig-cap: Boxplots showing ranges, interquartile ranges, medians (vertical lines) and means for participants' ratings of strength of relatedness before and after viewing either typical or atypical scatterplots.
 
-diff_abso_df_long %>%
+main_exp_tidy %>%
   mutate("condition" = recode(condition,
                             "A" = "Atypical\nScatterplot",
                             "T" = "Typical\nScatterplot"),
          "rating_time" = recode(rating_time,
                                 "pre_bel" = "Pre",
                                 "post_bel" = "Post")) %>%
+  mutate(rating = as.numeric(rating)) %>%
   ggplot(aes(x = condition, y = rating, fill = rating_time)) +
   geom_boxplot(outliers = F, key_glyph = "polygon") +
   scale_color_brewer(palette = "Dark2", aesthetics = "fill") +
@@ -1872,7 +1883,7 @@ before and after viewing experimental plots would be greater when participants
 were assigned to the atypical scatterplot condition, also received support.
 Deviation coding was used for each of the experimental factors of rating time (pre or post)
 and condition, which allows us to compare means of ratings to the grand mean. We built
-a linear mixed effects model whereby the rating of strength of relatedness the participant
+a cumulative link mixed effects model whereby the rating of strength of relatedness the participant
 made was predicted by the condition the participant was assigned to and the time
 they made the rating. A likelihood ratio test revealed that the model
 including condition and rating time as a predictor explained significantly more variance than the null
@@ -1880,8 +1891,8 @@ including condition and rating time as a predictor explained significantly more 
 *p* `r printp(relative_model.p, add_equals = TRUE)`). This model had random
 intercepts for participants. We again found a main effect of rating time,
 found no main effect of condition, and found an interaction between
-rating time and condition. Test statistics, along with semi-partial R^2^ can be
-seen in @tbl-rel. To further explore the interaction, we used the **emmeans**
+rating time and condition. Test statistics, along with odds ratios and equivalent 
+Cohen's *d* can be seen in @tbl-rel. To further explore the interaction, we used the **emmeans**
 package (version 1.10.3 [@emmeans]) to calculate pairwise comparisons between 
 levels of the condition and rating time factors, which can be see in @tbl-pairwise.
 The interaction we found is driven by participants beliefs changing more between
@@ -1890,7 +1901,7 @@ pre-viewing and post-viewing times for atypical as opposed to typical plots.
 ```{r}
 #| label: tbl-rel
 #| include: true
-#| tbl-cap: Statistics for the significant main effect of condition on the difference between pre and post scatterplot viewing ratings for typical and atypical plots. Semi-partial R^2^ is also incuded.
+#| tbl-cap: Statistics for the significant main effect of condition on the difference between pre and post scatterplot viewing ratings for typical and atypical plots. Odds ratios and equivalent Cohen's *d* is also shown. NB the odds ratio for the effect of condition is caluclated based on the absolute value of the estimate. 
 
 make_sig_table_rel(relative_model)
 
@@ -1910,17 +1921,17 @@ make_sig_table_rel(relative_model)
 #| include: true 
 #| tbl-cap: Pairwise comparisons. The interaction is driven by there being greater differences in ratings of belief strength made before and after viewing plots in the atypical condition compared to the typical.
 
-contrast_table_df <- contrasts_extract(model_ord) %>%
+contrast_table_df <- contrasts_extract(relative_model) %>%
   mutate(p.value = scales::pvalue(p.value)) %>%
   rename("\\textit{p}" = "p.value",
          "Z ratio" = "Z.ratio") %>%
   mutate('Contrast' = recode(Contrast,
-         "pre_bel A - post_bel A" = "Pre-Viewing x Atypical | Post-Viewing x Atypical",
+         "post_bel A - pre_bel A" = "Post-Viewing x Atypical | Pre-Viewing x Atypical",
          "pre_bel A - pre_bel T" = "Pre-Viewing x Atypical | Pre-Viewing x Typical",
          "pre_bel A - post_bel T" = "Pre-Viewing x Atypical | Post-Viewing x Typical",
          "post_bel A - pre_bel T" = "Post-Viewing x Atypical | Pre-Viewing x Typical",
          "post_bel A - post_bel T" = "Post-Viewing x Atypical | Post-Viewing x Typical",
-         "pre_bel T - post_bel T" = "Pre-Viewing x Typical | Post-Viewing x Typical"))
+         "post_bel T - pre_bel T" = "Post-Viewing x Typical | Pre-Viewing x Typical"))
 
 kbl(contrast_table_df, booktabs = TRUE, digits = c(0,2,3), escape = FALSE)
 ```
@@ -1934,19 +1945,19 @@ kbl(contrast_table_df, booktabs = TRUE, digits = c(0,2,3), escape = FALSE)
 
 lit_model <- clmm(rating ~ 1 + condition + rating_time + condition:rating_time * literacy +
                          (1  | participant), 
-          data = diff_abso_df_long)
+          data = main_exp_tidy)
 
 anova_results_mixed(lit_model, relative_model)
 
 dc_model <- clmm(rating ~ 1 + condition + rating_time + condition:rating_time * dc_score +
                          (1  | participant), 
-          data = diff_abso_df_long)
+          data = main_exp_tidy)
 
 anova_results_mixed(dc_model, relative_model)
 
 emo_model <- clmm(rating ~ 1 + condition + rating_time + condition:rating_time * slider_emotion.response +
                          (1  | participant), 
-          data = diff_abso_df_long)
+          data = main_exp_tidy)
 
 anova_results_mixed(emo_model, relative_model)
 ```
@@ -1975,7 +1986,7 @@ perception more closely matches the underlying statistics, however much more wor
 would be required to begin producing guidelines for the use of alternative 
 scatterplot designs with regards to producing more persuasive visualizations.
 
-### Graph Literacy, Defensive Confidence, and Topic Emotionality {#sec-add-analyses-discussion}
+### Graph Literacy, Defensive Confidence, and Statement Emotionality {#sec-add-analyses-discussion}
 
 ```{r}
 #| label: fig-add-analyses-plots

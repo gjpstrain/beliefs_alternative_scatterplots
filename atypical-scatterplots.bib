@@ -199,6 +199,19 @@
 
 %Packages
 
+  @Article{effectsize,
+    title = {{e}ffectsize: Estimation of Effect Size Indices and Standardized Parameters},
+    author = {Mattan S. Ben-Shachar and Daniel Lüdecke and Dominique Makowski},
+    year = {2020},
+    journal = {Journal of Open Source Software},
+    volume = {5},
+    number = {56},
+    pages = {2815},
+    publisher = {The Open Journal},
+    doi = {10.21105/joss.02815},
+    url = {https://doi.org/10.21105/joss.02815},
+  }
+
   @Manual{buildmer,
     title = {buildmer: Stepwise Elimination and Term Reordering for Mixed-Effects
 Regression},
@@ -216,16 +229,13 @@ Regression},
     url = {https://github.com/bcjaeger/r2glmm},
 }
 
-  @Article{lme4,
-    title = {Fitting Linear Mixed-Effects Models Using {lme4}},
-    author = {Douglas Bates and Martin M{\"a}chler and Ben Bolker and Steve Walker},
-    journal = {Journal of Statistical Software},
-    year = {2015},
-    volume = {67},
-    number = {1},
-    pages = {1--48},
-    doi = {10.18637/jss.v067.i01},
-}
+  @Manual{ordinal,
+    title = {ordinal---Regression Models for Ordinal Data},
+    author = {Rune H. B. Christensen},
+    year = {2023},
+    note = {R package version 2023.12-4.1},
+    url = {https://CRAN.R-project.org/package=ordinal},
+  }
 
   @Manual{emmeans,
     title = {emmeans: Estimated Marginal Means, aka Least-Squares Means},
@@ -305,6 +315,24 @@ Regression},
   urldate = {2021-02-02},
   abstract = {We present a rigorous way to evaluate the visual perception of correlation in scatterplots, based on classical psychophysical methods originally developed for simple properties such as brightness. Although scatterplots are graphically complex, the quantity they convey is relatively simple. As such, it may be possible to assess the perception of correlation in a similar way.},
   langid = {english}
+}
+
+@article{liddell_2018,
+	title = {Analyzing ordinal data with metric models: {What} could possibly go wrong?},
+	volume = {79},
+	issn = {0022-1031},
+	shorttitle = {Analyzing ordinal data with metric models},
+	url = {https://www.sciencedirect.com/science/article/pii/S0022103117307746},
+	doi = {10.1016/j.jesp.2018.08.009},
+	abstract = {We surveyed all articles in the Journal of Personality and Social Psychology (JPSP), Psychological Science (PS), and the Journal of Experimental Psychology: General (JEP:G) that mentioned the term “Likert,” and found that 100\% of the articles that analyzed ordinal data did so using a metric model. We present novel evidence that analyzing ordinal data as if they were metric can systematically lead to errors. We demonstrate false alarms (i.e., detecting an effect where none exists, Type I errors) and failures to detect effects (i.e., loss of power, Type II errors). We demonstrate systematic inversions of effects, for which treating ordinal data as metric indicates the opposite ordering of means than the true ordering of means. We show the same problems — false alarms, misses, and inversions — for interactions in factorial designs and for trend analyses in regression. We demonstrate that averaging across multiple ordinal measurements does not solve or even ameliorate these problems. A central contribution is a graphical explanation of how and when the misrepresentations occur. Moreover, we point out that there is no sure-fire way to detect these problems by treating the ordinal values as metric, and instead we advocate use of ordered-probit models (or similar) because they will better describe the data. Finally, although frequentist approaches to some ordered-probit models are available, we use Bayesian methods because of their flexibility in specifying models and their richness and accuracy in providing parameter estimates. An R script is provided for running an analysis that compares ordered-probit and metric models.},
+	urldate = {2024-09-03},
+	journal = {Journal of Experimental Social Psychology},
+	author = {Liddell, Torrin M. and Kruschke, John K.},
+	month = nov,
+	year = {2018},
+	keywords = {Bayesian analysis, Likert, Ordered-probit, Ordinal data},
+	pages = {328--348},
+	file = {ScienceDirect Snapshot:C\:\\Users\\mbch4gs2\\Zotero\\storage\\L2BGFFUI\\S0022103117307746.html:text/html;Submitted Version:C\:\\Users\\mbch4gs2\\Zotero\\storage\\R9DYQ86V\\Liddell and Kruschke - 2018 - Analyzing ordinal data with metric models What co.pdf:application/pdf},
 }
 
 @article{kay_2015,

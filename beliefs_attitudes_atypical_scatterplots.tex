@@ -299,16 +299,18 @@ of Science and Engineering, University of Manchester}
 %% article.
 \begin{abstract}
 Viewers tend to underestimate correlation in positively correlated
-scatterplots. The systematic change of the sizes and opacities of
-scatterplot points can be used to bias estimates upwards and correct for
-the underestimation, although this has only been demonstrated with
-regards to a simple estimation paradigm. We present a fully-reproducible
-study in which we demonstrate that the same techniques that can correct
-for the underestimation bias can also be used to induce stronger levels
-of belief change compared to typical scatterplots presenting identical
-data. We show that novel visualization techniques can be utilized to
-effect belief change, and suggest future directions for extending this
-work with regards to changing people's attitudes and behaviours.    
+scatterplots. However, systematically changing the size and opacity of
+scatterplot points can bias estimates upwards, correcting this
+underestimation in a simple estimation paradigm. Here we examine whether
+application of these visualization techniques goes beyond a simple
+perceptual effect and could actually influence beliefs about information
+from trusted news sources. We present a fully-reproducible study in
+which we demonstrate that scatterplot manipulations that can correct for
+the correlation underestimation bias can also induce stronger levels of
+belief change compared to unadapted scatterplots presenting identical
+data. Consequently, we show that novel visualization techniques can be
+used to drive belief change, and suggest future directions for extending
+this work with regards to altering attitudes and behaviours.    
 \end{abstract}
 
 %%
@@ -448,14 +450,14 @@ includes some representation of the shape of a scatterplot's point cloud
 in equations describing magnitude estimation and correlation
 discrimination \citep{meyer_1997, rensink_2017}, and work on visual
 features as proxies for correlation found that a similar quantity again
-is predictive of performance \citep{yang_2019}. While we cannot say that
-this \emph{is} the process of correlation perception in scatterplots, we
-can conclude that the shape of the point cloud is a good proxy for what
-is really occurring during judgements of correlation. The goal of the
-work presented in this paper is not to further illuminate what drives
-the perception of correlation in scatterplots, but rather to investigate
-whether proven perceptual effects can be extended into a cognitive
-space.
+is predictive of performance on correlation judgement tasks
+\citep{yang_2019}. While we cannot say that this \emph{is} the process
+of correlation perception in scatterplots, we can conclude that the
+shape of the point cloud is a good proxy for what is really occurring
+during judgements of correlation. The goal of the work presented in this
+paper is not to further illuminate what drives the perception of
+correlation in scatterplots, but rather to investigate whether proven
+perceptual effects can be extended into a cognitive space.
 
 \subsection{Scatterplots: Opacity, Size, and Recent
 Developments}\label{sec-scatterplots}
@@ -588,18 +590,18 @@ Both our pre- and main studies were conducted according to the
 principles of open and reproducible research \citep{ayris_2018}. We
 pre-registered hypotheses and analysis plans with the Open Science
 Framework (OSF) for the pre-study\footnote{removed for anon} and the
-main experiment\footnote{removed for anon}, and there were no deviations
-from them. All data and analysis code are included in a GitHub
-repository\footnote{removed for anon}. This repository contains
-instructions for building a Docker container \citep{merkel_2014} that
-reproduces the computational environment the paper was written in. This
-allows for full replication of stimuli, figures, analyses, and the paper
-itself. Ethical approval was granted by the (removed for anon).
+main experiment\footnote{removed for anon}. All data and analysis code
+are included in a GitHub repository\footnote{removed for anon}. This
+repository contains instructions for building a Docker container
+\citep{merkel_2014} that reproduces the computational environment the
+paper was written in. This allows for full replication of stimuli,
+figures, analyses, and the paper itself. Ethical approval was granted by
+the (removed for anon).
 
 \subsection{Crowdsourcing}\label{sec-crowdsourcing}
 
 While much prior work into correlation perception in scatterplots has
-taken place in person, there is precedence for work that explores
+taken place in person, there is precedent for work that explores
 cognition and perception to take place online using crowdsourced
 participants \citep{xiong_2022}. Crowdsourcing not only affords us
 recruitment of samples from across our lay population of interest, it is
@@ -625,12 +627,12 @@ content of a visualization \citep{phelps_2006, harrison_2013} and the
 emotional state of a participant \citep{thoresen_2016} can have
 perceptual and cognitive effects on participants. We were unable to find
 resources for correlative statements that included ratings for belief
-strength and topic emotionality, so elected to create our own. In order
-to control for these factors as much as possible, we ran our pre-study
-with the intent of finding a correlative statement that was matched on
-emotional content and level of belief strength. Instead of creating
-these statements ourselves, we chose to streamline the process by using
-the ChatGPT4 Large Language Model \citep{chat_gpt}. We used the
+strength and statement emotionality, so elected to create our own. In
+order to control for these factors as much as possible, we ran our
+pre-study with the intent of finding a correlative statement that was
+matched on emotional content and level of belief strength. Instead of
+creating these statements ourselves, we chose to streamline the process
+by using the ChatGPT4 Large Language Model \citep{chat_gpt}. We used the
 following prompt:
 
 \begin{quotation}
@@ -646,31 +648,32 @@ following prompt:
 \end{quotation}
 
 The full list of these statements can be found in the supplementary
-materials. Two authors rated each statement on topic emotionality and
-strength of relatedness using Likert scales from 1 to 7. Topic
-emotionality had a midpoint at 4, whereas strength of relatedness varied
-between 1 (Not Related At All) and 7 (Strongly Related). We calculated a
-quadratic weighted Cohen's Kappa between the two raters using the
-\textbf{irr} package (version 0.84.1 \citep{irr}) in order to penalize
-larger magnitude disagreements more harshly. We found agreement above
-chance for both topic emotionality (\(\kappa\) = 0.49, \emph{p}
-\textless{} .001) and strength of correlation (\(\kappa\) = 0.51,
-\emph{p} \textless{} .001), indicating moderate levels of agreement in
-both cases \citep{cohen_1968, fleiss_1969}. Following this, we selected
-strongly and weakly correlated statements with the highest level of
-absolute agreement, resulting in 14 strongly correlated statements and
-11 weakly correlated statements that can be seen in the supplementary
-materials. We then tested these 25 statements with a representative UK
-sample in order to ascertain consensus on both topic emotionality and
-strength of relatedness. Doing so allows us to control for these factors
-when we analyse the effects of our atypical scatterplot designs on the
-propensity for belief change in our main experiment. We hypothesized
-that:
+materials. Two authors rated each statement on emotionality and strength
+of relatedness using Likert scales from 1 to 7. Both statement
+emotionality and strength of relatedness were anchored at points 1 and
+7: \emph{Very Negative} and \emph{Very Positive} for the former, and
+\emph{Not Related At All} and \emph{Strongly Related} for the latter.
+All other points were unlabelled. We calculated a quadratic weighted
+Cohen's Kappa between the two raters using the \textbf{irr} package
+(version 0.84.1 \citep{irr}) in order to penalize larger magnitude
+disagreements more harshly. We found agreement above chance for both
+statement emotionality (\(\kappa\) = 0.49, \emph{p} \textless{} .001)
+and strength of correlation (\(\kappa\) = 0.51, \emph{p} \textless{}
+.001), indicating moderate levels of agreement in both cases
+\citep{cohen_1968, fleiss_1969}. Following this, we selected strongly
+and weakly correlated statements with the highest level of absolute
+agreement, resulting in 14 strongly correlated statements and 11 weakly
+correlated statements that can be seen in the supplementary materials.
+We then tested these 25 statements with a representative UK sample in
+order to ascertain consensus on both statement emotionality and strength
+of relatedness. Doing so allows us to control for these factors when we
+analyse the effects of atypical scatterplot design on the propensity for
+belief change in our main experiment. We hypothesized that:
 
 \begin{itemize}
 \tightlist
 \item
-  H1: there will be a significant difference in average ratings of topic
+  H1: there will be a significant difference in average ratings of
   emotionality between statements.
 \item
   H2: there will be a significant difference between average ratings of
@@ -682,15 +685,16 @@ that:
 \subsubsection{Participants}\label{sec-participants-pre}
 
 100 participants were recruited using the Prolific.co platform
-\citep{prolific}. English fluency and residency was required for
+\citep{prolific}. English fluency and UK residency was required for
 participation, as our main experiment relied on familiarity with data
 visualizations from a popular British news source. In addition to 25
-experimental items, we included six attention check items, which asked
-participants to provide specific answers. No participants failed more
-than 2 out of 6 attention check items, and therefore data from all 100
-were included in the full analysis (52.0\% male and 48.0\% female).
-Participants' mean age was 41.1 (\emph{SD} = 12.3). The average time
-taken to complete the survey was 7.6 minutes (\emph{SD} = 2.9 minutes).
+experimental items, we included six attention check items asking
+participants to ignore the scatterplot and provide specific answers. No
+participants failed more than 2 out of 6 attention check items, and
+therefore data from all 100 were included in the full analysis (52\%
+male and 48\% female). Participants' mean age was 41.1 (\emph{SD} =
+12.3). The average time taken to complete the survey was 7.6 minutes
+(\emph{SD} = 2.9 minutes).
 
 \subsubsection{Design}\label{sec-design-pre}
 
@@ -709,32 +713,34 @@ consent through key presses in response to consent statements. They were
 asked to provide their age in a free text box, followed by their gender
 identity. Participants were told that they would be asked to read
 statements about the relatedness between a pair of variables, after
-which they would have to indicate their beliefs about topic emotionality
-and the strength of relatedness suggested using a pair of sliders. To
-familiarize themselves with the sliders, they were asked to complete a
-practice round in response to the statement: ``As participation in
-online experiments increases, society becomes happier.''
+which they would have to indicate their beliefs about statement
+emotionality and the strength of relatedness suggested using a pair of
+sliders. To familiarize themselves with the sliders, they were asked to
+complete a practice round in response to the statement: ``As
+participation in online experiments increases, society becomes
+happier.'' The Likert scales used in the online experiment were
+identical to those described in Section~\ref{sec-pre-study}.
 
 \subsection{Results}\label{sec-results-pre}
 
 All analyses were conducted using R (version 4.4.1). We use the
 \textbf{irr} package to calculate Fleiss' Kappa to measure interrater
-agreement on topic emotionality and strength of correlation for the 25
-experimental items. This analysis revealed that participants agreed
-above chance on topic emotionality (\(\kappa\) = 0.07, \emph{p}
+agreement on statement emotionality and strength of relatedness for the
+25 experimental items. This analysis revealed that participants agreed
+above chance on statement emotionality (\(\kappa\) = 0.07, \emph{p}
 \textless{} .001) and strength of correlation (\(\kappa\) = 0.06,
 \emph{p} \textless{} .001).
 
 \subsection{Selecting Statements for the Main
 Experiment}\label{sec-selecting-statements}
 
-To control for the potential effects of topic emotionality in the main
-experiment, we first select statements that represent neutral emotional
-valence. Statements with average topic emotionality ratings between 3
-and 5 are statements 2, 10, 22, 16, and 23. To ascertain which
+To control for the potential effects of statement emotionality in the
+main experiment, we first select statements that represent neutral
+emotional valence. Statements with average emotionality ratings between
+3 and 5 are statements 2, 10, 22, 16, and 23. To ascertain which
 statements represent the greatest consensus, we add standard deviations
-in ratings for topic emotionality and strength of relatedness. Due to
-concerns about experimental power, and in line with evidence that
+in ratings for statement emotionality and strength of relatedness. Due
+to concerns about experimental power, and in line with evidence that
 propensity for belief change is highest when prior beliefs are not
 strongly held \citep{xiong_2022, markant_2023}, we elected at this point
 to test only the statement corresponding to weak beliefs about the
@@ -750,17 +756,18 @@ been completed.
 
 \subsection{Discussion}\label{sec-discussion-pre}
 
-Fleiss' Kappa values for interrater agreement on both topic emotionality
-and strength of correlation scales are low (\(\kappa\) = 0.07 and
-\(\kappa\) = 0.06 respectively), however do exceed that which would be
-expected by chance. We suggest this may be due to Fleiss' Kappa not
-being designed with ordinal (Likert scales in this case) data in mind.
-In light of this we do not make decisions regarding which statement to
-use based on the values of Fleiss' Kappa observed, but rather on the
-standard deviations of ratings across all raters. Regardless, we do not
-consider this to be a particular weakness, as we also test topic
-emotionality and strength of correlation with participants in the main
-study and include these ratings as part of our analysis.
+Fleiss' Kappa values for interrater agreement on both statement
+emotionality and strength of correlation scales are low (\(\kappa\) =
+0.07 and \(\kappa\) = 0.06 respectively), however do exceed that which
+would be expected by chance. We suggest this may be due to Fleiss' Kappa
+not being designed with ordinal (Likert scales in this case) data in
+mind. In light of this we do not make decisions regarding which
+statement to use based on the values of Fleiss' Kappa observed, but
+rather on the standard deviations of ratings across all raters.
+Regardless, we do not consider this to be a particular weakness, as we
+also test statement emotionality and strength of correlation with
+participants in the main study and include these ratings as part of our
+analysis.
 
 \section{Main Study: Potential for Belief Change Using Atypical
 Scatterplots}\label{sec-main-study}
@@ -799,8 +806,8 @@ from previous work in the supplemental material, and has additionally
 been utilized more recently \citep{markant_2023} to explore the
 potential for attitude change specifically with regards to correlations
 in scatterplots. Participants provide answers to the 12 scale items
-using a 5 point Likert scale ranging from 1 (\emph{not at all
-characteristic of me}) to 5 (\emph{extremely characteristic of me}).
+using a 5 point Likert scale anchored at points 1 (\emph{not at all
+characteristic of me}) and 5 (\emph{extremely characteristic of me}).
 Analysis including participants' defensive confidence scores is included
 in Section~\ref{sec-add-analyses-discussion}.
 
@@ -850,7 +857,7 @@ were included in the full analysis (48.7\% male, 48.7\% female, and
 2.7\% non-binary). Participants' mean age was 39.3 (\emph{SD} = 11.5).
 Participants' mean graph literacy score was 21.3 (\emph{SD} = 4.3) out
 of 30, their mean defensive confidence score was 43.0 (\emph{SD} = 6.8)
-out of 60, and their mean rating of topic emotionality was 2.9
+out of 60, and their mean rating of statement emotionality was 2.9
 (\emph{SD} = 1.3) on a 7 point Likert scale. On average, participants
 took 14.2 minutes to complete the experiment (\emph{SD} = 6.41).
 
@@ -895,37 +902,48 @@ displayed in each scatterplot; no hypotheses were made based on these
 data and therefore we do not analyse them further. Following
 instructions, which included descriptions of scatterplots and Pearson's
 \emph{r}, participants had a chance to practice using the slider, before
-being asked their belief about topic emotionality and the relatedness
-between variables described in our chosen statement. After completing
-the experimental trials, participants were tested again on their beliefs
-about relatedness, and then debriefed that the data they were shown were
-fictional. Interspersed among the experimental items were 4 attention
-check trials which explicitly asked participants to set the slider to 0
-or 1.
+being asked to indicate their belief about emotionality and the
+relatedness between variables described in our chosen statement. We
+captured these data using Likert scales identical to those described in
+\#sec-pre-study. After completing the experimental trials, participants
+were tested again on their beliefs about relatedness, and then debriefed
+that the data they were shown were fictional. Interspersed among the
+experimental items were 4 attention check trials which explicitly asked
+participants to set the slider to 0 or 1.
 
 \subsection{Results}\label{sec-results-main}
 
-All analyses were conducted using R (version 4.4.1). The
-\textbf{buildmer} (version 2.11 \citep{buildmer}) and \textbf{lme4}
-(version 1.1-35.3 \citep{lme4}) packages were used to build linear mixed
-effects models. Semi-partial R\textsuperscript{2}, which is presented in
-lieu of traditional measures of effect size, was calculated using the
-\textbf{r2glmm} package (version 0.1.2 \citep{r2glmm}). To test the
-first hypothesis, that ratings of strength of relatedness would be
-different before and after participants viewed experimental items, we
-build a model whereby the rating of strength of relatedness the
-participant made is predicted by whether it was made \textbf{before} or
-\textbf{after} viewing the experimental items. Our first hypothesis was
-supported; there was a significant difference in ratings of strength of
-relatedness made before and after participants viewed the experimental
-plots. A likelihood ratio test revealed that the model including time of
-rating as a predictor explained significantly more variance than the
-null (\(\chi^2\)(1) = 8,261.07, \emph{p} \textless{} .001). This model
-has random intercepts for participants. Statistical testing providing
-support for this hypothesis is shown in Table~\ref{tbl-abso-diff}.
-Figure~\ref{fig-abso-descriptives} shows means and boxplots for ratings
-of strength of relatedness before and after viewing scatterplots in
-either the typical or atypical condition.
+All analyses were conducted using R (version 4.4.1). Likert scales
+capture whether one rating is higher or lower than another, however they
+do not quantify the difference between levels of rating. Analysis with
+metric models, such as linear regression, which assumes equal levels of
+difference between ratings, is therefore inappropriate
+\citep{liddell_2018}. We therefore use the \textbf{ordinal} package
+(version 2023.12-4.1 \citep{ordinal}) to build cumulative link mixed
+effects models to analyse Likert scale data. We use the
+\textbf{buildmer} (version 2.11 \citep{buildmer}) package to automate
+the selection of the random effects structure; here, we provide a
+maximal model, which includes random intercepts for participants, and
+\textbf{buildmer} identifies the most complex model that successfully
+converges. We present odds ratios and equivalent Cohen's \emph{d} effect
+sizes that were calculated using the \textbf{effectsize} package
+(version 0.8.9 \citep{effectsize}).
+
+To test the first hypothesis, that ratings of strength of relatedness
+would be different before and after participants viewed experimental
+items, we build a model whereby the rating of strength of relatedness
+the participant made is predicted by whether it was made \textbf{before}
+or \textbf{after} viewing the experimental items. Our first hypothesis
+was supported; there was a significant difference in ratings of strength
+of relatedness made before and after participants viewed the
+experimental plots. A likelihood ratio test revealed that the model
+including time of rating as a predictor explained significantly more
+variance than the null (\(\chi^2\)(1) = 8,046.95, \emph{p} \textless{}
+.001). This model has random intercepts for participants. Statistical
+testing providing support for this hypothesis is shown in
+Table~\ref{tbl-abso-diff}. Figure~\ref{fig-abso-descriptives} shows
+means and boxplots for ratings of strength of relatedness before and
+after viewing scatterplots in either the typical or atypical condition.
 
 \begin{table}
 
@@ -934,12 +952,11 @@ of rating time. Semi-partial R\textsuperscript{2} is also incuded.}
 
 \centering{
 
-\begin{tabular}[t]{lrrrrll}
+\begin{tabular}[t]{lrrrlrr}
 \toprule
-  & Estimate & Standard Error & df & t-value & \textit{p} & R\textsuperscript{2}\\
+  & Estimate & Standard Error & Z-value & \textit{p} & Odds Ratio & Cohen's \textit{d}\\
 \midrule
-(Intercept) & 3.26 & 0.083 & 151.69 & 39.12 & <0.001 & \\
-Rating Time & 1.72 & 0.016 & 11849.00 & 109.29 & <0.001 & 0.295\\
+Rating Time & 3.77 & 0.049 & 76.62 & <0.001 & 43.2 & 2.08\\
 \bottomrule
 \end{tabular}
 
@@ -968,40 +985,41 @@ greater when participants were assigned to the atypical scatterplot
 condition, also received support. Deviation coding was used for each of
 the experimental factors of rating time (pre or post) and condition,
 which allows us to compare means of ratings to the grand mean. We built
-a linear mixed effects model whereby the rating of strength of
+a cumulative link mixed effects model whereby the rating of strength of
 relatedness the participant made was predicted by the condition the
 participant was assigned to and the time they made the rating. A
 likelihood ratio test revealed that the model including condition and
 rating time as a predictor explained significantly more variance than
-the null (\(F\)(3) = 8,402.92, \emph{p} \textless{} .001). This model
+the null (\(F\)(3) = 8,151.94, \emph{p} \textless{} .001). This model
 had random intercepts for participants. We again found a main effect of
 rating time, found no main effect of condition, and found an interaction
-between rating time and condition. Test statistics, along with
-semi-partial R\textsuperscript{2} can be seen in Table~\ref{tbl-rel}. To
-further explore the interaction, we used the \textbf{emmeans} package
-(version 1.10.3 \citep{emmeans}) to calculate pairwise comparisons
-between levels of the condition and rating time factors, which can be
-see in Table~\ref{tbl-pairwise}. The interaction we found is driven by
-participants beliefs changing more between pre-viewing and post-viewing
-times for atypical as opposed to typical plots.
+between rating time and condition. Test statistics, along with odds
+ratios and equivalent Cohen's \emph{d} can be seen in
+Table~\ref{tbl-rel}. To further explore the interaction, we used the
+\textbf{emmeans} package (version 1.10.3 \citep{emmeans}) to calculate
+pairwise comparisons between levels of the condition and rating time
+factors, which can be see in Table~\ref{tbl-pairwise}. The interaction
+we found is driven by participants beliefs changing more between
+pre-viewing and post-viewing times for atypical as opposed to typical
+plots.
 
 \begin{table}
 
 \caption{\label{tbl-rel}Statistics for the significant main effect of
 condition on the difference between pre and post scatterplot viewing
-ratings for typical and atypical plots. Semi-partial
-R\textsuperscript{2} is also incuded.}
+ratings for typical and atypical plots. Odds ratios and equivalent
+Cohen's \emph{d} is also shown. NB the odds ratio for the effect of
+condition is caluclated based on the absolute value of the estimate.}
 
 \centering{
 
-\begin{tabular}[t]{lrrrrll}
+\begin{tabular}[t]{lrrrlrr}
 \toprule
-  & Estimate & Standard Error & df & t-value & \textit{p} & R\textsuperscript{2}\\
+  & Estimate & Standard Error & Z-value & \textit{p} & Odds Ratio & Cohen's \textit{d}\\
 \midrule
-(Intercept) & 4.12 & 0.083 & 148 & 49.55 & <0.001 & \\
-Rating Time & -1.72 & 0.016 & 11848 & -109.94 & <0.001 & 0.296\\
-Condition & -0.09 & 0.166 & 148 & -0.56 & 0.576 & 0.001\\
-Rating Time * Condition & -0.37 & 0.031 & 11848 & -11.93 & <0.001 & 0.005\\
+Rating Time & 3.79 & 0.049 & 76.69 & <0.001 & 44.10 & 2.09\\
+Condition & -0.13 & 0.390 & -0.33 & 0.745 & 1.14 & 0.07\\
+Rating Time x Condition & 0.72 & 0.071 & 10.22 & <0.001 & 2.06 & 0.40\\
 \bottomrule
 \end{tabular}
 
@@ -1022,13 +1040,13 @@ to the typical.}
 \toprule
 Contrast & Z ratio & \textit{p}\\
 \midrule
-Pre-Viewing x Atypical | Post-Viewing x Atypical & -86.17 & <0.001\\
-Pre-Viewing x Atypical | Pre-Viewing x Typical & -1.68 & 0.336\\
-Pre-Viewing x Atypical | Post-Viewing x Typical & -10.86 & <0.001\\
-Post-Viewing x Atypical | Pre-Viewing x Typical & 9.74 & <0.001\\
-Post-Viewing x Atypical | Post-Viewing x Typical & 0.56 & 0.944\\
+Post-Viewing x Atypical | Pre-Viewing x Atypical & 66.32 & <0.001\\
+Post-Viewing x Atypical | Post-Viewing x Typical & 0.60 & 0.932\\
+Post-Viewing x Atypical | Pre-Viewing x Typical & 9.32 & <0.001\\
+Pre-Viewing x Atypical | Post-Viewing x Typical & -9.96 & <0.001\\
+Pre-Viewing x Atypical | Pre-Viewing x Typical & -1.25 & 0.596\\
 \addlinespace
-Pre-Viewing x Typical | Post-Viewing x Typical & -69.30 & <0.001\\
+Post-Viewing x Typical | Pre-Viewing x Typical & 58.12 & <0.001\\
 \bottomrule
 \end{tabular}
 
@@ -1039,10 +1057,10 @@ Pre-Viewing x Typical | Post-Viewing x Typical & -69.30 & <0.001\\
 \subsubsection{Additional Analyses}\label{sec-add-analyses}
 
 We find effects of participants' scores on a Defensive Confidence test
-(\(F\)(4) = 91.56, \emph{p} \textless{} .001), participants' scores on a
-graph literacy test (\(F\)(4) = 155.77, \emph{p} \textless{} .001), and
+(\(F\)(4) = 69.73, \emph{p} \textless{} .001), participants' scores on a
+graph literacy test (\(F\)(4) = 42.66, \emph{p} \textless{} .001), and
 of how emotional participants' rated the chosen correlative statement
-before beginning the block of trials (\(F\)(4) = 24.94, \emph{p}
+before beginning the block of trials (\(F\)(4) = 43.51, \emph{p}
 \textless{} .001). We discuss the interactions between the main effect
 and graph literacy, defensive confidence, and statement emotionality in
 Section~\ref{sec-add-analyses-discussion}.
@@ -1062,7 +1080,7 @@ statistics, however much more work would be required to begin producing
 guidelines for the use of alternative scatterplot designs with regards
 to producing more persuasive visualizations.
 
-\subsubsection{Graph Literacy, Defensive Confidence, and Topic
+\subsubsection{Graph Literacy, Defensive Confidence, and Statement
 Emotionality}\label{sec-add-analyses-discussion}
 
 \begin{figure}
@@ -1242,13 +1260,12 @@ typical scatterplots, as if they were part of a news item and used a
 real-world variable pair that had been selected by our population of
 interest as being representative of a weakly-held, emotionally neutral
 correlation. We found that participants who viewed scatterplots
-employing alternative designs detailed above experienced greater levels
-of belief change than those who viewed typical plots. In addition, we
-found small interactive effects of a number of participant
-characteristics. Our results suggest that visualization techniques that
-have previously been employed to improve perception amongst participants
-are deserving of study with regards to their potential to change
-beliefs.
+employing alternative designs experienced greater levels of belief
+change than those who viewed typical plots. In addition, we found small
+interactive effects of a number of participant characteristics. Our
+results suggest that visualization techniques that have previously been
+employed to improve perception amongst participants are deserving of
+study with regards to their potential to change beliefs.
 
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{atypical-scatterplots.bib}
