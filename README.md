@@ -34,7 +34,7 @@ Once the container is running, open a web browser and type `localhost:8787` in t
 
 Opening `atypical_scatterplots.qmd` and using the 'Render' button will allow you to re-create a .pdf of the manuscript.
 
-IMPORTANT: Models have been cached to increase performance. The cache will not be recognised automatically when using RStudio within the Docker container. eval_models must be set to FALSE in line 11 in order to use the cached models. This will prevent knitr from executing the code for each model, but will 'lazyload' all cached models so they can be used in manuscript generation. Setting eval_models to TRUE in line 11 will result in all models being re-generated.
+IMPORTANT: Models have been cached to increase performance. The cache will not be recognised automatically when using RStudio within the Docker container. eval_models must be set to FALSE in line 10 in order to use the cached models. This will prevent knitr from executing the code for each model, but will 'lazyload' all cached models so they can be used in manuscript generation. Setting eval_models to TRUE in line 10 will result in all models being re-generated.
 
 The manuscript was written using the ACM CHI template. An issue with quarto/pandoc means that the tables are rendered partially outside of the pdf boundaries. I solved this by manually editing the resulting .tex file and re-running it. The source files in `placeholder` have had these changes implemented.
 
