@@ -7,7 +7,7 @@ format: acm-pdf
 keep-tex: true
 
 params:
-  eval_models: true
+  eval_models: false
   
 knitr:
   opts_chunk: 
@@ -22,7 +22,7 @@ execute:
 
 bibliography: atypical-scatterplots.bib
 
-title: Effects of Alternative Scatterplots Designs on Belief Change
+title: Effects of Alternative Scatterplot Designs on Belief
 
 # if short-title is defined, then it's used
 short-title: 
