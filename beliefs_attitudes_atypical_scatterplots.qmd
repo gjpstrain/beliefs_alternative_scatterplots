@@ -159,9 +159,6 @@ library(ggdist)
 library(ggpubr)
 library(conflicted)
 library(ggtext)
-library(r2glmm)
-library(grid)
-library(DescTools)
 library(Matrix)
 library(irr)
 library(bbplot)
@@ -171,7 +168,7 @@ library(ordinal)
 
 # fix conflicts now using the conflicted package
 
-conflicts_prefer(dplyr::select(), dplyr::filter(), lme4::lmer(), DescTools::AUC())
+conflicts_prefer(dplyr::select(), dplyr::filter(), lme4::lmer())
 
 options(knitr.kable.NA = "")
 
@@ -1508,8 +1505,9 @@ replicated from previous work in the supplemental material, and has additionally
 been utilized more recently [@markant_2023] to explore the potential for attitude
 change specifically with regards to correlations in scatterplots. Participants
 provide answers to the 12 scale items using a 5 point Likert scale anchored at points 1
-(*not at all characteristic of me*) and 5 (*extremely characteristic of me*). Analysis
-including participants' defensive confidence scores is included in @sec-add-analyses-discussion.
+(*not at all characteristic of me*) and 5 (*extremely characteristic of me*), with 
+all other points being unlabelled. Analysis including participants' defensive 
+confidence scores is included in @sec-add-analyses-discussion.
 
 ## Stimuli {#sec-stimuli-main}
 
@@ -1689,7 +1687,7 @@ We employed a between-participants design. Each participant was randomly assigne
 to either group A, in which case they viewed typical scatterplots, or group B,
 in which they viewed atypical scatterplots designed deliberately to elicit higher
 levels of belief change. Participants saw all 45 experimental items for their group, along
-with 4 attention check items, in a fully randomised order. Our dependent variable 
+with 4 attention check items, in a fully randomized order. Our dependent variable 
 was the level of belief change induced by viewing the scatterplot visualizations,
 so participants were tested on how strongly related they believed the variables 
 described by the correlative statement were **before** and **after** viewing the
@@ -1721,7 +1719,7 @@ do not analyse them further. Following instructions, which included descriptions
 participants had a chance to practice using the slider, before being 
 asked to indicate their belief about emotionality and the relatedness between variables
 described in our chosen statement. We captured these data using Likert scales
-identical to those described in #sec-pre-study. After completing the experimental
+identical to those described in @sec-pre-study. After completing the experimental
 trials, participants were tested again on their beliefs about relatedness, and 
 then debriefed that the data they were shown were fictional. Interspersed among
 the experimental items were 4 attention check trials which explicitly
@@ -1732,55 +1730,59 @@ asked participants to set the slider to 0 or 1.
 ## Results {#sec-results-main}
 
 ```{r}
-#| label: model-rating-absolute
+#| label: model-rating-time
 #| eval: !expr params$eval_models
 #| cache: !expr params$eval_models
 
 # create model
 
-diff_abso_model <- buildclmm(rating ~ rating_time +
+rating_time_model <- buildclmm(rating ~ rating_time +
                          (1  | participant),
                        data = main_exp_tidy)
+
+# linear mixed effects model (metric), see footnote 8
+#
+# if you want to run this, recode the rating factor as unordered
+#
+# LMM <- buildmer(rating ~ rating_time +
+#                         (1  | participant),
+#                       data = main_exp_tidy)
 ```
 
 ```{r}
-#| label: assign-slot-absolute
-
-# assign to slot for further use
-
-diff_abso_model <- diff_abso_model@model
-```
-
-```{r}
-#| label: model-cmpr-diff-abso
+#| label: model-cmpr-rating-time
 #| eval: !expr params$eval_models
 #| cache: !expr params$eval_models
 
 # build comparison model with fixed effects term removed
 
-diff_abso_model_cmpr <- comparison(diff_abso_model)
+rating_time_model_cmpr <- comparison(rating_time_model)
 ```
 
 ```{r}
-#| label: anova-diff-abso
+#| label: anova-rating-time
 
 # run ANOVA between experimental and comparison models, outputs stats in global env
 
-anova_results_mixed(diff_abso_model, diff_abso_model_cmpr)
+anova_results_mixed(rating_time_model, rating_time_model_cmpr)
 ```
 
 All analyses were conducted using R (version `r paste0(R.version$major, ".", R.version$minor)`).
 Likert scales capture whether one rating is higher or lower than another, however
-they do not quantify the difference between levels of rating. Analysis with metric
-models, such as linear regression, which assumes equal levels of difference between
-ratings, is therefore inappropriate [@liddell_2018]. We therefore use the **ordinal**
+they do not quantify the difference between levels of rating. Metric modelling
+assuming equal levels of difference between ratings, such as linear regression, 
+is therefore inappropriate [@liddell_2018]. In light of this, we use the **ordinal**
 package (version 2023.12-4.1 [@ordinal]) to build cumulative link mixed effects
-models to analyse Likert scale data. We use the **buildmer** (version 2.11 [@buildmer])
-package to automate the selection of the random effects structure; here, we provide a
+models to analyse Likert scale data [^8]. We use the **buildmer** (version 2.11 [@buildmer])
+package to automate the selection of the random effects structure; we provide a
 maximal model, which includes random intercepts for participants, and **buildmer**
 identifies the most complex model that successfully converges. We present odds ratios and equivalent
 Cohen's *d* effect sizes that were calculated using the **effectsize** package
 (version 0.8.9 [@effectsize]). 
+
+[^8]: Our pre-registration specified linear mixed effects models (metric). Conclusions
+are identical when using said models, and code for this analysis is included in the repository
+associated with this paper.
 
 To test the first hypothesis,
 that ratings of strength of relatedness would be different before and after participants
@@ -1790,23 +1792,23 @@ the experimental items. Our first hypothesis was supported; there was a
 significant difference in ratings of strength of relatedness made before and after
 participants viewed the experimental plots. A likelihood ratio test revealed that the model
 including time of rating as a predictor explained significantly more variance than
-the null ($\chi^2$(`r in_paren(diff_abso_model.df)`) = `r printnum(diff_abso_model.LR)`,
-*p* `r printp(diff_abso_model.p, add_equals = TRUE)`). This model has random
+the null ($\chi^2$(`r in_paren(rating_time_model.df)`) = `r printnum(rating_time_model.LR)`,
+*p* `r printp(rating_time_model.p, add_equals = TRUE)`). This model has random
 intercepts for participants. Statistical testing providing
-support for this hypothesis is shown in @tbl-abso-diff. @fig-abso-descriptives
+support for this hypothesis is shown in @tbl-rating-time. @fig-descriptives
 shows means and boxplots for ratings of strength of relatedness before and after
 viewing scatterplots in either the typical or atypical condition.
 
 ```{r}
-#| label: tbl-abso-diff
+#| label: tbl-rating-time
 #| include: true
-#| tbl-cap: Statistics for the significant main effect of rating time. Semi-partial R^2^ is also incuded.
+#| tbl-cap: "Statistics for the significant main effect of rating time. Odds ratio and the equivalent Cohen's \\textit{d} value is also supplied."
 
-make_sig_table_abso(diff_abso_model)
+make_sig_table_abso(rating_time_model)
 ```
 
 ```{r}
-#| label: fig-abso-descriptives
+#| label: fig-descriptives
 #| include: true
 #| out-width: "100%"
 #| fig-asp: 0.5
@@ -1846,64 +1848,72 @@ main_exp_tidy %>%
 ```
 
 ```{r}
-#| label: model-relative
+#| label: model-condition-interact
 #| eval: !expr params$eval_models
 #| cache: !expr params$eval_models
 
 # modelling effect of condition on difference between belief strength before and
 # after viewing plot
 
-relative_model <- buildclmm(rating ~ rating_time*condition +
+condition_interact_model <- buildclmm(rating ~ rating_time*condition +
                               (1 | participant),
                             data = main_exp_tidy)
+
+# linear mixed effects model (metric), see footnote 8
+#
+# if you want to run this, recode the rating factor as unordered
+#
+# LMM <- buildmer(rating ~ rating_time*condition +
+#                         (1  | participant),
+#                       data = main_exp_tidy)
 ```
 
 ```{r}
-#| label: model-relative-cmpr
+#| label: model-condition-interact-cmpr
 #| eval: !expr params$eval_models
 #| cache: !expr params$eval_models
 
 # build null model for comparison
 
-relative_model_cmpr <- comparison(relative_model)
+condition_interact_model_cmpr <- comparison(condition_interact_model)
 ```
 
 ```{r}
-#| label: model-relative-results
+#| label: model-condition-interact-results
 #| eval: !expr params$eval_models
 #| cache: !expr params$eval_models
 
 # extract ANOVA results for relative vs null model comparison
 
-anova_results_mixed(relative_model, relative_model_cmpr)
+anova_results_mixed(condition_interact_model, condition_interact_model_cmpr)
 ```
 
 Our second hypothesis, that the difference between ratings of strength of relatedness
 before and after viewing experimental plots would be greater when participants
 were assigned to the atypical scatterplot condition, also received support.
-Deviation coding was used for each of the experimental factors of rating time (pre or post)
+Deviation coding was used for each of the experimental factors of rating time (pre- or post-)
 and condition, which allows us to compare means of ratings to the grand mean. We built
 a cumulative link mixed effects model whereby the rating of strength of relatedness the participant
 made was predicted by the condition the participant was assigned to and the time
 they made the rating. A likelihood ratio test revealed that the model
 including condition and rating time as a predictor explained significantly more variance than the null
-($F$(`r in_paren(relative_model.df)`) = `r printnum(relative_model.LR)`,
-*p* `r printp(relative_model.p, add_equals = TRUE)`). This model had random
+($F$(`r in_paren(condition_interact_model.df)`) = `r printnum(condition_interact_model.LR)`,
+*p* `r printp(condition_interact_model.p, add_equals = TRUE)`). This model had random
 intercepts for participants. We again found a main effect of rating time,
 found no main effect of condition, and found an interaction between
 rating time and condition. Test statistics, along with odds ratios and equivalent 
-Cohen's *d* can be seen in @tbl-rel. To further explore the interaction, we used the **emmeans**
-package (version 1.10.3 [@emmeans]) to calculate pairwise comparisons between 
+Cohen's *d* can be seen in @tbl-condition-interact. To further explore the interaction, we used the **emmeans**
+package (version 1.10.4 [@emmeans]) to calculate pairwise comparisons between 
 levels of the condition and rating time factors, which can be see in @tbl-pairwise.
 The interaction we found is driven by participants beliefs changing more between
 pre-viewing and post-viewing times for atypical as opposed to typical plots.
 
 ```{r}
-#| label: tbl-rel
+#| label: tbl-condition-interact
 #| include: true
-#| tbl-cap: Statistics for the significant main effect of condition on the difference between pre and post scatterplot viewing ratings for typical and atypical plots. Odds ratios and equivalent Cohen's *d* is also shown. NB the odds ratio for the effect of condition is caluclated based on the absolute value of the estimate. 
+#| tbl-cap: Statistics for the significant main effect of condition on the difference between pre- and post- scatterplot viewing ratings for typical and atypical plots. Odds ratios and equivalent Cohen's *d* are also shown. NB the odds ratio for the effect of condition is caluclated based on the absolute value of the estimate. 
 
-make_sig_table_rel(relative_model)
+make_sig_table_rel(condition_interact_model)
 
 # get estimate
 
@@ -1921,7 +1931,7 @@ make_sig_table_rel(relative_model)
 #| include: true 
 #| tbl-cap: Pairwise comparisons. The interaction is driven by there being greater differences in ratings of belief strength made before and after viewing plots in the atypical condition compared to the typical.
 
-contrast_table_df <- contrasts_extract(relative_model) %>%
+contrast_table_df <- contrasts_extract(condition_interact_model) %>%
   mutate(p.value = scales::pvalue(p.value)) %>%
   rename("\\textit{p}" = "p.value",
          "Z ratio" = "Z.ratio") %>%
@@ -1947,26 +1957,26 @@ lit_model <- clmm(rating ~ 1 + condition + rating_time + condition:rating_time *
                          (1  | participant), 
           data = main_exp_tidy)
 
-anova_results_mixed(lit_model, relative_model)
+anova_results_mixed(lit_model, condition_interact_model)
 
 dc_model <- clmm(rating ~ 1 + condition + rating_time + condition:rating_time * dc_score +
                          (1  | participant), 
           data = main_exp_tidy)
 
-anova_results_mixed(dc_model, relative_model)
+anova_results_mixed(dc_model, condition_interact_model)
 
 emo_model <- clmm(rating ~ 1 + condition + rating_time + condition:rating_time * slider_emotion.response +
                          (1  | participant), 
           data = main_exp_tidy)
 
-anova_results_mixed(emo_model, relative_model)
+anova_results_mixed(emo_model, condition_interact_model)
 ```
 
-We find effects of participants' scores on a Defensive Confidence test 
+We find effects of participants' scores on a defensive confidence test 
 ($F$(`r in_paren(dc_model.df)`) = `r printnum(dc_model.LR)`,
 *p* `r printp(dc_model.p, add_equals = TRUE)`), participants' scores on a graph
 literacy test ($F$(`r in_paren(lit_model.df)`) = `r printnum(lit_model.LR)`,
-*p* `r printp(lit_model.p, add_equals = TRUE)`), and of how emotional participants'
+*p* `r printp(lit_model.p, add_equals = TRUE)`), and of how emotional participants
 rated the chosen correlative statement before beginning the block of trials
 ($F$(`r in_paren(emo_model.df)`) = `r printnum(emo_model.LR)`,
 *p* `r printp(emo_model.p, add_equals = TRUE)`). We discuss the interactions
@@ -2034,7 +2044,7 @@ ggplot(aes(x = variable_score, y = belief_diff, colour = condition), data = add_
   )
 ```
 
-Mean differences in pre- and post plot-viewing ratings of strength of relatedness
+Mean differences in pre- and post- plot-viewing ratings of strength of relatedness
 by Subjective Graph Literacy score can be seen in @fig-add-analyses-plots. Generally, 
 participants who scored higher on a graph literacy test experienced smaller changes
 in their ratings of strength of relatedness. While the effect size associated 
@@ -2080,7 +2090,7 @@ visual judgement task. Comparison of this work to the current is difficult, as
 
 Further experimental work is required to provide concrete explanations for the
 interactive effects of graph literacy, defensive confidence, and statement
-emotionality in the current experimental paradigm; as the investigation of
+emotionality in the current experimental paradigm, as the investigation of
 these is not the prime goal of the present study.
 
 # General Discussion {#sec-general-discussion}
@@ -2093,7 +2103,7 @@ closer towards real-life use cases while maintaining a strong foundation of expe
 evidence. Having controlled as far as possible for factors such as the emotional
 content of the graph, the general consensus on how related the variables in question
 were, and the general design (bar the points themselves) of the scatterplot,
-we can conclude that atypical scatterplot design was responsible
+we can conclude with strong evidence that atypical scatterplot design was responsible
 for increasing the level of belief change amongst participants.
 
 Previous work has provided support for the idea that it is the shape of the

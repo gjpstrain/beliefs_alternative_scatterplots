@@ -747,7 +747,7 @@ to test only the statement corresponding to weak beliefs about the
 strength of correlation between the variables in question. We therefore
 test statement number 22, ``Higher consumption of spicy foods is
 associated with a lower risk of certain types of cancer'', however we
-modify the wording so that both variables (food consumption and cancer
+modify the wording so that the variables (food consumption and cancer
 risk) are positively correlated, as while the manipulations we use in
 the atypical scatterplot condition are able to change estimates of
 correlation in positively correlated scatterplots, no work regarding the
@@ -773,7 +773,7 @@ analysis.
 Scatterplots}\label{sec-main-study}
 
 We test the statement that exhibited the lowest average level of belief
-about correlation, and the 2nd highest level of consensus. Modified for
+about correlation and the 2nd highest level of consensus. Modified for
 directionality, this statement is therefore: ``Higher consumption of
 plain (non-spicy) foods is associated with a lower risk of certain types
 of cancer.'' To give ourselves the best chance of detecting an effect of
@@ -807,9 +807,10 @@ been utilized more recently \citep{markant_2023} to explore the
 potential for attitude change specifically with regards to correlations
 in scatterplots. Participants provide answers to the 12 scale items
 using a 5 point Likert scale anchored at points 1 (\emph{not at all
-characteristic of me}) and 5 (\emph{extremely characteristic of me}).
-Analysis including participants' defensive confidence scores is included
-in Section~\ref{sec-add-analyses-discussion}.
+characteristic of me}) and 5 (\emph{extremely characteristic of me}),
+with all other points being unlabelled. Analysis including participants'
+defensive confidence scores is included in
+Section~\ref{sec-add-analyses-discussion}.
 
 \subsection{Stimuli}\label{sec-stimuli-main}
 
@@ -868,7 +869,7 @@ assigned to either group A, in which case they viewed typical
 scatterplots, or group B, in which they viewed atypical scatterplots
 designed deliberately to elicit higher levels of belief change.
 Participants saw all 45 experimental items for their group, along with 4
-attention check items, in a fully randomised order. Our dependent
+attention check items, in a fully randomized order. Our dependent
 variable was the level of belief change induced by viewing the
 scatterplot visualizations, so participants were tested on how strongly
 related they believed the variables described by the correlative
@@ -905,29 +906,31 @@ instructions, which included descriptions of scatterplots and Pearson's
 being asked to indicate their belief about emotionality and the
 relatedness between variables described in our chosen statement. We
 captured these data using Likert scales identical to those described in
-\#sec-pre-study. After completing the experimental trials, participants
-were tested again on their beliefs about relatedness, and then debriefed
-that the data they were shown were fictional. Interspersed among the
-experimental items were 4 attention check trials which explicitly asked
-participants to set the slider to 0 or 1.
+Section~\ref{sec-pre-study}. After completing the experimental trials,
+participants were tested again on their beliefs about relatedness, and
+then debriefed that the data they were shown were fictional.
+Interspersed among the experimental items were 4 attention check trials
+which explicitly asked participants to set the slider to 0 or 1.
 
 \subsection{Results}\label{sec-results-main}
 
 All analyses were conducted using R (version 4.4.1). Likert scales
 capture whether one rating is higher or lower than another, however they
-do not quantify the difference between levels of rating. Analysis with
-metric models, such as linear regression, which assumes equal levels of
-difference between ratings, is therefore inappropriate
-\citep{liddell_2018}. We therefore use the \textbf{ordinal} package
-(version 2023.12-4.1 \citep{ordinal}) to build cumulative link mixed
-effects models to analyse Likert scale data. We use the
-\textbf{buildmer} (version 2.11 \citep{buildmer}) package to automate
-the selection of the random effects structure; here, we provide a
-maximal model, which includes random intercepts for participants, and
-\textbf{buildmer} identifies the most complex model that successfully
-converges. We present odds ratios and equivalent Cohen's \emph{d} effect
-sizes that were calculated using the \textbf{effectsize} package
-(version 0.8.9 \citep{effectsize}).
+do not quantify the difference between levels of rating. Metric
+modelling assuming equal levels of difference between ratings, such as
+linear regression, is therefore inappropriate \citep{liddell_2018}. In
+light of this, we use the \textbf{ordinal} package (version 2023.12-4.1
+\citep{ordinal}) to build cumulative link mixed effects models to
+analyse Likert scale data \footnote{Our pre-registration specified
+  linear mixed effects models (metric). Conclusions are identical when
+  using said models, and code for this analysis is included in the
+  repository associated with this paper.}. We use the \textbf{buildmer}
+(version 2.11 \citep{buildmer}) package to automate the selection of the
+random effects structure; we provide a maximal model, which includes
+random intercepts for participants, and \textbf{buildmer} identifies the
+most complex model that successfully converges. We present odds ratios
+and equivalent Cohen's \emph{d} effect sizes that were calculated using
+the \textbf{effectsize} package (version 0.8.9 \citep{effectsize}).
 
 To test the first hypothesis, that ratings of strength of relatedness
 would be different before and after participants viewed experimental
@@ -941,14 +944,15 @@ including time of rating as a predictor explained significantly more
 variance than the null (\(\chi^2\)(1) = 8,046.95, \emph{p} \textless{}
 .001). This model has random intercepts for participants. Statistical
 testing providing support for this hypothesis is shown in
-Table~\ref{tbl-abso-diff}. Figure~\ref{fig-abso-descriptives} shows
-means and boxplots for ratings of strength of relatedness before and
-after viewing scatterplots in either the typical or atypical condition.
+Table~\ref{tbl-rating-time}. Figure~\ref{fig-descriptives} shows means
+and boxplots for ratings of strength of relatedness before and after
+viewing scatterplots in either the typical or atypical condition.
 
 \begin{table}
 
-\caption{\label{tbl-abso-diff}Statistics for the significant main effect
-of rating time. Semi-partial R\textsuperscript{2} is also incuded.}
+\caption{\label{tbl-rating-time}Statistics for the significant main
+effect of rating time. Odds ratio and the equivalent Cohen's \textit{d}
+value is also supplied.}
 
 \centering{
 
@@ -968,14 +972,14 @@ Rating Time & 3.77 & 0.049 & 76.62 & <0.001 & 43.2 & 2.08\\
 
 \centering{
 
-\includegraphics[width=1\textwidth,height=\textheight]{beliefs_attitudes_atypical_scatterplots_files/figure-pdf/fig-abso-descriptives-1.pdf}
+\includegraphics[width=1\textwidth,height=\textheight]{beliefs_attitudes_atypical_scatterplots_files/figure-pdf/fig-descriptives-1.pdf}
 
 }
 
-\caption{\label{fig-abso-descriptives}Boxplots showing ranges,
-interquartile ranges, medians (vertical lines) and means for
-participants' ratings of strength of relatedness before and after
-viewing either typical or atypical scatterplots.}
+\caption{\label{fig-descriptives}Boxplots showing ranges, interquartile
+ranges, medians (vertical lines) and means for participants' ratings of
+strength of relatedness before and after viewing either typical or
+atypical scatterplots.}
 
 \end{figure}%
 
@@ -983,7 +987,7 @@ Our second hypothesis, that the difference between ratings of strength
 of relatedness before and after viewing experimental plots would be
 greater when participants were assigned to the atypical scatterplot
 condition, also received support. Deviation coding was used for each of
-the experimental factors of rating time (pre or post) and condition,
+the experimental factors of rating time (pre- or post-) and condition,
 which allows us to compare means of ratings to the grand mean. We built
 a cumulative link mixed effects model whereby the rating of strength of
 relatedness the participant made was predicted by the condition the
@@ -995,21 +999,22 @@ had random intercepts for participants. We again found a main effect of
 rating time, found no main effect of condition, and found an interaction
 between rating time and condition. Test statistics, along with odds
 ratios and equivalent Cohen's \emph{d} can be seen in
-Table~\ref{tbl-rel}. To further explore the interaction, we used the
-\textbf{emmeans} package (version 1.10.3 \citep{emmeans}) to calculate
-pairwise comparisons between levels of the condition and rating time
-factors, which can be see in Table~\ref{tbl-pairwise}. The interaction
-we found is driven by participants beliefs changing more between
-pre-viewing and post-viewing times for atypical as opposed to typical
-plots.
+Table~\ref{tbl-condition-interact}. To further explore the interaction,
+we used the \textbf{emmeans} package (version 1.10.4 \citep{emmeans}) to
+calculate pairwise comparisons between levels of the condition and
+rating time factors, which can be see in Table~\ref{tbl-pairwise}. The
+interaction we found is driven by participants beliefs changing more
+between pre-viewing and post-viewing times for atypical as opposed to
+typical plots.
 
 \begin{table}
 
-\caption{\label{tbl-rel}Statistics for the significant main effect of
-condition on the difference between pre and post scatterplot viewing
-ratings for typical and atypical plots. Odds ratios and equivalent
-Cohen's \emph{d} is also shown. NB the odds ratio for the effect of
-condition is caluclated based on the absolute value of the estimate.}
+\caption{\label{tbl-condition-interact}Statistics for the significant
+main effect of condition on the difference between pre- and post-
+scatterplot viewing ratings for typical and atypical plots. Odds ratios
+and equivalent Cohen's \emph{d} are also shown. NB the odds ratio for
+the effect of condition is caluclated based on the absolute value of the
+estimate.}
 
 \centering{
 
@@ -1056,10 +1061,10 @@ Post-Viewing x Typical | Pre-Viewing x Typical & 58.12 & <0.001\\
 
 \subsubsection{Additional Analyses}\label{sec-add-analyses}
 
-We find effects of participants' scores on a Defensive Confidence test
+We find effects of participants' scores on a defensive confidence test
 (\(F\)(4) = 69.73, \emph{p} \textless{} .001), participants' scores on a
 graph literacy test (\(F\)(4) = 42.66, \emph{p} \textless{} .001), and
-of how emotional participants' rated the chosen correlative statement
+of how emotional participants rated the chosen correlative statement
 before beginning the block of trials (\(F\)(4) = 43.51, \emph{p}
 \textless{} .001). We discuss the interactions between the main effect
 and graph literacy, defensive confidence, and statement emotionality in
@@ -1102,7 +1107,7 @@ change between pre- and post- scatterplot viewing times.}
 
 \end{figure}%
 
-Mean differences in pre- and post plot-viewing ratings of strength of
+Mean differences in pre- and post- plot-viewing ratings of strength of
 relatedness by Subjective Graph Literacy score can be seen in
 Figure~\ref{fig-add-analyses-plots}. Generally, participants who scored
 higher on a graph literacy test experienced smaller changes in their
@@ -1156,7 +1161,7 @@ difficult, as \emph{success} on our task is hard to define.
 
 Further experimental work is required to provide concrete explanations
 for the interactive effects of graph literacy, defensive confidence, and
-statement emotionality in the current experimental paradigm; as the
+statement emotionality in the current experimental paradigm, as the
 investigation of these is not the prime goal of the present study.
 
 \section{General Discussion}\label{sec-general-discussion}
@@ -1170,9 +1175,9 @@ towards real-life use cases while maintaining a strong foundation of
 experimental evidence. Having controlled as far as possible for factors
 such as the emotional content of the graph, the general consensus on how
 related the variables in question were, and the general design (bar the
-points themselves) of the scatterplot, we can conclude that atypical
-scatterplot design was responsible for increasing the level of belief
-change amongst participants.
+points themselves) of the scatterplot, we can conclude with strong
+evidence that atypical scatterplot design was responsible for increasing
+the level of belief change amongst participants.
 
 Previous work has provided support for the idea that it is the shape of
 the point cloud, more specifically, the width of the probability
