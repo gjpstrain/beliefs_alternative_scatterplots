@@ -177,7 +177,7 @@ options(knitr.kable.NA = "")
 ```{r}
 #| label: lazyload-cache
 
-if (!params$eval_models){ lazyload_cache_dir("beliefs_attitudes_atypical_scatterplots_cache/pdf") }
+if (!params$eval_models){ lazyload_cache_dir("beliefs_atypical_scatterplots_cache/pdf") }
 ```
 
 ```{r}

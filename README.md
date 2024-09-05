@@ -1,4 +1,4 @@
-# Effects of Alternative Scatterplots Designs on Belief Change
+# Effects of Alternative Scatterplots Designs on Belief
 
 Files, data, and scripts required to fully recreate our study investigating how alternative scatterplot designs can induce greater levels of belief change compared to standard scatterplots.
 
