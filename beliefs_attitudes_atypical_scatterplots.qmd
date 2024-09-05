@@ -370,7 +370,8 @@ wrangle_main_exp(main_exp_T)
 
 # add 75 to each participant number for second part of main exp
 
-atypical_scatterplots_main_test_T_tidy <- atypical_scatterplots_main_test_T_tidy %>% mutate(participant = participant + 75)
+atypical_scatterplots_main_test_T_tidy <- atypical_scatterplots_main_test_T_tidy %>%
+  mutate(participant = participant + 75)
 
 # main experiment is between participants, so rbind main_exp dfs together
 
@@ -461,7 +462,8 @@ def_con <- distinct(main_exp_tidy, participant,
 
 topic_emo <- distinct(main_exp_tidy, participant,
                         .keep_all = TRUE) %>%
-  summarise(mean = mean(slider_emotion.response), sd = sd(slider_emotion.response))
+  summarise(mean = mean(slider_emotion.response),
+            sd = sd(slider_emotion.response))
 
 # set deviation coding contrasts
 
@@ -649,7 +651,7 @@ comparison <- function(model) {
 # test statistic, the degrees of freedom, and the p value to the global 
 # environment
 
-anova_results_mixed <- function(model, cmpr_model) {
+anova_results <- function(model, cmpr_model) {
   
   model_name <- deparse(substitute(model))
   
@@ -673,8 +675,8 @@ anova_results_mixed <- function(model, cmpr_model) {
   
   else
     
-  anova_output <- anova(model, cmpr_model)
-  
+  anova_output <- anova(model, cmpr_model) # currently unused, left it 
+                                           # in case you want to use LMMs
   assign(paste0(model_name, ".Chisq"),
          anova_output$Chisq[2],
          envir = .GlobalEnv)
@@ -685,27 +687,6 @@ anova_results_mixed <- function(model, cmpr_model) {
          anova_output$`Pr(>Chisq)`[2],
          envir = .GlobalEnv)
 }
-
-anova_results_linear <- function(cmpr_model, model) { # currently unused, left it for the craic
-  
-  model_name <- deparse(substitute(model))
-  
-  if (class(model) == "buildmer") model <- model@model
-  if (class(cmpr_model) == "buildmer") cmpr_model <- cmpr_model@model
-  
-  anova_output <- anova(cmpr_model, model)
-  
-  assign(paste0(model_name, ".F"),
-         anova_output$'F'[2],
-         envir = .GlobalEnv)
-  assign(paste0(model_name, ".df"),
-         anova_output$Df[2],
-         envir = .GlobalEnv)
-  assign(paste0(model_name, ".p"),
-         anova_output$`Pr(>F)`[2],
-         envir = .GlobalEnv)
-  
-} # currently unused
 ```
 
 ```{r}
@@ -713,9 +694,9 @@ anova_results_linear <- function(cmpr_model, model) { # currently unused, left i
 
 # functions to create tables with fixed effects and interactions for models
 
-# first do function for absolute differences model (H1)
+# first do function for rating time only model
 
-make_sig_table_abso <- function (model) {
+make_sig_table_rating_time <- function (model) {
   
   # buildmer class models need reassigned to lmer class for further use
   
@@ -745,9 +726,9 @@ make_sig_table_abso <- function (model) {
   return(table)
 }
 
-# currently unused functions for sig tables re additional analyses
+# next do table for rating time * condition model
 
-make_sig_table_rel <- function (model) {
+make_sig_table_interact <- function (model) {
   
   # buildmer class models need reassigned to lmer class for further use
   
@@ -779,6 +760,8 @@ make_sig_table_rel <- function (model) {
   
   return(table)
 }
+
+# currently unused functions for sig tables re additional analyses
 
 make_sig_table_lit <- function (model) {
   
@@ -1092,27 +1075,6 @@ all_exp_df <- read_csv("data/all_exp.csv") %>%
 
 plotting_df <- rbind(all_exp_df, standard_alone)
 
-plot_est_prev <- function(filter) {
-  
-  plot <- plotting_df %>%
-    filter(factor == filter) %>%
-    ggplot(aes(x = my_rs, y = slider.response)) + 
-    theme_ggdist() +
-    scale_y_continuous(breaks = seq(-0.4,1, 0.2)) +
-    theme(strip.text = element_text(size = 6, margin = margin(1,0,1,0, "mm")), aspect.ratio = 1,
-          axis.text = element_text(size = 7),
-          axis.title.x = element_blank(),
-          axis.title.y = element_blank(),
-          plot.margin = unit(c(0,0,0.8,0), "cm")) +
-    geom_abline(slope = 1, intercept = 0, linetype = 3) +
-    labs(x = "Objective *r") +
-    geom_smooth(se = FALSE, colour = "black", size = 0.4) +
-    xlim(0.2,1) +
-    ylim(0.1,1)
-  
-  return(plot)
-}
-
 plot_est_prev_no_y <- function(filter) {
   
   plot <- plotting_df %>%
@@ -1166,10 +1128,10 @@ x_label <- text_grob(expression("Objective " * italic("r") * " value"))
 y_label <- text_grob(expression("Subjective " * italic("r") * " value"),
                      rot = 90, hjust = 0.9)
 
-#rm(example_plots_prev, plot_prev_est_no_y,    # trying to prevent env clogging
- #  plot_prev_est, plotting_df,                # up when working on paper
-  # all_exp_df, standard_alone,
-   #facet_order)
+rm(example_plots_prev, plot_prev_est_no_y,    # trying to prevent env clogging
+   plot_prev_est, plotting_df,                # up when working on paper
+   all_exp_df, standard_alone,
+   facet_order)
 
 annotate_figure(p,
                 bottom = x_label,
@@ -1313,6 +1275,7 @@ between statements.
 #| tbl-cap: Pre-test statements that were rated as being strongly correlated.
 
 # read in pre-test csv data
+# table unused in final manuscript
 
 pre_test_statements_hi <- read_csv("data/pre_test_data.csv") %>%
   filter(label == "high_corr") %>%
@@ -1331,6 +1294,7 @@ kbl(pre_test_statements_hi, booktabs = T)
 #| tbl-cap: Pre-test statements that were rated as being weakly correlated.
 
 # read in pre-test csv data
+# table unused in final manuscript
 
 pre_test_statements_lo <- read_csv("data/pre_test_data.csv") %>%
   filter(label == "low_corr") %>%
@@ -1608,8 +1572,17 @@ example_plot_function <- function(slopes, my_desired_r, size_value, opacity_valu
 
 # use ggarrange to arrange plots, include annotation geoms for plot titles
 
-example_plots <- ggarrange(example_plot_function(slopes, 0.6, typical, standard_alpha, bbc_style()),
-                           example_plot_function(slopes, 0.6, slopeI, slopeI_floored, bbc_style()),nrow = 1) +
+example_plots <- ggarrange(example_plot_function(slopes,
+                                                 0.6,
+                                                 typical,
+                                                 standard_alpha,
+                                                 bbc_style()),
+                           example_plot_function(slopes,
+                                                 0.6,
+                                                 slopeI,
+                                                 slopeI_floored,
+                                                 bbc_style()),
+                           nrow = 1) +
   annotate(geom = "text",
            label = "Typical Scatterplot",
            x = 0.25,
@@ -1742,7 +1715,7 @@ rating_time_model <- buildclmm(rating ~ rating_time +
 
 # linear mixed effects model (metric), see footnote 8
 #
-# if you want to run this, recode the rating factor as unordered
+# if you want to run this, recode the rating factor as unordered (line 356)
 #
 # LMM <- buildmer(rating ~ rating_time +
 #                         (1  | participant),
@@ -1764,7 +1737,7 @@ rating_time_model_cmpr <- comparison(rating_time_model)
 
 # run ANOVA between experimental and comparison models, outputs stats in global env
 
-anova_results_mixed(rating_time_model, rating_time_model_cmpr)
+anova_results(rating_time_model, rating_time_model_cmpr)
 ```
 
 All analyses were conducted using R (version `r paste0(R.version$major, ".", R.version$minor)`).
@@ -1804,7 +1777,7 @@ viewing scatterplots in either the typical or atypical condition.
 #| include: true
 #| tbl-cap: "Statistics for the significant main effect of rating time. Odds ratio and the equivalent Cohen's \\textit{d} value is also supplied."
 
-make_sig_table_abso(rating_time_model)
+make_sig_table_rating_time(rating_time_model)
 ```
 
 ```{r}
@@ -1825,7 +1798,11 @@ main_exp_tidy %>%
   ggplot(aes(x = condition, y = rating, fill = rating_time)) +
   geom_boxplot(outliers = F, key_glyph = "polygon") +
   scale_color_brewer(palette = "Dark2", aesthetics = "fill") +
-  stat_summary(fun.y = mean, geom = "point", shape = 15, size = 4, position = position_dodge(0.75)) +
+  stat_summary(fun.y = mean,
+               geom = "point",
+               shape = 15,
+               size = 4,
+               position = position_dodge(0.75)) +
   scale_y_continuous(breaks = scales::pretty_breaks(n = 7)) +
   labs(x = "",
        y = "Rating",
@@ -1855,7 +1832,7 @@ main_exp_tidy %>%
 # modelling effect of condition on difference between belief strength before and
 # after viewing plot
 
-condition_interact_model <- buildclmm(rating ~ rating_time*condition +
+condition_interact_model <- buildclmm(rating ~ rating_time * condition +
                               (1 | participant),
                             data = main_exp_tidy)
 
@@ -1885,7 +1862,7 @@ condition_interact_model_cmpr <- comparison(condition_interact_model)
 
 # extract ANOVA results for relative vs null model comparison
 
-anova_results_mixed(condition_interact_model, condition_interact_model_cmpr)
+anova_results(condition_interact_model, condition_interact_model_cmpr)
 ```
 
 Our second hypothesis, that the difference between ratings of strength of relatedness
@@ -1913,7 +1890,7 @@ pre-viewing and post-viewing times for atypical as opposed to typical plots.
 #| include: true
 #| tbl-cap: Statistics for the significant main effect of condition on the difference between pre- and post- scatterplot viewing ratings for typical and atypical plots. Odds ratios and equivalent Cohen's *d* are also shown. NB the odds ratio for the effect of condition is caluclated based on the absolute value of the estimate. 
 
-make_sig_table_rel(condition_interact_model)
+make_sig_table_interact(condition_interact_model)
 
 # get estimate
 
@@ -1957,19 +1934,19 @@ lit_model <- clmm(rating ~ 1 + condition + rating_time + condition:rating_time *
                          (1  | participant), 
           data = main_exp_tidy)
 
-anova_results_mixed(lit_model, condition_interact_model)
+anova_results(lit_model, condition_interact_model)
 
 dc_model <- clmm(rating ~ 1 + condition + rating_time + condition:rating_time * dc_score +
                          (1  | participant), 
           data = main_exp_tidy)
 
-anova_results_mixed(dc_model, condition_interact_model)
+anova_results(dc_model, condition_interact_model)
 
 emo_model <- clmm(rating ~ 1 + condition + rating_time + condition:rating_time * slider_emotion.response +
                          (1  | participant), 
           data = main_exp_tidy)
 
-anova_results_mixed(emo_model, condition_interact_model)
+anova_results(emo_model, condition_interact_model)
 ```
 
 We find effects of participants' scores on a defensive confidence test 
@@ -2017,7 +1994,10 @@ add_analyses_plotting_df <- main_exp_tidy %>%
                                  "slider_emotion.response" = "Emotion Rating (1 to 7)")) %>%
   mutate(add_variable = as_factor(add_variable))
 
-ggplot(aes(x = variable_score, y = belief_diff, colour = condition), data = add_analyses_plotting_df) +
+ggplot(aes(x = variable_score,
+           y = belief_diff,
+           colour = condition),
+       data = add_analyses_plotting_df) +
     geom_textpath(stat = "smooth",
             method = "loess",
             span = 1,
@@ -2029,7 +2009,8 @@ ggplot(aes(x = variable_score, y = belief_diff, colour = condition), data = add_
   theme_ggdist() +
   ggh4x::facet_wrap2(~factor(add_variable, c("Graph Literacy (/30)",
                                              "Defensive Confidence (/60)",
-                                             "Emotion Rating (1 to 7)")), scales = "free_x") +
+                                             "Emotion Rating (1 to 7)")),
+                     scales = "free_x") +
   theme(legend.position = "none",
         axis.title.y = element_text(size = 12),
         strip.text = element_text(size = 8)) +
