@@ -32,7 +32,7 @@ Once the container is running, open a web browser and type `localhost:8787` in t
 
 ### Re-creating the manuscript
 
-Opening `atypical_scatterplots.qmd` and using the 'Render' button will allow you to re-create a .pdf of the manuscript.
+Opening `beliefs_atypical_scatterplots.qmd` and using the 'Render' button will allow you to re-create a .pdf of the manuscript.
 
 IMPORTANT: Models have been cached to increase performance. The cache will not be recognised automatically when using RStudio within the Docker container. eval_models must be set to FALSE in line 10 in order to use the cached models. This will prevent knitr from executing the code for each model, but will 'lazyload' all cached models so they can be used in manuscript generation. Setting eval_models to TRUE in line 10 will result in all models being re-generated.
 
@@ -40,10 +40,10 @@ The manuscript was written using the ACM CHI template. An issue with quarto/pand
 
 Files and folders used in generating manuscript:
 
- - `atypical_scatterplots.qmd`: Full quarto markdown script including text and all code
- - `atypical_scatterplots_cache/pdf`: folder containing cached models
+ - `beliefs_atypical_scatterplots.qmd`: Full quarto markdown script including text and all code
+ - `beliefs_atypical_scatterplots_cache/pdf`: folder containing cached models
  - `data`: folder containing collected, anonymized data
- - `size-opacity.bib` for referencing
+ - `atypical-scatterplots.bib` for referencing
  - `_extensions`: templates etc required for quarto to correctly render manuscript
 
 Knitting the manuscript may take some time depending on the performance of your computer, especially if models are being re-built.
