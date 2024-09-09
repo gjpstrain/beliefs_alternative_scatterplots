@@ -364,8 +364,8 @@ perception, scatterplot, crowdsourced}
 \section{Introduction}\label{sec-intro}
 
 Utilized for communication in a wide variety of contexts, scatterplots
-are simple representations of (usually) bivariate data. They were
-estimated in 1983 to account for between 70 and 80 percent of data
+are simple representations of (usually) bivariate data. In 1983, they
+were estimated to account for between 70 and 80 percent of data
 visualizations in scientific publications \citep{tufte_1983}, and while
 there is no doubt that the range of data visualizations employed in and
 beyond science is now far broader, scatterplots remain an important tool
@@ -379,17 +379,17 @@ and cognitive phenomena regarding data visualization.
 While most commonly used to communicate the linear correlation, or level
 of relatedness, between a pair of variables, scatterplots can also be
 designed to facilitate the detection of outliers, to convey differences
-between clusters, or to display non-linear correlations. The suitability
-of scatterplots to such a range of tasks, and the opportunity for
-designers to design with multiple tasks in mind, plays a large part in
-their popularity. Building on previous work, we elect to focus on the
-use of scatterplots for the communication of linear, bivariate, positive
-correlation. There is evidence that, while correlation perception in
-scatterplots experiences low levels of interindividual variance
-(especially when compared to other visualizations that communicate the
-same idea \citep{harrison_2014, kay_2015}), our accuracy in
-interpretation is poor. Studies asking participants to numerically
-estimate correlation
+between clusters, or to display non-linear correlations
+\citep{sarikaya_2018}. The suitability of scatterplots to such a range
+of tasks, and the opportunity for designers to design with multiple
+tasks in mind, plays a large part in their popularity. Building on
+previous work, we elect to focus on the use of scatterplots for the
+communication of linear, bivariate, positive correlation. There is
+evidence that, while correlation perception in scatterplots is
+characterized by low levels of interindividual variance (especially when
+compared to other visualizations that communicate the same idea
+\citep{harrison_2014, kay_2015}), our accuracy in interpretation is
+poor. Studies asking participants to numerically estimate correlation
 \citep{strahan_1978, bobko_1979, cleveland_1982, lane_1985, lauer_1989, collyer_1990, meyer_1992}
 or estimate it via a bisection task \citep{rensink_2017} find consistent
 levels of underestimation, particularly when 0.2 \textless{} \emph{r}
@@ -405,20 +405,21 @@ representations to convey more than words and numbers ever could.
 
 Recent work has sought to address the correlation underestimation bias
 in positively correlated scatterplots through the use of novel point
-encodings. In 2023 and 2024, Strain et al.
+encodings. Recently, Strain et al.
 \citep{strain_2023, strain_2023b, strain_2024} exploited the notion that
 viewers use the width of a probability distribution conveyed by the
 arrangement of scatterplot points as a proxy for their judgements of
 correlation to successfully correct for the underestimation bias. At the
 time of writing, this work has only provided evidence about perceptual
 effects using a simple direct estimation paradigm, and while successful,
-has not investigated whether these techniques can influence cognition in
-the context of real-world data visualizations and the relatedness
-between variables. As doing this is crucial for providing designers with
-the tools to design visualizations that work as intended in the field,
-we therefore present a two experiment study investigating the propensity
-for recently established scatterplot visualization techniques to bias
-participants' beliefs about the levels of relatedness between variables.
+has not investigated whether, and to what extent, these techniques can
+influence cognition in the context of real-world data visualizations and
+the relatedness between variables. As doing this is crucial for
+providing designers with the tools to design visualizations that work as
+intended in the field, we therefore present a two experiment study
+investigating the propensity for recently established scatterplot
+visualization techniques to bias participants' beliefs about the levels
+of relatedness between variables.
 
 \section{Related Work}\label{sec-rel-work-main}
 
@@ -432,22 +433,22 @@ literature around belief change as it pertains to data visualization.
 \subsection{Correlation Perception}\label{sec-corr-percept}
 
 Correlation describes the level of relatedness between a number of
-variables. There are different types of correlation, however in this
-work, we use the term to refer to Pearson's \emph{r}, which takes a
-positive or negative value between 0 and 1 depending on the direction of
-the relationship being described. Mechanistically, evidence is
-inconclusive regarding what drives correlation perception in
-scatterplots, however some experimental results point towards the shape
-of the underlying probability distribution as a likely candidate.
-Scatterplots with smaller point clouds produce increased judgements of
-correlation \citep{cleveland_1982}, suggesting that it is the area of
-the point cloud that may influence perception. Work exploring the
-relationship between subjective and objective \emph{r} values in
-scatterplots found that this relationship could be described by a power
-function that included the mean of the geometrical distances between
-scatterplot points and a regression line \citep{meyer_1997}. Other work
-includes some representation of the shape of a scatterplot's point cloud
-in equations describing magnitude estimation and correlation
+variables. Here we focus exclusively on the most commonly used
+correlation metric - Pearson's r. This statistic takes values between -1
+and 1, depending on the direction of the relationship being described.
+The perceptual and cognitive mechanisms that drive interpretation of
+correlation from scatter plots are not well understood, however some
+experimental results point towards the shape of the underlying
+probability distribution represented by the point cloud as a likely
+candidate. Scatterplots with lower area point clouds produce increased
+judgements of correlation \citep{cleveland_1982}, suggesting that it is
+the area of the point cloud that may influence perception. Work
+exploring the relationship between subjective and objective \emph{r}
+values in scatterplots found that this relationship could be described
+by a power function that included the mean of the geometrical distances
+between scatterplot points and a regression line \citep{meyer_1997}.
+Other work includes some representation of the shape of a scatterplot's
+point cloud in equations describing magnitude estimation and correlation
 discrimination \citep{meyer_1997, rensink_2017}, and work on visual
 features as proxies for correlation found that a similar quantity again
 is predictive of performance on correlation judgement tasks
@@ -456,30 +457,31 @@ of correlation perception in scatterplots, we can conclude that the
 shape of the point cloud is a good proxy for what is really occurring
 during judgements of correlation. The goal of the work presented in this
 paper is not to further illuminate what drives the perception of
-correlation in scatterplots, but rather to investigate whether proven
-perceptual effects can be extended into a cognitive space.
+correlation in scatterplots, but rather to investigate whether
+well-established perceptual effects can have impacts on higher level
+cognitive factors, in particular, beliefs.
 
 \subsection{Scatterplots: Opacity, Size, and Recent
 Developments}\label{sec-scatterplots}
 
 Changing the opacities and sizes of points in scatterplots are standard
-practices. Regarding opacity, this is often uniformly lowered to address
-overplotting issues that arise when visualizing very large datasets
-\citep{matejka_2015}. Similarly, scatterplots describing large datasets
-tend to have smaller points to maintain individual point
-discriminability. Point size has also been used to encode an additional
-third variable in what are known as \emph{bubble charts}. Despite these
-techniques being established, there is relatively little experimental
-work on the effects of changing point opacities and sizes on correlation
-estimation. Some studies have found that correlation estimation is
-invariant to changes in point opacities and sizes
-\citep{rensink_2014, rensink_2017}, while more recent work reports
-strong effects of the systematic adjustment of each visual feature
-\citep{strain_2023, strain_2023b, strain_2024}. The idea that it is the
-shape of the point cloud, and the probability distribution it represents
-that is being used to inform judgements of correlation has received
-support from recent work exploiting visual features with the intention
-of making correlation estimation more accurate. Strain et al.
+practices during the design process. Regarding opacity, this is often
+uniformly lowered to address overplotting issues that arise when
+visualizing very large datasets \citep{matejka_2015}. Similarly,
+scatterplots describing large datasets tend to have smaller points to
+maintain individual point discriminability. Point size has also been
+used to encode an additional third variable in what are known as
+\emph{bubble charts}. Despite these techniques being established, there
+is relatively little experimental work on the effects of changing point
+opacities and sizes on correlation estimation. Some studies have found
+that correlation estimation is invariant to changes in point opacities
+and sizes \citep{rensink_2014, rensink_2017}, while more recent work
+reports strong effects of the systematic adjustment of each visual
+feature \citep{strain_2023, strain_2023b, strain_2024}. The idea that it
+is the shape of the point cloud, and the probability distribution it
+represents that is being used to inform judgements of correlation has
+received support from recent work exploiting visual features with the
+intention of making correlation estimation more accurate. Strain et al.
 \citep{strain_2023, strain_2023b, strain_2024} changed the sizes and
 opacities of points in scatterplots as a function of their distance from
 the regression line, and achieved success in biasing correlation
@@ -498,20 +500,17 @@ scatterplot points are changed using equation 1:
   point_{size/opacity} = 1 - b^{residual}
 \end{equation}
 
-In order to facilitate comparison, and as the aim of our study is not to
-investigate the use of equation 1, rather the potential for alternative
-designs to have effects on cognition, we utilize the same protocol here
-to produce the stimuli for our main study, including the number of
-points (n = 128), the value of \emph{b} (0.25), and the size scaling
-factor and opacity floor. For our atypical scatterplot condition, we
-choose to use the previously established manipulation that has
-demonstrated the most dramatic change in participants' estimates of
-correlation: a combination of point opacity and size adjustments
-\citep{strain_2024} (see the right pair of plots in
-Figure~\ref{fig-previous-manipulations}). While this manipulation has
-not produced the most accurate estimates of correlation in previous
-work, we choose it to give ourselves the greatest chance of finding an
-effect, should one exist.
+The aim of our study is not to investigate equation 1, rather the
+potential for alternative designs to have effects on cognition. For
+these reasons, and in order to facilitate comparison to previous work,
+we utilize the same protocols here to produce the stimuli for our main
+study. This includes the number of points (n = 128), the value of
+\emph{b} (0.25), and the size scaling factor and opacity floor. For our
+atypical scatterplot condition, we choose to use the previously
+established manipulation that has demonstrated the most dramatic change
+in participants' estimates of correlation: a combination of point
+opacity and size adjustments \citep{strain_2024} (see the right pair of
+plots in Figure~\ref{fig-previous-manipulations}).
 
 \begin{figure*}
 
@@ -536,16 +535,9 @@ Visualization}\label{sec-perception-cognition}
 Interacting with data visualization is a complex process involving
 bottom-up and top-down mechanisms
 \citep{shah_2011, franconeri_2021, xiong_2022}. Previous work
-investigating alternative scatterplot designs has confined itself to
-exploring perception only; here we introduce the potential for top-down
-effects to bias participants. The influence of these cognitive factors
-is not our object of study, so we take measures to ensure that they are
-minimized, namely by crowdsourcing the creation of our stimuli and by
-including by-participant effects in our modelling. Nevertheless, we
-acknowledge that we introduce the potential for uncertainty regarding
-our conclusions; we argue this is necessary to gain a deeper
-understanding of how we interact with data visualizations and how
-designers can improve their craft.
+investigating alternative scatterplot designs has predominantly focused
+on perceptual factors and mechanisms; here we introduce the potential
+for top-down effects to bias participants.
 
 \subsection{Persuasion \& Belief Change in Data
 Visualization}\label{sec-persuasion}
@@ -575,8 +567,8 @@ inoculating those who engage with them. To this end, we present a two
 experiment study. First, we use crowdsourcing to select part of our
 experimental stimuli, then we test the propensity for previously
 established alternative scatterplot designs to alter beliefs about
-relatedness, taking into account a range of additional participant
-qualities.
+relatedness, taking into account the emotional content of the statement
+and the graph literacy and defensive confidence of participants.
 
 \section{General Methods}\label{sec-general-methods}
 
@@ -636,13 +628,9 @@ by using the ChatGPT4 Large Language Model \citep{chat_gpt}. We used the
 following prompt:
 
 \begin{quotation}
-
     ``Generate 100 statements that describe the correlation between two variables, such as :
-
      "X is associated with a higher level of Y" or
-
      "As X increases, Y increases".
-
     Try to match all the statements on emotionality.``
     
 \end{quotation}
@@ -666,9 +654,10 @@ agreement, resulting in 14 strongly correlated statements and 11 weakly
 correlated statements that can be seen in the supplementary materials.
 We then tested these 25 statements with a representative UK sample in
 order to ascertain consensus on both statement emotionality and strength
-of relatedness. Doing so allows us to control for these factors when we
-analyse the effects of atypical scatterplot design on the propensity for
-belief change in our main experiment. We hypothesized that:
+of relatedness. Doing so allows us to minimize the impact of these
+factors when we analyse the effects of atypical scatterplot design on
+the propensity for belief change in our main experiment. We hypothesized
+that:
 
 \begin{itemize}
 \tightlist
@@ -800,7 +789,7 @@ experiment. We hypothesized that:
 
 In line with evidence that those who are more confident in their ability
 to defend their own positions are more susceptible to having those
-positions changed \citep{albarracin_2004}, we test participants'
+positions changed \citep{albarracin_2004}, we measured participants'
 defensive confidence using a 12-item scale. This scale is replicated
 from previous work in the supplemental material, and has additionally
 been utilized more recently \citep{markant_2023} to explore the
@@ -814,7 +803,7 @@ Section~\ref{sec-add-analyses-discussion}.
 
 \subsection{Stimuli}\label{sec-stimuli-main}
 
-Having selecting a correlative statement describing a weak relationship
+Having selected a correlative statement describing a weak relationship
 and with a high level of consensus between participants in the
 pre-study, we used \textbf{ggplot2} (version 3.5.1 \citep{ggplot}) in R
 to create our stimuli; scripts for the creation of stimuli can be found
@@ -1061,13 +1050,14 @@ Post-Viewing x Typical | Pre-Viewing x Typical & 58.12 & <0.001\\
 
 \subsubsection{Additional Analyses}\label{sec-add-analyses}
 
-We find effects of participants' scores on a defensive confidence test
-(\(F\)(4) = 69.73, \emph{p} \textless{} .001), participants' scores on a
-graph literacy test (\(F\)(4) = 42.66, \emph{p} \textless{} .001), and
-of how emotional participants rated the chosen correlative statement
-before beginning the block of trials (\(F\)(4) = 43.51, \emph{p}
-\textless{} .001). We discuss the interactions between the main effect
-and graph literacy, defensive confidence, and statement emotionality in
+We also found effects of participants' scores on the defensive
+confidence test (\(F\)(4) = 69.73, \emph{p} \textless{} .001),
+participants' scores on the graph literacy test (\(F\)(4) = 42.66,
+\emph{p} \textless{} .001), and of how emotional participants rated the
+chosen correlative statement before beginning the block of trials
+(\(F\)(4) = 43.51, \emph{p} \textless{} .001). We discuss the
+interactions between the main effect and graph literacy, defensive
+confidence, and statement emotionality in
 Section~\ref{sec-add-analyses-discussion}.
 
 \subsection{Discussion}\label{sec-main-discussion}
@@ -1076,14 +1066,14 @@ Both of our hypotheses were supported in this experiment. Participants
 reliably updated their beliefs after viewing scatterplots, and the
 difference between pre- and post-viewing beliefs was greatest for the
 participants who viewed scatterplots in the atypical condition. These
-results suggest that the perceptual effects described in previous work
-can be extended to bias participants' cognitions about the levels of
-relatedness between pairs of variables. These findings are encouraging
-for data visualization designers who wish to design scatterplots such
-that correlation perception more closely matches the underlying
-statistics, however much more work would be required to begin producing
-guidelines for the use of alternative scatterplot designs with regards
-to producing more persuasive visualizations.
+results suggest that the effects described in previous work are able to
+go beyond perception and have impacts on higher level cognitions,
+specifically, participants' strength of beliefs about relatedness. These
+findings are encouraging for data visualization designers who wish to
+design scatterplots such that correlation perception more closely
+matches the underlying statistics, however further work is required
+before developing guidelines for the use of alternative scatterplot
+designs with regards to producing more persuasive visualizations.
 
 \subsubsection{Graph Literacy, Defensive Confidence, and Statement
 Emotionality}\label{sec-add-analyses-discussion}
@@ -1122,9 +1112,10 @@ features of visualizations to a greater degree \citep{okan_2016}, than
 those with lower levels of graph literacy. In the present study, we
 provide evidence that those with greater levels of graph literacy are
 \emph{less susceptible} to having their beliefs changed by
-visualizations, although this difference is somewhat reduced if
-participants viewed atypical scatterplots, in which case levels of
-belief change were relatively consistent.
+visualizations. The use of the plot manipulation largely removes this
+effect, suggesting that there is less systematic reliance on graph
+literacy when participants are faced with an unfamiliar data
+visualization.
 
 We observe an opposing pattern of results when examining the effects of
 defensive confidence on participants' propensity for belief change.
@@ -1159,38 +1150,41 @@ participants who were positively primed performed better on a low-level
 visual judgement task. Comparison of this work to the current is
 difficult, as \emph{success} on our task is hard to define.
 
-Further experimental work is required to provide concrete explanations
-for the interactive effects of graph literacy, defensive confidence, and
-statement emotionality in the current experimental paradigm, as the
-investigation of these is not the prime goal of the present study.
+Further experimental work is required to provide more comprehensive
+explanations for the interactive effects of graph literacy, defensive
+confidence, and statement emotionality in the current experimental
+paradigm, as the investigation of these is not the prime goal of the
+present study.
 
 \section{General Discussion}\label{sec-general-discussion}
 
 The most parsimonious explanation for the results we observe in the
-present study is as follows; things that \emph{look} more related will
-be \emph{judged} as being more related. As simple and obvious as this
-sounds, testing it empirically is a necessary step in broadening the
+present study is as follows; things that look more related are better
+able to change beliefs about the levels of relatedness between
+variables. Given the frequent real-world usage of scatterplots, and the
+role of data visualizations in decision-making, it is particularly
+important to empirically test whether perceptual effects may be extended
+to influence beliefs. Doing so is a necessary step in broadening the
 data visualization design space and bringing novel designs closer
-towards real-life use cases while maintaining a strong foundation of
-experimental evidence. Having controlled as far as possible for factors
-such as the emotional content of the graph, the general consensus on how
-related the variables in question were, and the general design (bar the
-points themselves) of the scatterplot, we can conclude with strong
-evidence that atypical scatterplot design was responsible for increasing
-the level of belief change amongst participants.
+towards use cases with the potential for real-world consequences while
+maintaining a strong foundation of experimental evidence. Having
+controlled as far as possible for factors such as the emotional content
+of the graph, the general consensus on how related the variables in
+question were, and the general design (bar the points themselves) of the
+scatterplot, we can conclude with strong evidence that atypical
+scatterplot design was responsible for increasing the level of belief
+change amongst participants.
 
 Previous work has provided support for the idea that it is the shape of
 the point cloud, more specifically, the width of the probability
 distribution it represents, that drives correlation perception in
-scatterplots. Our present results do not allow us to comment further on
-the particularities of that mechanism; if this mechanism were valid,
-however, our results would be expected. These results are broadly
-consequential. For data visualization designers, they provide strong
-evidence that utilizing alternative scatterplot designs described here
-and in previous work can affect beliefs about levels of relatedness
-without requiring the removal of data. For researchers, these results
-pave the way for work in a number of directions, which we discuss in
-Section~\ref{sec-future-work}.
+scatterplots. If this mechanism were valid, our results would be
+expected. These results are broadly consequential. For data
+visualization designers, they provide strong evidence that utilizing
+alternative scatterplot designs described here and in previous work can
+affect beliefs about levels of relatedness without requiring the removal
+of data. For researchers, these results pave the way for work in a
+number of directions, which we discuss in Section~\ref{sec-future-work}.
 
 \section{Future Work}\label{sec-future-work}
 

@@ -783,7 +783,7 @@ visualization designer. Evidence that scatterplots are interpreted rapidly [@ren
 facilitates the quick collection of large amounts of data, and their ubiquity
 [@tufte_1983] and low levels of interindividual variance [@kay_2015] make 
 them particularly suitable for studying perceptual and cognitive phenomena
-regarding data visualization.[a]
+regarding data visualization.
 
 While most commonly used to communicate the linear correlation, or level of relatedness,
 between a pair of variables, scatterplots can also be designed to facilitate the
@@ -997,6 +997,7 @@ rm(example_plots_prev, plot_prev_est_no_y,    # trying to prevent env clogging
    plot_prev_est, plotting_df,                # up when working on paper
    all_exp_df, standard_alone,
    facet_order)
+
 annotate_figure(p,
                 bottom = x_label,
                 left = y_label)
@@ -1009,12 +1010,14 @@ Interacting with data visualization is a complex process involving bottom-up and
 top-down mechanisms [@shah_2011; @franconeri_2021; @xiong_2022]. Previous work 
 investigating alternative scatterplot designs has predominantly focused on
 perceptual factors and mechanisms; here we introduce the potential for top-down effects to bias
-participants. The influence of these cognitive factors is not our object of study, so we 
-take measures to ensure that they are minimized, namely by crowdsourcing the creation
-of our stimuli and by including by-participant effects in our modelling. Nevertheless,
-we acknowledge that we introduce the potential for uncertainty regarding our conclusions; we 
-argue this is necessary to gain a deeper understanding of how we interact
-with data visualizations and how designers can improve their craft. 
+participants.
+
+<!-- The influence of these cognitive factors is not our object of study, so we  -->
+<!-- take measures to ensure that they are minimized, namely by crowdsourcing the creation -->
+<!-- of our stimuli and by including by-participant effects in our modelling. Nevertheless, -->
+<!-- we acknowledge that we introduce the potential for uncertainty regarding our conclusions; we  -->
+<!-- argue this is necessary to gain a deeper understanding of how we interact -->
+<!-- with data visualizations and how designers can improve their craft.  -->
 
 ## Persuasion & Belief Change in Data Visualization {#sec-persuasion}
 
@@ -1039,8 +1042,8 @@ how these designs might be used by malevolent actors with a view to inoculating
 those who engage with them. To this end, we present a two
 experiment study. First, we use crowdsourcing to select part of our experimental
 stimuli, then we test the propensity for previously established alternative scatterplot
-designs to alter beliefs about relatedness, taking into account a range of additional
-participant qualities.
+designs to alter beliefs about relatedness, taking into account the emotional content
+of the statement and the graph literacy and defensive confidence of participants.
 
 # General Methods {#sec-general-methods}
 
@@ -1120,7 +1123,7 @@ absolute agreement, resulting in 14 strongly correlated
 statements and 11 weakly correlated statements that can be seen in the supplementary materials.
 We then tested these 25 statements with a representative UK sample in order
 to ascertain consensus on both statement emotionality and strength of relatedness.
-Doing so allows us to control for these factors when we analyse the effects
+Doing so allows us to minimize the impact of these factors when we analyse the effects
 of atypical scatterplot design on the propensity for belief change
 in our main experiment. We hypothesized that:
 
@@ -1297,7 +1300,7 @@ following completion of the experiment. We hypothesized that:
 
 In line with evidence that those who are more confident in their ability to defend
 their own positions are more susceptible to having those positions changed [@albarracin_2004],
-we test participants' defensive confidence using a 12-item scale. This scale is 
+we measured participants' defensive confidence using a 12-item scale. This scale is 
 replicated from previous work in the supplemental material, and has additionally
 been utilized more recently [@markant_2023] to explore the potential for attitude
 change specifically with regards to correlations in scatterplots. Participants
@@ -1308,7 +1311,7 @@ confidence scores is included in @sec-add-analyses-discussion.
 
 ## Stimuli {#sec-stimuli-main}
 
-Having selecting a correlative statement describing a weak relationship and with
+Having selected a correlative statement describing a weak relationship and with
 a high level of consensus between participants in the pre-study, we used **ggplot2**
 (version 3.5.1 [@ggplot]) in R to create our stimuli; scripts for the creation
 of stimuli can be found in the repository associated with this project.
@@ -1742,9 +1745,9 @@ emo_model <- clmm(rating ~ 1 + condition + rating_time + condition:rating_time *
 anova_results(emo_model, condition_interact_model)
 ```
 
-We find effects of participants' scores on a defensive confidence test 
+We also found effects of participants' scores on the defensive confidence test 
 ($F$(`r in_paren(dc_model.df)`) = `r printnum(dc_model.LR)`,
-*p* `r printp(dc_model.p, add_equals = TRUE)`), participants' scores on a graph
+*p* `r printp(dc_model.p, add_equals = TRUE)`), participants' scores on the graph
 literacy test ($F$(`r in_paren(lit_model.df)`) = `r printnum(lit_model.LR)`,
 *p* `r printp(lit_model.p, add_equals = TRUE)`), and of how emotional participants
 rated the chosen correlative statement before beginning the block of trials
@@ -1758,12 +1761,13 @@ between the main effect and  graph literacy, defensive confidence, and statement
 Both of our hypotheses were supported in this experiment. Participants reliably 
 updated their beliefs after viewing scatterplots, and the difference between 
 pre- and post-viewing beliefs was greatest for the participants who viewed scatterplots
-in the atypical condition. These results suggest that the perceptual effects described
-in previous work can be extended to bias participants' cognitions about the levels
-of relatedness between pairs of variables. These findings are encouraging for 
+in the atypical condition. These results suggest that the effects described
+in previous work are able to go beyond perception and have impacts on higher
+level cognitions, specifically, participants' strength of beliefs about relatedness.
+These findings are encouraging for 
 data visualization designers who wish to design scatterplots such that correlation
-perception more closely matches the underlying statistics, however much more work
-would be required to begin producing guidelines for the use of alternative 
+perception more closely matches the underlying statistics, however further work
+is required before developing guidelines for the use of alternative 
 scatterplot designs with regards to producing more persuasive visualizations.
 
 ### Graph Literacy, Defensive Confidence, and Statement Emotionality {#sec-add-analyses-discussion}
@@ -1828,9 +1832,9 @@ to communicate [@shah_2011], and are able to preferentially attend to relevant
 features of visualizations to a greater degree [@okan_2016], than those with 
 lower levels of graph literacy. In the present study, we provide evidence that
 those with greater levels of graph literacy are *less susceptible* to having 
-their beliefs changed by visualizations, although this difference is somewhat
-reduced if participants viewed atypical scatterplots, in which case levels
-of belief change were relatively consistent.
+their beliefs changed by visualizations. The use of the plot manipulation largely 
+removes this effect, suggesting that there is less systematic reliance on graph
+literacy when participants are faced with an unfamiliar data visualization.
 
 We observe an opposing pattern of results when examining the effects of
 defensive confidence on participants' propensity for belief change. Generally,
@@ -1860,7 +1864,7 @@ participants who were positively primed performed better on a low-level
 visual judgement task. Comparison of this work to the current is difficult, as
 *success* on our task is hard to define.
 
-Further experimental work is required to provide concrete explanations for the
+Further experimental work is required to provide more comprehensive explanations for the
 interactive effects of graph literacy, defensive confidence, and statement
 emotionality in the current experimental paradigm, as the investigation of
 these is not the prime goal of the present study.
@@ -1868,10 +1872,14 @@ these is not the prime goal of the present study.
 # General Discussion {#sec-general-discussion}
 
 The most parsimonious explanation for the results we observe in the present study
-is as follows; things that *look* more related will be *judged* as being more related.
-As simple and obvious as this sounds, testing it empirically is a necessary step
+is as follows; things that look more related are better able to change beliefs
+about the levels of relatedness between variables. Given the frequent real-world
+usage of scatterplots, and the role of data visualizations in decision-making, it is
+particularly important to empirically test whether perceptual effects may be extended
+to influence beliefs. Doing so is a necessary step
 in broadening the data visualization design space and bringing novel designs
-closer towards real-life use cases while maintaining a strong foundation of experimental
+closer towards use cases with the potential for real-world consequences
+while maintaining a strong foundation of experimental
 evidence. Having controlled as far as possible for factors such as the emotional
 content of the graph, the general consensus on how related the variables in question
 were, and the general design (bar the points themselves) of the scatterplot,
@@ -1880,9 +1888,8 @@ for increasing the level of belief change amongst participants.
 
 Previous work has provided support for the idea that it is the shape of the
 point cloud, more specifically, the width of the probability distribution it
-represents, that drives correlation perception in scatterplots. Our present
-results do not allow us to comment further on the particularities of that mechanism;
-if this mechanism were valid, however, our results would be expected. These 
+represents, that drives correlation perception in scatterplots. If this mechanism
+were valid, our results would be expected. These 
 results are broadly consequential. For data visualization designers, they provide
 strong evidence that utilizing alternative scatterplot designs described here
 and in previous work can affect beliefs about levels of relatedness without
@@ -1959,5 +1966,3 @@ previously been employed to improve perception amongst participants are deservin
 of study with regards to their potential to change beliefs.
 
 # References {.unnumbered}
-
-[a]/$
