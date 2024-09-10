@@ -1713,7 +1713,7 @@ pre-viewing and post-viewing times for atypical as opposed to typical plots.
 ```{r}
 #| label: tbl-condition-interact
 #| include: true
-#| tbl-cap: Statistics for the significant main effect of condition on the difference between pre- and post- scatterplot viewing ratings for typical and atypical plots. Odds ratios and equivalent Cohen's *d* are also shown. NB the odds ratio for the effect of condition is caluclated based on the absolute value of the estimate. 
+#| tbl-cap: "Statistics for the significant main effect of condition on the difference between pre- and post- scatterplot viewing ratings for typical and atypical plots. Odds ratios and equivalent Cohen's *d* are also shown. NB: the odds ratio for the effect of condition is caluclated based on the absolute value of the estimate."
 make_sig_table_interact(condition_interact_model)
 # get estimate
 #summary <- summary(relative_model)
@@ -1822,14 +1822,14 @@ ggplot(aes(x = variable_score,
                                              "Emotion Rating (1 to 7)")),
                      scales = "free_x") +
   theme(legend.position = "none",
-        axis.title.y = element_text(size = 12),
+        axis.title.y = element_text(size = 12, hjust = .9),
         strip.text = element_text(size = 8)) +
   labs(x = "",
        y = "Difference in Belief") +
   ggh4x::facetted_pos_scales(
     x = list(
       scale_x_continuous(breaks = scales::pretty_breaks(n = 7)),
-      scale_x_continuous(limits = c(20,60)),
+      scale_x_continuous(limits = c(20, 60)),
       scale_x_continuous(breaks = scales::pretty_breaks(n = 7)) 
     )
   )
@@ -1930,8 +1930,8 @@ investigate the contributions of each factor to the effects we have seen here.
 In @sec-add-analyses-discussion, we describe the effects that graph literacy,
 defensive confidence, and participants' ratings of the emotionality of the correlative
 statement have on the propensity for belief change. Future work may wish to investigate these factors,
-along with others, such as educational background or spatial abilities that also
-affect perceptions of correlation [@tandon_2024]. Xiong et al.
+along with others that affect perceptions of correlation, such as
+educational background or spatial abilities [@tandon_2024]. Xiong et al.
 [@xiong_2022] describe how correlation estimation may differ according to the
 context the data are presented in; this could be extended to instead investigate statements with
 differing emotional contents and how alternative scatterplot designs might interact
@@ -1944,7 +1944,7 @@ Previous works investigating beliefs with regard to correlation estimation have 
 distinctions between beliefs and attitudes [@xiong_2022; @markant_2023]. We elected
 not to do so due to our utilization of alternative designs. Markant et al. [@markant_2023]
 found that while beliefs about correlations changed in participants as a result of
-interacting with scatterplots, attitudes did not. Future work may wish to investigate
+interaction with scatterplots, attitudes did not. Future work may wish to investigate
 whether this finding would persist with scatterplots utilizing the alternative
 designs described here. Finally, while changing perceptions, beliefs, and attitudes
 are promising early steps, changing people's behaviours would be the real test
@@ -1958,7 +1958,7 @@ Our commitment to finding an effect, should one exist, is also our biggest
 limitation. The exploratory nature of the work results in us being unable to 
 comment specifically on how different forms of size and opacity manipulation in 
 scatterplots may change beliefs in different ways, although addressing this using
-the framework we present here would be simple to accomplish. To this date, there
+the framework we present here would be simple to accomplish. To date, there
 has been no qualitative work performed on alternative scatterplot designs such
 as those we utilize here; it may be that any perceptual or cognitive benefits
 are outweighed by distrust or unfamiliarity with novel designs. We chose to use 
