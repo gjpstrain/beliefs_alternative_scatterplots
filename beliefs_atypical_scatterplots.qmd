@@ -779,8 +779,8 @@ representations of (usually) bivariate data. In 1983, they were estimated to acc
 for between 70 and 80 percent of data visualizations in scientific publications [@tufte_1983],
 and while there is no doubt that the range of visualizations employed in and
 beyond science is now far broader, scatterplots remain an important tool for the
-visualization designer. Evidence that scatterplots are interpreted rapidly [@rensink_2014]
-facilitates the quick collection of large amounts of data, and their ubiquity
+visualization designer. Scatterplots are interpreted rapidly [@rensink_2014],
+facilitating the quick collection of large amounts of data, and their ubiquity
 [@tufte_1983] and low levels of interindividual variance [@kay_2015] make 
 them particularly suitable for studying perceptual and cognitive phenomena
 regarding data visualization.
@@ -1095,13 +1095,13 @@ the following prompt:
     ``Generate 100 statements that describe the correlation between two variables, such as:
      "X is associated with a higher level of Y" or
      "As X increases, Y increases".
-    Try to match all the statements on emotionality.``
+    Try to match all the statements on emotionality.''
     
 \end{quotation}
 ```
 
 The full list of these statements can be found in the supplementary materials.
-Two authors rated each statement on emotionality and
+Two authors rated each statement on emotionality and belief about
 strength of relatedness using Likert scales from 1 to 7. Both statement emotionality
 and strength of relatedness were anchored at points 1 and 7: *Very Negative* and
 *Very Positive* for the former, and *Not Related At All* and *Strongly Related* for
@@ -1791,7 +1791,7 @@ scatterplot designs with regards to producing more persuasive visualizations.
 #| label: fig-add-analyses-plots
 #| include: true
 #| fig-asp: 0.4
-#| fig-cap: Illustrating how differences in beliefs about strength of relatedness change as a function of participants' scores on the graph literacy test (Left), their scores on the defensive confidence test (Middle), and their ratings of statement emotionality (Right). Localled smoothed cruves are shown separately for typical and atypical scatterplot viewing conditions. Lower ratings of Difference in Belief ($y$ axis) correspond to lower levels of belief change between pre- and post- scatterplot viewing times.
+#| fig-cap: Illustrating how differences in beliefs about strength of relatedness change as a function of participants' scores on the graph literacy test (left), their scores on the defensive confidence test (center), and their ratings of statement emotionality (right). Localled smoothed cruves are shown separately for typical and atypical scatterplot viewing conditions. Lower ratings of Difference in Belief ($y$ axis) correspond to lower levels of belief change between pre- and post- scatterplot viewing times.
 add_analyses_plotting_df <- main_exp_tidy %>%
   mutate("condition" = recode(condition,
                               "A" = "Atypical",
@@ -1838,8 +1838,7 @@ ggplot(aes(x = variable_score,
 Mean differences in pre- and post- plot-viewing ratings of strength of relatedness
 by Subjective Graph Literacy score can be seen in @fig-add-analyses-plots. Generally, 
 participants who scored higher on a graph literacy test experienced smaller changes
-in their ratings of strength of relatedness. While the effect size associated 
-with this interaction is small (~ 0.01), it is in line with
+in their ratings of strength of relatedness. This is in line with
 previous work suggesting that those with higher levels of graph or visualization
 literacy show better performance in inference tasks related to visualizations 
 [@canham_2010], are more capable of describing effects that visualizations aim
@@ -1873,11 +1872,10 @@ whereby very high levels of defensive confidence decrease susceptibility to beli
 The effect of statement emotionality on belief change is also illustrated in
 @fig-add-analyses-plots. There is a broad research space regarding emotionality and
 data visualization [@lan_2023], and it is clear from previous work that emotion
-affects perception, cognition, and behaviour [@phelps_2006; @harrison_2013; @thoresen_2016]
+affects perception, cognition, and behavior [@phelps_2006; @harrison_2013; @thoresen_2016]
 regarding to data visualization. Harrison et al. [@harrison_2013] found that 
 participants who were positively primed performed better on a low-level
-visual judgement task. Comparison of this work to the current is difficult, as
-*success* on our task is hard to define.
+visual judgement task compared to negative primes. Comparison of this work to the current is difficult, as *success* on our task is hard to define.
 
 Further experimental work is required to provide more comprehensive explanations for the
 interactive effects of graph literacy, defensive confidence, and statement
