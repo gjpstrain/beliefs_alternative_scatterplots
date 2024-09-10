@@ -817,12 +817,30 @@ of correlation to successfully correct for the underestimation bias.
 At the time of writing, this work has only provided evidence about perceptual
 effects using a simple direct estimation paradigm, and while successful, has not 
 investigated whether, and to what extent, these techniques can influence cognition in the context
-of real-world data visualizations and the relatedness between variables. As
-doing this is crucial for providing designers with the tools to design visualizations
-that work as intended in the field, we therefore present a two experiment 
-study investigating the propensity for recently
-established scatterplot visualization techniques to bias participants' beliefs
-about the levels of relatedness between variables. 
+of real-world data visualizations and the relatedness between variables. 
+
+Data visualization is a powerful tool. After all, if numerical data were sufficient
+for understanding, there would be no need to visualize data beyond aesthetic 
+preference. Pattern recognition, attention, and familiarity are all aspects of human
+perception and cognition that can be exploited by visualization designers to 
+facilitate more efficient, enjoyable, and effective communication [@franconeri_2021].
+This is a double-edged sword, however; poor design, be it malevolent
+or misguided, can cause distrust, confusion, and misunderstanding amongst viewers.
+It is for these reasons that we choose to study belief change in scatterplots
+as a consequence of alternative designs. Scatterplots, like many other data 
+visualizations, have been submitted as evidence in court cases [@bobko_1979], and
+play key roles in organizational decision making, including in healthcare [@poly_2019].
+It is a reasonable to assume that data visualizations
+are used to make decisions that result in positive or negative outcomes
+with regards to health and policy more generally, especially given findings that, in certain
+contexts, they are more persuasive than textual information [@pandey_2014]. Studying the potential for new
+designs to alter beliefs about relatedness facilitates better visualization technique,
+but also allows us to understand how these designs might be used by malevolent actors with a view to inoculating
+those who engage with them. To this end, we present a two
+experiment study. First, we use crowdsourcing to select part of our experimental
+stimuli, then we test the propensity for previously established alternative scatterplot
+designs to alter beliefs about relatedness, taking into account the emotional content
+of the statement and the graph literacy and defensive confidence of participants.
 
 # Related Work {#sec-rel-work-main}
 
@@ -865,8 +883,7 @@ cognitive factors, in particular, beliefs.
 ## Scatterplots: Opacity, Size, and Recent Developments {#sec-scatterplots}
 
 Changing the opacities and sizes of points in scatterplots are standard practices
-during the design process.
-Regarding opacity, this is often uniformly lowered to address overplotting
+during the design process. Regarding opacity, this is often uniformly lowered to address overplotting
 issues that arise when visualizing very large datasets [@matejka_2015]. Similarly, scatterplots
 describing large datasets tend to have smaller points to maintain individual point
 discriminability. Point size has also been used to encode an additional third
@@ -905,6 +922,7 @@ atypical scatterplot condition, we choose
 to use the previously established manipulation that has demonstrated the most dramatic
 change in participants' estimates of correlation: a combination of point opacity
 and size adjustments [@strain_2024] (see the right pair of plots in @fig-previous-manipulations).
+
 <!-- While this manipulation has not produced the most accurate estimates of correlation -->
 <!-- in previous work, we choose it to give ourselves the greatest chance of finding an effect, -->
 <!-- should one exist. -->
@@ -1009,7 +1027,12 @@ Interacting with data visualization is a complex process involving bottom-up and
 top-down mechanisms [@shah_2011; @franconeri_2021; @xiong_2022]. Previous work 
 investigating alternative scatterplot designs has predominantly focused on
 perceptual factors and mechanisms; here we introduce the potential for top-down effects to bias
-participants.
+participants. Data visualization does not take place without context, and so the
+investigation of top-down effects is critical for providing designers with the
+tools to design visualizations that work as intended in the field. We therefore 
+present a two experiment study investigating the propensity for recently 
+established scatterplot visualization techniques to bias participants' beliefs
+about the levels of relatedness between variables.
 
 <!-- The influence of these cognitive factors is not our object of study, so we  -->
 <!-- take measures to ensure that they are minimized, namely by crowdsourcing the creation -->
@@ -1017,31 +1040,6 @@ participants.
 <!-- we acknowledge that we introduce the potential for uncertainty regarding our conclusions; we  -->
 <!-- argue this is necessary to gain a deeper understanding of how we interact -->
 <!-- with data visualizations and how designers can improve their craft.  -->
-
-## Persuasion & Belief Change in Data Visualization {#sec-persuasion}
-
-Data visualization is a powerful tool. After all, if numerical data were sufficient
-for understanding, there would be no need to visualize data beyond aesthetic 
-preference. Pattern recognition, attention, and familiarity are all aspects of human
-perception and cognition that can be exploited by visualization designers to 
-facilitate more efficient, enjoyable, and effective communication [@franconeri_2021].
-This is a double-edged sword, however; poor design, be it malevolent
-or misguided, can cause distrust, confusion, and misunderstanding amongst viewers.
-It is for these reasons that we choose to study belief change in scatterplots
-as a consequence of alternative designs. Scatterplots, like many other data 
-visualizations, have been submitted as evidence in court cases [@bobko_1979], and
-play key roles in organizational decision making, including in healthcare [@poly_2019].
-It is a reasonable to assume that data visualizations
-are used to make decisions that result in positive or negative outcomes
-with regards to health and policy more generally, especially given findings that, in certain
-contexts, they are more persuasive than textual information [@pandey_2014]. Studying the potential for new
-designs to alter beliefs about relatedness facilitates better visualization technique,
-but also allows us to understand how these designs might be used by malevolent actors with a view to inoculating
-those who engage with them. To this end, we present a two
-experiment study. First, we use crowdsourcing to select part of our experimental
-stimuli, then we test the propensity for previously established alternative scatterplot
-designs to alter beliefs about relatedness, taking into account the emotional content
-of the statement and the graph literacy and defensive confidence of participants.
 
 # General Methods {#sec-general-methods}
 
