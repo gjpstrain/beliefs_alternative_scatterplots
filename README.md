@@ -8,7 +8,7 @@ All data (.csv format) is located in the `data` folder. This includes data from 
 
 ## Scripts
 
-The `additional_scripts` folder contains scripts for processing responses from pavlovia.org; it writes a .csv with a list of passed and failed participants to the `data` folder when run. This folder also contains an .rmd file to create the supplementary materials .pdf, and the script to anonymise data following processing for payment.
+The `additional_scripts` folder contains scripts for processing responses from pavlovia.org; the `processing_for_payment` scripts write .csv with lists of passed and failed participants to the `data` folder when run. The `anonymisation` script removes identifiable information from raw data files. This folder also contains a .qmd file to create the supplementary materials .pdf, and the script to anonymise data following processing for payment.
 
 NB: Aside from anonymisation, data are provided *as-is*. The **wrangle** function *must* be run to make the dataset usable.
 
