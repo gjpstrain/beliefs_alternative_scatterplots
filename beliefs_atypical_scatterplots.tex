@@ -575,14 +575,14 @@ justification for crowdsourcing.
 Both our pre- and main studies were conducted according to the
 principles of open and reproducible research \citep{ayris_2018}. We
 pre-registered hypotheses and analysis plans with the Open Science
-Framework (OSF) for the pre-study\footnote{removed for anon} and the
-main experiment\footnote{removed for anon}. All data and analysis code
-are included in a GitHub repository\footnote{removed for anon}. This
-repository contains instructions for building a Docker container
-\citep{merkel_2014} that reproduces the computational environment the
-paper was written in. This allows for full replication of stimuli,
-figures, analyses, and the paper itself. Ethical approval was granted by
-the (removed for anon).
+Framework (OSF) for the pre-study\footnote{https://osf.io/xuf4d/?view\_only=f422aa2674164fad91d43a2b951a79e2}
+and the main experiment\footnote{https://osf.io/anmez/?view\_only=8745df2d0d9c4c81bfcca4d4fd41e6de}.
+All data and analysis code are included in a GitHub
+repository\footnote{removed for anon}. This repository contains
+instructions for building a Docker container \citep{merkel_2014} that
+reproduces the computational environment the paper was written in. This
+allows for full replication of stimuli, figures, analyses, and the paper
+itself. Ethical approval was granted by the (removed for anon).
 
 \subsection{Crowdsourcing}\label{sec-crowdsourcing}
 
@@ -802,8 +802,8 @@ pre-study, we used \textbf{ggplot2} (version 3.5.1 \citep{ggplot}) in R
 to create our stimuli; scripts for the creation of stimuli can be found
 in the repository associated with this project. As our statement was
 rated as describing a low level of relatedness, we utilize scatterplots
-that describe a strong relationship (0.6 \textgreater{} \emph{r}
-\textgreater{} 0.99) to induce belief change. Our plots were created in
+that describe a strong relationship (0.6 \textless{} \emph{r}
+\textless{} 0.99) to induce belief change. Our plots were created in
 line with guidance provided by previous research and detailed in
 Section~\ref{sec-scatterplots}. We used 45 values of \emph{r} uniformly
 distributed between 0.6 and 0.99 to create 45 scatterplots for each
@@ -943,7 +943,7 @@ value is also supplied.}
 \toprule
   & Estimate & Standard Error & Z-value & \textit{p} & Odds Ratio & Cohen's \textit{d}\\
 \midrule
-Rating Time & 3.77 & 0.049 & 76.62 & <0.001 & 43.2 & 2.08\\
+Rating Time & 3.77 & 0.049 & 76.63 & <0.001 & 43.2 & 2.08\\
 \bottomrule
 \end{tabular}
 
@@ -966,9 +966,6 @@ atypical scatterplots.}
 
 \end{figure}%
 
-\begin{verbatim}
-\end{verbatim}
-
 Our second hypothesis, that the difference between ratings of strength
 of relatedness before and after viewing experimental plots would be
 greater when participants were assigned to the atypical scatterplot
@@ -988,7 +985,7 @@ ratios and equivalent Cohen's \emph{d} can be seen in
 Table~\ref{tbl-condition-interact}. To further explore the interaction,
 we used the \textbf{emmeans} package (version 1.10.4 \citep{emmeans}) to
 calculate pairwise comparisons between levels of the condition and
-rating time factors, which can be seen in Table~\ref{tbl-pairwise}. The
+rating time factors, which can be seen in \textbf{?@tbl-pairwise}. The
 interaction we found is driven by participants' beliefs changing more
 between pre-viewing and post-viewing times for atypical as opposed to
 typical plots.
@@ -1008,36 +1005,9 @@ estimate.}
 \toprule
   & Estimate & Standard Error & Z-value & \textit{p} & Odds Ratio & Cohen's \textit{d}\\
 \midrule
-Rating Time & 3.79 & 0.049 & 76.69 & <0.001 & 44.10 & 2.09\\
-Condition & -0.13 & 0.390 & -0.33 & 0.745 & 1.14 & 0.07\\
-Rating Time x Condition & 0.72 & 0.071 & 10.22 & <0.001 & 2.06 & 0.40\\
-\bottomrule
-\end{tabular}
-
-}
-
-\end{table}%
-
-\begin{table}
-
-\caption{\label{tbl-pairwise}Pairwise comparisons. The interaction is
-driven by there being greater differences in ratings of belief strength
-made before and after viewing plots in the atypical condition compared
-to the typical.}
-
-\centering{
-
-\begin{tabular}[t]{lrl}
-\toprule
-Contrast & Z ratio & \textit{p}\\
-\midrule
-Post-Viewing x Atypical | Pre-Viewing x Atypical & 66.32 & <0.001\\
-Post-Viewing x Atypical | Post-Viewing x Typical & 0.60 & 0.932\\
-Post-Viewing x Atypical | Pre-Viewing x Typical & 9.32 & <0.001\\
-Pre-Viewing x Atypical | Post-Viewing x Typical & -9.96 & <0.001\\
-Pre-Viewing x Atypical | Pre-Viewing x Typical & -1.25 & 0.596\\
-\addlinespace
-Post-Viewing x Typical | Pre-Viewing x Typical & 58.12 & <0.001\\
+Rating Time & 4.15 & 0.063 & 66.34 & <0.001 & 63.33 & 2.29\\
+Condition & 0.49 & 0.390 & 1.25 & 0.211 & 1.63 & 0.27\\
+Rating Time x Condition & -0.72 & 0.071 & -10.22 & <0.001 & 2.06 & 0.40\\
 \bottomrule
 \end{tabular}
 
@@ -1087,7 +1057,7 @@ Emotionality}\label{sec-add-analyses-discussion}
 beliefs about strength of relatedness change as a function of
 participants' scores on the graph literacy test (left), their scores on
 the defensive confidence test (center), and their ratings of statement
-emotionality (right). Localled smoothed cruves are shown separately for
+emotionality (right). Localled smoothed curves are shown separately for
 typical and atypical scatterplot viewing conditions. Lower ratings of
 Difference in Belief (\(y\) axis) correspond to lower levels of belief
 change between pre- and post- scatterplot viewing times.}
