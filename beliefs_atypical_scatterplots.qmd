@@ -1801,7 +1801,8 @@ including condition and rating time as a predictor explained significantly more 
 intercepts for participants. We again found a main effect of rating time,
 found no main effect of condition, and found an interaction between
 rating time and condition. Test statistics, along with odds ratios and equivalent 
-Cohen's *d* can be seen in @tbl-condition-interact. 
+Cohen's *d* can be seen in @tbl-condition-interact. The estimate for the interaction
+corresponds to the difference-in-difference 
 
 <!-- To further explore the -->
 <!-- interaction, we used the **emmeans** package (version 1.10.4 [@emmeans]) to calculate pairwise comparisons between  -->
@@ -1812,7 +1813,7 @@ Cohen's *d* can be seen in @tbl-condition-interact.
 ```{r}
 #| label: tbl-condition-interact
 #| include: true
-#| tbl-cap: "Statistics for the significant main effect of condition on the difference between pre- and post- scatterplot viewing ratings for typical and atypical plots. Odds ratios and equivalent Cohen's *d* are also shown. NB: the odds ratio for the effect of condition is caluclated based on the absolute value of the estimate."
+#| tbl-cap: "Statistics for the significant main effect of condition on the difference between pre- and post- scatterplot viewing ratings for typical and atypical plots. Odds ratios and equivalent Cohen's *d* are also shown."
 
 make_sig_table_interact(condition_interact_model)
 
