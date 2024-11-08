@@ -150,6 +150,7 @@ library(bbplot)
 library(geomtextpath)
 library(ggh4x)
 library(ordinal)
+library(ggrain)
 
 # fix conflicts now using the conflicted package
 
@@ -1692,6 +1693,8 @@ make_sig_table_rating_time(rating_time_model)
 #| out-width: "100%"
 #| fig-cap: Boxplots showing ranges, interquartile ranges, medians (vertical lines) and means for participants' ratings of strength of relatedness before and after viewing either typical or atypical scatterplots.
 
+# boxplot
+
 main_exp_tidy %>%
   mutate("condition" = recode(condition,
                             "A" = "Atypical\nScatterplot",
@@ -1701,13 +1704,14 @@ main_exp_tidy %>%
                                 "post_bel" = "Post")) %>%
   mutate(rating = as.numeric(rating)) %>%
   ggplot(aes(x = condition, y = rating, fill = rating_time)) +
-  geom_boxplot(outliers = F, key_glyph = "polygon") +
+  geom_violin(alpha = 0.5, position = position_dodge(1), width = 1.75) +
+  geom_boxplot(outliers = F, key_glyph = "polygon", coef = 0, width = 0.15, position = position_dodge(1)) +
   scale_color_brewer(palette = "Dark2", aesthetics = "fill") +
   stat_summary(fun.y = mean,
                geom = "point",
-               shape = 15,
-               size = 4,
-               position = position_dodge(0.75)) +
+               shape = 16,
+               size = 2,
+               position = position_dodge(1)) +
   scale_y_continuous(breaks = scales::pretty_breaks(n = 7)) +
   labs(x = "",
        y = "Rating",
@@ -1725,49 +1729,80 @@ main_exp_tidy %>%
         axis.text.y = element_text(size = 11, colour = "black"),
         axis.text.x = element_text(size = 11)) +
   guides(shape = F) +
-  guides(fill = guide_legend(override.aes = list(shape = NA), reverse = T)) + 
+  guides(fill = guide_legend(override.aes = list(shape = NA), reverse = T)) +
   coord_flip() +
   annotate(geom = "text",
            label = "Pre",
            y = 2.5,
-           x = 1.82) +
+           x = 1.86) +
   annotate(geom = "text",
            label = "Pre",
            y = 2.5,
-           x = 0.82) +
+           x = 0.86) +
   annotate(geom = "text",
            label = "Post",
            y = 5.5,
-           x = 2.2) +
+           x = 2.15) +
   annotate(geom = "text",
            label = "Post",
            y = 5.5,
-           x = 1.2)
+           x = 1.15) 
 
-devtools::source_url("https://raw.githubusercontent.com/yjunechoe/geom_paired_raincloud/master/geom_paired_raincloud.R")
 
-main_exp_tidy %>%
+```
+
+```{r}
+#| label: fig-rain
+#| include: false
+#| eval: false
+
+# raincloud plot
+
+plotting_df <- main_exp_tidy %>%
   mutate("condition" = recode(condition,
                             "A" = "Atypical\nScatterplot",
                             "T" = "Typical\nScatterplot"),
          "rating_time" = recode(rating_time,
                                 "pre_bel" = "Pre",
                                 "post_bel" = "Post"),
-         rating = as.numeric(rating)) %>%
-  ggplot(aes(x = condition, y = rating, color = rating_time, fill = rating_time)) +
+         rating = as.numeric(rating))
+
+  ggplot(plotting_df, aes(x = condition, y = rating, color = rating_time, fill = rating_time)) +
   geom_rain(rain.side = "f",
-            alpha = 0.3,
-            point.args.pos = list(),
-            violin.args.pos = list(width = 2,
-                                   position = position_nudge(x = c(rep(-.2, 256*2), rep(.2, 256*2),
+            alpha = 0.5,
+            point.args.pos = list(colour = NA),
+            violin.args.pos = list(width = c(-01),
+                                   position = position_nudge(x = c(rep(-.2, 256*2), rep(.075, 256*2),
                                                                    rep(-.2, 256*2), rep(.2, 256*2)))),
-            boxplot.args.pos = list(width = .1,
+            boxplot.args.pos = list(width = .2,
                                     position = ggpp::position_dodgenudge(width = 0.1,
-                                                                         x = c(-.13, .22,
-                                                                               -.22, .13)))) 
+                                                                         x = c(-0.26, -0.03,
+                                                                               -0.09, .25))),
+            boxplot.args = list(color = "black", outlier.shape = NA)) +
+  theme_classic() +
+  scale_color_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2") +
+    theme(legend.position = c(0.1, 0.1),
+        legend.background = element_rect(fill = NA),
+        legend.direction = "horizontal",
+        legend.box = "horizontal",
+        legend.key.size = unit(1., "line"),
+        legend.title.position = "top",
+        legend.title = element_text(size = 10),
+        axis.line.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.y = element_text(size = 11, colour = "black"),
+        axis.text.x = element_text(size = 11)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 7)) +
+  coord_flip() +
+  labs(x = "",
+       y = "Rating",
+       fill = "",
+       color = "")
 ```
 
-```{r}```{r}```{r}
+
+```{r}
 #| label: model-condition-interact
 #| eval: !expr params$eval_models
 #| cache: !expr params$eval_models
