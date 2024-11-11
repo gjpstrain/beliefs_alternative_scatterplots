@@ -171,7 +171,7 @@ pre_test_anon <- read_csv("data/pre_test_response_final.csv") %>% select(-"__par
 
 main_exp_A <- read_csv("data/main_test_A_final.csv") %>% select(-"__participant")
 
-main_exp_T <- read_csv("data/main_test_T_final.csv") %>% select(-"__participant")
+main_exp_S <- read_csv("data/main_test_T_final.csv") %>% select(-"__participant")
 ```
 
 ```{r}
@@ -179,6 +179,7 @@ main_exp_T <- read_csv("data/main_test_T_final.csv") %>% select(-"__participant"
 ## NB: With the exception of anonymization, data are provided as-is from 
 ## pavlovia (survey tool). Wrangling functions *must* be run first to make
 ## the data sets usable
+
 wrangle_pre_test <- function(anon_file) {
   
 # extract demographic information
@@ -329,9 +330,10 @@ anon_file %>%
                values_to = "rating",
                names_to = "rating_time") %>%
   mutate(rating_time = as_factor(rating_time)) %>%
-  #mutate(rating_time = fct_relevel(rating_time, "post_bel", "pre_bel")) %>% # reverse code factor levels so that clmm
-  mutate(across(c("rating"), as.ordered)) %>%                               # interprets before viewing as reference level
-  assign(paste0(unique(anon_file$expName), "_tidy"),
+  mutate(across(c("rating"), as.ordered)) %>%                                
+  mutate("condition" = recode(condition,
+                              "T" = "S")) %>%
+  assign(paste0(unique(anon_file$expName), "_tidy"),                         
            value = ., envir = .GlobalEnv)
 }
 
@@ -341,7 +343,7 @@ wrangle_pre_test(pre_test_anon)
 
 wrangle_main_exp(main_exp_A)
 
-wrangle_main_exp(main_exp_T)
+wrangle_main_exp(main_exp_S)
 
 # add 75 to each participant number for second part of main exp
 
@@ -384,6 +386,7 @@ gender_pre <- distinct(beliefs_scatterplots_pretest_tidy, participant,
   group_by(gender_slider.response) %>%
   summarise(perc = n()/nrow(.)*100) %>%
   pivot_wider(names_from = gender_slider.response, values_from = perc)
+
 gender_main <- distinct(main_exp_tidy, participant,
                       .keep_all = TRUE) %>%
   group_by(gender_slider.response) %>%
@@ -396,6 +399,7 @@ age_pre <- distinct(beliefs_scatterplots_pretest_tidy, participant,
                 .keep_all = TRUE) %>%
   summarise(mean = mean(age_textbox.text, na.rm = TRUE),
             sd = sd(age_textbox.text, na.rm = TRUE))
+
 age_main <- distinct(main_exp_tidy, participant,
                 .keep_all = TRUE) %>%
   summarise(mean = mean(age_textbox.text, na.rm = TRUE),
@@ -407,6 +411,7 @@ time_taken_pre <- distinct(beliefs_scatterplots_pretest_tidy, participant,
                 .keep_all = TRUE) %>%
   summarise(mean = mean(final.stopped/60, na.rm = TRUE),
             sd = sd(final.stopped/60, na.rm = TRUE)) 
+
 time_taken_main <- distinct(main_exp_tidy, participant,
                 .keep_all = TRUE) %>%
   summarise(mean = mean(final.stopped/60, na.rm = TRUE),
@@ -417,11 +422,15 @@ time_taken_main <- distinct(main_exp_tidy, participant,
 literacy <- distinct(main_exp_tidy, participant,
                         .keep_all = TRUE) %>%
   summarise(mean = mean(literacy), sd = sd(literacy))
+
 # extract defensive confidence data into separate df
+
 def_con <- distinct(main_exp_tidy, participant,
                         .keep_all = TRUE) %>%
   summarise(mean = mean(dc_score), sd = sd(dc_score))
+
 # extract topic emotionality data into separate df
+
 topic_emo <- distinct(main_exp_tidy, participant,
                         .keep_all = TRUE) %>%
   summarise(mean = mean(slider_emotion.response),
@@ -430,7 +439,7 @@ topic_emo <- distinct(main_exp_tidy, participant,
 # remove all intermediate dfs
 
 rm(main_exp_A,
-   main_exp_T,
+   main_exp_S,
    atypical_scatterplots_main_test_A_tidy,
    atypical_scatterplots_main_test_T_tidy,
    pre_test_anon)
@@ -520,6 +529,7 @@ set.seed(1234)
 ```{r}
 #| label: format-numbers-function
 # function to format numbers when papaja prints them
+
 add_and_to_numbers <- function(numbers) {
   num_str <- as.character(numbers)
   len <- length(num_str)
@@ -877,8 +887,8 @@ investigated whether, and to what extent, these techniques can influence cogniti
 of real-world data visualizations and the relatedness between variables. 
 
 Data visualization is a powerful tool. After all, if numerical data were sufficient
-for understanding, there would be no need to visualize data beyond aesthetic 
-preference. Pattern recognition, attention, and familiarity are all aspects of human
+for understanding, there would be no need to visualize beyond aesthetic 
+preference. Pattern recognition, attention, and familiarity are aspects of human
 perception and cognition that can be exploited by visualization designers to 
 facilitate more efficient, enjoyable, and effective communication [@franconeri_2021].
 This, however, is a double-edged sword; poor design, be it malevolent
@@ -970,7 +980,7 @@ designs to have effects on cognition. For this reason, and to facilitate
 comparison to previous work, we utilize the same protocols here to produce
 the stimuli for our main study. This includes the number of points (n = 128),
 the value of *b* (0.25), and the size scaling factor and opacity floor. For our
-atypical scatterplot condition, we choose
+alternative scatterplot condition, we choose
 to use the previously established manipulation that has demonstrated the most dramatic
 change in participants' estimates of correlation: a combination of point opacity
 and size adjustments [@strain_2024] (see the right pair of plots in @fig-previous-manipulations).
@@ -1055,6 +1065,7 @@ example_plots_prev <- ggarrange(
                       (1-slopes$slope_0.25),
                       (1-slopes$slope_0.25),
                       "Both Manipulations"), nrow = 1)
+
 est_prev <- ggarrange(
   plot_est_prev_no_y("standard_plot"),
   plot_est_prev_no_y("opacity_manipulated"),
@@ -1078,6 +1089,9 @@ annotate_figure(p,
                 bottom = x_label,
                 left = y_label)
 ```
+
+## Scatterplots: Belief Change
+
 
 
 ## Perception & Cognition in Data Visualization {#sec-perception-cognition}
@@ -1172,7 +1186,7 @@ statements and 11 weakly correlated statements that can be seen in the supplemen
 We then tested these 25 statements with a representative UK sample 
 to ascertain consensus on both statement emotionality and strength of relatedness.
 Doing so allows us to minimize the impact of these factors when we analyse the effects
-of atypical scatterplot design on the propensity for belief change
+of alternative scatterplot design on the propensity for belief change
 in our main experiment. We hypothesized that:
 
   - H1: there will be a significant difference in average ratings of emotionality between statements. 
@@ -1334,7 +1348,7 @@ test statement number `r printnum(add_and_to_numbers(consensus_df$item_no[2]), d
 "Higher consumption of spicy foods is associated with a lower risk of certain types of cancer",
 however we modify the wording so that the variables (food consumption and cancer risk)
 are positively correlated, as while the manipulations we use
-in the atypical scatterplot condition can affect estimates of correlation
+in the alternative scatterplot condition can affect estimates of correlation
 in positively correlated scatterplots, no work regarding the effects of these
 manipulations in negatively correlated scatterplots has been completed.
 
@@ -1350,13 +1364,13 @@ on the values of Fleiss' Kappa observed, but rather on the standard deviations o
 ratings across all raters. We also test statement emotionality and strength of correlation with participants
 in the main study and include these ratings as part of our analysis.
 
-# Main Study: Potential for Belief Change Using Atypical Scatterplots {#sec-main-study}
+# Main Study: Potential for Belief Change Using Alternative Scatterplots {#sec-main-study}
 
 We test the statement that exhibited the lowest average level of belief about
 correlation and the 2nd highest level of consensus. Modified for directionality,
 this statement is therefore: "Higher consumption of plain (non-spicy) foods
 is associated with a higher risk of certain types of cancer." To give ourselves
-the best chance of detecting an effect of viewing atypical scatterplots, we elected
+the best chance of detecting an effect of viewing alternative scatterplots, we elected
 to design our scatterplots based on a popular British news source and to falsely
 credit the data as being provided by the British National Health Service (NHS). Participants
 were informed that said news source had requested that their identity be obscured,
@@ -1366,7 +1380,7 @@ following completion of the experiment. We hypothesized that:
   - H1: there will be a significant difference in ratings of strength of
   relatedness before and after participants viewed the experimental items.
   - H2: this difference will be greatest when participants are exposed
-  to scatterplots in the atypical condition.
+  to scatterplots in the alternative scatterplot condition.
 
 ### Defensive Confidence {#sec-def-con}
 
@@ -1393,7 +1407,7 @@ to induce belief change. Our plots were created in line with guidance provided b
 @sec-scatterplots. We used 45 values of *r* uniformly distributed between 0.6
 and 0.99 to create 45 scatterplots for each condition.
 Examples of stimuli using an *r* value of 0.6 for both the
-typical and atypical scatterplot conditions can be seen in @fig-main-examples.
+standard and alternative scatterplot conditions can be seen in @fig-main-examples.
 
 ```{r}
 #| label: fig-main-examples
@@ -1491,12 +1505,12 @@ example_plots <- ggarrange(example_plot_function(slopes,
                                                  bbc_style()),
                            nrow = 1) +
   annotate(geom = "text",
-           label = "Typical Scatterplot",
+           label = "Standard Scatterplot",
            x = 0.25,
            y = 0.04,
            size = 7) +
   annotate(geom = "text",
-           label = "Atypical Scatterplot",
+           label = "Alternative Scatterplot",
            x = 0.75,
            y = 0.04,
            size = 7) +
@@ -1564,8 +1578,8 @@ minutes to complete the experiment (*SD* = `r printnum(time_taken_main$sd)`).
 ### Design {#sec-design-main}
 
 We employed a between-participants design. Each participant was randomly assigned
-to either group A, in which case they viewed typical scatterplots, or group B,
-in which they viewed atypical scatterplots designed deliberately to elicit higher
+to either group A, in which case they viewed standard scatterplots, or group B,
+in which they viewed alternative scatterplots designed deliberately to elicit higher
 levels of belief change. Participants saw all 45 experimental items for their group, along
 with 4 attention check items, in a fully randomized order. Our dependent variable 
 was the level of belief change induced by viewing the scatterplot visualizations,
@@ -1622,7 +1636,6 @@ rating_time_model <- buildclmm(rating ~ rating_time +
 
 # linear mixed effects model (metric), see footnote 8
 #
-# if you want to run this, recode the rating factor as unordered (line 356)
 #
 # LMM <- buildmer(rating ~ rating_time +
 #                         (1  | participant),
@@ -1676,8 +1689,8 @@ the null ($\chi^2$(`r in_paren(rating_time_model.df)`) = `r printnum(rating_time
 *p* `r printp(rating_time_model.p, add_equals = TRUE)`). This model has random
 intercepts for participants. Statistical testing providing
 support for this hypothesis is shown in @tbl-rating-time. @fig-descriptives
-shows means and boxplots for ratings of strength of relatedness before and after
-viewing scatterplots in either the typical or atypical condition.
+shows means and violin plots for ratings of strength of relatedness before and after
+viewing scatterplots in either the standard or alternative condition.
 
 ```{r}
 #| label: tbl-rating-time
@@ -1691,21 +1704,21 @@ make_sig_table_rating_time(rating_time_model)
 #| label: fig-descriptives
 #| include: true
 #| out-width: "100%"
-#| fig-cap: Boxplots showing ranges, interquartile ranges, medians (vertical lines) and means for participants' ratings of strength of relatedness before and after viewing either typical or atypical scatterplots.
+#| fig-cap: Violin plots for pre- and post-plot viewing ratings of strength of relatedness for standard and alternative scatterplot conditions. Mean ratings are also shown as points.  
 
-# boxplot
+# violins
 
 main_exp_tidy %>%
   mutate("condition" = recode(condition,
-                            "A" = "Atypical\nScatterplot",
-                            "T" = "Typical\nScatterplot"),
+                            "A" = "Alternative\nScatterplot",
+                            "S" = "Standard\nScatterplot"),
          "rating_time" = recode(rating_time,
                                 "pre_bel" = "Pre",
                                 "post_bel" = "Post")) %>%
   mutate(rating = as.numeric(rating)) %>%
   ggplot(aes(x = condition, y = rating, fill = rating_time)) +
-  geom_violin(alpha = 0.5, position = position_dodge(1), width = 1.75) +
-  geom_boxplot(outliers = F, key_glyph = "polygon", coef = 0, width = 0.15, position = position_dodge(1)) +
+  geom_violin(alpha = 0.8, position = position_dodge(1), width = 1.5) +
+  #geom_boxplot(outliers = F, key_glyph = "polygon", coef = 0, width = 0.15, position = position_dodge(1)) +
   scale_color_brewer(palette = "Dark2", aesthetics = "fill") +
   stat_summary(fun.y = mean,
                geom = "point",
@@ -1717,7 +1730,7 @@ main_exp_tidy %>%
        y = "Rating",
        fill = "Rating Time") +
   theme_ggdist() +
-  theme(legend.position = c(0.1, 0.1),
+  theme(legend.position = c(0.1, 0.075),
         legend.background = element_rect(fill = NA),
         legend.direction = "horizontal",
         legend.box = "horizontal",
@@ -1729,24 +1742,24 @@ main_exp_tidy %>%
         axis.text.y = element_text(size = 11, colour = "black"),
         axis.text.x = element_text(size = 11)) +
   guides(shape = F) +
-  guides(fill = guide_legend(override.aes = list(shape = NA), reverse = T)) +
-  coord_flip() +
-  annotate(geom = "text",
-           label = "Pre",
-           y = 2.5,
-           x = 1.86) +
-  annotate(geom = "text",
-           label = "Pre",
-           y = 2.5,
-           x = 0.86) +
-  annotate(geom = "text",
-           label = "Post",
-           y = 5.5,
-           x = 2.15) +
-  annotate(geom = "text",
-           label = "Post",
-           y = 5.5,
-           x = 1.15) 
+  guides(fill = guide_legend(override.aes = list(shape = NA), reverse = F)) +
+  coord_flip()
+  #annotate(geom = "text",
+  #         label = "Pre",
+  #         y = 2.5,
+  #         x = 1.86) +
+  #annotate(geom = "text",
+  #         label = "Pre",
+  #         y = 2.5,
+  #         x = 0.86) +
+  #annotate(geom = "text",
+  #         label = "Post",
+  #         y = 5.5,
+  #         x = 2.15) +
+  #annotate(geom = "text",
+  #         label = "Post",
+  #         y = 5.5,
+  #         x = 1.15) 
 
 
 ```
@@ -1754,18 +1767,25 @@ main_exp_tidy %>%
 ```{r}
 #| label: fig-rain
 #| include: false
-#| eval: false
 
 # raincloud plot
+# not used in publication, but left here for interest
 
 plotting_df <- main_exp_tidy %>%
   mutate("condition" = recode(condition,
-                            "A" = "Atypical\nScatterplot",
-                            "T" = "Typical\nScatterplot"),
+                            "A" = "Alternative\nScatterplot",
+                            "T" = "Standard\nScatterplot"),
          "rating_time" = recode(rating_time,
                                 "pre_bel" = "Pre",
                                 "post_bel" = "Post"),
          rating = as.numeric(rating))
+
+pre_df_A <- plotting_df %>% filter(rating_time == "Pre" & condition == "Alternative\nScatterplot")
+pre_df_T <- plotting_df %>% filter(rating_time == "Pre" & condition == "Standard\nScatterplot")
+
+post_df_A <- plotting_df %>% filter(rating_time == "Post" & condition == "Alternative\nScatterplot")
+post_df_T <- plotting_df %>% filter(rating_time == "Post" & condition == "Standard\nScatterplot")
+
 
   ggplot(plotting_df, aes(x = condition, y = rating, color = rating_time, fill = rating_time)) +
   geom_rain(rain.side = "f",
@@ -1773,11 +1793,11 @@ plotting_df <- main_exp_tidy %>%
             point.args.pos = list(colour = NA),
             violin.args.pos = list(width = c(-01),
                                    position = position_nudge(x = c(rep(-.2, 256*2), rep(.075, 256*2),
-                                                                   rep(-.2, 256*2), rep(.2, 256*2)))),
+                                                                   rep(-.25, 256*2), rep(.2, 256*2)))),
             boxplot.args.pos = list(width = .2,
                                     position = ggpp::position_dodgenudge(width = 0.1,
                                                                          x = c(-0.26, -0.03,
-                                                                               -0.09, .25))),
+                                                                               -0.14, .25))),
             boxplot.args = list(color = "black", outlier.shape = NA)) +
   theme_classic() +
   scale_color_brewer(palette = "Dark2") +
@@ -1798,7 +1818,35 @@ plotting_df <- main_exp_tidy %>%
   labs(x = "",
        y = "Rating",
        fill = "",
-       color = "")
+       color = "") +
+  stat_summary(data = pre_df_A,
+               fun.y = mean,
+               geom = "point",
+               colour = "black",
+               shape = 16,
+               size = 2,
+               position = position_nudge(x = -0.285)) +
+      stat_summary(data = pre_df_T,
+               fun.y = mean,
+               geom = "point",
+               colour = "black",
+               shape = 16,
+               size = 2,
+               position = position_nudge(x = -0.16)) +
+      stat_summary(data = post_df_A,
+               fun.y = mean,
+               geom = "point",
+               colour = "black",
+               shape = 16,
+               size = 2,
+               position = position_nudge(x = 0)) +
+      stat_summary(data = post_df_T,
+               fun.y = mean,
+               geom = "point",
+               colour = "black",
+               shape = 16,
+               size = 2,
+               position = position_nudge(x = 0.275))
 ```
 
 
@@ -1845,7 +1893,7 @@ anova_results(condition_interact_model, condition_interact_model_cmpr)
 
 Our second hypothesis, that the difference between ratings of strength of relatedness
 before and after viewing experimental plots would be greater when participants
-were assigned to the atypical scatterplot condition, also received support.
+were assigned to the alternative scatterplot condition, also received support.
 Deviation coding was used for each of the experimental factors of rating time (pre- or post-)
 and condition, which allows us to compare means of ratings to the grand mean. We built
 a cumulative link mixed effects model whereby the rating of strength of relatedness the participant
@@ -1859,18 +1907,18 @@ found no main effect of condition, and found an interaction between
 rating time and condition. Test statistics, along with odds ratios and equivalent 
 Cohen's *d* can be seen in @tbl-condition-interact. The estimate for the interaction
 corresponds to the difference-in-difference between ratings made pre- and post-viewing
-for typical and atypical scatterplots.
+for standard and alternative scatterplots.
 
 <!-- To further explore the -->
 <!-- interaction, we used the **emmeans** package (version 1.10.4 [@emmeans]) to calculate pairwise comparisons between  -->
 <!-- levels of the condition and rating time factors, which can be seen in @tbl-pairwise. -->
 <!-- The interaction we found is driven by participants' beliefs changing more between -->
-<!-- pre-viewing and post-viewing times for atypical as opposed to typical plots. -->
+<!-- pre-viewing and post-viewing times for alternative as opposed to standard plots. -->
 
 ```{r}
 #| label: tbl-condition-interact
 #| include: true
-#| tbl-cap: "Statistics for the significant main effect of condition on the difference between pre- and post- scatterplot viewing ratings for typical and atypical plots. Odds ratios and equivalent Cohen's *d* are also shown."
+#| tbl-cap: "Statistics for the significant main effect of condition on the difference between pre- and post- scatterplot viewing ratings for standard and alternative plots. Odds ratios and equivalent Cohen's *d* are also shown."
 
 make_sig_table_interact(condition_interact_model)
 
@@ -1884,7 +1932,7 @@ make_sig_table_interact(condition_interact_model)
 ```{r}
 #| label: tbl-pairwise
 #| include: false 
-#| tbl-cap: Pairwise comparisons. The interaction is driven by there being greater differences in ratings of belief strength made before and after viewing plots in the atypical condition compared to the typical.
+#| tbl-cap: Pairwise comparisons. The interaction is driven by there being greater differences in ratings of belief strength made before and after viewing plots in the alternative condition compared to the standard.
 
 # not included in final manuscript
 
@@ -1945,7 +1993,7 @@ between the main effect and  graph literacy, defensive confidence, and statement
 Both of our hypotheses were supported in this experiment. Participants reliably 
 updated their beliefs after viewing scatterplots, and the difference between 
 pre- and post-viewing beliefs was greatest for the participants who viewed scatterplots
-in the atypical condition. These results suggest that the effects described
+in the alternative condition. These results suggest that the effects described
 in previous work can go beyond perception and have impacts on higher-level
 cognitions, specifically, participants' strength of beliefs about relatedness.
 These findings are encouraging for 
@@ -1960,12 +2008,12 @@ scatterplot designs with regards to producing more persuasive visualizations.
 #| label: fig-add-analyses-plots
 #| include: true
 #| fig-asp: 0.4
-#| fig-cap: Illustrating how differences in beliefs about strength of relatedness change as a function of participants' scores on the graph literacy test (left), their scores on the defensive confidence test (center), and their ratings of statement emotionality (right). Localled smoothed curves are shown separately for typical and atypical scatterplot viewing conditions. Lower ratings of Difference in Belief ($y$ axis) correspond to lower levels of belief change between pre- and post- scatterplot viewing times.
+#| fig-cap: Illustrating how differences in beliefs about strength of relatedness change as a function of participants' scores on the graph literacy test (left), their scores on the defensive confidence test (center), and their ratings of statement emotionality (right). Localled smoothed curves with 95% CI ribbons are shown separately for standard and alternative scatterplot viewing conditions. Lower ratings of Difference in Belief ($y$ axis) correspond to lower levels of belief change between pre- and post- scatterplot viewing times.
 
 add_analyses_plotting_df <- main_exp_tidy %>%
   mutate("condition" = recode(condition,
-                              "A" = "Atypical",
-                              "T" = "Typical")) %>%
+                              "A" = "Alternative",
+                              "S" = "Standard")) %>%
   pivot_longer(cols = c("literacy", "dc_score", "slider_emotion.response"),
                names_to = "add_variable",
                values_to = "variable_score") %>%
@@ -1974,6 +2022,7 @@ add_analyses_plotting_df <- main_exp_tidy %>%
                                  "dc_score" = "Defensive Confidence (/60)",
                                  "slider_emotion.response" = "Emotion Rating (1 to 7)")) %>%
   mutate(add_variable = as_factor(add_variable))
+
 ggplot(aes(x = variable_score,
            y = belief_diff,
            colour = condition),
@@ -1982,11 +2031,13 @@ ggplot(aes(x = variable_score,
             method = "loess",
             span = 1,
             vjust = -0.3,
-            hjust = 1,
+            hjust = 0.9,
             size = 3.5,
+            text_only = T,
             aes(colour = condition, label = condition)) +
-  scale_color_brewer(palette = "Set2", aesthetics = "color") +
+  scale_color_brewer(palette = "Dark2", aesthetics = "color") +
   theme_ggdist() +
+  geom_smooth(method = "loess", span = 1) +
   ggh4x::facet_wrap2(~factor(add_variable, c("Graph Literacy (/30)",
                                              "Defensive Confidence (/60)",
                                              "Emotion Rating (1 to 7)")),
@@ -2034,9 +2085,9 @@ pattern of results is expected based on previous work, the interaction present
 between defensive confidence and scatterplot condition is novel (see @fig-add-analyses-plots).
 It would appear that despite following the normal pattern of results for
 low to moderate levels of defensive confidence, those participants who viewed
-the typical scatterplots experienced a drop in belief change as defensive 
+the standard scatterplots experienced a drop in belief change as defensive 
 confidence increased past ~ 36/60. We suggest that the unfamiliar nature of 
-the atypical scatterplots was protective against an unexpected, standard behaviour
+the alternative scatterplots was protective against an unexpected, standard behaviour
 whereby very high levels of defensive confidence decrease susceptibility to belief change. 
 
 The effect of statement emotionality on belief change is also illustrated in
@@ -2067,7 +2118,7 @@ while maintaining a strong foundation of experimental
 evidence. Having controlled as far as possible for factors such as the emotional
 content of the graph, the consensus on how related the variables in question
 were, and the general design (bar the points themselves) of the scatterplot,
-we can conclude with strong evidence that atypical scatterplot design was responsible
+we can conclude with strong evidence that alternative scatterplot design was responsible
 for increasing the level of belief change amongst participants.
 
 Previous work has provided support for the idea that it is the shape of the
@@ -2139,11 +2190,11 @@ such as the graphical elicitation method developed by Karduni et al. [@karduni_2
 We investigated the effects of alternative scatterplot designs that vary the opacities
 and sizes of points as a function of their distance from the regression line on 
 the propensity for belief change following visualization viewing. We presented these
-designs, and corresponding typical scatterplots, as if they were part of a news item
+designs, and corresponding standard scatterplots, as if they were part of a news item
 and used a real-world variable pair that had been selected by our population of interest
 as being representative of a weakly-held, emotionally neutral correlation. We found 
 that participants who viewed scatterplots employing alternative designs
-experienced greater levels of belief change than those who viewed typical
+experienced greater levels of belief change than those who viewed standard
 plots. In addition, we found small interactive effects of a number of participant
 characteristics. Our results suggest that visualization techniques that have
 previously been employed to improve perception amongst participants are deserving
