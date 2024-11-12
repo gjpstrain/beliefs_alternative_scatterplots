@@ -1090,17 +1090,17 @@ annotate_figure(p,
                 left = y_label)
 ```
 
-## Scatterplots: Belief Change
-
-
-
 ## Perception & Cognition in Data Visualization {#sec-perception-cognition}
 
 Interacting with data visualization is a complex process involving bottom-up and
 top-down mechanisms [@shah_2011; @franconeri_2021; @xiong_2022]. Previous work 
 investigating alternative scatterplot designs has predominantly focused on
 perceptual factors and mechanisms; here we introduce the potential for top-down effects to bias
-participants. Data visualization does not take place without context, and so the
+participants. Recent work has established that scatterplots are able to induce different
+levels of belief change in viewers [@karduni_2021; @markant_2023]; this may depend
+on factors such as prior belief strength, attitudes, and the presence of absence of uncertainty visualizations. Accordingly,
+our pre-study is essential for isolating our variable of interest, the alternative
+scatterplot design. Data visualization does not take place without context, and so the
 investigation of top-down effects is critical for providing designers with the
 tools to design visualizations that work as intended in the field. We therefore 
 present a two-experiment study investigating the propensity for recently 
