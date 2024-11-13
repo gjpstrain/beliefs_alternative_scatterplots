@@ -274,13 +274,15 @@ defensive_confidence <- anon_file %>%
 literacy <- anon_file %>%
     filter(!is.na(q5_slider.response)) %>%
     rowwise() %>%
+    mutate(lit_time = literacy.stopped - literacy.started) %>%
     mutate(literacy = sum(c(q1_slider.response, 
                             q2_slider.response, 
                             q3_slider.response, 
                             q4_slider.response, 
                             q5_slider.response))) %>%
-    select(participant,
-           literacy)
+  select(participant,
+         literacy,
+         lit_time)
 
 # split unique item no column into number (dataset used) and letter (condition)
 
@@ -421,7 +423,8 @@ time_taken_main <- distinct(main_exp_tidy, participant,
 
 literacy <- distinct(main_exp_tidy, participant,
                         .keep_all = TRUE) %>%
-  summarise(mean = mean(literacy), sd = sd(literacy))
+  summarise(mean = mean(literacy), sd = sd(literacy),
+            mean_time = mean(lit_time), sd_time = sd(lit_time))
 
 # extract defensive confidence data into separate df
 
@@ -1145,7 +1148,10 @@ approval rate.
 # Pre-Study: Investigating Beliefs About Relatedness Statements {#sec-pre-study}
 
 The goal of the present study is to investigate to what extent a novel scatterplot
-design can alter participants' beliefs about the level of relatedness between variables.
+design can alter participants' beliefs about correlations. Due to our targeting of lay
+populations, and the authors' prior experience with lay participants failing to understand
+the term "correlation" (although not the concept), we elected to operationalize
+correlation for our participants as "strength of relatedness".
 There is evidence that belief change can be affected by prior beliefs and attitudes
 [@xiong_2022; @markant_2023], and that emotion, including the content of a visualization
 [@phelps_2006; @harrison_2013] and the emotional state of a participant [@thoresen_2016]
@@ -1264,11 +1270,11 @@ and were asked to provide consent through key presses in response to consent sta
 They were asked to provide their age in a free text box, followed by their 
 gender identity. Participants were told that they would be asked to read statements
 about the relatedness between a pair of variables, after which they would have to 
-indicate their beliefs about statement emotionality and the strength of relatedness suggested
-using a pair of sliders. To familiarize themselves with the sliders, they were asked to complete a practice round
+answer some questions. To familiarize themselves with the sliders, they were asked to complete a practice round
 in response to the statement: "As participation in online experiments increases,
-society becomes happier." The Likert scales used in the online experiment were
-identical to those described in @sec-pre-study.
+society becomes happier." Following each statement, a pair of Likert scales were
+presented labelled "Statement Emotionality" and "Strength of Relatedness";
+these scales were identical to those described in @sec-pre-study.
 
 ## Results {#sec-results-pre}
 
@@ -1388,7 +1394,8 @@ following completion of the experiment.
 We also undertake exploratory investigations taking into account participant's
 scores on a defensive confidence test, their scores on a graph literacy test,
 and each participant's rating of the emotionality of the correlative statement
-used. We discuss why these factors were included below.
+used. Analysis including each of these factors can be found in @sec-add-analyses,
+and we discuss why they were included below.
 
 ### Defensive Confidence {#sec-def-con}
 
@@ -1410,9 +1417,20 @@ scatterplots has found no effect of graph literacy on participant's estimates of
 positive correlation [@strain_2023; @strain_2023b; @strain_2024]. Despite this,
 we elect to include the test here due to the higher cognitive load of the current task,
 along with evidence that graph literacy may affect performance on more cognitively
-demanding visualization tasks [@canham_2010] then do the otherss
+demanding visualization tasks [@canham_2010; @okan_2012]. Additionally, the graph
+literacy test we use [@garcia_2016] is extremely short; in the present study,
+this took participants an average of `r printnum(literacy$mean_time, digits = 0)`
+seconds (*SD* = `r printnum(literacy$sd_time, digits = 0)` seconds).
 
 ### Emotionality {#sec-emotionality}
+
+As discussed in @sec-pre-study, the emotional content of a visualization and the emotional
+state of participants may have cognitive and perceptual effects on performance in
+visualization tasks; this was the primary intention behind performing the pre-study.
+Nonetheless, we cannot be certain that each participant considers the emotional
+content of our chosen correlative statement to be the same. To allow for these
+potential individual differences, we also collect an emotionality rating during
+the main study.
 
 ## Stimuli {#sec-stimuli-main}
 
