@@ -298,17 +298,17 @@ Medicine, and Health, University of Manchester}
 \begin{abstract}
 Viewers tend to underestimate correlation in positively correlated
 scatterplots. However, systematically changing the size and opacity of
-scatterplot points can bias estimates upwards, correcting this
-underestimation in a simple estimation paradigm. Here we examine whether
-application of these visualization techniques goes beyond a simple
-perceptual effect and could actually influence beliefs about information
-from trusted news sources. We present a fully-reproducible study in
-which we demonstrate that scatterplot manipulations that can correct for
-the correlation underestimation bias can also induce stronger levels of
-belief change compared to unadapted scatterplots presenting identical
-data. Consequently, we show that novel visualization techniques can be
-used to drive belief change, and suggest future directions for extending
-this work with regards to altering attitudes and behaviours.    
+scatterplot points can bias estimates upwards, correcting for this
+underestimation. Here, we examine whether application of these
+visualization techniques goes beyond a simple perceptual effect and
+could actually influence beliefs about information from trusted news
+sources. We present a fully-reproducible study in which we demonstrate
+that scatterplot manipulations that can correct for the correlation
+underestimation bias can also induce stronger levels of belief change
+compared to conventional scatterplots presenting identical data.
+Consequently, we show that novel visualization techniques can be used to
+drive belief change, and suggest future directions for extending this
+work with regards to altering attitudes and behaviours.    
 \end{abstract}
 
 %%
@@ -366,13 +366,13 @@ are simple representations of (usually) bivariate data. In 1983, they
 were estimated to account for between 70 and 80 percent of data
 visualizations in scientific publications \citep{tufte_1983}, and while
 there is no doubt that the range of visualizations employed in and
-beyond science is now far broader, scatterplots remain an important tool
-for the visualization designer. Scatterplots are interpreted rapidly
-\citep{rensink_2014}, facilitating the quick collection of large amounts
-of data, and their ubiquity \citep{tufte_1983} and low levels of
-interindividual variance \citep{kay_2015} make them particularly
-suitable for studying perceptual and cognitive phenomena regarding data
-visualization.
+beyond scientific circles is now far broader, scatterplots remain an
+important tool for the visualization designer. Scatterplots are
+interpreted rapidly \citep{rensink_2014}, facilitating the quick
+collection of large amounts of data, and their ubiquity
+\citep{tufte_1983} and low levels of interindividual variance
+\citep{kay_2015} make them particularly suitable for studying perceptual
+and cognitive phenomena regarding data visualization.
 
 While most commonly used to communicate the linear correlation, or level
 of relatedness, between a pair of variables, scatterplots can also be
@@ -395,24 +395,25 @@ levels of underestimation, particularly when 0.2 \textless{} \emph{r}
 between those trained in statistics and data visualization, this would
 not be particularly problematic, however, this is not the case; lay
 people are expected to be able to use and interpret data visualizations
-on an almost daily basis. It is thus the duty of those who design such
-visualizations to design with the naive, inexperienced viewer in mind.
-Doing so requires us to understand \emph{how} visualizations work, and
-to gain an appreciation for the hidden processes that allow pictorial
-representations to convey more than words and numbers ever could.
+on an almost daily basis. It is therefore the duty of those who design
+such visualizations to design with the naive, inexperienced viewer in
+mind. Doing so requires us to understand \emph{how} visualizations work,
+and to gain an appreciation for the hidden processes that allow
+pictorial representations to convey more than words and numbers ever
+could.
 
 Recent work has sought to address the correlation underestimation bias
 in positively correlated scatterplots through the use of novel point
-encodings. Recently, Strain et al.
-\citep{strain_2023, strain_2023b, strain_2024} exploited the notion that
-viewers use the width of a probability distribution conveyed by the
-arrangement of scatterplot points as a proxy for their judgements of
-correlation to successfully correct for the underestimation bias. At the
-time of writing, this work has only provided evidence about perceptual
-effects using a simple direct estimation paradigm, and while successful,
-has not investigated whether, and to what extent, these techniques can
-influence cognition in the context of real-world data visualizations and
-the relatedness between variables.
+encodings. Strain et al. \citep{strain_2023, strain_2023b, strain_2024}
+exploited the notion that viewers use the width of a probability
+distribution conveyed by the arrangement of scatterplot points as a
+proxy for their judgements of correlation to successfully correct for
+the underestimation bias. At the time of writing, this work has only
+provided evidence about perceptual effects using a simple direct
+estimation paradigm, and while successful, has not investigated whether,
+and to what extent, these techniques can influence cognition in the
+context of real-world data visualizations and the relatedness between
+variables.
 
 Data visualization is a powerful tool. After all, if numerical data were
 sufficient for understanding, there would be no need to visualize beyond
@@ -461,7 +462,7 @@ interpretation of correlation from scatterplots are not well understood,
 however, some experimental results point towards the shape of the
 underlying probability distribution represented by the point cloud as a
 likely candidate. Scatterplots with lower area point clouds produce
-increased judgements of correlation \citep{cleveland_1982}, suggesting
+greater judgements of correlation \citep{cleveland_1982}, suggesting
 that it is the area of the point cloud that may influence perception.
 Work exploring the relationship between subjective and objective
 \emph{r} values in scatterplots found that this relationship could be
@@ -505,11 +506,11 @@ estimation more accurate. Strain et al.
 opacities of points in scatterplots as a function of their distance from
 the regression line and achieved success in biasing correlation
 estimates in positive and negative directions. When point opacities
-\citep{strain_2023} or point sizes \citep{strain_2023b} were reduced
-with residual distance, participants were significantly more accurate on
-a correlation estimation task; employing both of these manipulations
-simultaneously \citep{strain_2024} resulted in an overshoot of
-correction, biasing participants further.
+\citep{strain_2023} or point sizes \citep{strain_2023b} were reduced as
+a function of residual distance, participants were significantly more
+accurate on a correlation estimation task; employing both of these
+manipulations simultaneously \citep{strain_2024} resulted in an
+overshoot of correction, biasing participants further.
 Figure~\ref{fig-previous-manipulations} contains a summary of previously
 tested scatterplot manipulations and their effects on performance on a
 correlation estimation task. In those works, the opacities and sizes of
@@ -665,7 +666,7 @@ that:
 \begin{itemize}
 \tightlist
 \item
-  H1: there will be a significant difference in average ratings of
+  H1: there will be a significant difference between average ratings of
   emotionality between statements.
 \item
   H2: there will be a significant difference between average ratings of
@@ -711,7 +712,8 @@ round in response to the statement: ``As participation in online
 experiments increases, society becomes happier.'' Following each
 statement, a pair of Likert scales were presented labelled ``Statement
 Emotionality'' and ``Strength of Relatedness''; these scales were
-identical to those described in Section~\ref{sec-pre-study}.
+identical to those used by the researchers in
+Section~\ref{sec-pre-study}.
 
 \subsection{Results}\label{sec-results-pre}
 
@@ -780,7 +782,7 @@ regarding which statement to use based on the values of Fleiss' Kappa
 observed, but rather on the standard deviations of ratings across all
 raters. We also test statement emotionality and strength of correlation
 with participants in the main study and include these ratings as part of
-our analysis.
+our analyses.
 
 \section{Main Study: Potential for Belief Change Using Alternative
 Scatterplots}\label{sec-main-study}
@@ -799,23 +801,24 @@ the case and that the data were fictional, following completion of the
 experiment. Based on previous evidence that beliefs can change after
 viewing data visualisations \citep{karduni_2021, markant_2023}, and that
 scatterplots employing the point size and opacity manipulations detailed
-in \#sec-scatterplots, we make the following hypotheses:
+in Section~\ref{sec-scatterplots} are able to affect perceptual
+estimates, we make the following hypotheses:
 
 \subsection{Hypotheses}\label{hypotheses}
 
 \begin{itemize}
 \tightlist
 \item
-  H1: there will be a significant difference in ratings of strength of
-  relatedness before and after participants viewed scatterplots in
-  either the standard or alternative conditions.
+  H1: there will be a significant difference between ratings of strength
+  of relatedness made before and after participants viewed scatterplots
+  in either the standard or alternative conditions.
 \item
   H2: this difference will be greatest when participants are exposed to
   scatterplots in the alternative scatterplot condition.
 \end{itemize}
 
 We also undertake exploratory investigations taking into account
-participant's scores on a defensive confidence test, their scores on a
+participants' scores on a defensive confidence test, their scores on a
 graph literacy test, and each participant's rating of the emotionality
 of the correlative statement used. Analysis including each of these
 factors can be found in Section~\ref{sec-add-analyses}, and we discuss
@@ -841,7 +844,7 @@ Section~\ref{sec-add-analyses-discussion}.
 
 Previous work testing the systematic adjustment of point opacity and
 size in scatterplots has found no effect of graph literacy on
-participant's estimates of positive correlation
+participants' estimates of positive correlation
 \citep{strain_2023, strain_2023b, strain_2024}. Despite this, we elect
 to include the test here due to the higher cognitive load of the current
 task, along with evidence that graph literacy may affect performance on
@@ -854,10 +857,11 @@ took participants an average of 27 seconds (\emph{SD} = 16 seconds).
 
 As discussed in Section~\ref{sec-pre-study}, the emotional content of a
 visualization and the emotional state of participants may have cognitive
-and perceptual effects on performance in visualization tasks; this was
-the primary intention behind performing the pre-study. Nonetheless, we
-cannot be certain that each participant considers the emotional content
-of our chosen correlative statement to be the same. To allow for these
+and perceptual effects on performance in visualization tasks
+\citep{phelps_2006, harrison_2013, thoresen_2016}; this was the primary
+intention behind performing the pre-study. Nonetheless, we cannot be
+certain that each participant considers the emotional content of our
+chosen correlative statement to be the same. To allow for these
 potential individual differences, we also collect an emotionality rating
 during the main study.
 
@@ -940,7 +944,7 @@ there is evidence that differences in the on-screen sizes of data
 visualizations can alter perceptions \citep{cleveland_1982}.
 Participants were first shown the participant information sheet and
 asked to provide consent through key presses in response to consent
-statements. They were, again, asked to provide their age and gender
+statements, after which they asked to provide their age and gender
 identity. Participants then completed the 12-item Defensive Confidence
 scale described by Albarracín and Mitchell \citep{albarracin_2004} and
 the 5-item Subjective Graph Literacy scale \citep{garcia_2016}
@@ -978,8 +982,8 @@ mixed effects models to analyse Likert scale data \footnote{Our
   Conclusions are identical when using said models, and code for this
   analysis is included in the repository associated with this paper.}.
 We use the \textbf{buildmer} (version 2.11 \citep{buildmer}) package to
-automate the selection of the random effects structure; we provide a
-maximal model, which includes random intercepts for participants, and
+automate selection of the random effects structure; we provide a maximal
+model, which includes random intercepts for participants, and
 \textbf{buildmer} identifies the most complex model that successfully
 converges. We present odds ratios and equivalent Cohen's \emph{d} effect
 sizes that were calculated using the \textbf{effectsize} package
@@ -1045,12 +1049,12 @@ a cumulative link mixed effects model whereby the rating of strength of
 relatedness the participant made was predicted by the condition the
 participant was assigned to and the time they made the rating. A
 likelihood ratio test revealed that the model including condition and
-rating time as a predictor explained significantly more variance than
-the null (\(F\)(3) = 8,151.94, \emph{p} \textless{} .001). This model
-had random intercepts for participants. We again found a main effect of
+rating time as predictors explained significantly more variance than the
+null (\(F\)(3) = 8,151.94, \emph{p} \textless{} .001). This model had
+random intercepts for participants. We again found a main effect of
 rating time, found no main effect of condition, and found an interaction
 between rating time and condition. Test statistics, along with odds
-ratios and equivalent Cohen's \emph{d} can be seen in
+ratios and equivalent Cohen's \emph{d} effect sizes can be seen in
 Table~\ref{tbl-condition-interact}. The estimate for the interaction
 corresponds to the difference-in-difference between ratings made pre-
 and post-viewing for standard and alternative scatterplots.
@@ -1060,7 +1064,7 @@ and post-viewing for standard and alternative scatterplots.
 \caption{\label{tbl-condition-interact}Statistics for the significant
 main effect of condition on the difference between pre- and post-
 scatterplot viewing ratings for standard and alternative plots. Odds
-ratios and equivalent Cohen's \emph{d} are also shown.}
+ratios and equivalent Cohen's \emph{d} effect sizes are also shown.}
 
 \centering{
 
@@ -1098,7 +1102,7 @@ difference between pre- and post-viewing beliefs was greatest for the
 participants who viewed scatterplots in the alternative condition. These
 results suggest that the effects described in previous work can go
 beyond perception and have impacts on higher-level cognitions,
-specifically, participants' strength of beliefs about relatedness. These
+specifically, participants' beliefs about strength of relatedness. These
 findings are encouraging for data visualization designers who wish to
 design scatterplots such that correlation perception more closely
 matches the underlying statistics, however further work is required
@@ -1159,14 +1163,14 @@ with lower levels of attention to the fact it opposes their beliefs. The
 present study provides additional evidence in favour of this phenomenon.
 While the general pattern of results is expected based on previous work,
 the interaction present between defensive confidence and scatterplot
-condition is novel (see Figure~\ref{fig-add-analyses-plots}). It would
-appear that despite following the normal pattern of results for low to
-moderate levels of defensive confidence, those participants who viewed
-the standard scatterplots experienced a drop in belief change as
-defensive confidence increased past \textasciitilde{} 36/60. We suggest
-that the unfamiliar nature of the alternative scatterplots was
-protective against an unexpected, standard behaviour whereby very high
-levels of defensive confidence decrease susceptibility to belief change.
+condition is novel. It would appear that despite following the normal
+pattern of results for low to moderate levels of defensive confidence,
+those participants who viewed the standard scatterplots experienced a
+drop in belief change as defensive confidence increased past
+\textasciitilde{} 36/60. We suggest that the unfamiliar nature of the
+alternative scatterplots was protective against an unexpected, standard
+behaviour whereby very high levels of defensive confidence decrease
+susceptibility to belief change.
 
 The effect of statement emotionality on belief change is also
 illustrated in Figure~\ref{fig-add-analyses-plots}. There is a broad
