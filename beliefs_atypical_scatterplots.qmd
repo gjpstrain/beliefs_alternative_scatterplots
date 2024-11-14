@@ -1200,44 +1200,6 @@ in our main experiment. We hypothesized that:
   - H2: there will be a significant difference between average ratings of strength of relatedness 
 between statements.
 
-```{r}
-#| label: tbl-pre-test-hi
-#| include: false
-#| tbl-cap: Pre-test statements that were rated as being strongly correlated.
-
-# read in pre-test csv data
-# table unused in final manuscript
-
-pre_test_statements_hi <- read_csv("data/pre_test_data.csv") %>%
-  filter(label == "high_corr") %>%
-  select(c("item_no","statement")) %>%
-  rename("Statement - Strong Correlation Depicted" = "statement",
-         "Item Number" = "item_no")
-
-# make table
-
-kbl(pre_test_statements_hi, booktabs = T)
-```
-
-```{r}
-#| label: tbl-pre-test-low
-#| include: false
-#| tbl-cap: Pre-test statements that were rated as being weakly correlated.
-
-# read in pre-test csv data
-# table unused in final manuscript
-
-pre_test_statements_lo <- read_csv("data/pre_test_data.csv") %>%
-  filter(label == "low_corr") %>%
-  select(c("item_no","statement")) %>% 
-  rename("Statement - Weak Correlation Depicted" = "statement",
-         "Item Number" = "item_no")
-
-# make table
-
-kbl(pre_test_statements_lo, booktabs = T)
-```
-
 ## Method {#sec-method-pre}
 
 ### Participants {#sec-participants-pre}
@@ -1344,7 +1306,8 @@ and strength of relatedness ($\kappa$ = `r printnum(belief_kappa$value, digits =
 To control for the potential effects of statement emotionality in the main experiment,
 we first select statements that represent neutral emotional valence. Statements
 with average emotionality ratings between 3 and 5 are statements 
-`r printnum(add_and_to_numbers(avg_emot$item_no), digits = 0)`. To ascertain
+`r printnum(add_and_to_numbers(avg_emot$item_no), digits = 0)`, which can be seen
+in @tbl-candidate-statements. To ascertain
 which statements represent the greatest consensus, we add standard deviations in
 ratings for statement emotionality and strength of relatedness. Due to concerns about experimental
 power, and in line with evidence that propensity for belief change is highest
@@ -1358,6 +1321,23 @@ are positively correlated, as while the manipulations we use
 in the alternative scatterplot condition can affect estimates of correlation
 in positively correlated scatterplots, no work regarding the effects of these
 manipulations in negatively correlated scatterplots has been completed.
+
+```{r}
+#| label: tbl-candidate-statements
+#| include: true
+#| tbl-cap: Statements with neutral average emotionality ratings.
+
+candidates <- avg_emot$item_no
+
+candidate_statements <- read_csv("data/pre_test_data.csv") %>%
+  filter(item_no %in% candidates) %>%
+  select(c("item_no","statement")) %>%
+  rename("Statement" = "statement",
+         "Item" = "item_no")
+
+kbl(candidate_statements, booktabs = T)
+```
+
 
 ## Discussion {#sec-discussion-pre}
 
@@ -1381,12 +1361,16 @@ to design our scatterplots based on a popular British news source and to falsely
 credit the data as being provided by the British National Health Service (NHS). Participants
 were informed that said news source had requested that their identity be obscured,
 and were debriefed that this was not the case and that the data were fictional,
-following completion of the experiment.
+following completion of the experiment. Based on previous evidence that beliefs
+can change after viewing data visualisations [@karduni_2021; @markant_2023],
+and that scatterplots employing the point size and opacity manipulations detailed
+in #sec-scatterplots, we make the following hypotheses:
 
 ## Hypotheses
 
   - H1: there will be a significant difference in ratings of strength of
-  relatedness before and after participants viewed the experimental items.
+  relatedness before and after participants viewed scatterplots in either
+  the standard or alternative conditions.
   - H2: this difference will be greatest when participants are exposed
   to scatterplots in the alternative scatterplot condition.
   
@@ -1439,8 +1423,11 @@ a high level of consensus between participants in the pre-study, we used **ggplo
 of stimuli can be found in the repository associated with this project.
 As our statement was rated as describing a low level of relatedness,
 we utilize scatterplots that describe a strong relationship (0.6 < *r* < 0.99) 
-to induce belief change. Our plots were created in line with guidance provided by previous research and detailed in
-@sec-scatterplots. We used 45 values of *r* uniformly distributed between 0.6
+to induce belief change. Our plots were created in line with guidance provided by previous research;
+plots in the alternative scatterplot condition feature points that decrease in
+size and opacity as a function of residual distance, as this has been shown to 
+increase estimates of correlation in positively correlated scatterplots [@strain_2023; @strain_2023b; @strain_2024].
+We used 45 values of *r* uniformly distributed between 0.6
 and 0.99 to create 45 scatterplots for each condition.
 Examples of stimuli using an *r* value of 0.6 for both the
 standard and alternative scatterplot conditions can be seen in @fig-main-examples.
