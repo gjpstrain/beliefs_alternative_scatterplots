@@ -122,7 +122,7 @@ acm-metadata:
     - crowdsourced
   
 abstract: |
-  Viewers tend to underestimate correlation in positively correlated scatterplots. However, systematically changing the size and opacity of scatterplot points can bias estimates upwards, correcting for this underestimation. Here, we examine whether application of these visualization techniques goes beyond a simple perceptual effect and could actually influence beliefs about information from trusted news sources. We present a fully-reproducible study in which we demonstrate that scatterplot manipulations that can correct for the correlation underestimation bias can also induce stronger levels of belief change compared to conventional scatterplots presenting identical data. Consequently, we show that novel visualization techniques can be used to drive belief change, and suggest future directions for extending this work with regards to altering attitudes and behaviours.
+  Viewers tend to underestimate correlation in positively correlated scatterplots. However, systematically changing the size and opacity of scatterplot points can bias estimates upwards, correcting for this underestimation. Here, we examine whether application of these visualization techniques goes beyond a simple perceptual effect and could actually influence beliefs about information from trusted news sources. We present a fully-reproducible study in which we demonstrate that scatterplot manipulations that are able to correct for the correlation underestimation bias can also induce stronger levels of belief change compared to conventional scatterplots presenting identical data. Consequently, we show that novel visualization techniques can be used to drive belief change, and suggest future directions for extending this work with regards to altering attitudes and behaviours.
 ---
 
 ```{r}
@@ -1196,8 +1196,8 @@ Doing so allows us to minimize the impact of these factors when we analyse the e
 of alternative scatterplot design on the propensity for belief change
 in our main experiment. We hypothesized that:
 
-  - H1: there will be a significant difference between average ratings of emotionality between statements. 
-  - H2: there will be a significant difference between average ratings of strength of relatedness 
+  - H1: there will be a significant difference in the average ratings of emotionality between statements. 
+  - H2: there will be a significant difference in the average ratings of strength of relatedness 
 between statements.
 
 ## Method {#sec-method-pre}
@@ -1313,7 +1313,7 @@ ratings for statement emotionality and strength of relatedness. Due to concerns 
 power, and in line with evidence that propensity for belief change is highest
 when prior beliefs are not strongly held [@xiong_2022; @markant_2023],
 we elected at this point to test only the statement corresponding to weak beliefs
-about the strength of correlation between the variables in question. We therefore
+about the strength of relatedness between the variables in question. We therefore
 test statement number `r printnum(add_and_to_numbers(consensus_df$item_no[2]), digits = 0)`,
 "Higher consumption of spicy foods is associated with a lower risk of certain types of cancer",
 however we modify the wording so that the variables (food consumption and cancer risk)
@@ -1362,7 +1362,7 @@ credit the data as being provided by the British National Health Service (NHS). 
 were informed that said news source had requested that their identity be obscured,
 and were debriefed that this was not the case and that the data were fictional,
 following completion of the experiment. Based on previous evidence that beliefs
-can change after viewing data visualisations [@karduni_2021; @markant_2023],
+can change after viewing data visualisations [@karduni_2020; @markant_2023],
 and that scatterplots employing the point size and opacity manipulations detailed
 in @sec-scatterplots are able to affect perceptual estimates, we make the following hypotheses:
 
@@ -1586,8 +1586,8 @@ correlation perception in scatterplots [refs removed for anon]. Data were
 collected from 77 participants for each condition. 2 participants failed more than
 2 out of 4 attention check questions for each condition, meaning their data were
 excluded per pre-registration stipulations. Data from the remaining 150 participants
-were included in the full analysis (`r printnum(gender_main$Male, digits = 1)`% male,
-`r printnum(gender_main$Female, digits = 1)`% female, and `r printnum(gender_main$'Non-binary', digits = 1)`% non-binary).
+were included in the full analysis (`r printnum(gender_main$Male, digits = 2)`% male,
+`r printnum(gender_main$Female, digits = 2)`% female, and `r printnum(gender_main$'Non-binary', digits = 2)`% non-binary).
 Participants' mean age was `r printnum(age_main$mean, digits = 1)`
 (*SD* = `r printnum(age_main$sd, digits = 1)`). Participants' mean graph literacy
 score was `r printnum(literacy$mean, digits = 1)` (*SD* = `r printnum(literacy$sd, digits = 1)`)
@@ -1917,8 +1917,9 @@ anova_results(condition_interact_model, condition_interact_model_cmpr)
 Our second hypothesis, that the difference between ratings of strength of relatedness
 before and after viewing experimental plots would be greater when participants
 were assigned to the alternative scatterplot condition, also received support.
-Deviation coding was used for each of the experimental factors of rating time (pre- or post-)
-and condition, which allows us to compare means of ratings to the grand mean. We built
+Treatment coding was used for each of the experimental factors of rating time (pre- or post-)
+and condition, which allows us to compare means of ratings made after viewing the 
+experimental items directly to those made before viewing. We built
 a cumulative link mixed effects model whereby the rating of strength of relatedness the participant
 made was predicted by the condition the participant was assigned to and the time
 they made the rating. A likelihood ratio test revealed that the model
@@ -2110,7 +2111,7 @@ It would appear that despite following the normal pattern of results for
 low to moderate levels of defensive confidence, those participants who viewed
 the standard scatterplots experienced a drop in belief change as defensive 
 confidence increased past ~ 36/60. We suggest that the unfamiliar nature of 
-the alternative scatterplots was protective against an unexpected, standard behaviour
+the alternative scatterplots was protective against an unexpected behaviour
 whereby very high levels of defensive confidence decrease susceptibility to belief change. 
 
 The effect of statement emotionality on belief change is also illustrated in
@@ -2147,9 +2148,9 @@ for increasing the level of belief change amongst participants.
 An alternative (although not competing) explanation for the results we have seen here
 comes from recent work on the incorporation of uncertainty visualisations in scatterplots.
 Karduni et al. [@karduni_2020] found in 2020 that visualizations that encode uncertainty
-produce lower levels of belief change compares to ones that do not. The alternative
+produce lower levels of belief change compared to ones that do not. The alternative
 scatterplot design we employed can be thought of as masking some of the uncertainty
-inherent in a scatterplot cloud by reducing the salience of the most exterior
+inherent in a scatterplot point cloud by reducing the salience of the most exterior
 points.
 
 Previous work has provided support for the idea that it is the shape of the
