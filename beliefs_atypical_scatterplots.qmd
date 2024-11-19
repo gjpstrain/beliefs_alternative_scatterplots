@@ -4,7 +4,7 @@ format: acm-pdf
 # which you can eventually use with TAPS
 keep-tex: true
 params:
-  eval_models: false
+  eval_models: true
   
 knitr:
   opts_chunk: 
