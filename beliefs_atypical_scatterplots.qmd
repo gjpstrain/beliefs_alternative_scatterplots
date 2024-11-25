@@ -386,14 +386,14 @@ beliefs_scatterplots_pretest_tidy %>%
 gender_pre <- distinct(beliefs_scatterplots_pretest_tidy, participant,
                       .keep_all = TRUE) %>%
   group_by(gender_slider.response) %>%
-  summarise(perc = n()/nrow(.)*100) %>%
-  pivot_wider(names_from = gender_slider.response, values_from = perc)
+  summarise(sum = n()) %>%
+  pivot_wider(names_from = gender_slider.response, values_from = sum)
 
 gender_main <- distinct(main_exp_tidy, participant,
                       .keep_all = TRUE) %>%
   group_by(gender_slider.response) %>%
-  summarise(perc = n()/nrow(.)*100) %>%
-  pivot_wider(names_from = gender_slider.response, values_from = perc)
+  summarise(sum = n()) %>%
+  pivot_wider(names_from = gender_slider.response, values_from = sum)
 
 # extract age data into separate dfS
 
@@ -890,7 +890,7 @@ effects using a simple direct estimation paradigm, and while successful, has not
 investigated whether, and to what extent, these techniques can influence cognition in the context
 of real-world data visualizations and the relatedness between variables. 
 
-Data visualization is a powerful tool. After all, if numerical data were sufficient
+Visualization is a powerful tool. After all, if numerical data were sufficient
 for understanding, there would be no need to visualize beyond aesthetic 
 preference. Pattern recognition, attention, and familiarity are aspects of human
 perception and cognition that can be exploited by visualization designers to 
@@ -931,8 +931,8 @@ mechanisms that drive the interpretation of correlation from scatterplots are no
 well understood, however, some experimental results point towards the shape of 
 the underlying probability distribution represented by the point cloud as a 
 likely candidate. Scatterplots with lower area point clouds produce
-greater judgements of correlation [@cleveland_1982], suggesting that it is the area
-of the point cloud that may influence perception. Work exploring the relationship
+greater judgements of correlation [@cleveland_1982], suggesting that point cloud area
+may influence perception. Work exploring the relationship
 between subjective and objective *r* values in scatterplots found that this relationship
 could be described by a power function that included the mean of the geometrical
 distances between scatterplot points and a regression line [@meyer_1997]. Other work includes
@@ -984,8 +984,8 @@ designs to have effects on cognition. For this reason, and to facilitate
 comparison to previous work, we utilize the same protocols here to produce
 the stimuli for our main study. This includes the number of points (n = 128),
 the value of *b* (0.25), and the size scaling factor and opacity floor. For our
-alternative scatterplot condition, we choose
-to use the previously established manipulation that has demonstrated the most dramatic
+alternative scatterplot condition, we choose to use the previously established 
+manipulation that has demonstrated the most dramatic
 change in participants' estimates of correlation: a combination of point opacity
 and size adjustments [@strain_2024] (see the right pair of plots in @fig-previous-manipulations).
 
@@ -1122,8 +1122,8 @@ Both our pre- and main studies were conducted according to the principles of ope
 and reproducible research [@ayris_2018]. We pre-registered hypotheses and analysis plans
 with the Open Science Framework (OSF) for the pre-study[^1] and the main experiment[^2].
 All data and analysis code are included in a GitHub repository[^3]. This repository 
-contains instructions for building a Docker container [@merkel_2014] that reproduces the computational environment the paper
-was written in. This allows for full replication of stimuli, figures, analyses,
+contains instructions for building a Docker container [@merkel_2014] that reproduces the computational environment 
+in which the paper was written. This allows for full replication of stimuli, figures, analyses,
 and the paper itself. Ethical approval was granted by the (removed for anon).
 
 [^1]: https://osf.io/xuf4d/?view_only=f422aa2674164fad91d43a2b951a79e2
@@ -1140,7 +1140,7 @@ it is considerably quicker and less expensive than in-person testing.
 Previous work has reported issues of data quality
 and skewed demographics [@chmielewski_2020; @charalambides_2021; @peer_2021], so
 we follow published guidelines [@peer_2021] to give us the best chance of collecting
-high-quality data. We use the Prolific.co platform [@prolific] with strict pre-screening
+high-quality data. We use the Prolific platform [@prolific] with strict pre-screening
 criteria; participants were required to have completed at least 100 studies
 using Prolific and were required to have a Prolific score of 100, representing a 99%
 approval rate.
@@ -1184,7 +1184,7 @@ between the two raters using the **irr** package (version 0.84.1 [@irr])
 to penalize larger magnitude disagreements more harshly.
 We found agreement above chance for both statement emotionality
 ($\kappa$ = `r printnum(irr_emot$value, digits = 2)`, *p* `r printp(irr_emot$p.value, add_equals = TRUE)`)
-and strength of correlation ($\kappa$ = `r printnum(irr_corr$value, digits = 2)`,
+and strength of relatedness ($\kappa$ = `r printnum(irr_corr$value, digits = 2)`,
 *p* `r printp(irr_corr$p.value, add_equals = TRUE)`), indicating moderate 
 levels of agreement in both cases [@cohen_1968; @fleiss_1969]. Following this,
 we selected strongly and weakly correlated statements with the highest level of
@@ -1204,13 +1204,13 @@ between statements.
 
 ### Participants {#sec-participants-pre}
 
-100 participants were recruited using the Prolific.co platform [@prolific]. English fluency and
+100 participants were recruited using the Prolific platform [@prolific]. English fluency and
 UK residency were required for participation, as our main experiment relied on familiarity
 with data visualizations from a popular British news source. In addition to 25
 experimental items, we included six attention check items asking participants
 to ignore the scatterplot and provide specific answers. No participants failed more than 2 out of 6 attention
 check items, and therefore data from all 100 were included in the full analysis
-(`r printnum(gender_pre$Male, digits = 0)`% male and `r printnum(gender_pre$Female, digits = 0)`% 
+(`r printnum(gender_pre$Male, digits = 0)` male and `r printnum(gender_pre$Female, digits = 0)` 
 female). Participants' mean age was `r printnum(age_pre$mean, digits = 1)` (*SD* = 
 `r printnum(age_pre$sd, digits = 1)`). The average time taken to complete the survey was
 `r printnum(time_taken_pre$mean, digits = 1)` minutes (*SD* = `r printnum(time_taken_pre$sd, digits = 1)` minutes).
@@ -1353,7 +1353,7 @@ in the main study and include these ratings as part of our analyses.
 # Main Study: Potential for Belief Change Using Alternative Scatterplots {#sec-main-study}
 
 We test the statement that exhibited the lowest average level of belief about
-correlation and the 2nd highest level of consensus. Modified for directionality,
+strength of relatedness and the 2nd highest level of consensus. Modified for directionality,
 this statement is therefore: "Higher consumption of plain (non-spicy) foods
 is associated with a higher risk of certain types of cancer." To give ourselves
 the best chance of detecting an effect of viewing alternative scatterplots, we elected
@@ -1378,7 +1378,7 @@ We also undertake exploratory investigations taking into account participants'
 scores on a defensive confidence test, their scores on a graph literacy test,
 and each participant's rating of the emotionality of the correlative statement
 used. Analysis including each of these factors can be found in @sec-add-analyses,
-and we discuss why they were included below.
+and we justify their inclusion below.
 
 ### Defensive Confidence {#sec-def-con}
 
@@ -1411,7 +1411,7 @@ As discussed in @sec-pre-study, the emotional content of a visualization and the
 state of participants may have cognitive and perceptual effects on performance in
 visualization tasks [@phelps_2006; @harrison_2013; @thoresen_2016]; this was the primary intention behind performing the pre-study.
 Nonetheless, we cannot be certain that each participant considers the emotional
-content of our chosen correlative statement to be the same. To allow for these
+content of our chosen correlative statement to be the same. To account for these
 potential individual differences, we also collect an emotionality rating during
 the main study.
 
@@ -1579,15 +1579,15 @@ example_plots
 
 ### Participants {#sec-participants-main}
 
-Participants were recruited using Prolific.co [@prolific]. English fluency and UK
+Participants were recruited using Prolific [@prolific]. English fluency and UK
 residency were required for participation, as well as normal or corrected-to-normal
 vision, and having not participated in any of our previous studies regarding 
 correlation perception in scatterplots [refs removed for anon]. Data were
 collected from 77 participants for each condition. 2 participants failed more than
 2 out of 4 attention check questions for each condition, meaning their data were
 excluded per pre-registration stipulations. Data from the remaining 150 participants
-were included in the full analysis (`r printnum(gender_main$Male, digits = 2)`% male,
-`r printnum(gender_main$Female, digits = 2)`% female, and `r printnum(gender_main$'Non-binary', digits = 2)`% non-binary).
+were included in the full analysis (`r printnum(gender_main$Male, digits = 2)` male,
+`r printnum(gender_main$Female, digits = 2)` female, and `r printnum(gender_main$'Non-binary', digits = 2)` non-binary).
 Participants' mean age was `r printnum(age_main$mean, digits = 1)`
 (*SD* = `r printnum(age_main$sd, digits = 1)`). Participants' mean graph literacy
 score was `r printnum(literacy$mean, digits = 1)` (*SD* = `r printnum(literacy$sd, digits = 1)`)
