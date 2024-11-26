@@ -1,4 +1,7 @@
 \documentclass[manuscript,screen,review,anonymous]{acmart}
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL beliefs_alternative_scatterplots_pre_review.tex   Fri Nov 22 11:17:18 2024
+%DIF ADD beliefs_alternative_scatterplots.tex              Tue Nov 26 12:06:53 2024
 
 
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -215,6 +218,72 @@
 
 
 %% end of the preamble, start of the body of the document source.
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}} %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF HYPERREF PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
+\newcommand{\DIFscaledelfig}{0.5}
+%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
+\RequirePackage{settobox} %DIF PREAMBLE
+\RequirePackage{letltxmacro} %DIF PREAMBLE
+\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
+\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
+\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
+% store original definition of \includegraphics %DIF PREAMBLE
+\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
+\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
+\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
+\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
+\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
+\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
+\begin{picture}(1,1)% %DIF PREAMBLE
+\thicklines\linethickness{2pt} %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
+\end{picture}% %DIF PREAMBLE
+}\hspace*{3pt}}} %DIF PREAMBLE
+} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
 \begin{document}
 
 
@@ -242,7 +311,7 @@ of Science and Engineering, University of Manchester}
                           \postcode{M13 9PL}
               }
         \author{Andrew J. Stewart}
-  
+
             \affiliation{%
                   \institution{Department of Computer Science, Faculty
 of Science and Engineering, University of Manchester}
@@ -252,7 +321,7 @@ of Science and Engineering, University of Manchester}
                           \postcode{M13 9PL}
               }
         \author{Caroline Jay}
-  
+
             \affiliation{%
                   \institution{Department of Computer Science, Faculty
 of Science and Engineering, University of Manchester}
@@ -262,7 +331,7 @@ of Science and Engineering, University of Manchester}
                           \postcode{M13 9PL}
               }
         \author{Charlotte Rutherford}
-  
+
             \affiliation{%
                   \institution{Division of Psychology Communication and
 Human Neuroscience, School of Health Sciences, Faculty of Biology,
@@ -273,7 +342,7 @@ Medicine, and Health, University of Manchester}
                           \postcode{M13 9PL}
               }
         \author{Paul Warren}
-  
+
             \affiliation{%
                   \institution{Division of Psychology, Communication and
 Human Neuroscience, School of Health Sciences, Faculty of Biology,
@@ -283,7 +352,7 @@ Medicine, and Health, University of Manchester}
                                   \country{United Kingdom}
                           \postcode{M13 9PL}
               }
-      
+
 \renewcommand{\shortauthors}{Strain et al.}
 
 %% By default, the full list of authors will be used in the page
@@ -298,14 +367,15 @@ Medicine, and Health, University of Manchester}
 \begin{abstract}
 Viewers tend to underestimate correlation in positively correlated
 scatterplots. However, systematically changing the size and opacity of
-scatterplot points can bias estimates upwards, correcting for this
-underestimation. Here, we examine whether application of these
+scatterplot points can bias estimates upwards, correcting \DIFdelbegin \DIFdel{this
+underestimation in a simple estimation paradigm. Here}\DIFdelend \DIFaddbegin \DIFadd{for this
+underestimation. Here, }\DIFaddend we examine whether application of these
 visualization techniques goes beyond a simple perceptual effect and
 could actually influence beliefs about information from trusted news
 sources. We present a fully-reproducible study in which we demonstrate
-that scatterplot manipulations that are able to correct for the
+that scatterplot manipulations that \DIFdelbegin \DIFdel{can }\DIFdelend \DIFaddbegin \DIFadd{are able to }\DIFaddend correct for the
 correlation underestimation bias can also induce stronger levels of
-belief change compared to conventional scatterplots presenting identical
+belief change compared to \DIFdelbegin \DIFdel{unadapted }\DIFdelend \DIFaddbegin \DIFadd{conventional }\DIFaddend scatterplots presenting identical
 data. Consequently, we show that novel visualization techniques can be
 used to drive belief change, and suggest future directions for extending
 this work with regards to altering attitudes and behaviours.    
@@ -366,7 +436,7 @@ are simple representations of (usually) bivariate data. In 1983, they
 were estimated to account for between 70 and 80 percent of data
 visualizations in scientific publications \citep{tufte_1983}, and while
 there is no doubt that the range of visualizations employed in and
-beyond scientific circles is now far broader, scatterplots remain an
+beyond \DIFdelbegin \DIFdel{science }\DIFdelend \DIFaddbegin \DIFadd{scientific circles }\DIFaddend is now far broader, scatterplots remain an
 important tool for the visualization designer. Scatterplots are
 interpreted rapidly \citep{rensink_2014}, facilitating the quick
 collection of large amounts of data, and their ubiquity
@@ -395,7 +465,7 @@ levels of underestimation, particularly when 0.2 \textless{} \emph{r}
 between those trained in statistics and data visualization, this would
 not be particularly problematic, however, this is not the case; lay
 people are expected to be able to use and interpret data visualizations
-on an almost daily basis. It is therefore the duty of those who design
+on an almost daily basis. It is \DIFdelbegin \DIFdel{thus }\DIFdelend \DIFaddbegin \DIFadd{therefore }\DIFaddend the duty of those who design
 such visualizations to design with the naive, inexperienced viewer in
 mind. Doing so requires us to understand \emph{how} visualizations work,
 and to gain an appreciation for the hidden processes that allow
@@ -404,7 +474,7 @@ could.
 
 Recent work has sought to address the correlation underestimation bias
 in positively correlated scatterplots through the use of novel point
-encodings. Strain et al. \citep{strain_2023, strain_2023b, strain_2024}
+encodings. \DIFdelbegin \DIFdel{Recently, }\DIFdelend Strain et al. \citep{strain_2023, strain_2023b, strain_2024}
 exploited the notion that viewers use the width of a probability
 distribution conveyed by the arrangement of scatterplot points as a
 proxy for their judgements of correlation to successfully correct for
@@ -415,10 +485,11 @@ and to what extent, these techniques can influence cognition in the
 context of real-world data visualizations and the relatedness between
 variables.
 
-Visualization is a powerful tool. After all, if numerical data were
-sufficient for understanding, there would be no need to visualize beyond
+\DIFdelbegin \DIFdel{Data visualization }\DIFdelend \DIFaddbegin \DIFadd{Visualization }\DIFaddend is a powerful tool. After all, if numerical data were
+sufficient for understanding, there would be no need to visualize \DIFdelbegin \DIFdel{data
+}\DIFdelend beyond
 aesthetic preference. Pattern recognition, attention, and familiarity
-are aspects of human perception and cognition that can be exploited by
+are \DIFdelbegin \DIFdel{all }\DIFdelend aspects of human perception and cognition that can be exploited by
 visualization designers to facilitate more efficient, enjoyable, and
 effective communication \citep{franconeri_2021}. This, however, is a
 double-edged sword; poor design, be it malevolent or misguided, can
@@ -462,8 +533,8 @@ interpretation of correlation from scatterplots are not well understood,
 however, some experimental results point towards the shape of the
 underlying probability distribution represented by the point cloud as a
 likely candidate. Scatterplots with lower area point clouds produce
-greater judgements of correlation \citep{cleveland_1982}, suggesting
-that point cloud area may influence perception. Work exploring the
+\DIFdelbegin \DIFdel{increased }\DIFdelend \DIFaddbegin \DIFadd{greater }\DIFaddend judgements of correlation \citep{cleveland_1982}, suggesting
+that \DIFdelbegin \DIFdel{it is the area of the point cloud that }\DIFdelend \DIFaddbegin \DIFadd{point cloud area }\DIFaddend may influence perception. Work exploring the
 relationship between subjective and objective \emph{r} values in
 scatterplots found that this relationship could be described by a power
 function that included the mean of the geometrical distances between
@@ -505,8 +576,8 @@ estimation more accurate. Strain et al.
 opacities of points in scatterplots as a function of their distance from
 the regression line and achieved success in biasing correlation
 estimates in positive and negative directions. When point opacities
-\citep{strain_2023} or point sizes \citep{strain_2023b} were reduced as
-a function of residual distance, participants were significantly more
+\citep{strain_2023} or point sizes \citep{strain_2023b} were reduced \DIFdelbegin \DIFdel{with }\DIFdelend \DIFaddbegin \DIFadd{as
+a function of }\DIFaddend residual distance, participants were significantly more
 accurate on a correlation estimation task; employing both of these
 manipulations simultaneously \citep{strain_2024} resulted in an
 overshoot of correction, biasing participants further.
@@ -524,7 +595,7 @@ designs to have effects on cognition. For this reason, and to facilitate
 comparison to previous work, we utilize the same protocols here to
 produce the stimuli for our main study. This includes the number of
 points (n = 128), the value of \emph{b} (0.25), and the size scaling
-factor and opacity floor. For our alternative scatterplot condition, we
+factor and opacity floor. For our \DIFdelbegin \DIFdel{atypical }\DIFdelend \DIFaddbegin \DIFadd{alternative }\DIFaddend scatterplot condition, we
 choose to use the previously established manipulation that has
 demonstrated the most dramatic change in participants' estimates of
 correlation: a combination of point opacity and size adjustments
@@ -533,11 +604,20 @@ Figure~\ref{fig-previous-manipulations}).
 
 \begin{figure*}
 
-\centering{
+\DIFdelbeginFL %DIFDELCMD < \centering{
+%DIFDELCMD < 
 
-\includegraphics[width=1\textwidth,height=\textheight]{beliefs_atypical_scatterplots_files/figure-pdf/fig-previous-manipulations-1.pdf}
+%DIFDELCMD < \includegraphics[width=1\textwidth,height=\textheight]{beliefs_atypical_scatterplots_files/figure-pdf/fig-previous-manipulations-1.pdf}
+%DIFDELCMD < 
+
+%DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{beliefs_alternative_scatterplots_files/figure-pdf/fig-previous-manipulations-1.pdf}
 
 }
+\DIFaddendFL 
 
 \caption{\label{fig-previous-manipulations}Top row: Examples of
 scatterplot manipulations from previous work using an \textit{r} value
@@ -556,13 +636,15 @@ bottom-up and top-down mechanisms
 \citep{shah_2011, franconeri_2021, xiong_2022}. Previous work
 investigating alternative scatterplot designs has predominantly focused
 on perceptual factors and mechanisms; here we introduce the potential
-for top-down effects to bias participants. Recent work has established
+for top-down effects to bias participants. \DIFaddbegin \DIFadd{Recent work has established
 that scatterplots are able to induce different levels of belief change
-in viewers \citep{karduni_2020, markant_2023}; this may depend on
+in viewers \mbox{%DIFAUXCMD
+\citep{karduni_2020, markant_2023}}\hskip0pt%DIFAUXCMD
+; this may depend on
 factors such as prior belief strength, attitudes, and the presence of
 absence of uncertainty visualizations. Accordingly, our pre-study is
 essential for isolating our variable of interest, the alternative
-scatterplot design. Data visualization does not take place without
+scatterplot design. }\DIFaddend Data visualization does not take place without
 context, and so the investigation of top-down effects is critical for
 providing designers with the tools to design visualizations that work as
 intended in the field. We therefore present a two-experiment study
@@ -581,12 +663,12 @@ justification for crowdsourcing.
 Both our pre- and main studies were conducted according to the
 principles of open and reproducible research \citep{ayris_2018}. We
 pre-registered hypotheses and analysis plans with the Open Science
-Framework (OSF) for the pre-study\footnote{https://osf.io/xuf4d/?view\_only=f422aa2674164fad91d43a2b951a79e2}
-and the main experiment\footnote{https://osf.io/anmez/?view\_only=8745df2d0d9c4c81bfcca4d4fd41e6de}.
+Framework (OSF) for the pre-study\footnote{\DIFdelbegin \DIFdel{removed for anon}\DIFdelend \DIFaddbegin \DIFadd{https://osf.io/xuf4d/?view\_only=f422aa2674164fad91d43a2b951a79e2}\DIFaddend }
+and the main experiment\footnote{\DIFdelbegin \DIFdel{removed for anon}\DIFdelend \DIFaddbegin \DIFadd{https://osf.io/anmez/?view\_only=8745df2d0d9c4c81bfcca4d4fd41e6de}\DIFaddend }.
 All data and analysis code are included in a GitHub
 repository\footnote{removed for anon}. This repository contains
 instructions for building a Docker container \citep{merkel_2014} that
-reproduces the computational environment in which the paper was written.
+reproduces the computational environment \DIFaddbegin \DIFadd{in which }\DIFaddend the paper was written\DIFdelbegin \DIFdel{in}\DIFdelend .
 This allows for full replication of stimuli, figures, analyses, and the
 paper itself. Ethical approval was granted by the (removed for anon).
 
@@ -601,7 +683,7 @@ considerably quicker and less expensive than in-person testing. Previous
 work has reported issues of data quality and skewed demographics
 \citep{chmielewski_2020, charalambides_2021, peer_2021}, so we follow
 published guidelines \citep{peer_2021} to give us the best chance of
-collecting high-quality data. We use the Prolific platform
+collecting high-quality data. We use the Prolific \DIFdelbegin \DIFdel{.co }\DIFdelend platform
 \citep{prolific} with strict pre-screening criteria; participants were
 required to have completed at least 100 studies using Prolific and were
 required to have a Prolific score of 100, representing a 99\% approval
@@ -611,11 +693,11 @@ rate.
 Statements}\label{sec-pre-study}
 
 The goal of the present study is to investigate to what extent a novel
-scatterplot design can alter participants' beliefs about correlations.
+scatterplot design can alter participants' beliefs about \DIFdelbegin \DIFdel{the level of relatednessbetween variables}\DIFdelend \DIFaddbegin \DIFadd{correlations.
 Due to our targeting of lay populations, and the authors' prior
 experience with lay participants failing to understand the term
 ``correlation'' (although not the concept), we elected to operationalize
-correlation for our participants as ``strength of relatedness''. There
+correlation for our participants as ``strength of relatedness''}\DIFaddend . There
 is evidence that belief change can be affected by prior beliefs and
 attitudes \citep{xiong_2022, markant_2023}, and that emotion, including
 the content of a visualization \citep{phelps_2006, harrison_2013} and
@@ -623,7 +705,7 @@ the emotional state of a participant \citep{thoresen_2016} can have
 perceptual and cognitive effects on participants. We were unable to find
 resources for correlative statements that included ratings for belief
 strength and statement emotionality, so elected to create our own. To
-control for these factors as much as possible in the main experiment, we
+control for these factors as much as possible \DIFaddbegin \DIFadd{in the main experiment}\DIFaddend , we
 ran our pre-study with the intent of finding a correlative statement
 that was matched on emotional content and level of belief strength.
 Instead of creating these statements ourselves, we chose to streamline
@@ -635,7 +717,7 @@ We used the following prompt:
      "X is associated with a higher level of Y" or
      "As X increases, Y increases".
     Try to match all the statements on emotionality.''
-    
+
 \end{quotation}
 
 The full list of these statements can be found in the supplementary
@@ -649,7 +731,7 @@ weighted Cohen's Kappa between the two raters using the \textbf{irr}
 package (version 0.84.1 \citep{irr}) to penalize larger magnitude
 disagreements more harshly. We found agreement above chance for both
 statement emotionality (\(\kappa\) = 0.49, \emph{p} \textless{} .001)
-and strength of relatedness (\(\kappa\) = 0.51, \emph{p} \textless{}
+and strength of \DIFdelbegin \DIFdel{correlation }\DIFdelend \DIFaddbegin \DIFadd{relatedness }\DIFaddend (\(\kappa\) = 0.51, \emph{p} \textless{}
 .001), indicating moderate levels of agreement in both cases
 \citep{cohen_1968, fleiss_1969}. Following this, we selected strongly
 and weakly correlated statements with the highest level of absolute
@@ -658,17 +740,17 @@ correlated statements that can be seen in the supplementary materials.
 We then tested these 25 statements with a representative UK sample to
 ascertain consensus on both statement emotionality and strength of
 relatedness. Doing so allows us to minimize the impact of these factors
-when we analyse the effects of alternative scatterplot design on the
+when we analyse the effects of \DIFdelbegin \DIFdel{atypical }\DIFdelend \DIFaddbegin \DIFadd{alternative }\DIFaddend scatterplot design on the
 propensity for belief change in our main experiment. We hypothesized
 that:
 
 \begin{itemize}
 \tightlist
 \item
-  H1: there will be a significant difference in the average ratings of
+  H1: there will be a significant difference in \DIFaddbegin \DIFadd{the }\DIFaddend average ratings of
   emotionality between statements.
 \item
-  H2: there will be a significant difference in the average ratings of
+  H2: there will be a significant difference \DIFdelbegin \DIFdel{between }\DIFdelend \DIFaddbegin \DIFadd{in the }\DIFaddend average ratings of
   strength of relatedness between statements.
 \end{itemize}
 
@@ -676,15 +758,16 @@ that:
 
 \subsubsection{Participants}\label{sec-participants-pre}
 
-100 participants were recruited using the Prolific platform
+100 participants were recruited using the Prolific \DIFdelbegin \DIFdel{.co }\DIFdelend platform
 \citep{prolific}. English fluency and UK residency were required for
 participation, as our main experiment relied on familiarity with data
 visualizations from a popular British news source. In addition to 25
 experimental items, we included six attention check items asking
 participants to ignore the scatterplot and provide specific answers. No
 participants failed more than 2 out of 6 attention check items, and
-therefore data from all 100 were included in the full analysis (52 male
-and 48 female). Participants' mean age was 41.1 (\emph{SD} = 12.3). The
+therefore data from all 100 were included in the full analysis (52 \DIFdelbegin \DIFdel{\%
+}\DIFdelend male
+and 48 \DIFdelbegin \DIFdel{\% }\DIFdelend female). Participants' mean age was 41.1 (\emph{SD} = 12.3). The
 average time taken to complete the survey was 7.6 minutes (\emph{SD} =
 2.9 minutes).
 
@@ -705,18 +788,20 @@ consent through key presses in response to consent statements. They were
 asked to provide their age in a free text box, followed by their gender
 identity. Participants were told that they would be asked to read
 statements about the relatedness between a pair of variables, after
-which they would have to answer some questions. To familiarize
+which they would have to \DIFdelbegin \DIFdel{indicate their beliefs about statement
+emotionality and the strength of relatedness suggested using a pair of
+sliders}\DIFdelend \DIFaddbegin \DIFadd{answer some questions}\DIFaddend . To familiarize
 themselves with the sliders, they were asked to complete a practice
 round in response to the statement: ``As participation in online
-experiments increases, society becomes happier.'' Following each
+experiments increases, society becomes happier.'' \DIFdelbegin \DIFdel{The Likert scales used in the online experiment were }\DIFdelend \DIFaddbegin \DIFadd{Following each
 statement, a pair of Likert scales were presented labelled ``Statement
 Emotionality'' and ``Strength of Relatedness''; these scales were
-identical to those used by the researchers in
+}\DIFaddend identical to those \DIFdelbegin \DIFdel{described }\DIFdelend \DIFaddbegin \DIFadd{used by the researchers }\DIFaddend in
 Section~\ref{sec-pre-study}.
 
 \subsection{Results}\label{sec-results-pre}
 
-All analyses were conducted using R (version 4.4.2 \citep{rcore}). We
+All analyses were conducted using R (version 4.4\DIFdelbegin \DIFdel{.1 }\DIFdelend \DIFaddbegin \DIFadd{.2 }\DIFaddend \citep{rcore}). We
 use the \textbf{irr} package to calculate Fleiss' Kappa to measure
 interrater agreement on statement emotionality and strength of
 relatedness for the 25 experimental items. This analysis revealed that
@@ -730,28 +815,28 @@ Experiment}\label{sec-selecting-statements}
 To control for the potential effects of statement emotionality in the
 main experiment, we first select statements that represent neutral
 emotional valence. Statements with average emotionality ratings between
-3 and 5 are statements 2, 10, 22, 16, and 23, which can be seen in
-Table~\ref{tbl-candidate-statements}. To ascertain which statements
+3 and 5 are statements 2, 10, 22, 16, and \DIFdelbegin \DIFdel{23. }\DIFdelend \DIFaddbegin \DIFadd{23, which can be seen in
+Table~\ref{tbl-candidate-statements}. }\DIFaddend To ascertain which statements
 represent the greatest consensus, we add standard deviations in ratings
 for statement emotionality and strength of relatedness. Due to concerns
 about experimental power, and in line with evidence that propensity for
 belief change is highest when prior beliefs are not strongly held
 \citep{xiong_2022, markant_2023}, we elected at this point to test only
 the statement corresponding to weak beliefs about the strength of
-relatedness between the variables in question. We therefore test
+\DIFdelbegin \DIFdel{correlation }\DIFdelend \DIFaddbegin \DIFadd{relatedness }\DIFaddend between the variables in question. We therefore test
 statement number 22, ``Higher consumption of spicy foods is associated
 with a lower risk of certain types of cancer'', however we modify the
 wording so that the variables (food consumption and cancer risk) are
 positively correlated, as while the manipulations we use in the
-alternative scatterplot condition can affect estimates of correlation in
+\DIFdelbegin \DIFdel{atypical }\DIFdelend \DIFaddbegin \DIFadd{alternative }\DIFaddend scatterplot condition can affect estimates of correlation in
 positively correlated scatterplots, no work regarding the effects of
 these manipulations in negatively correlated scatterplots has been
 completed.
 
-\begin{table}
+\DIFaddbegin \begin{table}
 
-\caption{\label{tbl-candidate-statements}Statements with neutral average
-emotionality ratings.}
+\caption{\label{tbl-candidate-statements}\DIFaddFL{Statements with neutral average
+emotionality ratings.}}
 
 \centering{
 
@@ -769,61 +854,68 @@ Item & Statement\\
 
 }
 
-\end{table}%
+\end{table}%DIF > 
 
-\subsection{Discussion}\label{sec-discussion-pre}
+\DIFaddend \subsection{Discussion}\label{sec-discussion-pre}
 
 Fleiss' Kappa values for interrater agreement on both statement
 emotionality and strength of correlation scales are low (\(\kappa\) =
 0.07 and \(\kappa\) = 0.06 respectively), however do exceed that which
-would be expected by chance. In light of this we do not make decisions
+would be expected by chance. \DIFdelbegin \DIFdel{We suggest this may be due to Fleiss' Kappa
+not being designed with ordinal (Likert scales in this case) data in
+mind. }\DIFdelend In light of this we do not make decisions
 regarding which statement to use based on the values of Fleiss' Kappa
 observed, but rather on the standard deviations of ratings across all
 raters. We also test statement emotionality and strength of correlation
 with participants in the main study and include these ratings as part of
-our analyses.
+our \DIFdelbegin \DIFdel{analysis}\DIFdelend \DIFaddbegin \DIFadd{analyses}\DIFaddend .
 
-\section{Main Study: Potential for Belief Change Using Alternative
-Scatterplots}\label{sec-main-study}
+\section{Main Study: Potential for Belief Change Using \DIFdelbegin \DIFdel{Atypical
+}\DIFdelend \DIFaddbegin \DIFadd{Alternative
+}\DIFaddend Scatterplots}\label{sec-main-study}
 
 We test the statement that exhibited the lowest average level of belief
-about strength of relatedness and the 2nd highest level of consensus.
+about \DIFdelbegin \DIFdel{correlation }\DIFdelend \DIFaddbegin \DIFadd{strength of relatedness }\DIFaddend and the 2nd highest level of consensus.
 Modified for directionality, this statement is therefore: ``Higher
 consumption of plain (non-spicy) foods is associated with a higher risk
 of certain types of cancer.'' To give ourselves the best chance of
-detecting an effect of viewing alternative scatterplots, we elected to
+detecting an effect of viewing \DIFdelbegin \DIFdel{atypical }\DIFdelend \DIFaddbegin \DIFadd{alternative }\DIFaddend scatterplots, we elected to
 design our scatterplots based on a popular British news source and to
 falsely credit the data as being provided by the British National Health
 Service (NHS). Participants were informed that said news source had
 requested that their identity be obscured, and were debriefed that this
 was not the case and that the data were fictional, following completion
-of the experiment. Based on previous evidence that beliefs can change
-after viewing data visualisations \citep{karduni_2020, markant_2023},
+of the experiment. \DIFdelbegin \DIFdel{We hypothesized that }\DIFdelend \DIFaddbegin \DIFadd{Based on previous evidence that beliefs can change
+after viewing data visualisations \mbox{%DIFAUXCMD
+\citep{karduni_2020, markant_2023}}\hskip0pt%DIFAUXCMD
+,
 and that scatterplots employing the point size and opacity manipulations
 detailed in Section~\ref{sec-scatterplots} are able to affect perceptual
-estimates, we make the following hypotheses:
+estimates, we make the following hypotheses}\DIFaddend :
 
-\subsection{Hypotheses}\label{hypotheses}
+\DIFaddbegin \subsection{\DIFadd{Hypotheses}}\label{hypotheses}
 
-\begin{itemize}
+\DIFaddend \begin{itemize}
 \tightlist
 \item
-  H1: there will be a significant difference between ratings of strength
-  of relatedness made before and after participants viewed scatterplots
-  in either the standard or alternative conditions.
+  H1: there will be a significant difference \DIFdelbegin \DIFdel{in }\DIFdelend \DIFaddbegin \DIFadd{between }\DIFaddend ratings of strength
+  of relatedness \DIFaddbegin \DIFadd{made }\DIFaddend before and after participants viewed \DIFdelbegin \DIFdel{the experimental
+  items}\DIFdelend \DIFaddbegin \DIFadd{scatterplots
+  in either the standard or alternative conditions}\DIFaddend .
 \item
   H2: this difference will be greatest when participants are exposed to
-  scatterplots in the alternative scatterplot condition.
+  scatterplots in the \DIFdelbegin \DIFdel{atypical }\DIFdelend \DIFaddbegin \DIFadd{alternative scatterplot }\DIFaddend condition.
 \end{itemize}
 
-We also undertake exploratory investigations taking into account
+\DIFaddbegin \DIFadd{We also undertake exploratory investigations taking into account
 participants' scores on a defensive confidence test, their scores on a
 graph literacy test, and each participant's rating of the emotionality
 of the correlative statement used. Analysis including each of these
 factors can be found in Section~\ref{sec-add-analyses}, and we justify
 their inclusion below.
+}
 
-\subsubsection{Defensive Confidence}\label{sec-def-con}
+\DIFaddend \subsubsection{Defensive Confidence}\label{sec-def-con}
 
 In line with evidence that those who are more confident in their ability
 to defend their own positions are more susceptible to having those
@@ -839,32 +931,42 @@ points being unlabelled. Analysis including participants' defensive
 confidence scores is included in
 Section~\ref{sec-add-analyses-discussion}.
 
-\subsubsection{Graph Literacy}\label{sec-graph-lit}
+\DIFaddbegin \subsubsection{\DIFadd{Graph Literacy}}\label{sec-graph-lit}
 
-Previous work testing the systematic adjustment of point opacity and
+\DIFadd{Previous work testing the systematic adjustment of point opacity and
 size in scatterplots has found no effect of graph literacy on
 participants' estimates of positive correlation
-\citep{strain_2023, strain_2023b, strain_2024}. Despite this, we elect
+\mbox{%DIFAUXCMD
+\citep{strain_2023, strain_2023b, strain_2024}}\hskip0pt%DIFAUXCMD
+. Despite this, we elect
 to include the test here due to the higher cognitive load of the current
 task, along with evidence that graph literacy may affect performance on
 more cognitively demanding visualization tasks
-\citep{canham_2010, okan_2012}. Additionally, the graph literacy test we
-use \citep{garcia_2016} is extremely short; in the present study, this
-took participants an average of 27 seconds (\emph{SD} = 16 seconds).
+\mbox{%DIFAUXCMD
+\citep{canham_2010, okan_2012}}\hskip0pt%DIFAUXCMD
+. Additionally, the graph literacy test we
+use \mbox{%DIFAUXCMD
+\citep{garcia_2016} }\hskip0pt%DIFAUXCMD
+is extremely short; in the present study, this
+took participants an average of 27 seconds (}\emph{\DIFadd{SD}} \DIFadd{= 16 seconds).
+}
 
-\subsubsection{Emotionality}\label{sec-emotionality}
+\subsubsection{\DIFadd{Emotionality}}\label{sec-emotionality}
 
-As discussed in Section~\ref{sec-pre-study}, the emotional content of a
+\DIFadd{As discussed in Section~\ref{sec-pre-study}, the emotional content of a
 visualization and the emotional state of participants may have cognitive
 and perceptual effects on performance in visualization tasks
-\citep{phelps_2006, harrison_2013, thoresen_2016}; this was the primary
+\mbox{%DIFAUXCMD
+\citep{phelps_2006, harrison_2013, thoresen_2016}}\hskip0pt%DIFAUXCMD
+; this was the primary
 intention behind performing the pre-study. Nonetheless, we cannot be
 certain that each participant considers the emotional content of our
 chosen correlative statement to be the same. To account for these
 potential individual differences, we also collect an emotionality rating
 during the main study.
+}
 
-\subsection{Stimuli}\label{sec-stimuli-main}
+\DIFaddend \subsection{Stimuli}\label{sec-stimuli-main}
 
 Having selected a correlative statement describing a weak relationship
 and with a high level of consensus between participants in the
@@ -872,25 +974,36 @@ pre-study, we used \textbf{ggplot2} (version 3.5.1 \citep{ggplot}) in R
 to create our stimuli; scripts for the creation of stimuli can be found
 in the repository associated with this project. As our statement was
 rated as describing a low level of relatedness, we utilize scatterplots
-that describe a strong relationship (0.6 \textless{} \emph{r}
-\textless{} 0.99) to induce belief change. Our plots were created in
-line with guidance provided by previous research; plots in the
+that describe a strong relationship (0.6 \DIFdelbegin \DIFdel{\textgreater{} }\DIFdelend \DIFaddbegin \DIFadd{\textless{} }\DIFaddend \emph{r}
+\DIFdelbegin \DIFdel{\textgreater{} }\DIFdelend \DIFaddbegin \DIFadd{\textless{} }\DIFaddend 0.99) to induce belief change. Our plots were created in
+line with guidance provided by previous research\DIFdelbegin \DIFdel{and detailed in Section~\ref{sec-scatterplots}}\DIFdelend \DIFaddbegin \DIFadd{; plots in the
 alternative scatterplot condition feature points that decrease in size
 and opacity as a function of residual distance, as this has been shown
 to increase estimates of correlation in positively correlated
-scatterplots \citep{strain_2023, strain_2023b, strain_2024}. We used 45
+scatterplots \mbox{%DIFAUXCMD
+\citep{strain_2023, strain_2023b, strain_2024}}\hskip0pt%DIFAUXCMD
+}\DIFaddend . We used 45
 values of \emph{r} uniformly distributed between 0.6 and 0.99 to create
 45 scatterplots for each condition. Examples of stimuli using an
-\emph{r} value of 0.6 for both the standard and alternative scatterplot
+\emph{r} value of 0.6 for both the \DIFdelbegin \DIFdel{typical and atypical }\DIFdelend \DIFaddbegin \DIFadd{standard and alternative }\DIFaddend scatterplot
 conditions can be seen in Figure~\ref{fig-main-examples}.
 
 \begin{figure*}
 
-\centering{
+\DIFdelbeginFL %DIFDELCMD < \centering{
+%DIFDELCMD < 
 
-\includegraphics[width=1\textwidth,height=\textheight]{beliefs_atypical_scatterplots_files/figure-pdf/fig-main-examples-1.pdf}
+%DIFDELCMD < \includegraphics[width=1\textwidth,height=\textheight]{beliefs_atypical_scatterplots_files/figure-pdf/fig-main-examples-1.pdf}
+%DIFDELCMD < 
+
+%DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{beliefs_alternative_scatterplots_files/figure-pdf/fig-main-examples-1.pdf}
 
 }
+\DIFaddendFL 
 
 \caption{\label{fig-main-examples}Examples of the experimental stimuli
 used with an \textit{r} value of 0.6.}
@@ -901,7 +1014,7 @@ used with an \textit{r} value of 0.6.}
 
 \subsubsection{Participants}\label{sec-participants-main}
 
-Participants were recruited using Prolific \citep{prolific}. English
+Participants were recruited using Prolific \DIFdelbegin \DIFdel{.co }\DIFdelend \citep{prolific}. English
 fluency and UK residency were required for participation, as well as
 normal or corrected-to-normal vision, and having not participated in any
 of our previous studies regarding correlation perception in scatterplots
@@ -909,10 +1022,10 @@ of our previous studies regarding correlation perception in scatterplots
 for each condition. 2 participants failed more than 2 out of 4 attention
 check questions for each condition, meaning their data were excluded per
 pre-registration stipulations. Data from the remaining 150 participants
-were included in the full analysis (73 male, 73 female, and 4
-non-binary). Participants' mean age was 39.3 (\emph{SD} = 11.5).
+were included in the full analysis (\DIFdelbegin \DIFdel{48.7\% male, 48.7\% }\DIFdelend \DIFaddbegin \DIFadd{73 male, 73 }\DIFaddend female, and \DIFdelbegin \DIFdel{2.7\% }\DIFdelend \DIFaddbegin \DIFadd{4
+}\DIFaddend non-binary). Participants' mean age was 39.3 (\emph{SD} = 11.5).
 Participants' mean graph literacy score was 21.3 (\emph{SD} = 4.3) out
-of 30, their mean defensive confidence score was 43 (\emph{SD} = 6.8)
+of 30, their mean defensive confidence score was \DIFdelbegin \DIFdel{43.0 }\DIFdelend \DIFaddbegin \DIFadd{43 }\DIFaddend (\emph{SD} = 6.8)
 out of 60, and their mean rating of statement emotionality was 2.9
 (\emph{SD} = 1.3) on a 7-point Likert scale. On average, participants
 took 14.2 minutes to complete the experiment (\emph{SD} = 6.41).
@@ -920,8 +1033,9 @@ took 14.2 minutes to complete the experiment (\emph{SD} = 6.41).
 \subsubsection{Design}\label{sec-design-main}
 
 We employed a between-participants design. Each participant was randomly
-assigned to either group A, in which case they viewed standard
-scatterplots, or group B, in which they viewed alternative scatterplots
+assigned to either group A, in which case they viewed \DIFdelbegin \DIFdel{typical
+}\DIFdelend \DIFaddbegin \DIFadd{standard
+}\DIFaddend scatterplots, or group B, in which they viewed \DIFdelbegin \DIFdel{atypical }\DIFdelend \DIFaddbegin \DIFadd{alternative }\DIFaddend scatterplots
 designed deliberately to elicit higher levels of belief change.
 Participants saw all 45 experimental items for their group, along with 4
 attention check items, in a fully randomized order. Our dependent
@@ -943,7 +1057,7 @@ there is evidence that differences in the on-screen sizes of data
 visualizations can alter perceptions \citep{cleveland_1982}.
 Participants were first shown the participant information sheet and
 asked to provide consent through key presses in response to consent
-statements, after which they were asked to provide their age and gender
+statements\DIFdelbegin \DIFdel{. They were, again, }\DIFdelend \DIFaddbegin \DIFadd{, after which they were }\DIFaddend asked to provide their age and gender
 identity. Participants then completed the 12-item Defensive Confidence
 scale described by Albarracín and Mitchell \citep{albarracin_2004} and
 the 5-item Subjective Graph Literacy scale \citep{garcia_2016}
@@ -957,19 +1071,20 @@ a slider to estimate the correlation displayed in each scatterplot; no
 hypotheses were made based on these data and therefore we do not analyse
 them further. Following instructions, which included descriptions of
 scatterplots and Pearson's \emph{r}, participants had a chance to
-practice using the slider, before being asked to indicate their beliefs
-about emotionality and the strength of relatedness between the variables
+practice using the slider, before being asked to indicate their \DIFdelbegin \DIFdel{belief
+}\DIFdelend \DIFaddbegin \DIFadd{beliefs
+}\DIFaddend about emotionality and the \DIFdelbegin \DIFdel{relatedness between }\DIFdelend \DIFaddbegin \DIFadd{strength of relatedness between the }\DIFaddend variables
 described in our chosen statement. We captured these data using Likert
 scales identical to those described in Section~\ref{sec-pre-study}.
 After completing the experimental trials, participants were tested again
-on their beliefs about strength of relatedness and then debriefed that
+on their beliefs about \DIFaddbegin \DIFadd{strength of }\DIFaddend relatedness and then debriefed that
 the data they were shown were fictional. Interspersed among the
 experimental items were 4 attention check trials which explicitly asked
 participants to set the slider to 0 or 1.
 
 \subsection{Results}\label{sec-results-main}
 
-All analyses were conducted using R (version 4.4.2 \citep{rcore}).
+All analyses were conducted using R (version 4.4\DIFdelbegin \DIFdel{.1 }\DIFdelend \DIFaddbegin \DIFadd{.2 }\DIFaddend \citep{rcore}).
 Likert scales capture whether one rating is higher or lower than
 another, however they do not quantify the difference between levels of
 rating. Metric modelling assuming equal levels of difference between
@@ -981,7 +1096,7 @@ mixed effects models to analyse Likert scale data \footnote{Our
   Conclusions are identical when using said models, and code for this
   analysis is included in the repository associated with this paper.}.
 We use the \textbf{buildmer} (version 2.11 \citep{buildmer}) package to
-automate selection of the random effects structure; we provide a maximal
+automate \DIFdelbegin \DIFdel{the }\DIFdelend selection of the random effects structure; we provide a maximal
 model, which includes random intercepts for participants, and
 \textbf{buildmer} identifies the most complex model that successfully
 converges. We present odds ratios and equivalent Cohen's \emph{d} effect
@@ -1001,8 +1116,8 @@ variance than the null (\(\chi^2\)(1) = 8,046.95, \emph{p} \textless{}
 .001). This model has random intercepts for participants. Statistical
 testing providing support for this hypothesis is shown in
 Table~\ref{tbl-rating-time}. Figure~\ref{fig-descriptives} shows means
-and violin plots for ratings of strength of relatedness before and after
-viewing scatterplots in either the standard or alternative condition.
+and \DIFdelbegin \DIFdel{boxplots }\DIFdelend \DIFaddbegin \DIFadd{violin plots }\DIFaddend for ratings of strength of relatedness before and after
+viewing scatterplots in either the \DIFdelbegin \DIFdel{typical or atypical }\DIFdelend \DIFaddbegin \DIFadd{standard or alternative }\DIFaddend condition.
 
 \begin{table}
 
@@ -1010,7 +1125,21 @@ viewing scatterplots in either the standard or alternative condition.
 effect of rating time. Odds ratio and the equivalent Cohen's \textit{d}
 value is also supplied.}
 
-\centering{
+\DIFdelbeginFL %DIFDELCMD < \centering{
+%DIFDELCMD < 
+
+%DIFDELCMD < \begin{tabular}[t]{lrrrlrr}
+%DIFDELCMD < \toprule
+%DIFDELCMD <   & Estimate & Standard Error & Z-value & \textit{p} & Odds Ratio & Cohen's \textit{d}\\
+%DIFDELCMD < \midrule
+%DIFDELCMD < Rating Time & 3.77 & 0.049 & 76.62 & <0.001 & 43.2 & 2.08\\
+%DIFDELCMD < \bottomrule
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < 
+
+%DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \centering{
 
 \begin{tabular}[t]{lrrrlrr}
 \toprule
@@ -1021,53 +1150,98 @@ Rating Time & 3.77 & 0.049 & 76.63 & <0.001 & 43.2 & 2.08\\
 \end{tabular}
 
 }
+\DIFaddendFL 
 
 \end{table}%
 
 \begin{figure}
 
-\centering{
+\DIFdelbeginFL %DIFDELCMD < \centering{
+%DIFDELCMD < 
 
-\includegraphics[width=1\textwidth,height=\textheight]{beliefs_atypical_scatterplots_files/figure-pdf/fig-descriptives-1.pdf}
+%DIFDELCMD < \includegraphics[width=1\textwidth,height=\textheight]{beliefs_atypical_scatterplots_files/figure-pdf/fig-descriptives-1.pdf}
+%DIFDELCMD < 
+
+%DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{beliefs_alternative_scatterplots_files/figure-pdf/fig-descriptives-1.pdf}
 
 }
+\DIFaddendFL 
 
-\caption{\label{fig-descriptives}Violin plots for pre- and post-plot
-viewing ratings of strength of relatedness for standard and alternative
-scatterplot conditions. Mean ratings are also shown as points.}
+\caption{\label{fig-descriptives}\DIFdelbeginFL \DIFdelFL{Boxplots showing ranges, interquartile
+ranges, medians (vertical lines) and means }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Violin plots }\DIFaddendFL for \DIFdelbeginFL \DIFdelFL{participants' }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{pre- and post-plot
+viewing }\DIFaddendFL ratings of strength of relatedness \DIFdelbeginFL \DIFdelFL{before }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{for standard }\DIFaddendFL and \DIFdelbeginFL \DIFdelFL{after viewing either typical or
+atypical scatterplots}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{alternative
+scatterplot conditions}\DIFaddendFL . \DIFaddbeginFL \DIFaddFL{Mean ratings are also shown as points.}\DIFaddendFL }
 
 \end{figure}%
 
-Our second hypothesis, that the difference between ratings of strength
+\DIFdelbegin %DIFDELCMD < \begin{verbatim}%DIFDELCMD < 
+%DIFDELCMD < \end{verbatim}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend Our second hypothesis, that the difference between ratings of strength
 of relatedness before and after viewing experimental plots would be
-greater when participants were assigned to the alternative scatterplot
-condition, also received support. Treatment coding was used for each of
+greater when participants were assigned to the \DIFdelbegin \DIFdel{atypical }\DIFdelend \DIFaddbegin \DIFadd{alternative }\DIFaddend scatterplot
+condition, also received support. \DIFdelbegin \DIFdel{Deviation }\DIFdelend \DIFaddbegin \DIFadd{Treatment }\DIFaddend coding was used for each of
 the experimental factors of rating time (pre- or post-) and condition,
-which allows us to compare means of ratings made after viewing the
-experimental items directly to those made before viewing. We built a
+which allows us to compare means of ratings \DIFdelbegin \DIFdel{to the
+grand mean}\DIFdelend \DIFaddbegin \DIFadd{made after viewing the
+experimental items directly to those made before viewing}\DIFaddend . We built a
 cumulative link mixed effects model whereby the rating of strength of
 relatedness the participant made was predicted by the condition the
 participant was assigned to and the time they made the rating. A
 likelihood ratio test revealed that the model including condition and
-rating time as predictors explained significantly more variance than the
+rating time as \DIFdelbegin \DIFdel{a predictor }\DIFdelend \DIFaddbegin \DIFadd{predictors }\DIFaddend explained significantly more variance than the
 null (\(F\)(3) = 8,151.94, \emph{p} \textless{} .001). This model had
 random intercepts for participants. We again found a main effect of
 rating time, found no main effect of condition, and found an interaction
 between rating time and condition. Test statistics, along with odds
-ratios and equivalent Cohen's \emph{d} effect sizes can be seen in
-Table~\ref{tbl-condition-interact}. The estimate for the interaction
+ratios and equivalent Cohen's \emph{d} \DIFaddbegin \DIFadd{effect sizes }\DIFaddend can be seen in
+Table~\ref{tbl-condition-interact}. \DIFdelbegin \DIFdel{To further explore the interaction
+,
+we used the }\textbf{\DIFdel{emmeans}} %DIFAUXCMD
+\DIFdel{package (version 1.10.4 \mbox{%DIFAUXCMD
+\citep{emmeans}}\hskip0pt%DIFAUXCMD
+) to calculate pairwise comparisons between levels of the condition and
+rating time factors, which can be seen in Table~\ref{tbl-pairwise}. The
+interaction we found is driven by participants' beliefs changing more
+between pre-viewing }\DIFdelend \DIFaddbegin \DIFadd{The estimate for the interaction
 corresponds to the difference-in-difference between ratings made pre-
-and post-viewing for standard and alternative scatterplots.
+}\DIFaddend and post-viewing \DIFdelbegin \DIFdel{times for atypical as opposed to
+typical plots}\DIFdelend \DIFaddbegin \DIFadd{for standard and alternative scatterplots}\DIFaddend .
 
 \begin{table}
 
 \caption{\label{tbl-condition-interact}Statistics for the significant
-main effect of rating time and the significant interaction between
-rating time and condition on the difference between pre- and post-
-scatterplot viewing ratings for standard and alternative plots. Odds
-ratios and equivalent Cohen's \emph{d} effect sizes are also shown.}
+main effect of \DIFaddbeginFL \DIFaddFL{rating time and the significant interaction between
+rating time and }\DIFaddendFL condition on the difference between pre- and post-
+scatterplot viewing ratings for \DIFdelbeginFL \DIFdelFL{typical }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{standard }\DIFaddendFL and \DIFdelbeginFL \DIFdelFL{atypical }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{alternative }\DIFaddendFL plots. Odds
+ratios and equivalent Cohen's \emph{d} \DIFaddbeginFL \DIFaddFL{effect sizes }\DIFaddendFL are also shown.\DIFdelbeginFL \DIFdelFL{NB: the odds ratio for
+the effect of condition is caluclated based on the absolute value of the
+estimate.}\DIFdelendFL }
 
-\centering{
+\DIFdelbeginFL %DIFDELCMD < \centering{
+%DIFDELCMD < 
+
+%DIFDELCMD < \begin{tabular}[t]{lrrrlrr}
+%DIFDELCMD < \toprule
+%DIFDELCMD <   & Estimate & Standard Error & Z-value & \textit{p} & Odds Ratio & Cohen's \textit{d}\\
+%DIFDELCMD < \midrule
+%DIFDELCMD < Rating Time & 3.79 & 0.049 & 76.69 & <0.001 & 44.10 & 2.09\\
+%DIFDELCMD < Condition & -0.13 & 0.390 & -0.33 & 0.745 & 1.14 & 0.07\\
+%DIFDELCMD < Rating Time x Condition & 0.72 & 0.071 & 10.22 & <0.001 & 2.06 & 0.40\\
+%DIFDELCMD < \bottomrule
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < 
+
+%DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \centering{
 
 \begin{tabular}[t]{lrrrlrr}
 \toprule
@@ -1080,10 +1254,50 @@ Rating Time x Condition & -0.72 & 0.071 & -10.22 & <0.001 & 2.06 & 0.40\\
 \end{tabular}
 
 }
+\DIFaddendFL 
 
 \end{table}%
 
-\subsubsection{Additional Analyses}\label{sec-add-analyses}
+\DIFdelbegin %DIFDELCMD < \begin{table}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+%DIFDELCMD < \label{tbl-pairwise}%%%
+\DIFdelFL{Pairwise comparisons. The interaction is
+driven by there being greater differences in ratings of belief strength
+made before and after viewing plots in the atypical condition compared
+to the typical.}}
+%DIFAUXCMD
+%DIFDELCMD < 
+
+%DIFDELCMD < \centering{
+%DIFDELCMD < 
+
+%DIFDELCMD < \begin{tabular}[t]{lrl}
+%DIFDELCMD < \toprule
+%DIFDELCMD < Contrast & Z ratio & \textit{p}\\
+%DIFDELCMD < \midrule
+%DIFDELCMD < Post-Viewing x Atypical | Pre-Viewing x Atypical & 66.32 & <0.001\\
+%DIFDELCMD < Post-Viewing x Atypical | Post-Viewing x Typical & 0.60 & 0.932\\
+%DIFDELCMD < Post-Viewing x Atypical | Pre-Viewing x Typical & 9.32 & <0.001\\
+%DIFDELCMD < Pre-Viewing x Atypical | Post-Viewing x Typical & -9.96 & <0.001\\
+%DIFDELCMD < Pre-Viewing x Atypical | Pre-Viewing x Typical & -1.25 & 0.596\\
+%DIFDELCMD < Post-Viewing x Typical | Pre-Viewing x Typical & 58.12 & <0.001\\
+%DIFDELCMD < \bottomrule
+%DIFDELCMD < \end{tabular}
+%DIFDELCMD < 
+
+%DIFDELCMD < }
+%DIFDELCMD < 
+
+%DIFDELCMD < \end{table}%%%
+%DIF < 
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \subsubsection{Additional Analyses}\label{sec-add-analyses}
 
 We also found effects of participants' scores on the defensive
 confidence test (\(F\)(4) = 69.73, \emph{p} \textless{} .001),
@@ -1100,10 +1314,10 @@ Section~\ref{sec-add-analyses-discussion}.
 Both of our hypotheses were supported in this experiment. Participants
 reliably updated their beliefs after viewing scatterplots, and the
 difference between pre- and post-viewing beliefs was greatest for the
-participants who viewed scatterplots in the alternative condition. These
+participants who viewed scatterplots in the \DIFdelbegin \DIFdel{atypical }\DIFdelend \DIFaddbegin \DIFadd{alternative }\DIFaddend condition. These
 results suggest that the effects described in previous work can go
 beyond perception and have impacts on higher-level cognitions,
-specifically, participants' beliefs about strength of relatedness. These
+specifically, participants' \DIFdelbegin \DIFdel{strength of beliefs about }\DIFdelend \DIFaddbegin \DIFadd{beliefs about strength of }\DIFaddend relatedness. These
 findings are encouraging for data visualization designers who wish to
 design scatterplots such that correlation perception more closely
 matches the underlying statistics, however further work is required
@@ -1115,28 +1329,39 @@ Emotionality}\label{sec-add-analyses-discussion}
 
 \begin{figure}
 
-\centering{
+\DIFdelbeginFL %DIFDELCMD < \centering{
+%DIFDELCMD < 
 
-\includegraphics{beliefs_atypical_scatterplots_files/figure-pdf/fig-add-analyses-plots-1.pdf}
+%DIFDELCMD < \includegraphics{beliefs_atypical_scatterplots_files/figure-pdf/fig-add-analyses-plots-1.pdf}
+%DIFDELCMD < 
+
+%DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \centering{
+
+\includegraphics{beliefs_alternative_scatterplots_files/figure-pdf/fig-add-analyses-plots-1.pdf}
 
 }
+\DIFaddendFL 
 
 \caption{\label{fig-add-analyses-plots}Illustrating how differences in
 beliefs about strength of relatedness change as a function of
 participants' scores on the graph literacy test (left), their scores on
 the defensive confidence test (center), and their ratings of statement
-emotionality (right). Localled smoothed curves with 95\% CI ribbons are
-shown separately for standard and alternative scatterplot viewing
+emotionality (right). Localled smoothed \DIFdelbeginFL \DIFdelFL{cruves }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{curves with 95\% CI ribbons }\DIFaddendFL are
+shown separately for \DIFdelbeginFL \DIFdelFL{typical }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{standard }\DIFaddendFL and \DIFdelbeginFL \DIFdelFL{atypical }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{alternative }\DIFaddendFL scatterplot viewing
 conditions. Lower ratings of Difference in Belief (\(y\) axis)
 correspond to lower levels of belief change between pre- and post-
 scatterplot viewing times.}
 
 \end{figure}%
 
-Mean differences in pre- and post- plot viewing ratings of strength of
+Mean differences in pre- and post- \DIFdelbegin \DIFdel{plot-viewing }\DIFdelend \DIFaddbegin \DIFadd{plot viewing }\DIFaddend ratings of strength of
 relatedness by Subjective Graph Literacy score can be seen in
-Figure~\ref{fig-add-analyses-plots}. Generally, participants with higher
-scores on a graph literacy test experienced smaller changes in their
+Figure~\ref{fig-add-analyses-plots}. Generally, participants \DIFdelbegin \DIFdel{who scored
+higher
+}\DIFdelend \DIFaddbegin \DIFadd{with higher
+scores }\DIFaddend on a graph literacy test experienced smaller changes in their
 ratings of strength of relatedness. This is in line with previous work
 suggesting that those with higher levels of graph or visualization
 literacy show better performance in inference tasks related to
@@ -1153,7 +1378,7 @@ an unfamiliar data visualization.
 
 We observe an opposing pattern of results when examining the effects of
 defensive confidence on participants' propensity for belief change.
-Generally, participants with higher scores on the defensive confidence
+Generally, participants \DIFdelbegin \DIFdel{who scored more highly }\DIFdelend \DIFaddbegin \DIFadd{with higher scores }\DIFaddend on the defensive confidence
 test experienced greater levels of belief change. This is in line with
 evidence that those who are more confident in their ability to defend
 their own beliefs are more liable to having those beliefs changed in
@@ -1164,12 +1389,12 @@ with lower levels of attention to the fact it opposes their beliefs. The
 present study provides additional evidence in favour of this phenomenon.
 While the general pattern of results is expected based on previous work,
 the interaction present between defensive confidence and scatterplot
-condition is novel. It would appear that despite following the normal
+condition is novel\DIFdelbegin \DIFdel{(see Figure~\ref{fig-add-analyses-plots})}\DIFdelend . It would appear that despite following the normal
 pattern of results for low to moderate levels of defensive confidence,
-those participants who viewed the standard scatterplots experienced a
+those participants who viewed the \DIFdelbegin \DIFdel{typical }\DIFdelend \DIFaddbegin \DIFadd{standard }\DIFaddend scatterplots experienced a
 drop in belief change as defensive confidence increased past
 \textasciitilde{} 36/60. We suggest that the unfamiliar nature of the
-alternative scatterplots was protective against an unexpected behaviour
+\DIFdelbegin \DIFdel{atypical }\DIFdelend \DIFaddbegin \DIFadd{alternative }\DIFaddend scatterplots was protective against an unexpected \DIFdelbegin \DIFdel{, standard }\DIFdelend behaviour
 whereby very high levels of defensive confidence decrease susceptibility
 to belief change.
 
@@ -1199,27 +1424,31 @@ able to change beliefs about the levels of relatedness between
 variables. Given the frequent real-world usage of scatterplots, and the
 role of data visualizations in decision-making, it is particularly
 important to empirically test whether perceptual effects may be extended
-into a cognitive space to influence beliefs. Doing so is a necessary
+\DIFaddbegin \DIFadd{into a cognitive space }\DIFaddend to influence beliefs. Doing so is a necessary
 step in broadening the data visualization design space and bringing
 novel designs closer towards use cases with the potential for real-world
 consequences while maintaining a strong foundation of experimental
 evidence. Having controlled as far as possible for factors such as
-emotional content, the consensus on how related the variables in
+\DIFdelbegin \DIFdel{the emotional contentof the graph}\DIFdelend \DIFaddbegin \DIFadd{emotional content}\DIFaddend , the consensus on how related the variables in
 question were, and the general design (bar the points themselves) of the
-scatterplot, we can conclude with strong evidence that alternative
-scatterplot design was responsible for increasing the level of belief
+scatterplot, we can conclude with strong evidence that \DIFdelbegin \DIFdel{atypical
+}\DIFdelend \DIFaddbegin \DIFadd{alternative
+}\DIFaddend scatterplot design was responsible for increasing the level of belief
 change amongst participants.
 
-An alternative (although not competing) explanation for the results we
+\DIFaddbegin \DIFadd{An alternative (although not competing) explanation for the results we
 have seen here comes from recent work on the incorporation of
 uncertainty visualisations in scatterplots. Karduni et al.
-\citep{karduni_2020} found in 2020 that visualizations that encode
+\mbox{%DIFAUXCMD
+\citep{karduni_2020} }\hskip0pt%DIFAUXCMD
+found in 2020 that visualizations that encode
 uncertainty produce lower levels of belief change compared to ones that
 do not. The alternative scatterplot design we employed can be thought of
 as masking some of the uncertainty inherent in a scatterplot point cloud
 by reducing the salience of the most exterior points.
+}
 
-Previous work has provided support for the idea that it is the shape of
+\DIFaddend Previous work has provided support for the idea that it is the shape of
 the point cloud, more specifically, the width of the probability
 distribution it represents, that drives correlation perception in
 scatterplots. If this mechanism were valid, our results would be
@@ -1290,7 +1519,11 @@ simple, blunt, 7-point Likert scale. While we argue that this is not
 particularly problematic given that we intended only to find an effect
 (and succeeded in that), future work may wish to use techniques that
 provide further scope for analysis, such as the graphical elicitation
-method developed by Karduni et al. \citep{karduni_2020, karduni_2023}.
+method developed by Karduni et al. \DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
+\citep{karduni_2021, karduni_2023}}\hskip0pt%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
+\citep{karduni_2020, karduni_2023}}\hskip0pt%DIFAUXCMD
+}\DIFaddend .
 
 \section{Conclusion}\label{sec-conclusion}
 
@@ -1298,19 +1531,22 @@ We investigated the effects of alternative scatterplot designs that vary
 the opacities and sizes of points as a function of their distance from
 the regression line on the propensity for belief change following
 visualization viewing. We presented these designs, and corresponding
-standard scatterplots, as if they were part of a news item and used a
+\DIFdelbegin \DIFdel{typical }\DIFdelend \DIFaddbegin \DIFadd{standard }\DIFaddend scatterplots, as if they were part of a news item and used a
 real-world variable pair that had been selected by our population of
 interest as being representative of a weakly-held, emotionally neutral
 correlation. We found that participants who viewed scatterplots
 employing alternative designs experienced greater levels of belief
-change than those who viewed standard plots. In addition, we found small
+change than those who viewed \DIFdelbegin \DIFdel{typical }\DIFdelend \DIFaddbegin \DIFadd{standard }\DIFaddend plots. In addition, we found small
 interactive effects of a number of participant characteristics. Our
 results suggest that visualization techniques that have previously been
 employed to improve perception amongst participants are deserving of
 study with regards to their potential to change beliefs.
 
 \bibliographystyle{ACM-Reference-Format}
-\bibliography{atypical-scatterplots.bib}
+\DIFdelbegin %DIFDELCMD < \bibliography{atypical-scatterplots.bib}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \bibliography{alternative-scatterplots.bib}
+\DIFaddend 
 
 %% begin pandoc before-bib
 %% end pandoc before-bib

@@ -16,7 +16,7 @@ execute:
   warning: false
   message: false
   include: false
-bibliography: atypical-scatterplots.bib
+bibliography: alternative-scatterplots.bib
 title: Effects of Alternative Scatterplot Designs on Belief
 # if short-title is defined, then it's used
 short-title: 
@@ -160,7 +160,7 @@ options(knitr.kable.NA = "")
 
 ```{r}
 #| label: lazyload-cache
-if (!params$eval_models){ lazyload_cache_dir("beliefs_atypical_scatterplots_cache/pdf") }
+if (!params$eval_models){ lazyload_cache_dir("beliefs_alternative_scatterplots_cache/pdf") }
 ```
 
 ```{r}
@@ -705,8 +705,8 @@ make_sig_table_interact <- function (model) {
     mutate("Cohen's \\textit{d}" = effectsize::oddsratio_to_d(`Odds Ratio`)) %>%
     mutate("Effect" = recode(Effect,
                                "rating_timepost_bel" = "Rating Time",
-                               "conditionT" = "Condition",
-                               "rating_timepost_bel:conditionT" = "Rating Time x Condition")) %>%
+                               "conditionS" = "Condition",
+                               "rating_timepost_bel:conditionS" = "Rating Time x Condition")) %>%
     column_to_rownames(var = "Effect")
  
   table <- kbl(df, booktabs = T, digits = c(2,3,2,2,2,2,3), escape = F)

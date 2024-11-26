@@ -1,16 +1,16 @@
-# Add the rocker/verse Docker image for R 4.4.1
+# Add the rocker/verse Docker image for R 4.4.2
 
-FROM rocker/verse:4.4.1
+FROM rocker/verse:4.4.2
 
 # Add our files to container
 
 ADD data/ /home/rstudio/data/
 ADD additional_scripts/ /home/rstudio/additional_scripts/
-ADD beliefs_attitudes_atypical_scatterplots.qmd /home/rstudio/
+ADD beliefs_alternative_scatterplots.qmd /home/rstudio/
 ADD item_preparation/ /home/rstudio/item_preparation/
-ADD beliefs_attitudes_atypical_scatterplots_cache/ /home/rstudio/beliefs_attitudes_atypical_scatterplots_cache/
+ADD beliefs_alternative_scatterplots_cache/ /home/rstudio/beliefs_alternative_scatterplots_cache/
 ADD _extensions/ /home/rstudio/_extensions/
-ADD atypical-scatterplots.bib /home/rstudio/
+ADD alternative-scatterplots.bib /home/rstudio/
 
 # Add appropriate versions of required R packages to container
 
