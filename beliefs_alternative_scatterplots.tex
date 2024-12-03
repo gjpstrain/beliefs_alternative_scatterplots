@@ -559,7 +559,7 @@ on perceptual factors and mechanisms; here we introduce the potential
 for top-down effects to bias participants. Recent work has established
 that scatterplots are able to induce different levels of belief change
 in viewers \citep{karduni_2020, markant_2023}; this may depend on
-factors such as prior belief strength, attitudes, and the presence of
+factors such as prior belief strength, attitudes, and the presence or
 absence of uncertainty visualizations. Accordingly, our pre-study is
 essential for isolating our variable of interest, the alternative
 scatterplot design. Data visualization does not take place without
@@ -622,13 +622,13 @@ the content of a visualization \citep{phelps_2006, harrison_2013} and
 the emotional state of a participant \citep{thoresen_2016} can have
 perceptual and cognitive effects on participants. We were unable to find
 resources for correlative statements that included ratings for belief
-strength and statement emotionality, so elected to create our own. To
-control for these factors as much as possible in the main experiment, we
-ran our pre-study with the intent of finding a correlative statement
-that was matched on emotional content and level of belief strength.
-Instead of creating these statements ourselves, we chose to streamline
-the process by using the ChatGPT4 Large Language Model \citep{chat_gpt}.
-We used the following prompt:
+strength and emotional valence, so elected to create our own. To control
+for these factors as much as possible in the main experiment, we ran our
+pre-study with the intent of finding a correlative statement that was
+matched on emotional valence and level of belief strength. Instead of
+creating these statements ourselves, we chose to streamline the process
+by using the ChatGPT4 Large Language Model \citep{chat_gpt}. We used the
+following prompt:
 
 \begin{quotation}
     ``Generate 100 statements that describe the correlation between two variables, such as:
@@ -639,28 +639,28 @@ We used the following prompt:
 \end{quotation}
 
 The full list of these statements can be found in the supplementary
-materials. Two authors rated each statement on emotionality and belief
-about strength of relatedness using Likert scales from 1 to 7. Both
-statement emotionality and strength of relatedness were anchored at
-points 1 and 7: \emph{Very Negative} and \emph{Very Positive} for the
-former, and \emph{Not Related At All} and \emph{Strongly Related} for
-the latter. All other points were unlabelled. We calculated a quadratic
-weighted Cohen's Kappa between the two raters using the \textbf{irr}
-package (version 0.84.1 \citep{irr}) to penalize larger magnitude
-disagreements more harshly. We found agreement above chance for both
-statement emotionality (\(\kappa\) = 0.49, \emph{p} \textless{} .001)
-and strength of relatedness (\(\kappa\) = 0.51, \emph{p} \textless{}
-.001), indicating moderate levels of agreement in both cases
-\citep{cohen_1968, fleiss_1969}. Following this, we selected strongly
-and weakly correlated statements with the highest level of absolute
-agreement, resulting in 14 strongly correlated statements and 11 weakly
-correlated statements that can be seen in the supplementary materials.
-We then tested these 25 statements with a representative UK sample to
-ascertain consensus on both statement emotionality and strength of
-relatedness. Doing so allows us to minimize the impact of these factors
-when we analyse the effects of alternative scatterplot design on the
-propensity for belief change in our main experiment. We hypothesized
-that:
+materials. Two authors rated each statement on emotional valence and
+belief about strength of relatedness using Likert scales from 1 to 7.
+Both statement emotional valence and strength of relatedness were
+anchored at points 1 and 7: \emph{Very Negative} and \emph{Very
+Positive} for the former, and \emph{Not Related At All} and
+\emph{Strongly Related} for the latter. All other points were
+unlabelled. We calculated a quadratic weighted Cohen's Kappa between the
+two raters using the \textbf{irr} package (version 0.84.1 \citep{irr})
+to penalize larger magnitude disagreements more harshly. We found
+agreement above chance for both emotional valence (\(\kappa\) = 0.49,
+\emph{p} \textless{} .001) and strength of relatedness (\(\kappa\) =
+0.51, \emph{p} \textless{} .001), indicating moderate levels of
+agreement in both cases \citep{cohen_1968, fleiss_1969}. Following this,
+we selected strongly and weakly correlated statements with the highest
+level of absolute agreement, resulting in 14 strongly correlated
+statements and 11 weakly correlated statements that can be seen in the
+supplementary materials. We then tested these 25 statements with a
+representative UK sample to ascertain consensus on both statement
+emotionality and strength of relatedness. Doing so allows us to minimize
+the impact of these factors when we analyse the effects of alternative
+scatterplot design on the propensity for belief change in our main
+experiment. We hypothesized that:
 
 \begin{itemize}
 \tightlist
@@ -718,11 +718,11 @@ Section~\ref{sec-pre-study}.
 
 All analyses were conducted using R (version 4.4.2 \citep{rcore}). We
 use the \textbf{irr} package to calculate Fleiss' Kappa to measure
-interrater agreement on statement emotionality and strength of
+interrater agreement on statement emotional valence and strength of
 relatedness for the 25 experimental items. This analysis revealed that
-participants agreed above chance on statement emotionality (\(\kappa\) =
-0.07, \emph{p} \textless{} .001) and strength of relatedness (\(\kappa\)
-= 0.06, \emph{p} \textless{} .001).
+participants agreed above chance on statement emotional valence
+(\(\kappa\) = 0.07, \emph{p} \textless{} .001) and strength of
+relatedness (\(\kappa\) = 0.06, \emph{p} \textless{} .001).
 
 \subsection{Selecting Statements for the Main
 Experiment}\label{sec-selecting-statements}
@@ -733,25 +733,25 @@ emotional valence. Statements with average emotionality ratings between
 3 and 5 are statements 2, 10, 22, 16, and 23, which can be seen in
 Table~\ref{tbl-candidate-statements}. To ascertain which statements
 represent the greatest consensus, we add standard deviations in ratings
-for statement emotionality and strength of relatedness. Due to concerns
-about experimental power, and in line with evidence that propensity for
-belief change is highest when prior beliefs are not strongly held
-\citep{xiong_2022, markant_2023}, we elected at this point to test only
-the statement corresponding to weak beliefs about the strength of
-relatedness between the variables in question. We therefore test
-statement number 22, ``Higher consumption of spicy foods is associated
-with a lower risk of certain types of cancer'', however we modify the
-wording so that the variables (food consumption and cancer risk) are
-positively correlated, as while the manipulations we use in the
-alternative scatterplot condition can affect estimates of correlation in
-positively correlated scatterplots, no work regarding the effects of
-these manipulations in negatively correlated scatterplots has been
-completed.
+for statement emotional valence and strength of relatedness. Due to
+concerns about experimental power, and in line with evidence that
+propensity for belief change is highest when prior beliefs are not
+strongly held \citep{xiong_2022, markant_2023}, we elected at this point
+to test only the statement corresponding to weak beliefs about the
+strength of relatedness between the variables in question. We therefore
+test statement number 22, ``Higher consumption of spicy foods is
+associated with a lower risk of certain types of cancer'', however we
+modify the wording so that the variables (food consumption and cancer
+risk) are positively correlated, as while the manipulations we use in
+the alternative scatterplot condition can affect estimates of
+correlation in positively correlated scatterplots, no work regarding the
+effects of these manipulations in negatively correlated scatterplots has
+been completed.
 
 \begin{table}
 
 \caption{\label{tbl-candidate-statements}Statements with neutral average
-emotionality ratings.}
+emotional valence ratings.}
 
 \centering{
 
@@ -774,8 +774,8 @@ Item & Statement\\
 \subsection{Discussion}\label{sec-discussion-pre}
 
 Fleiss' Kappa values for interrater agreement on both statement
-emotionality and strength of correlation scales are low (\(\kappa\) =
-0.07 and \(\kappa\) = 0.06 respectively), however do exceed that which
+emotional valence and strength of correlation scales are low (\(\kappa\)
+= 0.07 and \(\kappa\) = 0.06 respectively), however do exceed that which
 would be expected by chance. In light of this we do not make decisions
 regarding which statement to use based on the values of Fleiss' Kappa
 observed, but rather on the standard deviations of ratings across all
@@ -818,19 +818,20 @@ estimates, we make the following hypotheses:
 
 We also undertake exploratory investigations taking into account
 participants' scores on a defensive confidence test, their scores on a
-graph literacy test, and each participant's rating of the emotionality
-of the correlative statement used. Analysis including each of these
-factors can be found in Section~\ref{sec-add-analyses}, and we justify
-their inclusion below.
+graph literacy test, and each participant's rating of the emotional
+valence of the correlative statement used. Analysis including each of
+these factors can be found in Section~\ref{sec-add-analyses}, and we
+justify their inclusion below.
 
 \subsubsection{Defensive Confidence}\label{sec-def-con}
 
 In line with evidence that those who are more confident in their ability
 to defend their own positions are more susceptible to having those
 positions changed \citep{albarracin_2004}, we measured participants'
-defensive confidence using a 12-item scale. This scale is replicated
-from previous work in the supplemental material, and has been utilized
-more recently \citep{markant_2023} to explore the potential for attitude
+defensive confidence using Albarracín and Mitchell's
+\citep{albarracin_2004} 12-item scale. This scale is replicated from
+previous work in the supplemental material, and has been utilized more
+recently \citep{markant_2023} to explore the potential for attitude
 change specifically with regard to correlations in scatterplots.
 Participants provide answers to the 12 scale items using a 5-point
 Likert scale anchored at points 1 (\emph{not at all characteristic of
@@ -861,8 +862,8 @@ and perceptual effects on performance in visualization tasks
 intention behind performing the pre-study. Nonetheless, we cannot be
 certain that each participant considers the emotional content of our
 chosen correlative statement to be the same. To account for these
-potential individual differences, we also collect an emotionality rating
-during the main study.
+potential individual differences, we also collect participants' ratings
+of emotional valence during the main study.
 
 \subsection{Stimuli}\label{sec-stimuli-main}
 
@@ -913,7 +914,7 @@ were included in the full analysis (73 male, 73 female, and 4
 non-binary). Participants' mean age was 39.3 (\emph{SD} = 11.5).
 Participants' mean graph literacy score was 21.3 (\emph{SD} = 4.3) out
 of 30, their mean defensive confidence score was 43 (\emph{SD} = 6.8)
-out of 60, and their mean rating of statement emotionality was 2.9
+out of 60, and their mean rating of statement emotional valence was 2.9
 (\emph{SD} = 1.3) on a 7-point Likert scale. On average, participants
 took 14.2 minutes to complete the experiment (\emph{SD} = 6.41).
 
@@ -958,14 +959,15 @@ hypotheses were made based on these data and therefore we do not analyse
 them further. Following instructions, which included descriptions of
 scatterplots and Pearson's \emph{r}, participants had a chance to
 practice using the slider, before being asked to indicate their beliefs
-about emotionality and the strength of relatedness between the variables
-described in our chosen statement. We captured these data using Likert
-scales identical to those described in Section~\ref{sec-pre-study}.
-After completing the experimental trials, participants were tested again
-on their beliefs about strength of relatedness and then debriefed that
-the data they were shown were fictional. Interspersed among the
-experimental items were 4 attention check trials which explicitly asked
-participants to set the slider to 0 or 1.
+about emotional valence and the strength of relatedness between the
+variables described in our chosen statement. We captured these data
+using Likert scales identical to those described in
+Section~\ref{sec-pre-study}. After completing the experimental trials,
+participants were tested again on their beliefs about strength of
+relatedness and then debriefed that the data they were shown were
+fictional. Interspersed among the experimental items were 4 attention
+check trials which explicitly asked participants to set the slider to 0
+or 1.
 
 \subsection{Results}\label{sec-results-main}
 
@@ -1088,11 +1090,11 @@ Rating Time x Condition & -0.72 & 0.071 & -10.22 & <0.001 & 2.06 & 0.40\\
 We also found effects of participants' scores on the defensive
 confidence test (\(F\)(4) = 69.73, \emph{p} \textless{} .001),
 participants' scores on the graph literacy test (\(F\)(4) = 42.66,
-\emph{p} \textless{} .001), and of how emotional participants rated the
-chosen correlative statement before beginning the block of trials
-(\(F\)(4) = 43.51, \emph{p} \textless{} .001). We discuss the
+\emph{p} \textless{} .001), and of how emotionally valent participants
+rated the chosen correlative statement before beginning the block of
+trials (\(F\)(4) = 43.51, \emph{p} \textless{} .001). We discuss the
 interactions between the main effect and graph literacy, defensive
-confidence, and statement emotionality in
+confidence, and statement emotional valence in
 Section~\ref{sec-add-analyses-discussion}.
 
 \subsection{Discussion}\label{sec-main-discussion}
@@ -1146,7 +1148,7 @@ can preferentially attend to relevant features of visualizations to a
 greater degree \citep{okan_2016}, than those with lower levels of graph
 literacy. In the present study, we provide evidence that those with
 greater levels of graph literacy are \emph{less susceptible} to having
-their beliefs changed by visualizations. The use of the plot
+their beliefs changed by visualizations. The use of the alternative plot
 manipulation largely removes this effect, suggesting that there is less
 systematic reliance on graph literacy when participants are faced with
 an unfamiliar data visualization.
@@ -1173,7 +1175,7 @@ alternative scatterplots was protective against an unexpected behaviour
 whereby very high levels of defensive confidence decrease susceptibility
 to belief change.
 
-The effect of statement emotionality on belief change is also
+The effect of statement emotional valence on belief change is also
 illustrated in Figure~\ref{fig-add-analyses-plots}. There is a broad
 research space regarding emotionality and data visualization
 \citep{lan_2023}, and it is clear from previous work that emotion
