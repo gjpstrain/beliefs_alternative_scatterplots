@@ -4,7 +4,7 @@ format: acm-pdf
 # which you can eventually use with TAPS
 keep-tex: true
 params:
-  eval_models: true
+  eval_models: false
   
 knitr:
   opts_chunk: 
@@ -1196,9 +1196,11 @@ Doing so allows us to minimize the impact of these factors when we analyse the e
 of alternative scatterplot design on the propensity for belief change
 in our main experiment. We hypothesized that:
 
-  - H1: there will be a significant difference in the average ratings of emotionality between statements. 
+  - H1: there will be a significant difference in the average ratings of emotional valence between statements.[^4] 
   - H2: there will be a significant difference in the average ratings of strength of relatedness 
 between statements.
+
+[^4]: The pre-registration for this hypothesis refers to "emotionality". In response to reviewer comments, we have clarified that we tested emotional valence, and have therefore used this wording here.
 
 ## Method {#sec-method-pre}
 
@@ -1219,9 +1221,9 @@ female). Participants' mean age was `r printnum(age_pre$mean, digits = 1)` (*SD*
 
 Each participant saw all survey items (see supplementary material),
 along with the six attention check items, in a fully randomized order. All
-experimental code, materials, and instructions are hosted on GitLab[^4].
+experimental code, materials, and instructions are hosted on GitLab[^5].
 
-[^4]: removed for anon
+[^5]: removed for anon
 
 ### Procedure {#sec-procedure-pre}
 
@@ -1353,16 +1355,16 @@ in the main study and include these ratings as part of our analyses.
 # Main Study: Potential for Belief Change Using Alternative Scatterplots {#sec-main-study}
 
 We test the statement that exhibited the lowest average level of belief about
-strength of relatedness and the 2nd highest level of consensus. Modified for directionality,
+strength of relatedness and the 2^nd^ highest level of consensus. Modified for directionality,
 this statement is therefore: "Higher consumption of plain (non-spicy) foods
 is associated with a higher risk of certain types of cancer." To give ourselves
 the best chance of detecting an effect of viewing alternative scatterplots, we elected
 to design our scatterplots based on a popular British news source and to falsely
 credit the data as being provided by the British National Health Service (NHS). Participants
-were informed that said news source had requested that their identity be obscured,
-and were debriefed that this was not the case and that the data were fictional,
+were informed that said news source had requested that their identity be obscured.
+They were debriefed that this was not the case, and that the data were fictional,
 following completion of the experiment. Based on previous evidence that beliefs
-can change after viewing data visualisations [@karduni_2020; @markant_2023],
+can change after viewing data visualizations [@karduni_2020; @markant_2023],
 and that scatterplots employing the point size and opacity manipulations detailed
 in @sec-scatterplots are able to affect perceptual estimates, we make the following hypotheses:
 
@@ -1609,12 +1611,12 @@ levels of belief change. Participants saw all 45 experimental items for their gr
 with 4 attention check items, in a fully randomized order. Our dependent variable 
 was the level of belief change induced by viewing the scatterplot visualizations,
 so participants were tested on how strongly related they believed the variables 
-described by the correlative statement were **before** and **after** viewing the
+described by the correlative statement were both **before** and **after** viewing the
 experimental items. All experimental code, materials, and instructions are 
-hosted on GitLab as two separate experiments [^5] [^6].
+hosted on GitLab as two separate experiments [^6] [^7].
 
-[^5]: removed for anon
 [^6]: removed for anon
+[^7]: removed for anon
 
 ### Procedure {#sec-procedure-main}
 
@@ -1627,7 +1629,7 @@ first shown the participant information sheet and asked to provide consent
 through key presses in response to consent statements, after which they were
 asked to provide their age and gender identity. Participants then completed the 12-item
 Defensive Confidence scale described by Albarracín and Mitchell [@albarracin_2004]
-and the 5-item Subjective Graph Literacy scale [@garcia_2016] [^7].
+and the 5-item Subjective Graph Literacy scale [@garcia_2016] [^8].
 To give legitimacy to our data visualizations with the hope of maximizing
 any potential belief change, participants were told that the graphs were taken
 from a well-known British news source, but that the identity of this source had 
@@ -1644,7 +1646,7 @@ then debriefed that the data they were shown were fictional. Interspersed among
 the experimental items were 4 attention check trials which explicitly
 asked participants to set the slider to 0 or 1.
 
-[^7]: The inclusion of this scale was not specified in the pre-registration.
+[^8]: The inclusion of this scale was not specified in the pre-registration.
 
 ## Results {#sec-results-main}
 
@@ -1691,14 +1693,14 @@ they do not quantify the difference between levels of rating. Metric modelling
 assuming equal levels of difference between ratings, such as linear regression, 
 is therefore inappropriate [@liddell_2018]. In light of this, we use the **ordinal**
 package (version 2023.12-4.1 [@ordinal]) to build cumulative link mixed effects
-models to analyse Likert scale data [^8]. We use the **buildmer** (version 2.11 [@buildmer])
+models to analyse Likert scale data [^9]. We use the **buildmer** (version 2.11 [@buildmer])
 package to automate selection of the random effects structure; we provide a
 maximal model, which includes random intercepts for participants, and **buildmer**
 identifies the most complex model that successfully converges. We present odds ratios and equivalent
 Cohen's *d* effect sizes that were calculated using the **effectsize** package
 (version 0.8.9 [@effectsize]). 
 
-[^8]: Our pre-registration specified linear mixed effects models (metric). Conclusions
+[^9]: Our pre-registration specified linear mixed effects models (metric). Conclusions
 are identical when using said models, and code for this analysis is included in the repository
 associated with this paper.
 
@@ -1887,7 +1889,7 @@ condition_interact_model <- buildclmm(rating ~ rating_time * condition +
                               (1 | participant),
                             data = main_exp_tidy)
 
-# linear mixed effects model (metric), see footnote 8
+# linear mixed effects model (metric), see footnote 9
 #
 # if you want to run this, recode the rating factor as unordered
 #
@@ -2148,7 +2150,7 @@ we can conclude with strong evidence that alternative scatterplot design was res
 for increasing the level of belief change amongst participants.
 
 An alternative (although not competing) explanation for the results we have seen here
-comes from recent work on the incorporation of uncertainty visualisations in scatterplots.
+comes from recent work on the incorporation of uncertainty visualizations in scatterplots.
 Karduni et al. [@karduni_2020] found in 2020 that visualizations that encode uncertainty
 produce lower levels of belief change compared to ones that do not. The alternative
 scatterplot design we employed can be thought of as masking some of the uncertainty
@@ -2223,12 +2225,12 @@ such as the graphical elicitation method developed by Karduni et al. [@karduni_2
 
 We investigated the effects of alternative scatterplot designs that vary the opacities
 and sizes of points as a function of their distance from the regression line on 
-the propensity for belief change following visualization viewing. We presented these
-designs, and corresponding standard scatterplots, as if they were part of a news item
+the propensity for belief change following scatterplot visualization viewing. We presented these
+designs, and corresponding standard scatterplots, as if they were part of news items,
 and used a real-world variable pair that had been selected by our population of interest
 as being representative of a weakly-held, emotionally neutral correlation. We found 
 that participants who viewed scatterplots employing alternative designs
-experienced greater levels of belief change than those who viewed standard
+experienced greater levels of belief change compared to those who viewed standard
 plots. In addition, we found small interactive effects of a number of participant
 characteristics. Our results suggest that visualization techniques that have
 previously been employed to improve perception amongst participants are deserving
