@@ -1731,7 +1731,7 @@ make_sig_table_rating_time(rating_time_model)
 #| label: fig-descriptives
 #| include: true
 #| out-width: "100%"
-#| fig-cap: Violin plots for pre- and post-plot viewing ratings of strength of relatedness for standard and alternative scatterplot conditions. Mean ratings are also shown as points.  
+#| fig-cap: Dot plots for pre- and post-plot viewing ratings of strength of relatedness for standard and alternative scatterplot conditions. Mean ratings are also shown as points.  
 
 # violins
 
@@ -1744,32 +1744,35 @@ main_exp_tidy %>%
                                 "post_bel" = "Post")) %>%
   mutate(rating = as.numeric(rating)) %>%
   ggplot(aes(x = condition, y = rating, fill = rating_time)) +
-  geom_violin(alpha = 0.8, position = position_dodge(1), width = 1.5) +
-  #geom_boxplot(outliers = F, key_glyph = "polygon", coef = 0, width = 0.15, position = position_dodge(1)) +
+  geom_dots(layout = "bar", color = NA, position
+                = position_dodge(0.8), side = "both") +
   scale_color_brewer(palette = "Dark2", aesthetics = "fill") +
   stat_summary(fun.y = mean,
                geom = "point",
                shape = 16,
                size = 2,
-               position = position_dodge(1)) +
+               position = position_dodge(0.8)) +
   scale_y_continuous(breaks = scales::pretty_breaks(n = 7)) +
   labs(x = "",
        y = "Rating",
        fill = "Rating Time") +
   theme_ggdist() +
-  theme(legend.position = c(0.1, 0.075),
+  theme(legend.position = c(0.1, 0.07),
         legend.background = element_rect(fill = NA),
         legend.direction = "horizontal",
         legend.box = "horizontal",
         legend.key.size = unit(1., "line"),
-        legend.title.position = "top",
+        legend.title.position = "left",
         legend.title = element_text(size = 10),
         axis.line.y = element_blank(),
         axis.ticks.y = element_blank(),
         axis.text.y = element_text(size = 11, colour = "black"),
         axis.text.x = element_text(size = 11)) +
   guides(shape = F) +
-  guides(fill = guide_legend(override.aes = list(shape = NA), reverse = F)) +
+  guides(fill = guide_legend(
+    override.aes = list(shape = 21, size = 5, color = "NA"),
+    reverse = F
+  )) +
   coord_flip()
   #annotate(geom = "text",
   #         label = "Pre",
@@ -1788,6 +1791,15 @@ main_exp_tidy %>%
   #         y = 5.5,
   #         x = 1.15) 
 
+
+  main_exp_tidy |>
+      select(participant, item_no, condition, rating_time, rating) |>
+      pivot_wider(names_from = rating_time, values_from = rating) |>
+      mutate(diff = as.numeric(post_bel) - as.numeric(pre_bel)) |>
+      ggplot(aes(x = diff, y = condition)) +
+      stat_histinterval(breaks = breaks_fixed(width = 1), align = "center", .width =
+                0) +
+      labs(x = "Post rating - pre rating")
 
 ```
 
