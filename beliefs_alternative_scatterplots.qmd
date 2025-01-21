@@ -4,7 +4,7 @@ format: acm-pdf
 # which you can eventually use with TAPS
 keep-tex: true
 params:
-  eval_models: false
+  eval_models: true
   
 knitr:
   opts_chunk: 
@@ -857,7 +857,7 @@ regarding data visualization.
 
 While most commonly used to communicate the linear correlation, or level of relatedness,
 between a pair of variables, scatterplots can also be designed to facilitate the
-detection of outliers, to convey differences between clusters, or to display
+detection of outliers, to visualize differences between clusters, or to display
 non-linear correlations [@sarikaya_2018]. The suitability of scatterplots for such a range of tasks,
 and the opportunity for designers to design with multiple tasks in mind, plays
 a large part in their popularity. Building on previous work, we elect to focus
@@ -867,7 +867,7 @@ low levels of interindividual variance (especially when compared to other visual
 that communicate the same idea [@harrison_2014; @kay_2015]), our accuracy in interpretation
 is poor. Studies asking participants to numerically estimate correlation 
 [@strahan_1978; @bobko_1979; @cleveland_1982; @lane_1985; @lauer_1989; @collyer_1990;
-@meyer_1992] or estimate it via a bisection task [@rensink_2017] find consistent
+@meyer_1992] or to estimate it via a bisection task [@rensink_2017] find consistent
 levels of underestimation, particularly when 0.2 < *r* < 0.6. If scatterplots
 were used solely for communication between those trained in statistics and data
 visualization, this would not be particularly problematic, however, this is not
@@ -908,7 +908,7 @@ designs to alter beliefs about relatedness facilitates better visualization tech
 but also allows us to understand how these designs might be used by malevolent actors with a view to inoculating
 those who engage with them. To this end, we present a two-experiment study.
 First, we use crowdsourcing to select part of our experimental
-stimuli, then we test the propensity for previously established alternative scatterplot
+stimuli. We then test the propensity for previously established alternative scatterplot
 designs to alter beliefs about relatedness, taking into account the emotional content
 of the statement and the graph literacy and defensive confidence of participants.
 
@@ -994,7 +994,7 @@ and size adjustments [@strain_2024] (see the right pair of plots in @fig-previou
 #| include: true
 #| out-width: "100%"
 #| fig-asp: 0.5
-#| fig-cap: "Top row: Examples of scatterplot manipulations from previous work using an \\textit{r} value of 0.6. Bottom row: the corresponding correlation estimation behaviour across values of \\textit{r} between 0.2 and 0.99. The dashed diagonal line represents perfect estimation, while the solid line is what is observed when participants are asked to estimate correlation."
+#| fig-cap: "Top row: Examples of scatterplot manipulations from previous work using an \\textit{r} value of 0.6. Bottom row: the corresponding correlation estimation behaviour across values of \\textit{r} between 0.2 and 0.99. The dashed diagonal line represents perfectly accurate estimation, while the solid line is what is observed when participants are asked to estimate correlation."
 
 # dataframe containing values from previous work and the current is included
 # in the data folder 
@@ -1123,11 +1123,12 @@ with the Open Science Framework (OSF) for the pre-study[^1] and the main experim
 All data and analysis code are included in a GitHub repository[^3]. This repository 
 contains instructions for building a Docker container [@merkel_2014] that reproduces the computational environment 
 in which the paper was written. This allows for full replication of stimuli, figures, analyses,
-and the paper itself. Ethical approval was granted by the (removed for anon).
+and the paper itself. Ethical approval was granted by the University of Manchester’s Computer Science departmental ethics
+panel (Ref: 2024-19426-33788).
 
-[^1]: https://osf.io/xuf4d/?view_only=f422aa2674164fad91d43a2b951a79e2
-[^2]: https://osf.io/anmez/?view_only=8745df2d0d9c4c81bfcca4d4fd41e6de
-[^3]: removed for anon
+[^1]: https://osf.io/xuf4d
+[^2]: https://osf.io/anmez
+[^3]: https://github.com/gjpstrain/beliefs_alternative_scatterplots
 
 ## Crowdsourcing {#sec-crowdsourcing}
 
@@ -1222,7 +1223,7 @@ Each participant saw all survey items (see supplementary material),
 along with the six attention check items, in a fully randomized order. All
 experimental code, materials, and instructions are hosted on GitLab[^5].
 
-[^5]: removed for anon
+[^5]: https://gitlab.pavlovia.org/Strain/beliefs_scatterplots_pretest
 
 ### Procedure {#sec-procedure-pre}
 
@@ -1336,7 +1337,9 @@ candidate_statements <- read_csv("data/pre_test_data.csv") %>%
   rename("Statement" = "statement",
          "Item" = "item_no")
 
-kbl(candidate_statements, booktabs = T)
+kbl(candidate_statements, booktabs = TRUE, format = "latex") %>%
+  kable_styling(latex_options =  "scale_down") %>%
+  column_spec(2, width = "7.5cm")
 ```
 
 
@@ -1585,7 +1588,7 @@ example_plots
 Participants were recruited using Prolific [@prolific]. English fluency and UK
 residency were required for participation, as well as normal or corrected-to-normal
 vision, and having not participated in any of our previous studies regarding 
-correlation perception in scatterplots [refs removed for anon]. Data were
+correlation perception in scatterplots [@strain_2023; @strain_2023b; strain_2024]. Data were
 collected from 77 participants for each condition. 2 participants failed more than
 2 out of 4 attention check questions for each condition, meaning their data were
 excluded per pre-registration stipulations. Data from the remaining 150 participants
@@ -1614,8 +1617,8 @@ described by the correlative statement were both **before** and **after** viewin
 experimental items. All experimental code, materials, and instructions are 
 hosted on GitLab as two separate experiments [^6] [^7].
 
-[^6]: removed for anon
-[^7]: removed for anon
+[^6]: https://gitlab.pavlovia.org/Strain/atypical_scatterplots_main_t
+[^7]: https://gitlab.pavlovia.org/Strain/atypical_scatterplots_main_a
 
 ### Procedure {#sec-procedure-main}
 
@@ -1703,8 +1706,7 @@ Cohen's *d* effect sizes that were calculated using the **effectsize** package
 are identical when using said models, and code for this analysis is included in the repository
 associated with this paper.
 
-To test the first hypothesis,
-that ratings of strength of relatedness would be different before and after participants
+To test the first hypothesis, that ratings of strength of relatedness would be different before and after participants
 viewed experimental items, we build a model whereby the rating of strength of relatedness
 the participant made is predicted by whether it was made **before** or **after** viewing 
 the experimental items. Our first hypothesis was supported; there was a 
@@ -1730,6 +1732,7 @@ make_sig_table_rating_time(rating_time_model)
 #| label: fig-descriptives
 #| include: true
 #| out-width: "100%"
+#| fig-env: "figure*"
 #| fig-cap: Dot plots for pre- and post-plot viewing ratings of strength of relatedness for standard and alternative scatterplot conditions. Mean ratings are also shown as points.  
 
 # violins
@@ -1789,17 +1792,6 @@ main_exp_tidy %>%
   #         label = "Post",
   #         y = 5.5,
   #         x = 1.15) 
-
-
-  main_exp_tidy |>
-      select(participant, item_no, condition, rating_time, rating) |>
-      pivot_wider(names_from = rating_time, values_from = rating) |>
-      mutate(diff = as.numeric(post_bel) - as.numeric(pre_bel)) |>
-      ggplot(aes(x = diff, y = condition)) +
-      stat_histinterval(breaks = breaks_fixed(width = 1), align = "center", .width =
-                0) +
-      labs(x = "Post rating - pre rating")
-
 ```
 
 ```{r}
@@ -1946,13 +1938,38 @@ found no main effect of condition, and found an interaction between
 rating time and condition. Test statistics, along with odds ratios and equivalent 
 Cohen's *d* effect sizes can be seen in @tbl-condition-interact. The estimate for the interaction
 corresponds to the difference-in-difference between ratings made pre- and post-viewing
-for standard and alternative scatterplots.
+for standard and alternative scatterplots. This difference-in-difference is 
+visualized in @fig-difference-descriptive; the difference betweeen in ratings between
+pre- and post-plot viewing times is greater for the participants who were exposed
+to the alternaive scatterplot condition.
 
-<!-- To further explore the -->
-<!-- interaction, we used the **emmeans** package (version 1.10.4 [@emmeans]) to calculate pairwise comparisons between  -->
-<!-- levels of the condition and rating time factors, which can be seen in @tbl-pairwise. -->
-<!-- The interaction we found is driven by participants' beliefs changing more between -->
-<!-- pre-viewing and post-viewing times for alternative as opposed to standard plots. -->
+```{r}
+#| label: fig-difference-descriptive
+#| include: true
+#| fig-env: "figure*"
+#| fig-asp: 0.4
+#| fig-cap: Histograms illustrating the magnitudes of the difference between pre- and post-plot viewing ratings of strength of relatedness. Median values are plotted as points.     
+    
+main_exp_tidy %>%
+  select(participant, item_no, condition, rating_time, rating) %>%
+    mutate("condition" = recode(condition,
+                            "A" = "Alternative\nScatterplot",
+                            "S" = "Standard\nScatterplot")) %>%
+  pivot_wider(names_from = rating_time, values_from = rating) %>%
+  mutate(diff = as.numeric(post_bel) - as.numeric(pre_bel)) %>%
+  ggplot(aes(x = diff, y = condition, fill = condition)) +
+  stat_histinterval(breaks = breaks_fixed(width = 1), align = "center", .width = 0) +
+  theme_ggdist() +
+  theme(axis.line.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.y = element_text(size = 11, colour = "black"),
+        axis.text.x = element_text(size = 11),
+        legend.position = "none") +
+  labs(x = "Difference Between Ratings Pre- and Post-Plot Viewing",
+       y = "") +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 12)) +
+  scale_color_brewer(palette = "Paired", aesthetics = "fill")
+```
 
 ```{r}
 #| label: tbl-condition-interact
@@ -2047,6 +2064,7 @@ scatterplot designs with regards to producing more persuasive visualizations.
 #| label: fig-add-analyses-plots
 #| include: true
 #| fig-asp: 0.4
+#| fig-env: "figure*"
 #| fig-cap: Illustrating how differences in beliefs about strength of relatedness change as a function of participants' scores on the graph literacy test (left), their scores on the defensive confidence test (center), and their ratings of statement emotionality (right). Localled smoothed curves with 95% CI ribbons are shown separately for standard and alternative scatterplot viewing conditions. Lower ratings of Difference in Belief ($y$ axis) correspond to lower levels of belief change between pre- and post- scatterplot viewing times.
 
 add_analyses_plotting_df <- main_exp_tidy %>%

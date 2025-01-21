@@ -582,14 +582,15 @@ justification for crowdsourcing.
 Both our pre- and main studies were conducted according to the
 principles of open and reproducible research \citep{ayris_2018}. We
 pre-registered hypotheses and analysis plans with the Open Science
-Framework (OSF) for the pre-study\footnote{https://osf.io/xuf4d/?view\_only=f422aa2674164fad91d43a2b951a79e2}
-and the main experiment\footnote{https://osf.io/anmez/?view\_only=8745df2d0d9c4c81bfcca4d4fd41e6de}.
-All data and analysis code are included in a GitHub
-repository\footnote{removed for anon}. This repository contains
-instructions for building a Docker container \citep{merkel_2014} that
-reproduces the computational environment in which the paper was written.
-This allows for full replication of stimuli, figures, analyses, and the
-paper itself. Ethical approval was granted by the (removed for anon).
+Framework (OSF) for the pre-study\footnote{https://osf.io/xuf4d} and the
+main experiment\footnote{https://osf.io/anmez}. All data and analysis
+code are included in a GitHub repository\footnote{https://github.com/gjpstrain/beliefs\_alternative\_scatterplots}.
+This repository contains instructions for building a Docker container
+\citep{merkel_2014} that reproduces the computational environment in
+which the paper was written. This allows for full replication of
+stimuli, figures, analyses, and the paper itself. Ethical approval was
+granted by the University of Manchester's Computer Science departmental
+ethics panel (Ref: 2024-19426-33788).
 
 \subsection{Crowdsourcing}\label{sec-crowdsourcing}
 
@@ -697,7 +698,7 @@ average time taken to complete the survey was 7.6 minutes (\emph{SD} =
 Each participant saw all survey items (see supplementary material),
 along with the six attention check items, in a fully randomized order.
 All experimental code, materials, and instructions are hosted on
-GitLab\footnote{removed for anon}.
+GitLab\footnote{https://gitlab.pavlovia.org/Strain/beliefs\_scatterplots\_pretest}.
 
 \subsubsection{Procedure}\label{sec-procedure-pre}
 
@@ -759,7 +760,9 @@ emotional valence ratings.}
 
 \centering{
 
-\begin{tabular}[t]{rl}
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\begin{tabular}[t]{r>{\raggedright\arraybackslash}p{7.5cm}}
 \toprule
 Item & Statement\\
 \midrule
@@ -769,7 +772,7 @@ Item & Statement\\
 22 & Higher consumption of spicy foods is associated with a lower risk of certain types of cancer.\\
 23 & Greater adherence to a Mediterranean diet is linked to a lower risk of neurodegenerative diseases.\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 
 }
 
@@ -911,17 +914,18 @@ Participants were recruited using Prolific \citep{prolific}. English
 fluency and UK residency were required for participation, as well as
 normal or corrected-to-normal vision, and having not participated in any
 of our previous studies regarding correlation perception in scatterplots
-{[}refs removed for anon{]}. Data were collected from 77 participants
-for each condition. 2 participants failed more than 2 out of 4 attention
-check questions for each condition, meaning their data were excluded per
-pre-registration stipulations. Data from the remaining 150 participants
-were included in the full analysis (73 male, 73 female, and 4
-non-binary). Participants' mean age was 39.3 (\emph{SD} = 11.5).
-Participants' mean graph literacy score was 21.3 (\emph{SD} = 4.3) out
-of 30, their mean defensive confidence score was 43 (\emph{SD} = 6.8)
-out of 60, and their mean rating of statement emotional valence was 2.9
-(\emph{SD} = 1.3) on a 7-point Likert scale. On average, participants
-took 14.2 minutes to complete the experiment (\emph{SD} = 6.41).
+{[}\citet{strain_2023}; \citet{strain_2023b}; strain\_2024{]}. Data were
+collected from 77 participants for each condition. 2 participants failed
+more than 2 out of 4 attention check questions for each condition,
+meaning their data were excluded per pre-registration stipulations. Data
+from the remaining 150 participants were included in the full analysis
+(73 male, 73 female, and 4 non-binary). Participants' mean age was 39.3
+(\emph{SD} = 11.5). Participants' mean graph literacy score was 21.3
+(\emph{SD} = 4.3) out of 30, their mean defensive confidence score was
+43 (\emph{SD} = 6.8) out of 60, and their mean rating of statement
+emotional valence was 2.9 (\emph{SD} = 1.3) on a 7-point Likert scale.
+On average, participants took 14.2 minutes to complete the experiment
+(\emph{SD} = 6.41).
 
 \subsubsection{Design}\label{sec-design-main}
 
@@ -936,8 +940,8 @@ scatterplot visualizations, so participants were tested on how strongly
 related they believed the variables described by the correlative
 statement were both \textbf{before} and \textbf{after} viewing the
 experimental items. All experimental code, materials, and instructions
-are hosted on GitLab as two separate experiments \footnote{removed for
-  anon} \footnote{removed for anon}.
+are hosted on GitLab as two separate experiments \footnote{https://gitlab.pavlovia.org/Strain/atypical\_scatterplots\_main\_t}
+\footnote{https://gitlab.pavlovia.org/Strain/atypical\_scatterplots\_main\_a}.
 
 \subsubsection{Procedure}\label{sec-procedure-main}
 
@@ -1007,8 +1011,8 @@ including time of rating as a predictor explained significantly more
 variance than the null (\(\chi^2\)(1) = 8,046.95, \emph{p} \textless{}
 .001). This model has random intercepts for participants. Statistical
 testing providing support for this hypothesis is shown in
-Table~\ref{tbl-rating-time}. \textbf{?@fig-descriptives} shows means and
-violin plots for ratings of strength of relatedness before and after
+Table~\ref{tbl-rating-time}. Figure~\ref{fig-descriptives} shows means
+and violin plots for ratings of strength of relatedness before and after
 viewing scatterplots in either the standard or alternative condition.
 
 \begin{table}
@@ -1031,7 +1035,7 @@ Rating Time & 3.77 & 0.049 & 76.63 & <0.001 & 43.2 & 2.08\\
 
 \end{table}%
 
-\begin{figure}
+\begin{figure*}
 
 \centering{
 
@@ -1039,25 +1043,11 @@ Rating Time & 3.77 & 0.049 & 76.63 & <0.001 & 43.2 & 2.08\\
 
 }
 
-\caption{\label{fig-descriptives-1}Dot plots for pre- and post-plot
+\caption{\label{fig-descriptives}Dot plots for pre- and post-plot
 viewing ratings of strength of relatedness for standard and alternative
 scatterplot conditions. Mean ratings are also shown as points.}
 
-\end{figure}%
-
-\begin{figure}
-
-\centering{
-
-\includegraphics[width=1\textwidth,height=\textheight]{beliefs_alternative_scatterplots_files/figure-pdf/fig-descriptives-2.pdf}
-
-}
-
-\caption{\label{fig-descriptives-2}Dot plots for pre- and post-plot
-viewing ratings of strength of relatedness for standard and alternative
-scatterplot conditions. Mean ratings are also shown as points.}
-
-\end{figure}%
+\end{figure*}%
 
 Our second hypothesis, that the difference between ratings of strength
 of relatedness before and after viewing experimental plots would be
@@ -1078,7 +1068,25 @@ between rating time and condition. Test statistics, along with odds
 ratios and equivalent Cohen's \emph{d} effect sizes can be seen in
 Table~\ref{tbl-condition-interact}. The estimate for the interaction
 corresponds to the difference-in-difference between ratings made pre-
-and post-viewing for standard and alternative scatterplots.
+and post-viewing for standard and alternative scatterplots. This
+difference-in-difference is visualized in
+Figure~\ref{fig-difference-descriptive}; the difference betweeen in
+ratings between pre- and post-plot viewing times is greater for the
+participants who were exposed to the alternaive scatterplot condition.
+
+\begin{figure*}
+
+\centering{
+
+\includegraphics{beliefs_alternative_scatterplots_files/figure-pdf/fig-difference-descriptive-1.pdf}
+
+}
+
+\caption{\label{fig-difference-descriptive}Histograms illustrating the
+magnitudes of the difference between pre- and post-plot viewing ratings
+of strength of relatedness. Median values are plotted as points.}
+
+\end{figure*}%
 
 \begin{table}
 
@@ -1134,7 +1142,7 @@ designs with regards to producing more persuasive visualizations.
 \subsubsection{Graph Literacy, Defensive Confidence, and Statement
 Emotionality}\label{sec-add-analyses-discussion}
 
-\begin{figure}
+\begin{figure*}
 
 \centering{
 
@@ -1152,7 +1160,7 @@ conditions. Lower ratings of Difference in Belief (\(y\) axis)
 correspond to lower levels of belief change between pre- and post-
 scatterplot viewing times.}
 
-\end{figure}%
+\end{figure*}%
 
 Mean differences in pre- and post- plot viewing ratings of strength of
 relatedness by Subjective Graph Literacy score can be seen in
