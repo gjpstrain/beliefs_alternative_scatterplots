@@ -1,4 +1,4 @@
-\documentclass[manuscript,screen,review,anonymous]{acmart}
+\documentclass[sigconf]{acmart}
 
 
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -154,7 +154,7 @@
 
 \hypersetup{
   pdftitle={Effects of Alternative Scatterplot Designs on Belief},
-  pdfauthor={Gabriel Strain; Andrew J. Stewart; Caroline Jay; Charlotte Rutherford; Paul Warren},
+  pdfauthor={Gabriel Strain; Andrew J. Stewart; Caroline Jay; Charlotte Rutherford; Paul A. Warren},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -172,15 +172,16 @@
 %% values in them; it is your responsibility as an author to replace
 %% the commands and values with those provided to you when you
 %% complete the rights form.
-\setcopyright{acmcopyright}
+\setcopyright{cc}
 \copyrightyear{2025}
 \acmYear{2025}
-\acmDOI{XXXXXXX.XXXXXXX}
+\acmDOI{10.1145/3706598.3713809}
 
 %% These commands are for a PROCEEDINGS abstract or paper.
-\acmConference[CHI]{}{June 03--05, 2018}{Woodstock, NY}
-\acmPrice{15.00}
-\acmISBN{978-1-4503-XXXX-X/18/06}
+\acmConference[CHI'25]{CHI Conference on Human Factors in Computing
+Systems}{April 26-May 1, 2025}{Yokohama, Japan}
+\acmPrice{}
+\acmISBN{979-8-4007-1394-1/25/04}
 
 %% Submission ID.
 %% Use this when submitting an article to a sponsored event. You'll
@@ -272,7 +273,7 @@ Medicine, and Health, University of Manchester}
                                   \country{United Kingdom}
                           \postcode{M13 9PL}
               }
-        \author{Paul Warren}
+        \author{Paul A. Warren}
   
             \affiliation{%
                   \institution{Division of Psychology, Communication and
@@ -1006,8 +1007,8 @@ including time of rating as a predictor explained significantly more
 variance than the null (\(\chi^2\)(1) = 8,046.95, \emph{p} \textless{}
 .001). This model has random intercepts for participants. Statistical
 testing providing support for this hypothesis is shown in
-Table~\ref{tbl-rating-time}. Figure~\ref{fig-descriptives} shows means
-and violin plots for ratings of strength of relatedness before and after
+Table~\ref{tbl-rating-time}. \textbf{?@fig-descriptives} shows means and
+violin plots for ratings of strength of relatedness before and after
 viewing scatterplots in either the standard or alternative condition.
 
 \begin{table}
@@ -1038,7 +1039,21 @@ Rating Time & 3.77 & 0.049 & 76.63 & <0.001 & 43.2 & 2.08\\
 
 }
 
-\caption{\label{fig-descriptives}Violin plots for pre- and post-plot
+\caption{\label{fig-descriptives-1}Dot plots for pre- and post-plot
+viewing ratings of strength of relatedness for standard and alternative
+scatterplot conditions. Mean ratings are also shown as points.}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{beliefs_alternative_scatterplots_files/figure-pdf/fig-descriptives-2.pdf}
+
+}
+
+\caption{\label{fig-descriptives-2}Dot plots for pre- and post-plot
 viewing ratings of strength of relatedness for standard and alternative
 scatterplot conditions. Mean ratings are also shown as points.}
 
