@@ -377,8 +377,8 @@ and cognitive phenomena regarding data visualization.
 
 While most commonly used to communicate the linear correlation, or level
 of relatedness, between a pair of variables, scatterplots can also be
-designed to facilitate the detection of outliers, to convey differences
-between clusters, or to display non-linear correlations
+designed to facilitate the detection of outliers, to visualize
+differences between clusters, or to display non-linear correlations
 \citep{sarikaya_2018}. The suitability of scatterplots for such a range
 of tasks, and the opportunity for designers to design with multiple
 tasks in mind, plays a large part in their popularity. Building on
@@ -390,18 +390,18 @@ compared to other visualizations that communicate the same idea
 \citep{harrison_2014, kay_2015}), our accuracy in interpretation is
 poor. Studies asking participants to numerically estimate correlation
 \citep{strahan_1978, bobko_1979, cleveland_1982, lane_1985, lauer_1989, collyer_1990, meyer_1992}
-or estimate it via a bisection task \citep{rensink_2017} find consistent
-levels of underestimation, particularly when 0.2 \textless{} \emph{r}
-\textless{} 0.6. If scatterplots were used solely for communication
-between those trained in statistics and data visualization, this would
-not be particularly problematic, however, this is not the case; lay
-people are expected to be able to use and interpret data visualizations
-on an almost daily basis. It is therefore the duty of those who design
-such visualizations to design with the naive, inexperienced viewer in
-mind. Doing so requires us to understand \emph{how} visualizations work,
-and to gain an appreciation for the hidden processes that allow
-pictorial representations to convey more than words and numbers ever
-could.
+or to estimate it via a bisection task \citep{rensink_2017} find
+consistent levels of underestimation, particularly when 0.2 \textless{}
+\emph{r} \textless{} 0.6. If scatterplots were used solely for
+communication between those trained in statistics and data
+visualization, this would not be particularly problematic, however, this
+is not the case; lay people are expected to be able to use and interpret
+data visualizations on an almost daily basis. It is therefore the duty
+of those who design such visualizations to design with the naive,
+inexperienced viewer in mind. Doing so requires us to understand
+\emph{how} visualizations work, and to gain an appreciation for the
+hidden processes that allow pictorial representations to convey more
+than words and numbers ever could.
 
 Recent work has sought to address the correlation underestimation bias
 in positively correlated scatterplots through the use of novel point
@@ -438,7 +438,7 @@ beliefs about relatedness facilitates better visualization techniques,
 but also allows us to understand how these designs might be used by
 malevolent actors with a view to inoculating those who engage with them.
 To this end, we present a two-experiment study. First, we use
-crowdsourcing to select part of our experimental stimuli, then we test
+crowdsourcing to select part of our experimental stimuli. We then test
 the propensity for previously established alternative scatterplot
 designs to alter beliefs about relatedness, taking into account the
 emotional content of the statement and the graph literacy and defensive
@@ -498,7 +498,7 @@ that correlation estimation is invariant to changes in point opacities
 and sizes \citep{rensink_2014, rensink_2017}, while more recent work
 reports strong effects of the systematic adjustment of each visual
 feature \citep{strain_2023, strain_2023b, strain_2024}. The idea that it
-is the shape of the point cloud, and the probability distribution it
+is the shape of the point cloud and the probability distribution it
 represents that informs judgements of correlation has received support
 from recent work exploiting visual features to make correlation
 estimation more accurate. Strain et al.
@@ -544,8 +544,8 @@ Figure~\ref{fig-previous-manipulations}).
 scatterplot manipulations from previous work using an \textit{r} value
 of 0.6. Bottom row: the corresponding correlation estimation behaviour
 across values of \textit{r} between 0.2 and 0.99. The dashed diagonal
-line represents perfect estimation, while the solid line is what is
-observed when participants are asked to estimate correlation.}
+line represents perfectly accurate estimation, while the solid line is
+what is observed when participants are asked to estimate correlation.}
 
 \end{figure*}%
 
@@ -640,7 +640,7 @@ following prompt:
     
 \end{quotation}
 
-The full list of these statements can be found in the supplementary
+The full list of these statements can be found in the supplemental
 materials. Two authors rated each statement on emotional valence and
 belief about strength of relatedness using Likert scales from 1 to 7.
 Both statement emotional valence and strength of relatedness were
@@ -657,7 +657,7 @@ agreement in both cases \citep{cohen_1968, fleiss_1969}. Following this,
 we selected strongly and weakly correlated statements with the highest
 level of absolute agreement, resulting in 14 strongly correlated
 statements and 11 weakly correlated statements that can be seen in the
-supplementary materials. We then tested these 25 statements with a
+supplemental materials. We then tested these 25 statements with a
 representative UK sample to ascertain consensus on both statement
 emotionality and strength of relatedness. Doing so allows us to minimize
 the impact of these factors when we analyse the effects of alternative
@@ -685,19 +685,19 @@ experiment. We hypothesized that:
 \citep{prolific}. English fluency and UK residency were required for
 participation, as our main experiment relied on familiarity with data
 visualizations from a popular British news source. In addition to 25
-experimental items, we included six attention check items asking
-participants to ignore the scatterplot and provide specific answers. No
-participants failed more than 2 out of 6 attention check items, and
-therefore data from all 100 were included in the full analysis (52 male
-and 48 female). Participants' mean age was 41.1 (\emph{SD} = 12.3). The
-average time taken to complete the survey was 7.6 minutes (\emph{SD} =
-2.9 minutes).
+experimental items, we included six attention check items that
+instructed participants to ignore the scatterplot and provide specific
+answers. No participants failed more than 2 out of 6 attention check
+items, and therefore data from all 100 were included in the full
+analysis (52 male and 48 female). Participants' mean age was 41.1
+(\emph{SD} = 12.3). The average time taken to complete the survey was
+7.6 minutes (\emph{SD} = 2.9 minutes).
 
 \subsubsection{Design}\label{sec-design-pre}
 
-Each participant saw all survey items (see supplementary material),
-along with the six attention check items, in a fully randomized order.
-All experimental code, materials, and instructions are hosted on
+Each participant saw all survey items (see supplemental material), along
+with the six attention check items, in a fully randomized order. All
+experimental code, materials, and instructions are hosted on
 GitLab\footnote{https://gitlab.pavlovia.org/Strain/beliefs\_scatterplots\_pretest}.
 
 \subsubsection{Procedure}\label{sec-procedure-pre}
@@ -721,7 +721,7 @@ Section~\ref{sec-pre-study}.
 
 \subsection{Results}\label{sec-results-pre}
 
-All analyses were conducted using R (version 4.4.2 \citep{rcore}). We
+All analyses were conducted using R (version 4.4.0)` \citep{rcore}). We
 use the \textbf{irr} package to calculate Fleiss' Kappa to measure
 interrater agreement on statement emotional valence and strength of
 relatedness for the 25 experimental items. This analysis revealed that
@@ -914,18 +914,18 @@ Participants were recruited using Prolific \citep{prolific}. English
 fluency and UK residency were required for participation, as well as
 normal or corrected-to-normal vision, and having not participated in any
 of our previous studies regarding correlation perception in scatterplots
-{[}\citet{strain_2023}; \citet{strain_2023b}; strain\_2024{]}. Data were
-collected from 77 participants for each condition. 2 participants failed
-more than 2 out of 4 attention check questions for each condition,
-meaning their data were excluded per pre-registration stipulations. Data
-from the remaining 150 participants were included in the full analysis
-(73 male, 73 female, and 4 non-binary). Participants' mean age was 39.3
-(\emph{SD} = 11.5). Participants' mean graph literacy score was 21.3
-(\emph{SD} = 4.3) out of 30, their mean defensive confidence score was
-43 (\emph{SD} = 6.8) out of 60, and their mean rating of statement
-emotional valence was 2.9 (\emph{SD} = 1.3) on a 7-point Likert scale.
-On average, participants took 14.2 minutes to complete the experiment
-(\emph{SD} = 6.41).
+\citep{strain_2023, strain_2023b, strain_2024}. Data were collected from
+77 participants for each condition. 2 participants failed more than 2
+out of 4 attention check questions for each condition, meaning their
+data were excluded per pre-registration stipulations. Data from the
+remaining 150 participants were included in the full analysis (73 male,
+73 female, and 4 non-binary). Participants' mean age was 39.3 (\emph{SD}
+= 11.5). Participants' mean graph literacy score was 21.3 (\emph{SD} =
+4.3) out of 30, their mean defensive confidence score was 43 (\emph{SD}
+= 6.8) out of 60, and their mean rating of statement emotional valence
+was 2.9 (\emph{SD} = 1.3) on a 7-point Likert scale. On average,
+participants took 14.2 minutes to complete the experiment (\emph{SD} =
+6.41).
 
 \subsubsection{Design}\label{sec-design-main}
 
@@ -1012,8 +1012,9 @@ variance than the null (\(\chi^2\)(1) = 8,046.95, \emph{p} \textless{}
 .001). This model has random intercepts for participants. Statistical
 testing providing support for this hypothesis is shown in
 Table~\ref{tbl-rating-time}. Figure~\ref{fig-descriptives} shows means
-and violin plots for ratings of strength of relatedness before and after
-viewing scatterplots in either the standard or alternative condition.
+and dot plots for ratings of strength of relatedness made before and
+after viewing scatterplots in either the standard or alternative
+condition.
 
 \begin{table}
 
@@ -1070,9 +1071,9 @@ Table~\ref{tbl-condition-interact}. The estimate for the interaction
 corresponds to the difference-in-difference between ratings made pre-
 and post-viewing for standard and alternative scatterplots. This
 difference-in-difference is visualized in
-Figure~\ref{fig-difference-descriptive}; the difference betweeen in
-ratings between pre- and post-plot viewing times is greater for the
-participants who were exposed to the alternaive scatterplot condition.
+Figure~\ref{fig-difference-descriptive}; the difference in ratings
+between pre- and post-plot viewing times is greater for the participants
+who were exposed to the alternative scatterplot condition.
 
 \begin{figure*}
 
@@ -1092,9 +1093,10 @@ of strength of relatedness. Median values are plotted as points.}
 
 \caption{\label{tbl-condition-interact}Statistics for the significant
 main effect of rating time and the significant interaction between
-rating time and condition on the difference between pre- and post-
-scatterplot viewing ratings for standard and alternative plots. Odds
-ratios and equivalent Cohen's \emph{d} effect sizes are also shown.}
+rating time and condition on the difference between pre- and
+post-scatterplot viewing ratings for standard and alternative plots.
+Odds ratios and equivalent Cohen's \emph{d} effect sizes are also
+shown.}
 
 \centering{
 
@@ -1156,13 +1158,13 @@ participants' scores on the graph literacy test (left), their scores on
 the defensive confidence test (center), and their ratings of statement
 emotionality (right). Localled smoothed curves with 95\% CI ribbons are
 shown separately for standard and alternative scatterplot viewing
-conditions. Lower ratings of Difference in Belief (\(y\) axis)
-correspond to lower levels of belief change between pre- and post-
-scatterplot viewing times.}
+conditions. Lower ratings of Difference in Beliefs (\(y\) axis)
+corresponds to lower levels of belief change between pre- and
+post-scatterplot viewing times.}
 
 \end{figure*}%
 
-Mean differences in pre- and post- plot viewing ratings of strength of
+Mean differences in pre- and post-plot viewing ratings of strength of
 relatedness by Subjective Graph Literacy score can be seen in
 Figure~\ref{fig-add-analyses-plots}. Generally, participants with higher
 scores on a graph literacy test experienced smaller changes in their
@@ -1243,7 +1245,7 @@ An alternative (although not competing) explanation for the results we
 have seen here comes from recent work on the incorporation of
 uncertainty visualizations in scatterplots. Karduni et al.
 \citep{karduni_2020} found in 2020 that visualizations that encode
-uncertainty produce lower levels of belief change compared to ones that
+uncertainty produce lower levels of belief change compared to those that
 do not. The alternative scatterplot design we employed can be thought of
 as masking some of the uncertainty inherent in a scatterplot point cloud
 by reducing the salience of the most exterior points.
@@ -1253,7 +1255,7 @@ the point cloud, more specifically, the width of the probability
 distribution it represents, that drives correlation perception in
 scatterplots. If this mechanism were valid, our results would be
 expected. These results are broadly consequential. For data
-visualization designers, they provide strong evidence that utilizing
+visualization designers, they provide strong evidence that utilizing the
 alternative scatterplot designs described here and in previous work can
 affect beliefs about levels of relatedness without requiring the removal
 of data. For researchers, these results pave the way for work in a
