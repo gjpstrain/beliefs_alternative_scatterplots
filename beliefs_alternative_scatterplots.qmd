@@ -875,7 +875,7 @@ the case; lay people are expected to be able to use and interpret data visualiza
 on an almost daily basis. It is therefore the duty of those who design such visualizations
 to design with the naive, inexperienced viewer in mind. Doing so requires us to 
 understand *how* visualizations work, and to gain an appreciation for the hidden processes
-that allow pictorial representations to convey more than words and numbers
+that allow pictorial representations to convey more than words and numbers alone
 ever could.
 
 Recent work has sought to address the correlation underestimation bias in
@@ -1187,7 +1187,7 @@ We found agreement above chance for both emotional valence
 and strength of relatedness ($\kappa$ = `r printnum(irr_corr$value, digits = 2)`,
 *p* `r printp(irr_corr$p.value, add_equals = TRUE)`), indicating moderate 
 levels of agreement in both cases [@cohen_1968; @fleiss_1969]. Following this,
-we selected strongly and weakly correlated statements with the highest level of
+we selected strongly and weakly correlated statements with the highest levels of
 absolute agreement, resulting in 14 strongly correlated
 statements and 11 weakly correlated statements that can be seen in the supplemental materials.
 We then tested these 25 statements with a representative UK sample 
@@ -1295,7 +1295,7 @@ consensus_df <- avg_emot %>%
   slice_head(n =  2)
 ```
 
-All analyses were conducted using R (version 4.4.0)` [@rcore]).
+Analyses were conducted using R (version 4.4.0) [@rcore]).
 We use the **irr** package to calculate Fleiss' Kappa to measure interrater agreement
 on statement emotional valence and strength of relatedness for the 25 experimental items.
 This analysis revealed that participants agreed above chance on statement emotional valence
@@ -1351,7 +1351,7 @@ and $\kappa$ = `r printnum(belief_kappa$value, digits = 2)` respectively),
 however do exceed that which would be expected by chance. In light of this we do not
 make decisions regarding which statement to use based 
 on the values of Fleiss' Kappa observed, but rather on the standard deviations of 
-ratings across all raters. We also test statement emotionality and strength of correlation with participants
+ratings across all raters. We also test statement emotionality and strength of relatedness with participants
 in the main study and include these ratings as part of our analyses.
 
 # Main Study: Potential for Belief Change Using Alternative Scatterplots {#sec-main-study}
@@ -1395,8 +1395,7 @@ been utilized more recently [@markant_2023] to explore the potential for attitud
 change specifically with regard to correlations in scatterplots. Participants
 provide answers to the 12 scale items using a 5-point Likert scale anchored at points 1
 (*not at all characteristic of me*) and 5 (*extremely characteristic of me*), with 
-all other points being unlabelled. Analysis including participants' defensive 
-confidence scores is included in @sec-add-analyses-discussion.
+all other points being unlabelled.
 
 ### Graph Literacy {#sec-graph-lit}
 
@@ -1588,8 +1587,8 @@ example_plots
 Participants were recruited using Prolific [@prolific]. English fluency and UK
 residency were required for participation, as well as normal or corrected-to-normal
 vision, and having not participated in any of our previous studies regarding 
-correlation perception in scatterplots [@strain_2023; @strain_2023b; @strain_2024]. Data were
-collected from 77 participants for each condition. 2 participants failed more than
+correlation perception in scatterplots [@strain_2023; @strain_2023b; @strain_2024] or
+the pre-study. Data were collected from 77 participants for each condition. 2 participants failed more than
 2 out of 4 attention check questions for each condition, meaning their data were
 excluded per pre-registration stipulations. Data from the remaining 150 participants
 were included in the full analysis (`r printnum(gender_main$Male, digits = 2)` male,
@@ -1700,7 +1699,7 @@ package to automate selection of the random effects structure; we provide a
 maximal model, which includes random intercepts for participants, and **buildmer**
 identifies the most complex model that successfully converges. We present odds ratios and equivalent
 Cohen's *d* effect sizes that were calculated using the **effectsize** package
-(version 0.8.9 [@effectsize]). 
+(version 1.0.0 [@effectsize]). 
 
 [^9]: Our pre-registration specified linear mixed effects models (metric). Conclusions
 are identical when using said models, and code for this analysis is included in the repository
@@ -2150,10 +2149,10 @@ whereby very high levels of defensive confidence decrease susceptibility to beli
 The effect of statement emotional valence on belief change is also illustrated in
 @fig-add-analyses-plots. There is a broad research space regarding emotionality and
 data visualization [@lan_2023], and it is clear from previous work that emotion
-affects perception, cognition, and behavior [@phelps_2006; @harrison_2013; @thoresen_2016]
-regarding to data visualization. Harrison et al. [@harrison_2013] found that 
+may affect perception, cognition, and behavior [@phelps_2006; @harrison_2013; @thoresen_2016]
+pertaining to data visualization. Harrison et al. [@harrison_2013] found that 
 participants who were positively primed performed better on a low-level
-visual judgement task compared to negative primes. Comparison of this 
+visual judgement task compared to those who were negatively primed. Comparison of this 
 work to the current is difficult, as *success* on our task is hard to define.
 
 Further experimental work is required to provide more comprehensive explanations for the
@@ -2247,8 +2246,7 @@ are outweighed by distrust or unfamiliarity with novel designs. We chose to use
 a simple, blunt, 7-point Likert scale. While we argue that this is not particularly
 problematic given that we intended only to find an effect (and succeeded in that),
 future work may wish to use techniques that provide further scope for analysis,
-such as the graphical elicitation method developed by Karduni et al. [@karduni_2020;
-@karduni_2023].
+such as the graphical elicitation method developed by Karduni et al. [@karduni_2020; @karduni_2023].
 
 # Conclusion {#sec-conclusion}
 

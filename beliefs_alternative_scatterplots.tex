@@ -401,7 +401,7 @@ of those who design such visualizations to design with the naive,
 inexperienced viewer in mind. Doing so requires us to understand
 \emph{how} visualizations work, and to gain an appreciation for the
 hidden processes that allow pictorial representations to convey more
-than words and numbers ever could.
+than words and numbers alone ever could.
 
 Recent work has sought to address the correlation underestimation bias
 in positively correlated scatterplots through the use of novel point
@@ -655,7 +655,7 @@ agreement above chance for both emotional valence (\(\kappa\) = 0.49,
 0.51, \emph{p} \textless{} .001), indicating moderate levels of
 agreement in both cases \citep{cohen_1968, fleiss_1969}. Following this,
 we selected strongly and weakly correlated statements with the highest
-level of absolute agreement, resulting in 14 strongly correlated
+levels of absolute agreement, resulting in 14 strongly correlated
 statements and 11 weakly correlated statements that can be seen in the
 supplemental materials. We then tested these 25 statements with a
 representative UK sample to ascertain consensus on both statement
@@ -721,8 +721,8 @@ Section~\ref{sec-pre-study}.
 
 \subsection{Results}\label{sec-results-pre}
 
-All analyses were conducted using R (version 4.4.0)` \citep{rcore}). We
-use the \textbf{irr} package to calculate Fleiss' Kappa to measure
+Analyses were conducted using R (version 4.4.0) \citep{rcore}). We use
+the \textbf{irr} package to calculate Fleiss' Kappa to measure
 interrater agreement on statement emotional valence and strength of
 relatedness for the 25 experimental items. This analysis revealed that
 participants agreed above chance on statement emotional valence
@@ -786,7 +786,7 @@ emotional valence and strength of correlation scales are low (\(\kappa\)
 would be expected by chance. In light of this we do not make decisions
 regarding which statement to use based on the values of Fleiss' Kappa
 observed, but rather on the standard deviations of ratings across all
-raters. We also test statement emotionality and strength of correlation
+raters. We also test statement emotionality and strength of relatedness
 with participants in the main study and include these ratings as part of
 our analyses.
 
@@ -844,9 +844,7 @@ change specifically with regard to correlations in scatterplots.
 Participants provide answers to the 12 scale items using a 5-point
 Likert scale anchored at points 1 (\emph{not at all characteristic of
 me}) and 5 (\emph{extremely characteristic of me}), with all other
-points being unlabelled. Analysis including participants' defensive
-confidence scores is included in
-Section~\ref{sec-add-analyses-discussion}.
+points being unlabelled.
 
 \subsubsection{Graph Literacy}\label{sec-graph-lit}
 
@@ -914,18 +912,18 @@ Participants were recruited using Prolific \citep{prolific}. English
 fluency and UK residency were required for participation, as well as
 normal or corrected-to-normal vision, and having not participated in any
 of our previous studies regarding correlation perception in scatterplots
-\citep{strain_2023, strain_2023b, strain_2024}. Data were collected from
-77 participants for each condition. 2 participants failed more than 2
-out of 4 attention check questions for each condition, meaning their
-data were excluded per pre-registration stipulations. Data from the
-remaining 150 participants were included in the full analysis (73 male,
-73 female, and 4 non-binary). Participants' mean age was 39.3 (\emph{SD}
-= 11.5). Participants' mean graph literacy score was 21.3 (\emph{SD} =
-4.3) out of 30, their mean defensive confidence score was 43 (\emph{SD}
-= 6.8) out of 60, and their mean rating of statement emotional valence
-was 2.9 (\emph{SD} = 1.3) on a 7-point Likert scale. On average,
-participants took 14.2 minutes to complete the experiment (\emph{SD} =
-6.41).
+\citep{strain_2023, strain_2023b, strain_2024} or the pre-study. Data
+were collected from 77 participants for each condition. 2 participants
+failed more than 2 out of 4 attention check questions for each
+condition, meaning their data were excluded per pre-registration
+stipulations. Data from the remaining 150 participants were included in
+the full analysis (73 male, 73 female, and 4 non-binary). Participants'
+mean age was 39.3 (\emph{SD} = 11.5). Participants' mean graph literacy
+score was 21.3 (\emph{SD} = 4.3) out of 30, their mean defensive
+confidence score was 43 (\emph{SD} = 6.8) out of 60, and their mean
+rating of statement emotional valence was 2.9 (\emph{SD} = 1.3) on a
+7-point Likert scale. On average, participants took 14.2 minutes to
+complete the experiment (\emph{SD} = 6.41).
 
 \subsubsection{Design}\label{sec-design-main}
 
@@ -997,7 +995,7 @@ model, which includes random intercepts for participants, and
 \textbf{buildmer} identifies the most complex model that successfully
 converges. We present odds ratios and equivalent Cohen's \emph{d} effect
 sizes that were calculated using the \textbf{effectsize} package
-(version 0.8.9 \citep{effectsize}).
+(version 1.0.0 \citep{effectsize}).
 
 To test the first hypothesis, that ratings of strength of relatedness
 would be different before and after participants viewed experimental
@@ -1207,14 +1205,14 @@ to belief change.
 The effect of statement emotional valence on belief change is also
 illustrated in Figure~\ref{fig-add-analyses-plots}. There is a broad
 research space regarding emotionality and data visualization
-\citep{lan_2023}, and it is clear from previous work that emotion
-affects perception, cognition, and behavior
-\citep{phelps_2006, harrison_2013, thoresen_2016} regarding to data
+\citep{lan_2023}, and it is clear from previous work that emotion may
+affect perception, cognition, and behavior
+\citep{phelps_2006, harrison_2013, thoresen_2016} pertaining to data
 visualization. Harrison et al. \citep{harrison_2013} found that
 participants who were positively primed performed better on a low-level
-visual judgement task compared to negative primes. Comparison of this
-work to the current is difficult, as \emph{success} on our task is hard
-to define.
+visual judgement task compared to those who were negatively primed.
+Comparison of this work to the current is difficult, as \emph{success}
+on our task is hard to define.
 
 Further experimental work is required to provide more comprehensive
 explanations for the interactive effects of graph literacy, defensive
