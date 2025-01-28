@@ -10,40 +10,40 @@ All data (.csv format) is located in the `data` folder. This includes data from 
 
 The `additional_scripts` folder contains scripts for processing responses from pavlovia.org; the `processing_for_payment` scripts write .csv with lists of passed and failed participants to the `data` folder when run. The `anonymisation` script removes identifiable information from raw data files. This folder also contains a .qmd file to create the supplementary materials .pdf, and the script to anonymise data following processing for payment.
 
-NB: Aside from anonymisation, data are provided *as-is*. The **wrangle** function *must* be run to make the dataset usable.
+NB: Aside from anonymisation, data are provided *as-is*. The **wrangle** function in the .qmd *must* be run to make the dataset usable.
 
 ### Analysis Within a Fully-Reproducible Computational Environment
 
-Resources are provided for the full reproduction of the computational environment (R, Rstudio, and package versions) that was used for data wrangling, visualization, statistical modelling, and reporting.
+Resources are provided for the full reproduction of the computational environment (R, Rstudio, and package versions) that was used for data wrangling, visualisation, statistical modelling, and reporting.
 
 To begin, clone this repository to your local machine. With Docker running in the background, use a terminal (or cmd on Windows) to navigate to the cloned repository and type the following Docker command:
 
-```docker build -t atypical_scatterplots .```
+```docker build -t alternative_scatterplots .```
 
 If you're using a machine with an ARM processor, such as Apple Silicon, use the following command to build an image:
 
-```docker buildx build --platform linux/amd64 -t atypical_scatterplots .```
+```docker buildx build --platform linux/amd64 -t alternative_scatterplots .```
 
 Then, type:
 
-```docker run --rm -p 8787:8787 -e PASSWORD=password atypical_scatterplots```
+```docker run --rm -p 8787:8787 -e PASSWORD=password alternative_scatterplots```
 
 Once the container is running, open a web browser and type `localhost:8787` in the address bar. Enter the username `rstudio` and the password `password`. This will generate a fully functioning Rstudio session running from the docker container.
 
 ### Re-creating the manuscript
 
-Opening `beliefs_atypical_scatterplots.qmd` and using the 'Render' button will allow you to re-create a .pdf of the manuscript.
+Opening `beliefs_alternative_scatterplots.qmd` and using the 'Render' button will allow you to re-create a .pdf of the manuscript.
 
 IMPORTANT: Models have been cached to increase performance. The cache will not be recognised automatically when using RStudio within the Docker container. eval_models must be set to FALSE in line 10 in order to use the cached models. This will prevent knitr from executing the code for each model, but will 'lazyload' all cached models so they can be used in manuscript generation. Setting eval_models to TRUE in line 10 will result in all models being re-generated.
 
-The manuscript was written using the ACM CHI template. An issue with quarto/pandoc means that the tables are rendered partially outside of the pdf boundaries. I solved this by manually editing the resulting .tex file and re-running it. The source files in `placeholder` have had these changes implemented.
+The manuscript was written using the ACM CHI template. An issue with quarto/pandoc means that the tables are rendered partially outside of the pdf boundaries. I solved this by manually editing the resulting .tex file and re-running it. The source files and the .tex present in this repo have had these changes implemented.
 
 Files and folders used in generating manuscript:
 
- - `beliefs_atypical_scatterplots.qmd`: Full quarto markdown script including text and all code
- - `beliefs_atypical_scatterplots_cache/pdf`: folder containing cached models
- - `data`: folder containing collected, anonymized data
- - `atypical-scatterplots.bib` for referencing
+ - `beliefs_alternative_scatterplots.qmd`: Full quarto markdown script including text and all code
+ - `beliefs_alternative_scatterplots_cache/pdf`: folder containing cached models
+ - `data`: folder containing collected, anonymised data
+ - `alternative-scatterplots.bib` for referencing
  - `_extensions`: templates etc required for quarto to correctly render manuscript
 
 Knitting the manuscript may take some time depending on the performance of your computer, especially if models are being re-built.
