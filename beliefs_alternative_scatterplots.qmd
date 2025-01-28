@@ -845,7 +845,7 @@ make_sig_table_emo <- function (model) {
 
 # Introduction {#sec-intro}
 
-utilised for communication in a wide variety of contexts, scatterplots are simple
+Utilised for communication in a wide variety of contexts, scatterplots are simple
 representations of (usually) bivariate data. In 1983, they were estimated to account
 for between 70 and 80 percent of data visualisations in scientific publications [@tufte_1983],
 and while there is no doubt that the range of visualisations employed in and
@@ -1958,7 +1958,7 @@ main_exp_tidy %>%
   pivot_wider(names_from = rating_time, values_from = rating) %>%
   mutate(diff = as.numeric(post_bel) - as.numeric(pre_bel)) %>%
   ggplot(aes(x = diff, y = condition, fill = condition)) +
-  stat_histinterval(breaks = breaks_fixed(width = 1), align = "centre", .width = 0) +
+  stat_histinterval(breaks = breaks_fixed(width = 1), align = "center", .width = 0) +
   theme_ggdist() +
   theme(axis.line.y = element_blank(),
         axis.ticks.y = element_blank(),

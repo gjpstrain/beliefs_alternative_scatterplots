@@ -233,7 +233,7 @@ Regression},
     title = {emmeans: Estimated Marginal Means, aka Least-Squares Means},
     author = {Russell V. Lenth},
     year = {2024},
-    note = {R package version 1.10.4},
+    note = {R package version 1.10.6},
     url = {https://CRAN.R-project.org/package=emmeans},
   }
 
@@ -251,11 +251,11 @@ Regression},
     publisher = {Springer-Verlag New York},
     year = {2016},
     isbn = {978-3-319-24277-4},
-    url 
+    url = {https://ggplot2.tidyverse.org},
   
 %Other
 
-@misc{prolific,
+@online{prolific,
   title={Prolific},
   url={https://www.prolific.com},
   publisher={Prolific},
@@ -265,10 +265,10 @@ Regression},
   version={July, 2024},
 }
 
-@misc{chat_gpt,
+@online{chat_gpt,
     title={ChatGPT}, 
     url={https://chat.openai.com/}, 
-    journal={ChatGPT, GPT4, Generate 100 statements that describe the correlation between two variables, such as: X is associated with a higher level of Y or As X increases, Y increases. Try to match all the statements on emotionality.},
+    journal={ChatGPT, GPT4, Prompt: Generate 100 statements that describe the correlation between two variables, such as: X is associated with a higher level of Y or As X increases, Y increases. Try to match all the statements on emotionality.},
 	publisher={OpenAI},
     year={2024},
     month={Apr},
@@ -297,7 +297,6 @@ Regression},
   issn = {1467-8659},
   doi = {10.1111/cgf.13168},
   urldate = {2021-02-02},
-  abstract = {Scatterplots have been in use for about two centuries, primarily for observing the relationship between two variables and commonly for supporting correlation analysis. In this paper, we report an empirical study that examines how humans' perception of correlation using scatterplots relates to the Pearson's product-moment correlation coefficient (PPMCC) -- a commonly used statistical measure of correlation. In particular, we study human participants' estimation of correlation under different conditions, e.g., different PPMCC values, different densities of data points, different levels of symmetry of data enclosures, and different patterns of data distribution. As the participants were instructed to estimate the PPMCC of each stimulus scatterplot, the difference between the estimated and actual PPMCC is referred to as an offset. The results of the study show that varying PPMCC values, symmetry of data enclosure, or data distribution does have an impact on the average offsets, while only large variations in density cause an impact that is statistically significant. This study indicates that humans' perception of correlation using scatterplots does not correlate with computed PPMCC in a consistent manner. The magnitude of offsets may be affected not only by the difference between individuals, but also by geometric features of data enclosures. It suggests that visualizing scatterplots does not provide adequate support to the task of retrieving their corresponding PPMCC indicators, while the underlying model of humans' perception of correlation using scatterplots ought to feature other variables in addition to PPMCC. The paper also includes a theoretical discussion on the cost-benefit of using scatterplots.},
   copyright = {{\copyright} 2017 The Author(s) Computer Graphics Forum {\copyright} 2017 The Eurographics Association and John Wiley \& Sons Ltd. Published by John Wiley \& Sons Ltd.},
   langid = {english}
 }
@@ -313,8 +312,7 @@ Regression},
   pages = {1203--1210},
   issn = {01677055},
   doi = {10.1111/j.1467-8659.2009.01694.x},
-  urldate = {2021-02-02},
-  abstract = {We present a rigorous way to evaluate the visual perception of correlation in scatterplots, based on classical psychophysical methods originally developed for simple properties such as brightness. Although scatterplots are graphically complex, the quantity they convey is relatively simple. As such, it may be possible to assess the perception of correlation in a similar way.},
+  urldate = {2021-02-02,
   langid = {english}
 }
 
@@ -332,9 +330,8 @@ Regression},
 	month = nov,
 	year = {2018},
 	keywords = {Bayesian analysis, Likert, Ordered-probit, Ordinal data},
-	pages = {328--348},
-	file = {ScienceDirect Snapshot:C\:\\Users\\mbch4gs2\\Zotero\\storage\\L2BGFFUI\\S0022103117307746.html:text/html;Submitted Version:C\:\\Users\\mbch4gs2\\Zotero\\storage\\R9DYQ86V\\Liddell and Kruschke - 2018 - Analyzing ordinal data with metric models What co.pdf:application/pdf},
-}
+	pages = {328--348}
+	}
 
 @article{kay_2015,
   title = {Beyond {{Weber}}'s {{Law}}: {{A Second Look}} at {{Ranking Visualizations}} of {{Correlation}}},
@@ -346,9 +343,8 @@ Regression},
   volume = {22},
   number = {1},
   pages = {469--478},
-  doi = {10.1109/TVCG.2015.2467671},
-  abstract = {Models of human perception - including perceptual "laws" - can be valuable tools for deriving visualization design recommendations. However, it is important to assess the explanatory power of such models when using them to inform design. We present a secondary analysis of data previously used to rank the effectiveness of bivariate visualizations for assessing correlation (measured with Pearson's r) according to the well-known Weber-Fechner Law. Beginning with the model of Harrison et al. [1], we present a sequence of refinements including incorporation of individual differences, log transformation, censored regression, and adoption of Bayesian statistics. Our model incorporates all observations dropped from the original analysis, including data near ceilings caused by the data collection process and entire visualizations dropped due to large numbers of observations worse than chance. This model deviates from Weber's Law, but provides improved predictive accuracy and generalization. Using Bayesian credibility intervals, we derive a partial ranking that groups visualizations with similar performance, and we give precise estimates of the difference in performance between these groups. We find that compared to other visualizations, scatterplots are unique in combining low variance between individuals and high precision on both positively- and negatively- correlated data. We conclude with a discussion of the value of data sharing and replication, and share implications for modeling similar experimental data.}
-}
+  doi = {10.1109/TVCG.2015.2467671}
+  }
 
 @article{harrison_2014,
   title = {Ranking {{Visualizations}} of {{Correlation Using Weber}}'s {{Law}}},
@@ -361,7 +357,6 @@ Regression},
   pages = {1943--1952},
   issn = {1941-0506},
   doi = {10.1109/TVCG.2014.2346979},
-  abstract = {Despite years of research yielding systems and guidelines to aid visualization design, practitioners still face the challenge of identifying the best visualization for a given dataset and task. One promising approach to circumvent this problem is to leverage perceptual laws to quantitatively evaluate the effectiveness of a visualization design. Following previously established methodologies, we conduct a large scale (n = 1687) crowdsourced experiment to investigate whether the perception of correlation in nine commonly used visualizations can be modeled using Weber's law. The results of this experiment contribute to our understanding of information visualization by establishing that: (1) for all tested visualizations, the precision of correlation judgment could be modeled by Weber's law, (2) correlation judgment precision showed striking variation between negatively and positively correlated data, and (3) Weber models provide a concise means to quantify, compare, and rank the perceptual precision afforded by a visualization.},
   keywords = {correlation judgment precision,correlation perception,correlation visualization ranking,Crowdsourcing,Data models,data visualisation,Data visualization,Design methodology,Evaluation,human factors,Image color analysis,information visualization,large-scale crowdsourced experiment,negatively correlated data,outsourcing,Perception,perceptual laws,perceptual precision comparison,perceptual precision quantification,perceptual precision ranking,positively correlated data,psychology,quantitative visualization design effectiveness evaluation,Testing,Visualization,Weber law,Weber models}
 }
 
@@ -377,7 +372,6 @@ Regression},
   pages = {1474--1488},
   issn = {1941-0506},
   doi = {10.1109/TVCG.2018.2810918},
-  abstract = {Recent visualization research efforts have incorporated experimental techniques and perceptual models from the vision science community. Perceptual laws such as Weber's law, for example, have been used to model the perception of correlation in scatterplots. While this thread of research has progressively refined the modeling of the perception of correlation in scatterplots, it remains unclear as to why such perception can be modeled using relatively simple functions, e.g., linear and log-linear. In this paper, we investigate a longstanding hypothesis that people use visual features in a chart as a proxy for statistical measures like correlation. For a given scatterplot, we extract 49 candidate visual features and evaluate which best align with existing models and participant judgments. The results support the hypothesis that people attend to a small number of visual features when discriminating correlation in scatterplots. We discuss how this result may account for prior conflicting findings, and how visual features provide a baseline for future model-based approaches in visualization evaluation and design.},
   keywords = {candidate visual features,Computational modeling,Computer Graphics,Correlation,correlation judgment,Data models,data visualisation,Data visualization,evaluation/methodology,feature extraction,Feature extraction,Female,Humans,Information visualization,Judgment,model-based approaches,Models Statistical,perception and psychophysics,perceptual laws,perceptual models,power law,Psychology,Psychophysics,scatterplots,vision science community,visual perception,Visual Perception,Visualization,visualization evaluation,visualization features,Weber's law}
 }
 
@@ -393,7 +387,6 @@ Regression},
   issn = {0036-8075, 1095-9203},
   doi = {10.1126/science.216.4550.1138},
   urldate = {2021-02-08},
-  abstract = {Judged association between two variables represented on scatterplots increased when the scales on the horizontal and vertical axes were simultaneously increased so that the size of the point cloud within the frame o f t h e plot decreased. Judged association was very diferent from the correlation coeficient, r, which is the most widely used measure of association.},
   langid = {english}
 }
 
@@ -411,7 +404,6 @@ Regression},
   issn = {1948-5506},
   doi = {10.1177/1948550619875149},
   urldate = {2021-02-17},
-  abstract = {Amazon's Mechanical Turk (MTurk) is arguably one of the most important research tools of the past decade. The ability to rapidly collect large amounts of high-quality human subjects data has advanced multiple fields, including personality and social psychology. Beginning in summer 2018, concerns arose regarding MTurk data quality leading to questions about the utility of MTurk for psychological research. We present empirical evidence of a substantial decrease in data quality using a four-wave naturalistic experimental design: pre-, during, and post-summer 2018. During and to some extent post-summer 2018, we find significant increases in participants failing response validity indicators, decreases in reliability and validity of a widely used personality measure, and failures to replicate well-established findings. However, these detrimental effects can be mitigated by using response validity indicators and screening the data. We discuss implications and offer suggestions to ensure data quality.},
   langid = {english},
   keywords = {Amazon Mechanical Turk,data quality,online samples,replication,TurkGate}
 }
@@ -429,7 +421,6 @@ Regression},
   issn = {0272-989X},
   doi = {10.1177/0272989X16655334},
   urldate = {2021-04-30},
-  abstract = {Background. Visual aids tend to help diverse and vulnerable individuals understand risk communications, as long as these individuals have a basic understanding of graphs (i.e., graph literacy). Tests of objective graph literacy (OGL) can effectively identify individuals with limited skills, highlighting vulnerabilities and facilitating custom-tailored risk communication. However, the administration of these tests can be time-consuming and may evoke negative emotional reactions (e.g., anxiety). Objectives. To evaluate a brief and easy-to-use assessment of subjective graph literacy (SGL) (i.e., self-reported ability to process and use graphically presented information) and to estimate the robustness and validity of the SGL scale and compare it with the leading OGL scale in diverse samples from different cultures. Participants. Demographically diverse residents (n = 470) of the United States, young adults (n = 172) and patients (n = 175) from Spain, and surgeons (n = 175) from 48 countries. Design. A focus group and 4 studies for instrument development and initial validation (study 1), reliability and convergent and discriminant validity evaluation (study 2), and predictive validity estimation (studies 3 and 4). Measures. Psychometric properties of the scale. Results. In about 1 minute, the SGL scale provides a reliable, robust, and valid assessment of skills and risk communication preferences and evokes fewer negative emotional reactions than the OGL scale. Conclusions. The SGL scale can be suitable for use in clinical research and may be useful as a communication aid in clinical practice. Theoretical mechanisms involved in SGL, emerging applications, limitations, and open questions are discussed.},
   langid = {english},
   keywords = {graph literacy,medical decision making,numeracy,risk communication,risk literacy,visual aids}
 }
@@ -446,7 +437,6 @@ Regression},
   pages = {195--203},
   issn = {1554-3528},
   doi = {10.3758/s13428-018-01193-y},
-  abstract = {PsychoPy is an application for the creation of experiments in behavioral science (psychology, neuroscience, linguistics, etc.) with precise spatial control and timing of stimuli. It now provides a choice of interface; users can write scripts in Python if they choose, while those who prefer to construct experiments graphically can use the new Builder interface. Here we describe the features that have been added over the last 10 years of its development. The most notable addition has been that Builder interface, allowing users to create studies with minimal or no programming, while also allowing the insertion of Python code for maximal flexibility. We also present some of the other new features, including further stimulus options, asynchronous time-stamped hardware polling, and better support for open science and reproducibility. Tens of thousands of users now launch PsychoPy every month, and more than 90 people have contributed to the code. We discuss the current state of the project, as well as plans for the future.},
   langid = {english},
   pmcid = {PMC6420413},
   pmid = {30734206},
@@ -468,14 +458,17 @@ Regression},
 }
 
 @article{okan_2012,
-  title={When higher bars are not larger quantities: On individual differences in the use of spatial information in graph comprehension},
-  author={Okan, Yasmina and Garcia-Retamero, Rocio and Galesic, Mirta and Cokely, Edward T},
-  journal={Spatial Cognition \& Computation},
-  volume={12},
-  number={2-3},
-  pages={195--218},
-  year={2012},
-  publisher={Taylor \& Francis}
+author = {Yasmina Okan, Rocio Garcia-Retamero, Mirta Galesic and Edward T. Cokely},
+title = {When Higher Bars Are Not Larger Quantities: On Individual Differences in the Use of Spatial Information in Graph Comprehension},
+journal = {Spatial Cognition \& Computation},
+volume = {12},
+number = {2-3},
+pages = {195--218},
+year = {2012},
+publisher = {Taylor \& Francis},
+doi = {10.1080/13875868.2012.659302},
+URL = {https://doi.org/10.1080/13875868.2012.659302},
+eprint = {https://doi.org/10.1080/13875868.2012.659302}
 }
 
 @article{okan_2016,
@@ -491,7 +484,6 @@ Regression},
   issn = {08943257},
   doi = {10.1002/bdm.1891},
   urldate = {2021-08-19},
-  abstract = {Graphs facilitate the communication of important quantitative information, often serving as effective decision support tools. Yet, graphs are not equally useful for all individuals, as people differ substantially in their graph literacythe ability to understand graphically presented information. Although some features of graphs can be interpreted using spatial-to-conceptual mappings that can be established by adults and children with no graphing experience (e.g., higher bars equal larger quantities), other features are linked to arbitrary graph conventions (e.g., axis labels and scales). In two experiments, we examined differences in the processes underlying the comprehension of graphs presenting medical information in individuals with low and high graph literacy. Participants eye movements were recorded while they interpreted graphs in which information in conventional features was incongruent with that conveyed by spatial features. Results revealed that participants with low graph literacy more often relied on misleading spatial-to-conceptual mappings and misinterpreted the data depicted. Higher graph literacy was often associated with more time spent viewing the conventional features containing essential information for accurate interpretations. This suggests that individuals with high graph literacy are better able to identify the task-relevant information in graphs, and thus attend to the relevant features to a larger extent. Theoretical, methodological, and prescriptive implications for customization of decision-support systems are discussed.},
   langid = {english}
 }
 
@@ -506,7 +498,6 @@ Regression},
   address = {Seoul Republic of Korea},
   doi = {10.1145/2702123.2702585},
   urldate = {2021-10-18},
-  abstract = {Scatterplots are an effective and commonly used technique to show the relationship between two variables. However, as the number of data points increases, the chart suffers from ``over-plotting'' which obscures data points and makes the underlying distribution of the data difficult to discern. Reducing the opacity of the data points is an effective way to address over-plotting, however, setting the individual point opacity is a manual task performed by the chart designer. We present a user-driven model of opacity scaling for scatter plots built from crowd-sourced responses to opacity scaling tasks using several synthetic data distributions, and then test our model on a collection of real-world data sets.},
   isbn = {978-1-4503-3145-6},
   langid = {english}
 }
@@ -522,7 +513,6 @@ Regression},
   issn = {1069-9384},
   doi = {10.3758/s13423-016-1174-7},
   urldate = {2021-10-20},
-  abstract = {For scatterplots with gaussian distributions of dots, the perception of Pearson correlation r can be described by two simple laws: a linear one for discrimination, and a logarithmic one for perceived magnitude (Rensink \& Baldridge, ). The underlying perceptual mechanisms, however, remain poorly understood. To cast light on these, four different distributions of datapoints were examined. The first had 100 points with equal variance in both dimensions. Consistent with earlier results, just noticeable difference (JND) was a linear function of the distance away from r = 1, and the magnitude of perceived correlation a logarithmic function of this quantity. In addition, these laws were linked, with the intercept of the JND line being the inverse of the bias in perceived magnitude. Three other conditions were also examined: a dot cloud with 25 points, a horizontal compression of the cloud, and a cloud with a uniform distribution of dots. Performance was found to be similar in all conditions. The generality and form of these laws suggest that what underlies correlation perception is not a geometric structure such as the shape of the dot cloud, but the shape of the probability distribution of the dots, likely inferred via a form of ensemble coding. It is suggested that this reflects the ability of observers to perceive the information entropy in an image, with this quantity used as a proxy for Pearson correlation.},
   pmcid = {PMC5486871},
   pmid = {27785683}
 }
@@ -539,7 +529,6 @@ Regression},
   issn = {1077-2626, 1941-0506, 2160-9306},
   doi = {10.1109/TVCG.2021.3114783},
   urldate = {2021-11-01},
-  abstract = {Scatterplots can encode a third dimension by using additional channels like size or color (e.g. bubble charts). We explore a potential misinterpretation of trivariate scatterplots, which we call the weighted average illusion, where locations of larger and darker points are given more weight toward x- and y-mean estimates. This systematic bias is sensitive to a designer's choice of size or lightness ranges mapped onto the data. In this paper, we quantify this bias against varying size/lightness ranges and data correlations. We discuss possible explanations for its cause by measuring attention given to individual data points using a vision science technique called the centroid method. Our work illustrates how ensemble processing mechanisms and mental shortcuts can significantly distort visual summaries of data, and can lead to misjudgments like the demonstrated weighted average illusion.},
   langid = {english}
 }
 
@@ -554,7 +543,6 @@ Regression},
   pages = {1588--1599},
   issn = {1941-0506},
   doi = {10.1109/TVCG.2017.2674978},
-  abstract = {Designing a good scatterplot can be difficult for non-experts in visualization, because they need to decide on many parameters, such as marker size and opacity, aspect ratio, color, and rendering order. This paper contributes to research exploring the use of perceptual models and quality metrics to set such parameters automatically for enhanced visual quality of a scatterplot. A key consideration in this paper is the construction of a cost function to capture several relevant aspects of the human visual system, examining a scatterplot design for some data analysis task. We show how the cost function can be used in an optimizer to search for the optimal visual design for a user's dataset and task objectives (e.g., ``reliable linear correlation estimation is more important than class separation''). The approach is extensible to different analysis tasks. To test its performance in a realistic setting, we pre-calibrated it for correlation estimation, class separation, and outlier detection. The optimizer was able to produce designs that achieved a level of speed and success comparable to that of those using human-designed presets (e.g., in R or MATLAB). Case studies demonstrate that the approach can adapt a design to the data, to reveal patterns without user intervention.},
   keywords = {Correlation,Cost function,crowdsourcing,Data analysis,Data visualization,Measurement,optimization,perception,Scatterplot,Visualization}
 }
 
@@ -742,33 +730,27 @@ Regression},
   abstract = {Previous work has shown that the perception of correlation in scatterplots can be characterized by two simple laws: a linear Fechner-like law for precision and a logarithmic Weber-like law for accuracy (Rensink \& Baldridge, 2010). It also appears to be rapid, being largely complete within 100 ms of presentation (Rensink, 2011). This suggests that although correlation may be conveyed by a complex carrier, it nevertheless is-or at least, is based on-a relatively simple property. To investigate the nature of the process involved, two sets of experiments tested whether different kinds of visual design influence correlation perception. The first set involved scatterplots with various styles of dot (or symbol). Precision was determined via the just noticeable difference in correlation for two side-by-side scatterplots. Accuracy was determined by direct estimation, using reference scatterplots having fixed upper and lower values, and a test scatterplot adjusted to have its apparent correlation be midway between them. The second set used similar methodology but a different carrier, with the vertical position carrying the second data dimension being replaced by a simple feature such as size. Such `augmented stripplots' then conveyed correlation via the relation between horizontal position and size. Twelve observers were tested in each condition. Results showed a surprising degree of invariance for scatterplot symbol: different sizes, colors, and even shapes had little effect on precision or accuracy. This suggests that only the centers of the symbols are relevant, ruling out the involvement of simple operations such as blurring. In addition, there was also an interesting degree of invariance for carrier: accuracy and precision in augmented stripplots obeyed linear-logarithmic laws similar to those for scatterplots. These invariances suggest that correlation perception may be a general process that is both rapid and sophisticated.}
 }
 
-@misc{xiong_2022,
-  title = {Seeing {{What You Believe}} or {{Believing What You See}}? {{Belief Biases Correlation Estimation}}},
-  shorttitle = {Seeing {{What You Believe}} or {{Believing What You See}}?},
-  author = {Xiong, Cindy and Stokes, Chase and Kim, Yea-Seul and Franconeri, Steven},
-  year = {2022},
-  month = aug,
-  number = {arXiv:2208.04436},
-  eprint = {2208.04436},
-  primaryclass = {cs},
-  publisher = {arXiv},
-  doi = {10.48550/arXiv.2208.04436},
-  urldate = {2022-08-12},
-  abstract = {When an analyst or scientist has a belief about how the world works, their thinking can be biased in favor of that belief. Therefore, one bedrock principle of science is to minimize that bias by testing the predictions of one's belief against objective data. But interpreting visualized data is a complex perceptual and cognitive process. Through two crowdsourced experiments, we demonstrate that supposedly objective assessments of the strength of a correlational relationship can be influenced by how strongly a viewer believes in the existence of that relationship. Participants viewed scatterplots depicting a relationship between meaningful variable pairs (e.g., number of environmental regulations and air quality) and estimated their correlations. They also estimated the correlation of the same scatterplots labeled instead with generic 'X' and 'Y' axes. In a separate section, they also reported how strongly they believed there to be a correlation between the meaningful variable pairs. Participants estimated correlations more accurately when they viewed scatterplots labeled with generic axes compared to scatterplots labeled with meaningful variable pairs. Furthermore, when viewers believed that two variables should have a strong relationship, they overestimated correlations between those variables by an r-value of about 0.1. When they believed that the variables should be unrelated, they underestimated the correlations by an r-value of about 0.1. While data visualizations are typically thought to present objective truths to the viewer, these results suggest that existing personal beliefs can bias even objective statistical values people extract from data.},
-  archiveprefix = {arXiv},
-  keywords = {Computer Science - Human-Computer Interaction}
+@article{xiong_2022,
+  title={Seeing what you believe or believing what you see? belief biases correlation estimation},
+  author={Xiong, Cindy and Stokes, Chase and Kim, Yea-Seul and Franconeri, Steven},
+  journal={IEEE Transactions on Visualization and Computer Graphics},
+  volume={29},
+  number={1},
+  pages={493--503},
+  year={2022},
+  publisher={IEEE},
+  doi = {10.1109/TVCG.2022.3209405}
 }
 
-@article{stone_2008,
-  title = {Alpha, Contrast and the Perception of Visual Metadata},
-  author = {Stone, Maureen and Bartram, Lyn},
-  year = {2008},
-  journal = {Color and Imaging Conference},
-  volume = {16},
-  number = {355-355},
-  pages = {5},
-  abstract = {Visual elements such as grids, labels, and contour lines act as ``reference structures'' or ``visual metadata'' that support the primary information being presented. Such structures need to be usefully visible, but not so obtrusive that they clutter the presentation. Our goal is to determine the physical, perceptual and cognitive characteristics of such structures, ideally in a way that enables their automatic computation. We present the result of a set of experiments to determine effective display ranges, described in terms of transparency (alpha), for thin rectangular grids over scatterplot data. These show that an effective range can be defined in terms of alpha. In an effort to create a display-independent set of metrics, we analyze these results in terms of luminance contrast, with mixed results. We conclude that the appearance of transparency is an important aspect of subtle visualization.},
-  langid = {english}
+
+@inproceedings{stone_2008,
+  title={Alpha, contrast and the perception of visual metadata},
+  author={Stone, Maureen and Bartram, Lyn},
+  booktitle={Color and Imaging Conference},
+  volume={16},
+  pages={355--359},
+  year={2008},
+  organization={Society of Imaging Science and Technology}
 }
 
 @inproceedings{zuffi_2007,
@@ -893,20 +875,22 @@ Regression},
   keywords = {2D motion,Acceleration,Contrast,Contrast Sensitivity,Global motion,Humans,Local motion,Motion Perception,Psychophysics,Sensory Thresholds,Speed perception}
 }
 
-@misc{markant_2023,
-  title = {When Do Data Visualizations Persuade? {{The}} Impact of Prior Attitudes on Learning about Correlations from Scatterplot Visualizations},
-  shorttitle = {When Do Data Visualizations Persuade?},
-  author = {Markant, Doug and Rogha, Milad and Karduni, Alireza and Wesslen, Ryan and Dou, Wenwen},
-  year = {2023},
-  month = feb,
-  number = {arXiv:2302.03776},
-  eprint = {2302.03776},
-  primaryclass = {cs},
-  publisher = {arXiv},
-  urldate = {2023-02-13},
-  abstract = {Data visualizations are vital to scientific communication on critical issues such as public health, climate change, and socioeconomic policy. They are often designed not just to inform, but to persuade people to make consequential decisions (e.g., to get vaccinated). Are such visualizations persuasive, especially when audiences have beliefs and attitudes that the data contradict? In this paper we examine the impact of existing attitudes (e.g., positive or negative attitudes toward COVID-19 vaccination) on changes in beliefs about statistical correlations when viewing scatterplot visualizations with different representations of statistical uncertainty. We find that strong prior attitudes are associated with smaller belief changes when presented with data that contradicts existing views, and that visual uncertainty representations may amplify this effect. Finally, even when participants' beliefs about correlations shifted their attitudes remained unchanged, highlighting the need for further research on whether data visualizations can drive longer-term changes in views and behavior.},
-  archiveprefix = {arXiv},
-  keywords = {Computer Science - Human-Computer Interaction}
+@inproceedings{markant_2023,
+author = {Markant, Douglas and Rogha, Milad and Karduni, Alireza and Wesslen, Ryan and Dou, Wenwen},
+title = {When do data visualizations persuade? The impact of prior attitudes on learning about correlations from scatterplot visualizations},
+year = {2023},
+isbn = {9781450394215},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3544548.3581330},
+doi = {10.1145/3544548.3581330},
+abstract = {Data visualizations are vital to scientific communication on critical issues such as public health, climate change, and socioeconomic policy. They are often designed not just to inform, but to persuade people to make consequential decisions (e.g., to get vaccinated). Are such visualizations persuasive, especially when audiences have beliefs and attitudes that the data contradict? In this paper we examine the impact of existing attitudes (e.g., positive or negative attitudes toward COVID-19 vaccination) on changes in beliefs about statistical correlations when viewing scatterplot visualizations with different representations of statistical uncertainty. We find that strong prior attitudes are associated with smaller belief changes when presented with data that contradicts existing views, and that visual uncertainty representations may amplify this effect. Finally, even when participants’ beliefs about correlations shifted their attitudes remained unchanged, highlighting the need for further research on whether data visualizations can drive longer-term changes in views and behavior.},
+booktitle = {Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems},
+articleno = {174},
+numpages = {16},
+keywords = {attitudes, data visualization, persuasion, science communication, uncertainty communication},
+location = {Hamburg, Germany},
+series = {CHI '23}
 }
 
 @inproceedings{smart_2019,
@@ -1011,7 +995,7 @@ Regression},
   issn = {0144-929X, 1362-3001},
   doi = {10.1080/01449298908914554},
   urldate = {2023-09-05},
-  abstract = {Abstract The construction of a graphical presentation involves the representation of information by means of visual symbols. The acquisition of information from the resultant graph is a perceptual process that involves the decoding and interpretation of the visual symbols. Hence good design decisions will be based on an understanding of the information acquisition process and in particular graphical perception. This study examines the perception of bivariate normal data presented in a scatter diagram, and creates a model that successfully explains how individuals perceive the information contained in scatterplots Subjects were shown a series of scatter diagrams on the CRT of a microcomputer and were asked to estimate correlation. Several variables were examined that explain estimated correlation including regression slope, dispersion, number of points displayed, and the size of the CRT screen. All of these factors were found to significantly affect subjects' estimates of correlation.},
+  abstract = {The construction of a graphical presentation involves the representation of information by means of visual symbols. The acquisition of information from the resultant graph is a perceptual process that involves the decoding and interpretation of the visual symbols. Hence good design decisions will be based on an understanding of the information acquisition process and in particular graphical perception. This study examines the perception of bivariate normal data presented in a scatter diagram, and creates a model that successfully explains how individuals perceive the information contained in scatterplots Subjects were shown a series of scatter diagrams on the CRT of a microcomputer and were asked to estimate correlation. Several variables were examined that explain estimated correlation including regression slope, dispersion, number of points displayed, and the size of the CRT screen. All of these factors were found to significantly affect subjects' estimates of correlation.},
   langid = {english}
 }
 
@@ -1078,7 +1062,8 @@ Regression},
   number={2},
   pages={978--988},
   year={2020},
-  publisher={IEEE}
+  publisher={IEEE},
+  doi = {10.1109/TVCG.2020.3029412}
 }
 
 @article{pandey_2014,
@@ -1203,16 +1188,6 @@ Regression},
   keywords = {correlation,crowdsourced,perception,scatterplot}
 }
 
-@misc{iliada_2023,
-  title = {{{AI Code}} of {{Conduct}}},
-  author = {Eleftheriou, Iliada and Mubarik, Ajmal},
-  year = {2023},
-  month = feb,
-  urldate = {2024-05-29},
-  abstract = {AI Code of Conduct},
-  howpublished = {https://www.iliada-eleftheriou.com/AICodeOfConduct/\#how-to-cite-and-reference-chatgpt},
-  langid = {english}
-}
 
 @misc{chatgpt,
   title = {{{ChatGPT}}},
@@ -1301,22 +1276,22 @@ articleno = {2}
   langid = {english}
 }
 
-@misc{lan_2023,
-  title = {Affective {{Visualization Design}}: {{Leveraging}} the {{Emotional Impact}} of {{Data}}},
-  shorttitle = {Affective {{Visualization Design}}},
-  author = {Lan, Xingyu and Wu, Yanqiu and Cao, Nan},
-  year = {2023},
-  month = aug,
-  number = {arXiv:2308.02831},
-  eprint = {2308.02831},
-  primaryclass = {cs},
-  publisher = {arXiv},
-  urldate = {2024-08-13},
-  abstract = {In recent years, more and more researchers have reflected on the undervaluation of emotion in data visualization and highlighted the importance of considering human emotion in visualization design. Meanwhile, an increasing number of studies have been conducted to explore emotion-related factors. However, so far, this research area is still in its early stages and faces a set of challenges, such as the unclear definition of key concepts, the insufficient justification of why emotion is important in visualization design, and the lack of characterization of the design space of affective visualization design. To address these challenges, first, we conducted a literature review and identified three research lines that examined both emotion and data visualization. We clarified the differences between these research lines and kept 109 papers that studied or discussed how data visualization communicates and influences emotion. Then, we coded the 109 papers in terms of how they justified the legitimacy of considering emotion in visualization design (i.e., why emotion is important) and identified five argumentative perspectives. Based on these papers, we also identified 61 projects that practiced affective visualization design. We coded these design projects in three dimensions, including design fields (where), design tasks (what), and design methods (how), to explore the design space of affective visualization design.},
-  archiveprefix = {arXiv},
-  langid = {english},
-  keywords = {Computer Science - Human-Computer Interaction}
-}
+@ARTICLE{lan_2023,
+author={Lan, Xingyu and Wu, Yanqiu and Cao, Nan},
+journal={ IEEE Transactions on Visualization \& Computer Graphics },
+title={{ Affective Visualization Design: Leveraging the Emotional Impact of Data }},
+year={2024},
+volume={30},
+number={01},
+ISSN={1941-0506},
+pages={1-11},
+abstract={ In recent years, more and more researchers have reflected on the undervaluation of emotion in data visualization and highlighted the importance of considering human emotion in visualization design. Meanwhile, an increasing number of studies have been conducted to explore emotion-related factors. However, so far, this research area is still in its early stages and faces a set of challenges, such as the unclear definition of key concepts, the insufficient justification of why emotion is important in visualization design, and the lack of characterization of the design space of affective visualization design. To address these challenges, first, we conducted a literature review and identified three research lines that examined both emotion and data visualization. We clarified the differences between these research lines and kept 109 papers that studied or discussed how data visualization communicates and influences emotion. Then, we coded the 109 papers in terms of how they justified the legitimacy of considering emotion in visualization design (i.e., why emotion is important) and identified five argumentative perspectives. Based on these papers, we also identified 61 projects that practiced affective visualization design. We coded these design projects in three dimensions, including design fields (where), design tasks (what), and design methods (how), to explore the design space of affective visualization design. },
+keywords={Data visualization;Image color analysis;Task analysis;Systematics;Faces;Visual analytics;Space exploration},
+doi={10.1109/TVCG.2023.3327385},
+url = {https://doi.ieeecomputersociety.org/10.1109/TVCG.2023.3327385},
+publisher={IEEE Computer Society},
+address={Los Alamitos, CA, USA},
+month=jan}
 
 @article{phelps_2006,
   title = {Emotion {{Facilitates Perception}} and {{Potentiates}} the {{Perceptual Benefits}} of {{Attention}}},
@@ -1413,13 +1388,14 @@ location = {Siena, Italy}
   keywords = {Display design,Eye fixations,Graphical comprehension,Meteorology instruction}
 }
 
-@misc{tandon_2024,
-  title = {Effects of {{Spatial Abilities}} and {{Domain}} on {{Estimation}} of {{Pearson}}'s {{Correlation Coefficient}}},
-  author = {Tandon, Sara and {Abdul-Rahman}, Alfie and Borgo, Rita},
-  year = {2024},
-  month = aug,
-  publisher = {IEEE},
-  abstract = {This study builds on past research bridging spatial visualization, psychology, and information visualization to holistically inform visualization design. We investigate the effects of chosen disciplines in psychology and math \& computer science, combined with cognitive abilities and demographic differences, on visual tasks by measuring estimation of Pearson's correlation coefficient in scatterplots. Results reveal mathematicians demonstrate greater accuracy, benefiting from domain expertise. However, psychologists with high spatial skills outperform some mathematicians with lower spatial skills. Spatial visualization, level of education, and age (inversely) correlated with quicker and more accurate responses. Findings prove that domain expertise and spatial cognition affect correlation judgments in scatterplots, supporting that individual differences should inform visualization design. This work introduces psychologists as a new target domain for visualization research and reveals the impact of combined effects of cognitive abilities and domain on the estimation and manipulation of Pearson's correlation coefficient.},
-  archiveprefix = {IEEE},
-  keywords = {Cognition,Domain Differences,Human Factors,Pearson's Correlation Coefficient,Perception,Spatial Abilities}
-}
+@INPROCEEDINGS{tandon_2024,
+  author={Tandon, Sara and Abdul-Rahman, Alfie and Borgo, Rita},
+  booktitle={2024 28th International Conference Information Visualisation (IV)}, 
+  title={Effects of Spatial Abilities and Domain on Estimation of Pearson's Correlation Coefficient}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={1-8},
+  keywords={Correlation coefficient;Computer science;Visualization;Correlation;Accuracy;Education;Data visualization;Psychology;Estimation;Cognition;Pearson's Correlation Coefficient;Spatial Abilities;Domain Differences;Human Factors;Cognition;Perception},
+  doi={10.1109/IV64223.2024.00024}}
+
