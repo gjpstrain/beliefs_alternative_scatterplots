@@ -28,7 +28,7 @@ library(kableExtra)
 #| include: true
 #| tbl-cap: Numbered full list of statements.
 
-full_list <- read.csv("data/full_list.csv")
+full_list <- read.csv("../data/full_list.csv")
 
 knitr::kable(full_list, booktabs = T, table.env = "table*") %>% kable_styling(latex_options = "scale_down", font_size = 9)
 ```
@@ -40,7 +40,7 @@ knitr::kable(full_list, booktabs = T, table.env = "table*") %>% kable_styling(la
 
 # read in pre-test csv data
 
-pre_test_statements_hi <- read_csv("data/pre_test_data.csv") %>%
+pre_test_statements_hi <- read_csv("../data/pre_test_data.csv") %>%
   filter(label == "high_corr") %>%
   select(c("item_no","statement")) %>%
   rename("Statement - Strong Correlation Depicted" = "statement",
@@ -63,7 +63,7 @@ knitr::kable(pre_test_statements_hi, booktabs = T, table.env = "table*") %>% kab
 
 # read in pre-test csv data
 
-pre_test_statements_lo <- read_csv("data/pre_test_data.csv") %>%
+pre_test_statements_lo <- read_csv("../data/pre_test_data.csv") %>%
   filter(label == "low_corr") %>%
   select(c("item_no","statement")) %>% 
   rename("Statement - Weak Correlation Depicted" = "statement",
@@ -76,7 +76,7 @@ knitr::kable(pre_test_statements_lo, booktabs = T, table.env = "table*") %>% kab
 
 # Full Defensive Confidence Scale
 
-Participants answered each item using ausing a 5 point Likert scale ranging from 1
+Participants answered each item using using a 5 point Likert scale ranging from 1
 (*not at all characteristic of me*) to 5 (*extremely characteristic of me*).
 
 ```{r}
@@ -84,7 +84,7 @@ Participants answered each item using ausing a 5 point Likert scale ranging from
 #| include: true
 #| tbl-cap: Defensive Confidence Scale items. Reverse scored items are specified.
 
-def_con <- read_csv("data/defensive_confidence_scale.csv")
+def_con <- read_csv("../data/defensive_confidence_scale.csv")
 
 knitr::kable(def_con, booktabs = T, table.env = "table*") %>%
   kable_styling(latex_options = "scale_down", font_size = 9) %>%
