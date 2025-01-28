@@ -40,3 +40,8 @@ RUN R -e "devtools::install_version('geomtextpath', version = '0.1.5', dependenc
 RUN R -e "devtools::install_version('ggh4x', version = '0.3.0', dependencies = T)"
 RUN R -e "devtools::install_version('ordinal', version = '2023.12-4.1', dependencies = T)"
 RUN R -e "devtools::install_version('effectsize', version = '1.0.0', dependencies = T)"
+RUN R -e "devtools::install_version('ggrain', version = '0.0.4', dependencies = T)"
+
+# install doclicense package to recreate ACM licensing
+
+RUN R -e "tinytex::tlmgr_install('doclicense')"
