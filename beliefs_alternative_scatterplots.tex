@@ -1,6 +1,21 @@
 \documentclass[sigconf]{acmart}
 
 
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
 
 %%
 %% This is file `sample-manuscript.tex',
@@ -51,7 +66,8 @@
 %% PANDOC PREAMBLE BEGINS
 
 
-
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -84,6 +100,9 @@
 \usepackage{colortbl}
 \usepackage{pdflscape}
 \usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
 \definecolor{mypink}{RGB}{219, 48, 122}
@@ -131,6 +150,7 @@
 %% PANDOC PREAMBLE ENDS
 
 \setlength{\parindent}{10pt}
+\setlength{\parskip}{0pt}
 
 \hypersetup{
   pdftitle={Effects of Alternative Scatterplot Designs on Belief},
@@ -298,33 +318,34 @@ this work with regards to altering attitudes and behaviours.
 %%
 \begin{CCSXML}
 <ccs2012>
-   <concept>
-       <concept_id>10003120.10003145</concept_id>
-       <concept_desc>Human-centered computing~Visualization</concept_desc>
-       <concept_significance>500</concept_significance>
-       </concept>
-   <concept>
-       <concept_id>10003120.10003145.10011769</concept_id>
-       <concept_desc>Human-centered computing~Empirical studies in visualization</concept_desc>
-       <concept_significance>500</concept_significance>
-       </concept>
-   <concept>
-       <concept_id>10003120.10003121.10011748</concept_id>
-       <concept_desc>Human-centered computing~Empirical studies in HCI</concept_desc>
-       <concept_significance>500</concept_significance>
-       </concept>
-   <concept>
-       <concept_id>10003120.10003121</concept_id>
-       <concept_desc>Human-centered computing~Human computer interaction (HCI)</concept_desc>
-       <concept_significance>300</concept_significance>
-       </concept>
- </ccs2012>
+ <concept>
+  <concept_id>10003120.10003145</concept_id>
+  <concept_desc>Human-centered computing~visualisation</concept_desc>
+  <concept_significance>500</concept_significance>
+ </concept>
+ <concept>
+  <concept_id>10003120.10003145.10011769</concept_id>
+  <concept_desc>Human-centered computing~Empirical studies in visualisation</concept_desc>
+  <concept_significance>500</concept_significance>
+ </concept>
+ <concept>
+  <concept_id>10003120.10003145.10011770</concept_id>
+  <concept_desc>Human-centered computing~visualisation design and evaluation methods</concept_desc>
+  <concept_significance>300</concept_significance>
+ </concept>
+ <concept>
+  <concept_id>10003120.10003121.10011748</concept_id
+  <concept_desc>Human-centered computing~Empirical studies in HCI</concept_desc>
+  <concept_significance>500</concept_significance>
+ </concept>
+</ccs2012>
 \end{CCSXML}
 
-\ccsdesc[500]{Human-centered computing~Visualization}
-\ccsdesc[500]{Human-centered computing~Empirical studies in visualization}
+\ccsdesc[500]{Human-centered computing~visualisation}
+\ccsdesc[500]{Human-centered computing~Empirical studies in visualisation}
+\ccsdesc[300]{Human-centered computing~visualisation design and evaluation methods}
 \ccsdesc[500]{Human-centered computing~Empirical studies in HCI}
-\ccsdesc[300]{Human-centered computing~Human computer interaction (HCI)}
+
 %%
 %% Keywords. The author(s) should pick words that accurately describe
 %% the work being presented. Separate the keywords with commas.
@@ -337,6 +358,8 @@ perception, scatterplot, crowdsourced}
 %% information and builds the first part of the formatted document.
 \maketitle
 
+\setlength{\parskip}{-0.1pt}
+
 \section{Introduction}\label{sec-intro}
 
 Utilised for communication in a wide variety of contexts, scatterplots
@@ -344,7 +367,7 @@ are simple representations of (usually) bivariate data. In 1983, they
 were estimated to account for between 70 and 80 percent of data
 visualisations in scientific publications \citep{tufte_1983}, and while
 there is no doubt that the range of visualisations employed in and
-beyond scientific circles is now far broader, scatterplots remain an
+beyond scientific circles is now far wider, scatterplots remain an
 important tool for the visualisation designer. Scatterplots are
 interpreted rapidly \citep{rensink_2014}, facilitating the quick
 collection of large amounts of data, and their ubiquity
@@ -362,7 +385,7 @@ tasks in mind, plays a large part in their popularity. Building on
 previous work, we elect to focus on the use of scatterplots for the
 communication of linear, bivariate, positive correlation. There is
 evidence that, while correlation perception in scatterplots is
-characterized by low levels of interindividual variance (especially when
+characterised by low levels of interindividual variance (especially when
 compared to other visualisations that communicate the same idea
 \citep{harrison_2014, kay_2015}), our accuracy in interpretation is
 poor. Studies asking participants to estimate correlation numerically
@@ -393,7 +416,7 @@ and to what extent, these techniques can influence cognition in the
 context of real-world data visualisations and the relatedness between
 variables.
 
-visualisation is a powerful tool. After all, if numerical data were
+Visualisation is a powerful tool. After all, if numerical data were
 sufficient for understanding, there would be no need to visualise beyond
 aesthetic preference. Pattern recognition, attention, and familiarity
 are aspects of human perception and cognition that can be exploited by
@@ -404,7 +427,7 @@ cause distrust, confusion, and misunderstanding amongst viewers. It is
 for these reasons that we choose to study belief change in scatterplots
 as a consequence of alternative designs. Scatterplots, like many other
 data visualisations, have been submitted as evidence in court cases
-\citep{bobko_1979}, and play key roles in organizational
+\citep{bobko_1979}, and play key roles in organisational
 decision-making, including in healthcare \citep{poly_2019}. It is
 reasonable to assume that data visualisations are used to make decisions
 that result in positive or negative outcomes with regard to health and
@@ -432,7 +455,7 @@ and perception and cognition in data visualisation.
 \subsection{Correlation Perception}\label{sec-corr-percept}
 
 Correlation describes the level of relatedness between a number of
-variables. Here we focus exclusively on the most commonly used
+variables. Here, we focus exclusively on the most commonly used
 correlation metric - Pearson's \emph{r}. This statistic takes values
 between -1 and 1 depending on the direction of the relationship being
 described. The perceptual and cognitive mechanisms that drive the
@@ -477,8 +500,9 @@ more recent work reports strong effects of the systematic adjustment of
 each visual feature \citep{strain_2023, strain_2023b, strain_2024}. The
 idea that it is the shape of the point cloud and the probability
 distribution it represents that inform judgements of correlation has
-received support from recent work exploiting visual features to make
-correlation estimation more accurate. Strain et al.
+received support from recent work exploiting visual features to
+facilitate more accurate correlation estimation in positively correlated
+scatterplots. Strain et al.
 \citep{strain_2023, strain_2023b, strain_2024} changed the sizes and
 opacities of points in scatterplots as a function of their distance from
 the regression line and achieved success in biasing correlation
@@ -521,13 +545,14 @@ Figure~\ref{fig-previous-manipulations}).
 scatterplot manipulations from previous work using an \textit{r} value
 of 0.6. Bottom row: the corresponding correlation estimation behaviour
 across values of \textit{r} between 0.2 and 0.99. The dashed diagonal
-line represents perfectly accurate estimation, while the solid line is
-what is observed when participants are asked to estimate correlation.}
+line represents hypothetically accurate estimation, while the solid line
+is what is observed when participants are asked to estimate
+correlation.}
 
 \end{figure*}%
 
 \subsection{Perception \& Cognition in Data
-visualisation}\label{sec-perception-cognition}
+Visualisation}\label{sec-perception-cognition}
 
 Interacting with data visualisation is a complex process involving
 bottom-up and top-down mechanisms
@@ -576,7 +601,7 @@ taken place in person, there is precedent for work that explores
 cognition and perception to take place online using crowdsourced
 participants \citep{xiong_2022}. Crowdsourcing affords us the
 recruitment of samples from across our lay population of interest, and
-it is considerably quicker and less expensive than in-person testing.
+is considerably quicker and less expensive than in-person testing.
 Previous work has reported issues of data quality and skewed
 demographics \citep{chmielewski_2020, charalambides_2021, peer_2021}, so
 we follow published guidelines \citep{peer_2021} to give us the best
@@ -593,7 +618,7 @@ The goal of the present study is to investigate to what extent a novel
 scatterplot design can alter participants' beliefs about correlations.
 Due to our targeting of lay populations, and the authors' prior
 experience with lay participants failing to understand the term
-``correlation'' (although not the concept), we elected to operationalize
+``correlation'' (although not the concept), we elected to operationalise
 correlation for our participants as ``strength of relatedness''. There
 is evidence that belief change can be affected by prior beliefs and
 attitudes \citep{xiong_2022, markant_2023}, and that emotion, including
@@ -626,7 +651,7 @@ Positive} for the former, and \emph{Not Related At All} and
 \emph{Strongly Related} for the latter. All other points were
 unlabelled. We calculated a quadratic weighted Cohen's Kappa between the
 two raters using the \textbf{irr} package (version 0.84.1 \citep{irr})
-to penalize larger magnitude disagreements more harshly. We found
+to penalise larger magnitude disagreements more harshly. We found
 agreement above chance for both emotional valence (\(\kappa\) = 0.49,
 \emph{p} \textless{} .001) and strength of relatedness (\(\kappa\) =
 0.51, \emph{p} \textless{} .001), indicating moderate levels of
@@ -636,10 +661,10 @@ levels of absolute agreement, resulting in 14 strongly correlated
 statements and 11 weakly correlated statements that can be seen in the
 supplemental materials. We then tested these 25 statements with a
 representative UK sample to ascertain consensus on both statement
-emotionality and strength of relatedness. Doing so allows us to minimize
+emotionality and strength of relatedness. Doing so allows us to minimise
 the impact of these factors when we analyse the effects of alternative
 scatterplot design on the propensity for belief change in our main
-experiment. We hypothesized that:
+experiment. We hypothesised that:
 
 \begin{itemize}
 \tightlist
@@ -663,17 +688,17 @@ experiment. We hypothesized that:
 participation, as our main experiment relied on familiarity with data
 visualisations from a popular British news source. In addition to 25
 experimental items, we included six attention check items that
-instructed participants to ignore the scatterplot and provide specific
-answers. No participants failed more than 2 out of 6 attention check
-items, and therefore data from all 100 were included in the full
-analysis (52 male and 48 female). Participants' mean age was 41.1
-(\emph{SD} = 12.3). The average time taken to complete the survey was
-7.6 minutes (\emph{SD} = 2.9 minutes).
+instructed participants to ignore the statement and provide specific
+answers to the Likert scale sliders. No participants failed more than 2
+out of 6 attention check items, and therefore data from all 100 were
+included in the full analysis (52 male and 48 female). Participants'
+mean age was 41.1 (\emph{SD} = 12.3). The average time taken to complete
+the survey was 7.6 minutes (\emph{SD} = 2.9 minutes).
 
 \subsubsection{Design}\label{sec-design-pre}
 
 Each participant saw all survey items (see supplemental material), along
-with the six attention check items, in a fully randomized order. All
+with the six attention check items, in a fully randomised order. All
 experimental code, materials, and instructions are hosted on
 GitLab\footnote{https://gitlab.pavlovia.org/Strain/beliefs\_scatterplots\_pretest}.
 
@@ -687,18 +712,17 @@ consent through key presses in response to consent statements. They were
 asked to provide their age in a free text box, followed by their gender
 identity. Participants were told that they would be asked to read
 statements about the relatedness between a pair of variables, after
-which they would have to answer some questions. To familiarize
+which they would have to answer some questions. To familiarise
 themselves with the sliders, they were asked to complete a practice
 round in response to the statement: ``As participation in online
 experiments increases, society becomes happier.'' Following each
 statement, a pair of Likert scales were presented labelled ``Statement
 Emotionality'' and ``Strength of Relatedness''; these scales were
-identical to those used by the researchers in
-Section~\ref{sec-pre-study}.
+identical to those used by the authors in Section~\ref{sec-pre-study}.
 
 \subsection{Results}\label{sec-results-pre}
 
-Analyses were conducted using R (version 4.4.0) \citep{rcore}). We use
+Analyses were conducted using R (version 4.4.0) \citep{rcore}). We used
 the \textbf{irr} package to calculate Fleiss' Kappa to measure
 interrater agreement on statement emotional valence and strength of
 relatedness for the 25 experimental items. This analysis revealed that
@@ -724,11 +748,11 @@ strength of relatedness between the variables in question. We therefore
 test statement number 22, ``Higher consumption of spicy foods is
 associated with a lower risk of certain types of cancer'', however we
 modify the wording so that the variables (food consumption and cancer
-risk) are positively correlated, as while the manipulations we use in
-the alternative scatterplot condition can affect estimates of
-correlation in positively correlated scatterplots, no work regarding the
-effects of these manipulations in negatively correlated scatterplots has
-been completed.
+risk) are positively correlated. While the manipulations we use in the
+alternative scatterplot condition can affect estimates of correlation in
+positively correlated scatterplots, no work regarding the effects of
+these manipulations in negatively correlated scatterplots has been
+completed.
 
 \begin{table}
 
@@ -778,7 +802,7 @@ with a higher risk of certain types of cancer.'' To give ourselves the
 best chance of detecting an effect of viewing alternative scatterplots,
 we elected to design our scatterplots based on a popular British news
 source and to falsely credit the data as being provided by the British
-National Health Service (NHS). Participants were informed that said news
+National Health Service (NHS). Participants were informed that the news
 source had requested that their identity be obscured. They were
 debriefed that this was not the case, and that the data were fictional,
 following completion of the experiment. Based on previous evidence that
@@ -905,17 +929,17 @@ complete the experiment (\emph{SD} = 6.41).
 \subsubsection{Design}\label{sec-design-main}
 
 We employed a between-participants design. Each participant was randomly
-assigned to either group A, in which case they viewed standard
-scatterplots, or group B, in which they viewed alternative scatterplots
-designed deliberately to elicit higher levels of belief change.
-Participants saw all 45 experimental items for their group, along with 4
-attention check items, in a fully randomized order. Our dependent
-variable was the level of belief change induced by viewing the
-scatterplot visualisations, so participants were tested on how strongly
-related they believed the variables described by the correlative
-statement were both \textbf{before} and \textbf{after} viewing the
-experimental items. All experimental code, materials, and instructions
-are hosted on GitLab as two separate experiments \footnote{https://gitlab.pavlovia.org/Strain/atypical\_scatterplots\_main\_t}
+assigned to either group A, in which they viewed standard scatterplots,
+or group B, in which they viewed alternative scatterplots designed
+deliberately to elicit higher levels of belief change. Participants saw
+all 45 experimental items for their group, along with 4 attention check
+items, in a fully randomised order. Our dependent variable was the level
+of belief change induced by viewing the scatterplot visualisations, so
+participants were tested on how strongly related they believed the
+variables described by the correlative statement were both
+\textbf{before} and \textbf{after} viewing the experimental items. All
+experimental code, materials, and instructions are hosted on GitLab as
+two separate experiments \footnote{https://gitlab.pavlovia.org/Strain/atypical\_scatterplots\_main\_t}
 \footnote{https://gitlab.pavlovia.org/Strain/atypical\_scatterplots\_main\_a}.
 
 \subsubsection{Procedure}\label{sec-procedure-main}
@@ -934,7 +958,7 @@ scale described by Albarracín and Mitchell \citep{albarracin_2004} and
 the 5-item Subjective Graph Literacy scale \citep{garcia_2016}
 \footnote{The inclusion of this scale was not specified in the
   pre-registration.}. To give legitimacy to our data visualisations with
-the hope of maximizing any potential belief change, participants were
+the hope of maximising any potential belief change, participants were
 told that the graphs were taken from a well-known British news source,
 but that the identity of this source had been obscured. To promote
 engagement with the visualisations, participants were instructed to use
@@ -957,7 +981,7 @@ or 1.
 
 All analyses were conducted using R (version 4.4.2 \citep{rcore}).
 Likert scales capture whether one rating is higher or lower than
-another, however they do not quantify the difference between levels of
+another, however they do not quantify the differences between levels of
 rating. Metric modelling assuming equal levels of difference between
 ratings, such as linear regression, is therefore inappropriate
 \citep{liddell_2018}. In light of this, we use the \textbf{ordinal}
@@ -967,11 +991,11 @@ mixed effects models to analyse Likert scale data \footnote{Our
   Conclusions are identical when using said models, and code for this
   analysis is included in the repository associated with this paper.}.
 We use the \textbf{buildmer} (version 2.11 \citep{buildmer}) package to
-automate selection of the random effects structure; we provide a maximal
-model, which includes random intercepts for participants, and
+automate selection of the random effects structure; on provision of a
+maximal model including random intercepts for participants,
 \textbf{buildmer} identifies the most complex model that successfully
-converges. We present odds ratios and equivalent Cohen's \emph{d} effect
-sizes that were calculated using the \textbf{effectsize} package
+converges. We also present odds ratios and equivalent Cohen's \emph{d}
+effect sizes that were calculated using the \textbf{effectsize} package
 (version 1.0.0 \citep{effectsize}).
 
 To test the first hypothesis, that ratings of strength of relatedness
@@ -991,7 +1015,7 @@ and dot plots for ratings of strength of relatedness made before and
 after viewing scatterplots in either the standard or alternative
 condition.
 
-\begin{table*}
+\begin{table}
 
 \caption{\label{tbl-rating-time}Statistics for the significant main
 effect of rating time. Odds ratio and the equivalent Cohen's \textit{d}
@@ -1009,7 +1033,7 @@ Rating Time & 3.77 & 0.049 & 76.63 & <0.001 & 43.2 & 2.08\\
 
 }
 
-\end{table*}%
+\end{table}%
 
 \begin{figure*}
 
@@ -1060,11 +1084,12 @@ who were exposed to the alternative scatterplot condition.
 
 \caption{\label{fig-difference-descriptive}Histograms illustrating the
 magnitudes of the difference between pre- and post-plot viewing ratings
-of strength of relatedness. Median values are plotted as points.}
+of strength of relatedness for standard and alternative scatterplots.
+Median values are plotted as points.}
 
 \end{figure*}%
 
-\begin{table*}
+\begin{table}
 
 \caption{\label{tbl-condition-interact}Statistics for the significant
 main effect of rating time and the significant interaction between
@@ -1087,7 +1112,7 @@ Rating Time x Condition & -0.72 & 0.071 & -10.22 & <0.001 & 2.06 & 0.40\\
 
 }
 
-\end{table*}%
+\end{table}%
 
 \subsubsection{Additional Analyses}\label{sec-add-analyses}
 
@@ -1131,8 +1156,8 @@ Emotionality}\label{sec-add-analyses-discussion}
 beliefs about strength of relatedness change as a function of
 participants' scores on the graph literacy test (left), their scores on
 the defensive confidence test (centre), and their ratings of statement
-emotionality (right). Localled smoothed curves with 95\% CI ribbons are
-shown separately for standard and alternative scatterplot viewing
+emotional valence (right). Locally smoothed curves with 95\% CI ribbons
+are shown separately for standard and alternative scatterplot viewing
 conditions. Lower ratings of Difference in Beliefs (\(y\) axis)
 corresponds to lower levels of belief change between pre- and
 post-scatterplot viewing times.}
@@ -1246,19 +1271,19 @@ statements, the propensity for strongly held beliefs to be changed, nor
 the effect of topics with strong or polarised emotional components. We
 chose to use a simple, blunt measure of belief about relatedness, and
 did not investigate variations within the alternative scatterplot design
-space, such as using different values of equation 1, or using opacity or
+space, such as using different values in equation 1, or using opacity or
 size manipulations in isolation. Each of these components deserves
 study, and each is ripe for future work to investigate the contributions
 of each factor to the effects we have seen here.
 
 In Section~\ref{sec-add-analyses-discussion}, we describe the effects
 that graph literacy, defensive confidence, and participants' ratings of
-the emotionality of the correlative statement have on the propensity for
-belief change. Future work may wish to investigate these factors, along
-with others that affect perceptions of correlation, such as educational
-background or spatial abilities \citep{tandon_2024}. Xiong et al.
-\citep{xiong_2022} describe how correlation estimation may differ
-according to the context the data are presented in; this could be
+the emotional valence of the correlative statement have on the
+propensity for belief change. Future work may wish to investigate these
+factors, along with others that affect perceptions of correlation, such
+as educational background or spatial abilities \citep{tandon_2024}.
+Xiong et al. \citep{xiong_2022} describe how correlation estimation may
+differ according to the context the data are presented in; this could be
 extended to instead investigate statements with differing emotional
 contents and how alternative scatterplot designs might interact with
 emotional valence. Similarly, selecting matched participant groups with
