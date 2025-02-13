@@ -1,0 +1,920 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{54}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[cha(2024)]%
+        {chat_gpt}
+ \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{ChatGPT}}.
+\newblock
+\urldef\tempurl%
+\url{https://chat.openai.com/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[pro(2024)]%
+        {prolific}
+ \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Prolific}}.
+\newblock London, UK.
+\newblock
+\urldef\tempurl%
+\url{https://www.prolific.com}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Albarrac{\'i}n and Mitchell(2004)]%
+        {albarracin_2004}
+\bibfield{author}{\bibinfo{person}{Dolores Albarrac{\'i}n} {and}
+  \bibinfo{person}{Amy~L. Mitchell}.} \bibinfo{year}{2004}\natexlab{}.
+\newblock \showarticletitle{The {{Role}} of {{Defensive Confidence}} in
+  {{Preference}} for {{Proattitudinal Information}}: {{How Believing That One
+  Is Strong Can Sometimes Be}} a {{Defensive Weakness}}}.
+\newblock \bibinfo{journal}{\emph{Personality \& social psychology bulletin}}
+  \bibinfo{volume}{30}, \bibinfo{number}{12} (\bibinfo{date}{Dec.}
+  \bibinfo{year}{2004}), \bibinfo{pages}{1565--1584}.
+\newblock
+\showISSN{0146-1672}
+\urldef\tempurl%
+\url{https://doi.org/10.1177/0146167204271180}
+\showDOI{\tempurl}
+
+
+\bibitem[Ayris et~al\mbox{.}(2018)]%
+        {ayris_2018}
+\bibfield{author}{\bibinfo{person}{Paul Ayris}, \bibinfo{person}{Isabel
+  Bernal}, \bibinfo{person}{Valentino Cavalli}, \bibinfo{person}{Bertil Dorch},
+  \bibinfo{person}{Jeannette Frey}, \bibinfo{person}{Martin Hallik},
+  \bibinfo{person}{Kistiina {Hormia-Poutanen}}, \bibinfo{person}{Ignasi
+  {Labastida i Juan}}, \bibinfo{person}{John MacColl},
+  \bibinfo{person}{Agn{\`e}s Ponsati~Obiols}, \bibinfo{person}{Simone Sacchi},
+  \bibinfo{person}{Frank Scholze}, \bibinfo{person}{Birgit Schmidt},
+  \bibinfo{person}{Anja Smit}, \bibinfo{person}{Adam Sofronijevic},
+  \bibinfo{person}{Jadranka Stojanovski}, \bibinfo{person}{Martin Svoboda},
+  \bibinfo{person}{Giannis Tsakonas}, \bibinfo{person}{Matthijs {van Otegem}},
+  \bibinfo{person}{Astrid Verheusen}, \bibinfo{person}{Andris Vilks},
+  \bibinfo{person}{Wilhelm Widmark}, {and} \bibinfo{person}{Wolfram
+  Horstmann}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{{{LIBER Open Science Roadmap}}}.
+\newblock  (\bibinfo{date}{July} \bibinfo{year}{2018}).
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.20350/digitalCSIC/15061}
+\showDOI{\tempurl}
+
+
+\bibitem[Ben-Shachar et~al\mbox{.}(2020)]%
+        {effectsize}
+\bibfield{author}{\bibinfo{person}{Mattan~S. Ben-Shachar},
+  \bibinfo{person}{Daniel Lüdecke}, {and} \bibinfo{person}{Dominique
+  Makowski}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{{e}ffectsize: Estimation of Effect Size Indices and
+  Standardized Parameters}.
+\newblock \bibinfo{journal}{\emph{Journal of Open Source Software}}
+  \bibinfo{volume}{5}, \bibinfo{number}{56} (\bibinfo{year}{2020}),
+  \bibinfo{pages}{2815}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.21105/joss.02815}
+\showDOI{\tempurl}
+
+
+\bibitem[Bobko and Karren(1979)]%
+        {bobko_1979}
+\bibfield{author}{\bibinfo{person}{Philip Bobko} {and} \bibinfo{person}{Ronald
+  Karren}.} \bibinfo{year}{1979}\natexlab{}.
+\newblock \showarticletitle{The {{Perception}} of {{Pearson Product Moment
+  Correlations}} from {{Bivariate Scatterplots}}}.
+\newblock \bibinfo{journal}{\emph{Personnel Psychology}} \bibinfo{volume}{32},
+  \bibinfo{number}{2} (\bibinfo{year}{1979}), \bibinfo{pages}{313--325}.
+\newblock
+\showISSN{1744-6570}
+\urldef\tempurl%
+\url{https://doi.org/10.1111/j.1744-6570.1979.tb02137.x}
+\showDOI{\tempurl}
+
+
+\bibitem[Canham and Hegarty(2010)]%
+        {canham_2010}
+\bibfield{author}{\bibinfo{person}{Matt Canham} {and} \bibinfo{person}{Mary
+  Hegarty}.} \bibinfo{year}{2010}\natexlab{}.
+\newblock \showarticletitle{Effects of Knowledge and Display Design on
+  Comprehension of Complex Graphics}.
+\newblock \bibinfo{journal}{\emph{Learning and Instruction}}
+  \bibinfo{volume}{20}, \bibinfo{number}{2} (\bibinfo{date}{April}
+  \bibinfo{year}{2010}), \bibinfo{pages}{155--166}.
+\newblock
+\showISSN{0959-4752}
+\urldef\tempurl%
+\url{https://doi.org/10.1016/j.learninstruc.2009.02.014}
+\showDOI{\tempurl}
+
+
+\bibitem[Charalambides(2021)]%
+        {charalambides_2021}
+\bibfield{author}{\bibinfo{person}{Nick Charalambides}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \bibinfo{title}{We Recently Went Viral on {{TikTok}} - Here's What We
+  Learned}.
+\newblock
+\newblock
+
+
+\bibitem[Chmielewski and Kucker(2020)]%
+        {chmielewski_2020}
+\bibfield{author}{\bibinfo{person}{Michael Chmielewski} {and}
+  \bibinfo{person}{Sarah~C. Kucker}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{An {{MTurk Crisis}}? {{Shifts}} in {{Data Quality}}
+  and the {{Impact}} on {{Study Results}}}.
+\newblock \bibinfo{journal}{\emph{Social Psychological and Personality
+  Science}} \bibinfo{volume}{11}, \bibinfo{number}{4} (\bibinfo{date}{May}
+  \bibinfo{year}{2020}), \bibinfo{pages}{464--473}.
+\newblock
+\showISSN{1948-5506}
+\urldef\tempurl%
+\url{https://doi.org/10.1177/1948550619875149}
+\showDOI{\tempurl}
+
+
+\bibitem[Christensen(2023)]%
+        {ordinal}
+\bibfield{author}{\bibinfo{person}{Rune H.~B. Christensen}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{ordinal---Regression Models for Ordinal
+  Data}}.
+\newblock
+\urldef\tempurl%
+\url{https://CRAN.R-project.org/package=ordinal}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{R package version 2023.12-4.1}.
+
+
+\bibitem[Cleveland et~al\mbox{.}(1982)]%
+        {cleveland_1982}
+\bibfield{author}{\bibinfo{person}{W.~S. Cleveland}, \bibinfo{person}{P.
+  Diaconis}, {and} \bibinfo{person}{R. Mcgill}.}
+  \bibinfo{year}{1982}\natexlab{}.
+\newblock \showarticletitle{Variables on {{Scatterplots Look More Highly
+  Correlated When}} the {{Scales Are Increased}}}.
+\newblock \bibinfo{journal}{\emph{Science}} \bibinfo{volume}{216},
+  \bibinfo{number}{4550} (\bibinfo{date}{June} \bibinfo{year}{1982}),
+  \bibinfo{pages}{1138--1141}.
+\newblock
+\showISSN{0036-8075, 1095-9203}
+\urldef\tempurl%
+\url{https://doi.org/10.1126/science.216.4550.1138}
+\showDOI{\tempurl}
+
+
+\bibitem[Cohen(1968)]%
+        {cohen_1968}
+\bibfield{author}{\bibinfo{person}{Jacob Cohen}.}
+  \bibinfo{year}{1968}\natexlab{}.
+\newblock \showarticletitle{Weighted Kappa: {{Nominal}} Scale Agreement
+  Provision for Scaled Disagreement or Partial Credit.}
+\newblock \bibinfo{journal}{\emph{Psychological Bulletin}}
+  \bibinfo{volume}{70}, \bibinfo{number}{4} (\bibinfo{year}{1968}),
+  \bibinfo{pages}{213--220}.
+\newblock
+\showISSN{1939-1455, 0033-2909}
+\urldef\tempurl%
+\url{https://doi.org/10.1037/h0026256}
+\showDOI{\tempurl}
+
+
+\bibitem[Collyer et~al\mbox{.}(1990)]%
+        {collyer_1990}
+\bibfield{author}{\bibinfo{person}{Charles~E. Collyer},
+  \bibinfo{person}{Kerrie~A. Stanley}, {and} \bibinfo{person}{Caroline
+  Bowater}.} \bibinfo{year}{1990}\natexlab{}.
+\newblock \showarticletitle{Psychology of the {{Scientist}}: {{LXIII}}.
+  {{Perceiving Scattergrams}}: {{Is Visual Line Fitting Related}} to
+  {{Estimation}} of the {{Correlation Coefficient}}?}
+\newblock \bibinfo{journal}{\emph{Perceptual and Motor Skills}}
+  \bibinfo{volume}{71}, \bibinfo{number}{2} (\bibinfo{date}{Oct.}
+  \bibinfo{year}{1990}), \bibinfo{pages}{371--378E}.
+\newblock
+\showISSN{0031-5125}
+\urldef\tempurl%
+\url{https://doi.org/10.2466/pms.1990.71.2.371}
+\showDOI{\tempurl}
+
+
+\bibitem[Fleiss et~al\mbox{.}(1969)]%
+        {fleiss_1969}
+\bibfield{author}{\bibinfo{person}{Joseph~L. Fleiss}, \bibinfo{person}{Jacob
+  Cohen}, {and} \bibinfo{person}{B.~S. Everitt}.}
+  \bibinfo{year}{1969}\natexlab{}.
+\newblock \showarticletitle{Large Sample Standard Errors of Kappa and Weighted
+  Kappa.}
+\newblock \bibinfo{journal}{\emph{Psychological Bulletin}}
+  \bibinfo{volume}{72}, \bibinfo{number}{5} (\bibinfo{date}{Nov.}
+  \bibinfo{year}{1969}), \bibinfo{pages}{323--327}.
+\newblock
+\showISSN{1939-1455, 0033-2909}
+\urldef\tempurl%
+\url{https://doi.org/10.1037/h0028106}
+\showDOI{\tempurl}
+
+
+\bibitem[Franconeri et~al\mbox{.}(2021)]%
+        {franconeri_2021}
+\bibfield{author}{\bibinfo{person}{Steven~L. Franconeri},
+  \bibinfo{person}{Lace~M. Padilla}, \bibinfo{person}{Priti Shah},
+  \bibinfo{person}{Jeffrey~M. Zacks}, {and} \bibinfo{person}{Jessica Hullman}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{The {{Science}} of {{Visual Data Communication}}:
+  {{What Works}}}.
+\newblock \bibinfo{journal}{\emph{Psychological Science in the Public
+  Interest}} \bibinfo{volume}{22}, \bibinfo{number}{3} (\bibinfo{date}{Dec.}
+  \bibinfo{year}{2021}), \bibinfo{pages}{110--161}.
+\newblock
+\showISSN{1529-1006}
+\urldef\tempurl%
+\url{https://doi.org/10.1177/15291006211051956}
+\showDOI{\tempurl}
+
+
+\bibitem[Gamer et~al\mbox{.}(2019)]%
+        {irr}
+\bibfield{author}{\bibinfo{person}{Matthias Gamer}, \bibinfo{person}{Jim
+  Lemon}, {and} \bibinfo{person}{Ian Fellows Puspendra~Singh
+  <puspendra.pusp22@gmail.com>}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{irr: Various Coefficients of Interrater
+  Reliability and Agreement}}.
+\newblock
+\urldef\tempurl%
+\url{https://CRAN.R-project.org/package=irr}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{R package version 0.84.1}.
+
+
+\bibitem[{Garcia-Retamero} et~al\mbox{.}(2016)]%
+        {garcia_2016}
+\bibfield{author}{\bibinfo{person}{Rocio {Garcia-Retamero}},
+  \bibinfo{person}{Edward~T. Cokely}, \bibinfo{person}{Saima Ghazal}, {and}
+  \bibinfo{person}{Alexander Joeris}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Measuring {{Graph Literacy}} without a {{Test}}:
+  {{A Brief Subjective Assessment}}}.
+\newblock \bibinfo{journal}{\emph{Medical Decision Making}}
+  \bibinfo{volume}{36}, \bibinfo{number}{7} (\bibinfo{year}{2016}),
+  \bibinfo{pages}{854--867}.
+\newblock
+\showISSN{0272-989X}
+\urldef\tempurl%
+\url{https://doi.org/10.1177/0272989X16655334}
+\showDOI{\tempurl}
+
+
+\bibitem[Harrison et~al\mbox{.}(2013)]%
+        {harrison_2013}
+\bibfield{author}{\bibinfo{person}{Lane Harrison}, \bibinfo{person}{Drew Skau},
+  \bibinfo{person}{Steven Franconeri}, \bibinfo{person}{Aidong Lu}, {and}
+  \bibinfo{person}{Remco Chang}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Influencing Visual Judgment through Affective
+  Priming}. In \bibinfo{booktitle}{\emph{Proceedings of the {{SIGCHI
+  Conference}} on {{Human Factors}} in {{Computing Systems}}}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{address}{Paris France},
+  \bibinfo{pages}{2949--2958}.
+\newblock
+\showISBNx{978-1-4503-1899-0}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/2470654.2481410}
+\showDOI{\tempurl}
+
+
+\bibitem[Harrison et~al\mbox{.}(2014)]%
+        {harrison_2014}
+\bibfield{author}{\bibinfo{person}{L. Harrison}, \bibinfo{person}{F. Yang},
+  \bibinfo{person}{S. Franconeri}, {and} \bibinfo{person}{R. Chang}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Ranking {{Visualizations}} of {{Correlation Using
+  Weber}}'s {{Law}}}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Visualization and
+  Computer Graphics}} \bibinfo{volume}{20}, \bibinfo{number}{12}
+  (\bibinfo{date}{Dec.} \bibinfo{year}{2014}), \bibinfo{pages}{1943--1952}.
+\newblock
+\showISSN{1941-0506}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/TVCG.2014.2346979}
+\showDOI{\tempurl}
+
+
+\bibitem[Karduni et~al\mbox{.}(2020)]%
+        {karduni_2020}
+\bibfield{author}{\bibinfo{person}{Alireza Karduni}, \bibinfo{person}{Douglas
+  Markant}, \bibinfo{person}{Ryan Wesslen}, {and} \bibinfo{person}{Wenwen
+  Dou}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{A bayesian cognition approach for belief updating
+  of correlation judgement through uncertainty visualizations}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Visualization and
+  Computer Graphics}} \bibinfo{volume}{27}, \bibinfo{number}{2}
+  (\bibinfo{year}{2020}), \bibinfo{pages}{978--988}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/TVCG.2020.3029412}
+\showDOI{\tempurl}
+
+
+\bibitem[Karduni et~al\mbox{.}(2023)]%
+        {karduni_2023}
+\bibfield{author}{\bibinfo{person}{Alireza Karduni}, \bibinfo{person}{Ryan
+  Wesslen}, \bibinfo{person}{Douglas Markant}, {and} \bibinfo{person}{Wenwen
+  Dou}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Images, {{Emotions}}, and {{Credibility}}:
+  {{Effect}} of {{Emotional Facial Expressions}} on {{Perceptions}} of {{News
+  Content Bias}} and {{Source Credibility}} in {{Social Media}}}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the International AAAI
+  Conference on Web and Social Media}}  \bibinfo{volume}{17}
+  (\bibinfo{date}{June} \bibinfo{year}{2023}), \bibinfo{pages}{470--481}.
+\newblock
+\showISSN{2334-0770}
+\urldef\tempurl%
+\url{https://doi.org/10.1609/icwsm.v17i1.22161}
+\showDOI{\tempurl}
+
+
+\bibitem[Kay and Heer(2015)]%
+        {kay_2015}
+\bibfield{author}{\bibinfo{person}{Matthew Kay} {and} \bibinfo{person}{Jeffrey
+  Heer}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Beyond {{Weber}}'s {{Law}}: {{A Second Look}} at
+  {{Ranking Visualizations}} of {{Correlation}}}.
+\newblock \bibinfo{journal}{\emph{IEEE transactions on visualization and
+  computer graphics}} \bibinfo{volume}{22}, \bibinfo{number}{1}
+  (\bibinfo{date}{Aug.} \bibinfo{year}{2015}), \bibinfo{pages}{469--478}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/TVCG.2015.2467671}
+\showDOI{\tempurl}
+
+
+\bibitem[Lan et~al\mbox{.}(2024)]%
+        {lan_2023}
+\bibfield{author}{\bibinfo{person}{Xingyu Lan}, \bibinfo{person}{Yanqiu Wu},
+  {and} \bibinfo{person}{Nan Cao}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{ Affective Visualization Design: Leveraging the
+  Emotional Impact of Data }}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Visualization \&
+  Computer Graphics}} \bibinfo{volume}{30}, \bibinfo{number}{01}
+  (\bibinfo{date}{Jan.} \bibinfo{year}{2024}), \bibinfo{pages}{1--11}.
+\newblock
+\showISSN{1941-0506}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/TVCG.2023.3327385}
+\showDOI{\tempurl}
+
+
+\bibitem[Lane et~al\mbox{.}(1985)]%
+        {lane_1985}
+\bibfield{author}{\bibinfo{person}{David Lane}, \bibinfo{person}{Craig
+  Anderson}, {and} \bibinfo{person}{Kathryn Kellam}.}
+  \bibinfo{year}{1985}\natexlab{}.
+\newblock \showarticletitle{Judging the {{Relatedness}} of {{Variables}}. {{The
+  Psychophysics}} of {{Covariation Detection}}}.
+\newblock \bibinfo{journal}{\emph{Journal of Experimental Psychology: Human
+  Perception and Performance}}  \bibinfo{volume}{11} (\bibinfo{date}{Oct.}
+  \bibinfo{year}{1985}), \bibinfo{pages}{640--649}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1037/0096-1523.11.5.640}
+\showDOI{\tempurl}
+
+
+\bibitem[Lauer and Post(1989)]%
+        {lauer_1989}
+\bibfield{author}{\bibinfo{person}{Thomas~W. Lauer} {and}
+  \bibinfo{person}{Gerald~V. Post}.} \bibinfo{year}{1989}\natexlab{}.
+\newblock \showarticletitle{Density in Scatterplots and the Estimation of
+  Correlation}.
+\newblock \bibinfo{journal}{\emph{Behaviour \& Information Technology}}
+  \bibinfo{volume}{8}, \bibinfo{number}{3} (\bibinfo{date}{June}
+  \bibinfo{year}{1989}), \bibinfo{pages}{235--244}.
+\newblock
+\showISSN{0144-929X, 1362-3001}
+\urldef\tempurl%
+\url{https://doi.org/10.1080/01449298908914554}
+\showDOI{\tempurl}
+
+
+\bibitem[Liddell and Kruschke(2018)]%
+        {liddell_2018}
+\bibfield{author}{\bibinfo{person}{Torrin~M. Liddell} {and}
+  \bibinfo{person}{John~K. Kruschke}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Analyzing ordinal data with metric models: {What}
+  could possibly go wrong?}
+\newblock \bibinfo{journal}{\emph{Journal of Experimental Social Psychology}}
+  \bibinfo{volume}{79} (\bibinfo{date}{Nov.} \bibinfo{year}{2018}),
+  \bibinfo{pages}{328--348}.
+\newblock
+\showISSN{0022-1031}
+\urldef\tempurl%
+\url{https://doi.org/10.1016/j.jesp.2018.08.009}
+\showDOI{\tempurl}
+
+
+\bibitem[Markant et~al\mbox{.}(2023)]%
+        {markant_2023}
+\bibfield{author}{\bibinfo{person}{Douglas Markant}, \bibinfo{person}{Milad
+  Rogha}, \bibinfo{person}{Alireza Karduni}, \bibinfo{person}{Ryan Wesslen},
+  {and} \bibinfo{person}{Wenwen Dou}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{When do data visualizations persuade? The impact of
+  prior attitudes on learning about correlations from scatterplot
+  visualizations}. In \bibinfo{booktitle}{\emph{Proceedings of the 2023 CHI
+  Conference on Human Factors in Computing Systems}} (Hamburg, Germany)
+  \emph{(\bibinfo{series}{CHI '23})}. \bibinfo{publisher}{Association for
+  Computing Machinery}, \bibinfo{address}{New York, NY, USA}, Article
+  \bibinfo{articleno}{174}, \bibinfo{numpages}{16}~pages.
+\newblock
+\showISBNx{9781450394215}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3544548.3581330}
+\showDOI{\tempurl}
+
+
+\bibitem[Matejka et~al\mbox{.}(2015)]%
+        {matejka_2015}
+\bibfield{author}{\bibinfo{person}{Justin Matejka}, \bibinfo{person}{Fraser
+  Anderson}, {and} \bibinfo{person}{George Fitzmaurice}.}
+  \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Dynamic {{Opacity Optimization}} for {{Scatter
+  Plots}}}. In \bibinfo{booktitle}{\emph{Proceedings of the 33rd {{Annual ACM
+  Conference}} on {{Human Factors}} in {{Computing Systems}}}}.
+  \bibinfo{publisher}{ACM}, \bibinfo{address}{Seoul Republic of Korea},
+  \bibinfo{pages}{2707--2710}.
+\newblock
+\showISBNx{978-1-4503-3145-6}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/2702123.2702585}
+\showDOI{\tempurl}
+
+
+\bibitem[Merkel(2014)]%
+        {merkel_2014}
+\bibfield{author}{\bibinfo{person}{Dirk Merkel}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Docker: lightweight Linux containers for consistent
+  development and deployment}.
+\newblock \bibinfo{journal}{\emph{Linux J.}} \bibinfo{volume}{2014},
+  \bibinfo{number}{239}, Article \bibinfo{articleno}{2} (\bibinfo{date}{mar}
+  \bibinfo{year}{2014}).
+\newblock
+\showISSN{1075-3583}
+
+
+\bibitem[Meyer and Shinar(1992)]%
+        {meyer_1992}
+\bibfield{author}{\bibinfo{person}{Joachim Meyer} {and} \bibinfo{person}{David
+  Shinar}.} \bibinfo{year}{1992}\natexlab{}.
+\newblock \showarticletitle{Estimating {{Correlations}} from {{Scatterplots}}}.
+\newblock \bibinfo{journal}{\emph{Human Factors}} \bibinfo{volume}{34},
+  \bibinfo{number}{3} (\bibinfo{date}{June} \bibinfo{year}{1992}),
+  \bibinfo{pages}{335--349}.
+\newblock
+\showISSN{0018-7208}
+\urldef\tempurl%
+\url{https://doi.org/10.1177/001872089203400307}
+\showDOI{\tempurl}
+
+
+\bibitem[Meyer et~al\mbox{.}(1997)]%
+        {meyer_1997}
+\bibfield{author}{\bibinfo{person}{Joachim Meyer}, \bibinfo{person}{Meirav
+  Taieb}, {and} \bibinfo{person}{Ittai Flascher}.}
+  \bibinfo{year}{1997}\natexlab{}.
+\newblock \showarticletitle{Correlation Estimates as Perceptual Judgments}.
+\newblock \bibinfo{journal}{\emph{Journal of Experimental Psychology: Applied}}
+  \bibinfo{volume}{3}, \bibinfo{number}{1} (\bibinfo{year}{1997}),
+  \bibinfo{pages}{3--20}.
+\newblock
+\showISSN{1939-2192}
+\urldef\tempurl%
+\url{https://doi.org/10.1037/1076-898X.3.1.3}
+\showDOI{\tempurl}
+
+
+\bibitem[Okan et~al\mbox{.}(2016)]%
+        {okan_2016}
+\bibfield{author}{\bibinfo{person}{Yasmina Okan}, \bibinfo{person}{Mirta
+  Galesic}, {and} \bibinfo{person}{Rocio {Garcia-Retamero}}.}
+  \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{How {{People}} with {{Low}} and {{High Graph
+  Literacy Process Health Graphs}}: {{Evidence}} from {{Eye-tracking}}: {{Graph
+  Literacy}} and {{Health Graph Processing}}}.
+\newblock \bibinfo{journal}{\emph{Journal of Behavioral Decision Making}}
+  \bibinfo{volume}{29}, \bibinfo{number}{2-3} (\bibinfo{date}{April}
+  \bibinfo{year}{2016}), \bibinfo{pages}{271--294}.
+\newblock
+\showISSN{08943257}
+\urldef\tempurl%
+\url{https://doi.org/10.1002/bdm.1891}
+\showDOI{\tempurl}
+
+
+\bibitem[Pandey et~al\mbox{.}(2014)]%
+        {pandey_2014}
+\bibfield{author}{\bibinfo{person}{Anshul~Vikram Pandey},
+  \bibinfo{person}{Anjali Manivannan}, \bibinfo{person}{Oded Nov},
+  \bibinfo{person}{Margaret Satterthwaite}, {and} \bibinfo{person}{Enrico
+  Bertini}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{The {{Persuasive Power}} of {{Data
+  Visualization}}}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Visualization and
+  Computer Graphics}} \bibinfo{volume}{20}, \bibinfo{number}{12}
+  (\bibinfo{date}{Dec.} \bibinfo{year}{2014}), \bibinfo{pages}{2211--2220}.
+\newblock
+\showISSN{1077-2626}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/TVCG.2014.2346419}
+\showDOI{\tempurl}
+
+
+\bibitem[Peer et~al\mbox{.}(2021)]%
+        {peer_2021}
+\bibfield{author}{\bibinfo{person}{Eyal Peer}, \bibinfo{person}{David
+  Rothschild}, \bibinfo{person}{Andrew Gordon}, \bibinfo{person}{Zak Evernden},
+  {and} \bibinfo{person}{Ekaterina Damer}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Data Quality of Platforms and Panels for Online
+  Behavioral Research}.
+\newblock \bibinfo{journal}{\emph{Behavior Research Methods}}
+  \bibinfo{volume}{54}, \bibinfo{number}{4} (\bibinfo{date}{Sept.}
+  \bibinfo{year}{2021}), \bibinfo{pages}{1643--1662}.
+\newblock
+\showISSN{1554-3528}
+\urldef\tempurl%
+\url{https://doi.org/10.3758/s13428-021-01694-3}
+\showDOI{\tempurl}
+
+
+\bibitem[Peirce et~al\mbox{.}(2019)]%
+        {pierce_2019}
+\bibfield{author}{\bibinfo{person}{Jonathan Peirce}, \bibinfo{person}{Jeremy~R.
+  Gray}, \bibinfo{person}{Sol Simpson}, \bibinfo{person}{Michael MacAskill},
+  \bibinfo{person}{Richard H{\"o}chenberger}, \bibinfo{person}{Hiroyuki Sogo},
+  \bibinfo{person}{Erik Kastman}, {and} \bibinfo{person}{Jonas~Kristoffer
+  Lindel{\o}v}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{{{PsychoPy2}}: {{Experiments}} in Behavior Made
+  Easy}.
+\newblock \bibinfo{journal}{\emph{Behavior Research Methods}}
+  \bibinfo{volume}{51}, \bibinfo{number}{1} (\bibinfo{date}{Feb.}
+  \bibinfo{year}{2019}), \bibinfo{pages}{195--203}.
+\newblock
+\showISSN{1554-3528}
+\urldef\tempurl%
+\url{https://doi.org/10.3758/s13428-018-01193-y}
+\showDOI{\tempurl}
+
+
+\bibitem[Phelps et~al\mbox{.}(2006)]%
+        {phelps_2006}
+\bibfield{author}{\bibinfo{person}{Elizabeth~A. Phelps}, \bibinfo{person}{Sam
+  Ling}, {and} \bibinfo{person}{Marisa Carrasco}.}
+  \bibinfo{year}{2006}\natexlab{}.
+\newblock \showarticletitle{Emotion {{Facilitates Perception}} and
+  {{Potentiates}} the {{Perceptual Benefits}} of {{Attention}}}.
+\newblock \bibinfo{journal}{\emph{Psychological science}} \bibinfo{volume}{17},
+  \bibinfo{number}{4} (\bibinfo{date}{April} \bibinfo{year}{2006}),
+  \bibinfo{pages}{292--299}.
+\newblock
+\showISSN{0956-7976}
+\urldef\tempurl%
+\url{https://doi.org/10.1111/j.1467-9280.2006.01701.x}
+\showDOI{\tempurl}
+
+
+\bibitem[Polychronidou et~al\mbox{.}(2019)]%
+        {poly_2019}
+\bibfield{author}{\bibinfo{person}{Eleftheria Polychronidou},
+  \bibinfo{person}{Ilias Kalamaras}, \bibinfo{person}{Konstantinos Votis},
+  {and} \bibinfo{person}{Dimitrios Tzovaras}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Health Vision: An interactive web based platform
+  for healthcare data analysis and visualisation}. In
+  \bibinfo{booktitle}{\emph{2019 IEEE Conference on Computational Intelligence
+  in Bioinformatics and Computational Biology (CIBCB)}} (Siena, Italy).
+  \bibinfo{publisher}{IEEE Press}, \bibinfo{pages}{1–8}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/CIBCB.2019.8791462}
+\showDOI{\tempurl}
+
+
+\bibitem[{R Core Team}(2024)]%
+        {rcore}
+\bibfield{author}{\bibinfo{person}{{R Core Team}}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{R: A Language and Environment for
+  Statistical Computing}}.
+\newblock R Foundation for Statistical Computing, Vienna, Austria.
+\newblock
+\urldef\tempurl%
+\url{https://www.R-project.org/}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Rensink(2014)]%
+        {rensink_2014}
+\bibfield{author}{\bibinfo{person}{Ronald~A. Rensink}.}
+  \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{On the {{Prospects}} for a {{Science}} of
+  {{Visualization}}}.
+\newblock In \bibinfo{booktitle}{\emph{Handbook of {{Human Centric
+  Visualization}}}}, \bibfield{editor}{\bibinfo{person}{Weidong Huang}} (Ed.).
+  \bibinfo{publisher}{Springer New York}, \bibinfo{address}{New York, NY},
+  \bibinfo{pages}{147--175}.
+\newblock
+\showISBNx{978-1-4614-7484-5 978-1-4614-7485-2}
+\urldef\tempurl%
+\url{https://doi.org/10.1007/978-1-4614-7485-2_6}
+\showDOI{\tempurl}
+
+
+\bibitem[Rensink(2017)]%
+        {rensink_2017}
+\bibfield{author}{\bibinfo{person}{Ronald~A. Rensink}.}
+  \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{The Nature of Correlation Perception in
+  Scatterplots}.
+\newblock \bibinfo{journal}{\emph{Psychonomic Bulletin \& Review}}
+  \bibinfo{volume}{24}, \bibinfo{number}{3} (\bibinfo{year}{2017}),
+  \bibinfo{pages}{776--797}.
+\newblock
+\showISSN{1069-9384}
+\urldef\tempurl%
+\url{https://doi.org/10.3758/s13423-016-1174-7}
+\showDOI{\tempurl}
+
+
+\bibitem[Sarikaya and Gleicher(2018)]%
+        {sarikaya_2018}
+\bibfield{author}{\bibinfo{person}{Alper Sarikaya} {and}
+  \bibinfo{person}{Michael Gleicher}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Scatterplots: {{Tasks}}, {{Data}}, and
+  {{Designs}}}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Visualization and
+  Computer Graphics}} \bibinfo{volume}{24}, \bibinfo{number}{1}
+  (\bibinfo{date}{Jan.} \bibinfo{year}{2018}), \bibinfo{pages}{402--412}.
+\newblock
+\showISSN{1077-2626}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/TVCG.2017.2744184}
+\showDOI{\tempurl}
+
+
+\bibitem[Shah and Freedman(2011)]%
+        {shah_2011}
+\bibfield{author}{\bibinfo{person}{Priti Shah} {and} \bibinfo{person}{Eric~G.
+  Freedman}.} \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{Bar and {{Line Graph Comprehension}}: {{An
+  Interaction}} of {{Top-Down}} and {{Bottom-Up Processes}}}.
+\newblock \bibinfo{journal}{\emph{Topics in Cognitive Science}}
+  \bibinfo{volume}{3}, \bibinfo{number}{3} (\bibinfo{year}{2011}),
+  \bibinfo{pages}{560--578}.
+\newblock
+\showISSN{1756-8765}
+\urldef\tempurl%
+\url{https://doi.org/10.1111/j.1756-8765.2009.01066.x}
+\showDOI{\tempurl}
+
+
+\bibitem[Strahan and Hansen(1978)]%
+        {strahan_1978}
+\bibfield{author}{\bibinfo{person}{Robert~F. Strahan} {and}
+  \bibinfo{person}{Chris~J. Hansen}.} \bibinfo{year}{1978}\natexlab{}.
+\newblock \showarticletitle{Underestimating {{Correlation}} from
+  {{Scatterplots}}}.
+\newblock \bibinfo{journal}{\emph{Applied Psychological Measurement}}
+  \bibinfo{volume}{2}, \bibinfo{number}{4} (\bibinfo{date}{Oct.}
+  \bibinfo{year}{1978}), \bibinfo{pages}{543--550}.
+\newblock
+\showISSN{0146-6216}
+\urldef\tempurl%
+\url{https://doi.org/10.1177/014662167800200409}
+\showDOI{\tempurl}
+
+
+\bibitem[Strain et~al\mbox{.}(2023a)]%
+        {strain_2023b}
+\bibfield{author}{\bibinfo{person}{Gabriel Strain}, \bibinfo{person}{Andrew~J.
+  Stewart}, \bibinfo{person}{Paul Warren}, {and} \bibinfo{person}{Caroline
+  Jay}.} \bibinfo{year}{2023}\natexlab{a}.
+\newblock \showarticletitle{Adjusting {{Point Size}} to {{Facilitate More
+  Accurate Correlation Perception}} in {{Scatterplots}}}. In
+  \bibinfo{booktitle}{\emph{2023 {{IEEE Vis X Vision}}}}.
+  \bibinfo{publisher}{IEEE}, \bibinfo{address}{Melbourne, Australia},
+  \bibinfo{pages}{1--5}.
+\newblock
+\showISBNx{9798350329841}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/VisXVision60716.2023.00006}
+\showDOI{\tempurl}
+
+
+\bibitem[Strain et~al\mbox{.}(2023b)]%
+        {strain_2023}
+\bibfield{author}{\bibinfo{person}{Gabriel Strain}, \bibinfo{person}{Andrew~J.
+  Stewart}, \bibinfo{person}{Paul Warren}, {and} \bibinfo{person}{Caroline
+  Jay}.} \bibinfo{year}{2023}\natexlab{b}.
+\newblock \showarticletitle{The {{Effects}} of {{Contrast}} on {{Correlation
+  Perception}} in {{Scatterplots}}}.
+\newblock \bibinfo{journal}{\emph{International Journal of Human-Computer
+  Studies}}  \bibinfo{volume}{176} (\bibinfo{date}{Aug.} \bibinfo{year}{2023}),
+  \bibinfo{pages}{103040}.
+\newblock
+\showISSN{1071-5819}
+\urldef\tempurl%
+\url{https://doi.org/10.1016/j.ijhcs.2023.103040}
+\showDOI{\tempurl}
+
+
+\bibitem[Strain et~al\mbox{.}(2024)]%
+        {strain_2024}
+\bibfield{author}{\bibinfo{person}{Gabriel Strain}, \bibinfo{person}{Andrew~J.
+  Stewart}, \bibinfo{person}{Paul~A. Warren}, {and} \bibinfo{person}{Caroline
+  Jay}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Effects of {{Point Size}} and {{Opacity
+  Adjustments}} in {{Scatterplots}}}. In \bibinfo{booktitle}{\emph{Proceedings
+  of the {{CHI Conference}} on {{Human Factors}} in {{Computing Systems}}}}
+  \emph{(\bibinfo{series}{{{CHI}} '24})}. \bibinfo{publisher}{Association for
+  Computing Machinery}, \bibinfo{address}{New York, NY, USA},
+  \bibinfo{pages}{1--13}.
+\newblock
+\showISBNx{9798400703300}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3613904.3642127}
+\showDOI{\tempurl}
+
+
+\bibitem[Tandon et~al\mbox{.}(2024)]%
+        {tandon_2024}
+\bibfield{author}{\bibinfo{person}{Sara Tandon}, \bibinfo{person}{Alfie
+  Abdul-Rahman}, {and} \bibinfo{person}{Rita Borgo}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Effects of Spatial Abilities and Domain on
+  Estimation of Pearson's Correlation Coefficient}. In
+  \bibinfo{booktitle}{\emph{2024 28th International Conference Information
+  Visualisation (IV)}}. \bibinfo{pages}{1--8}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/IV64223.2024.00024}
+\showDOI{\tempurl}
+
+
+\bibitem[Thoresen et~al\mbox{.}(2016)]%
+        {thoresen_2016}
+\bibfield{author}{\bibinfo{person}{John~C. Thoresen}, \bibinfo{person}{Rebecca
+  Francelet}, \bibinfo{person}{Arzu Coltekin}, \bibinfo{person}{Kai-Florian
+  Richter}, \bibinfo{person}{Sara~I. Fabrikant}, {and} \bibinfo{person}{Carmen
+  Sandi}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Not All Anxious Individuals Get Lost: {{Trait}}
+  Anxiety and Mental Rotation Ability Interact to Explain Performance in
+  Map-Based Route Learning in Men}.
+\newblock \bibinfo{journal}{\emph{Neurobiology of Learning and Memory}}
+  \bibinfo{volume}{132} (\bibinfo{date}{July} \bibinfo{year}{2016}),
+  \bibinfo{pages}{1--8}.
+\newblock
+\showISSN{1074-7427}
+\urldef\tempurl%
+\url{https://doi.org/10.1016/j.nlm.2016.04.008}
+\showDOI{\tempurl}
+
+
+\bibitem[Tufte and {Graves-Morris}(1983)]%
+        {tufte_1983}
+\bibfield{author}{\bibinfo{person}{Edward Tufte} {and} \bibinfo{person}{P.
+  {Graves-Morris}}.} \bibinfo{year}{1983}\natexlab{}.
+\newblock \showarticletitle{The {{Visual Display}} of {{Quantitative
+  Information}}}.
+\newblock \bibinfo{journal}{\emph{Information Design Journal}}
+  \bibinfo{volume}{4}, \bibinfo{number}{3} (\bibinfo{year}{1983}),
+  \bibinfo{pages}{235--236}.
+\newblock
+\showISSN{0142-5471, 1569-979X}
+\urldef\tempurl%
+\url{https://doi.org/10.1075/idj.4.3.12cos}
+\showDOI{\tempurl}
+
+
+\bibitem[Voeten(2023)]%
+        {buildmer}
+\bibfield{author}{\bibinfo{person}{Cesko~C. Voeten}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{buildmer: Stepwise Elimination and Term
+  Reordering for Mixed-Effects Regression}}.
+\newblock
+\urldef\tempurl%
+\url{https://CRAN.R-project.org/package=buildmer}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{R package version 2.11}.
+
+
+\bibitem[Wickham(2016)]%
+        {ggplot}
+\bibfield{author}{\bibinfo{person}{Hadley Wickham}.}
+  \bibinfo{year}{2016}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{ggplot2: Elegant Graphics for Data
+  Analysis}}.
+\newblock \bibinfo{publisher}{Springer-Verlag New York}.
+\newblock
+\showISBNx{978-3-319-24277-4}
+\urldef\tempurl%
+\url{https://ggplot2.tidyverse.org}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Xiong et~al\mbox{.}(2022)]%
+        {xiong_2022}
+\bibfield{author}{\bibinfo{person}{Cindy Xiong}, \bibinfo{person}{Chase
+  Stokes}, \bibinfo{person}{Yea-Seul Kim}, {and} \bibinfo{person}{Steven
+  Franconeri}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Seeing what you believe or believing what you see?
+  belief biases correlation estimation}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Visualization and
+  Computer Graphics}} \bibinfo{volume}{29}, \bibinfo{number}{1}
+  (\bibinfo{year}{2022}), \bibinfo{pages}{493--503}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/TVCG.2022.3209405}
+\showDOI{\tempurl}
+
+
+\bibitem[Yang et~al\mbox{.}(2019)]%
+        {yang_2019}
+\bibfield{author}{\bibinfo{person}{F. Yang}, \bibinfo{person}{L.~T. Harrison},
+  \bibinfo{person}{R.~A. Rensink}, \bibinfo{person}{S.~L. Franconeri}, {and}
+  \bibinfo{person}{R. Chang}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Correlation {{Judgment}} and {{Visualization
+  Features}}: {{A Comparative Study}}}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Visualization and
+  Computer Graphics}} \bibinfo{volume}{25}, \bibinfo{number}{3}
+  (\bibinfo{date}{March} \bibinfo{year}{2019}), \bibinfo{pages}{1474--1488}.
+\newblock
+\showISSN{1941-0506}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/TVCG.2018.2810918}
+\showDOI{\tempurl}
+
+
+\bibitem[Yasmina~Okan and Cokely(2012)]%
+        {okan_2012}
+\bibfield{author}{\bibinfo{person}{Mirta~Galesic Yasmina~Okan, Rocio
+  Garcia-Retamero} {and} \bibinfo{person}{Edward~T. Cokely}.}
+  \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{When Higher Bars Are Not Larger Quantities: On
+  Individual Differences in the Use of Spatial Information in Graph
+  Comprehension}.
+\newblock \bibinfo{journal}{\emph{Spatial Cognition \& Computation}}
+  \bibinfo{volume}{12}, \bibinfo{number}{2-3} (\bibinfo{year}{2012}),
+  \bibinfo{pages}{195--218}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1080/13875868.2012.659302}
+\showDOI{\tempurl}
+\showeprint{https://doi.org/10.1080/13875868.2012.659302}
+
+
+\end{thebibliography}

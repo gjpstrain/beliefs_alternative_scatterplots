@@ -1,281 +1,109 @@
 \documentclass[sigconf]{acmart}
 
+%\usepackage{calc}
 
-
-%%
-%% This is file `sample-manuscript.tex',
-%% generated with the docstrip utility.
-%%
-%% The original source files were:
-%%
-%% samples.dtx  (with options: `manuscript')
-%% 
-%% IMPORTANT NOTICE:
-%% 
-%% For the copyright see the source file.
-%% 
-%% Any modified versions of this file must be renamed
-%% with new filenames distinct from sample-manuscript.tex.
-%% 
-%% For distribution of the original source see the terms
-%% for copying and modification in the file samples.dtx.
-%% 
-%% This generated file may be distributed as long as the
-%% original source files, as listed above, are part of the
-%% same distribution. (The sources need not necessarily be
-%% in the same archive or directory.)
-%%
-%%
-%% Commands for TeXCount
-%TC:macro \cite [option:text,text]
-%TC:macro \citep [option:text,text]
-%TC:macro \citet [option:text,text]
-%TC:envir table 0 1
-%TC:envir table* 0 1
-%TC:envir tabular [ignore] word
-%TC:envir displaymath 0 word
-%TC:envir math 0 word
-%TC:envir comment 0 0
-%%
-%%
-%% The first command in your LaTeX source must be the \documentclass command.
-
-
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
-\PassOptionsToPackage{hyphens}{url}
-\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
-
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-
-%% PANDOC PREAMBLE BEGINS
-
-
-
-\usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
-% Allow footnotes in longtable head/foot
-\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-\makesavenoteenv{longtable}
+
 \usepackage{graphicx}
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-% Set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
+
 
 \usepackage{booktabs}
-\usepackage{longtable}
+
 \usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
+
+
 \usepackage{float}
 \usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{makecell}
+
+
+
 \usepackage{xcolor}
 \definecolor{mypink}{RGB}{219, 48, 122}
-\makeatletter
-\@ifpackageloaded{caption}{}{\usepackage{caption}}
-\AtBeginDocument{%
-\ifdefined\contentsname
-  \renewcommand*\contentsname{Table of contents}
-\else
-  \newcommand\contentsname{Table of contents}
-\fi
-\ifdefined\listfigurename
-  \renewcommand*\listfigurename{List of Figures}
-\else
-  \newcommand\listfigurename{List of Figures}
-\fi
-\ifdefined\listtablename
-  \renewcommand*\listtablename{List of Tables}
-\else
-  \newcommand\listtablename{List of Tables}
-\fi
-\ifdefined\figurename
-  \renewcommand*\figurename{Figure}
-\else
-  \newcommand\figurename{Figure}
-\fi
-\ifdefined\tablename
-  \renewcommand*\tablename{Table}
-\else
-  \newcommand\tablename{Table}
-\fi
-}
-\@ifpackageloaded{float}{}{\usepackage{float}}
-\floatstyle{ruled}
-\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
-\floatname{codelisting}{Listing}
-\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
-\makeatother
-\makeatletter
-\makeatother
-\makeatletter
-\@ifpackageloaded{caption}{}{\usepackage{caption}}
-\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
-\makeatother
-%% PANDOC PREAMBLE ENDS
 
-\setlength{\parindent}{10pt}
+%\setlength{\parindent}{10pt}
+%
+%\hypersetup{
+%  pdftitle={Effects of Alternative Scatterplot Designs on Belief},
+%  pdfauthor={Gabriel Strain; Andrew J. Stewart; Caroline Jay; Charlotte Rutherford; Paul A. Warren},
+%  colorlinks=true,
+%  linkcolor={blue},
+%  filecolor={Maroon},
+%  citecolor={Blue},
+%  urlcolor={red},
+%  pdfcreator={LaTeX via pandoc, via quarto}}
+%
 
-\hypersetup{
-  pdftitle={Effects of Alternative Scatterplot Designs on Belief},
-  pdfauthor={Gabriel Strain; Andrew J. Stewart; Caroline Jay; Charlotte Rutherford; Paul A. Warren},
-  colorlinks=true,
-  linkcolor={blue},
-  filecolor={Maroon},
-  citecolor={Blue},
-  urlcolor={red},
-  pdfcreator={LaTeX via pandoc, via quarto}}
 
-%% \BibTeX command to typeset BibTeX logo in the docs
-\AtBeginDocument{%
-  \providecommand\BibTeX{{%
-    Bib\TeX}}}
-
-%% Rights management information.  This information is sent to you
-%% when you complete the rights form.  These commands have SAMPLE
-%% values in them; it is your responsibility as an author to replace
-%% the commands and values with those provided to you when you
-%% complete the rights form.
 \setcopyright{cc}
+\setcctype{by}
 \copyrightyear{2025}
 \acmYear{2025}
 \acmDOI{10.1145/3706598.3713809}
-
-%% These commands are for a PROCEEDINGS abstract or paper.
-\acmConference[CHI'25]{CHI Conference on Human Factors in Computing
-Systems}{April 26-May 1, 2025}{Yokohama, Japan}
-\acmPrice{}
 \acmISBN{979-8-4007-1394-1/25/04}
+\acmConference[CHI '25]{CHI Conference on Human Factors in Computing Systems}{April 26--May 01, 2025}{Yokohama, Japan}
+\acmBooktitle{CHI Conference on Human Factors in Computing Systems (CHI '25), April 26--May 01, 2025, Yokohama, Japan}
 
-%% Submission ID.
-%% Use this when submitting an article to a sponsored event. You'll
-%% receive a unique submission ID from the organizers
-%% of the event, and this ID should be used as the parameter to this command.
-%%\acmSubmissionID{123-A56-BU3}
-
-%%
-%% For managing citations, it is recommended to use bibliography
-%% files in BibTeX format.
-%%
-%% You can then either use BibTeX with the ACM-Reference-Format style,
-%% or BibLaTeX with the acmnumeric or acmauthoryear sytles, that include
-%% support for advanced citation of software artefact from the
-%% biblatex-software package, also separately available on CTAN.
-%%
-%% Look at the sample-*-biblatex.tex files for templates showcasing
-%% the biblatex styles.
-%%
-
-%%
-%% The majority of ACM publications use numbered citations and
-%% references.  The command \citestyle{authoryear} switches to the
-%% "author year" style.
-%%
-%% If you are preparing content for an event
-%% sponsored by ACM SIGGRAPH, you must use the "author year" style of
-%% citations and references.
-%% Uncommenting
-%% the next command will enable that style.
-%%\citestyle{acmauthoryear}
-
-
-%% end of the preamble, start of the body of the document source.
 \begin{document}
 
 
-%%
-%% The "title" command has an optional parameter,
-%% allowing the author to define a "short title" to be used in page headers.
 \title{Effects of Alternative Scatterplot Designs on Belief}
 
-%%
-%% The "author" command and its associated commands are used to define
-%% the authors and their affiliations.
-%% Of note is the shared affiliation of the first two authors, and the
-%% "authornote" and "authornotemark" commands
-%% used to denote shared contribution to the research.
 
+\author{Gabriel Strain}
+\orcid{0000-0002-4769-9221}
+\affiliation{%
+\institution{Department of Computer Science, Faculty
+of Science and Engineering, University of Manchester}
+\streetaddress{Oxford Road}
+\city{Manchester}
+ \country{United Kingdom}
+\postcode{M13 9PL}
+}
+\author{Andrew J. Stewart}
+\affiliation{%
+\institution{Department of Computer Science, Faculty
+of Science and Engineering, University of Manchester}
+\streetaddress{Oxford Road}
+\city{Manchester}
+ \country{United Kingdom}
+\postcode{M13 9PL}
+  }
+\author{Caroline Jay}
 
-  \author{Gabriel Strain}
-  \orcid{0000-0002-4769-9221}
-            \affiliation{%
-                  \institution{Department of Computer Science, Faculty
+\affiliation{%
+\institution{Department of Computer Science, Faculty
 of Science and Engineering, University of Manchester}
-                          \streetaddress{Oxford Road}
-                          \city{Manchester}
-                                  \country{United Kingdom}
-                          \postcode{M13 9PL}
-              }
-        \author{Andrew J. Stewart}
+\streetaddress{Oxford Road}
+\city{Manchester}
+ \country{United Kingdom}
+\postcode{M13 9PL}
+  }
+\author{Charlotte Rutherford}
   
-            \affiliation{%
-                  \institution{Department of Computer Science, Faculty
-of Science and Engineering, University of Manchester}
-                          \streetaddress{Oxford Road}
-                          \city{Manchester}
-                                  \country{United Kingdom}
-                          \postcode{M13 9PL}
-              }
-        \author{Caroline Jay}
-  
-            \affiliation{%
-                  \institution{Department of Computer Science, Faculty
-of Science and Engineering, University of Manchester}
-                          \streetaddress{Oxford Road}
-                          \city{Manchester}
-                                  \country{United Kingdom}
-                          \postcode{M13 9PL}
-              }
-        \author{Charlotte Rutherford}
-  
-            \affiliation{%
-                  \institution{Division of Psychology Communication and
+\affiliation{%
+\institution{Division of Psychology Communication and
 Human Neuroscience, School of Health Sciences, Faculty of Biology,
 Medicine, and Health, University of Manchester}
-                          \streetaddress{Oxford Road}
-                          \city{Manchester}
-                                  \country{United Kingdom}
-                          \postcode{M13 9PL}
-              }
-        \author{Paul A. Warren}
+\streetaddress{Oxford Road}
+\city{Manchester}
+ \country{United Kingdom}
+\postcode{M13 9PL}
+  }
+\author{Paul A. Warren}
   
-            \affiliation{%
-                  \institution{Division of Psychology, Communication and
+\affiliation{%
+\institution{Division of Psychology, Communication and
 Human Neuroscience, School of Health Sciences, Faculty of Biology,
 Medicine, and Health, University of Manchester}
-                          \streetaddress{Oxford Road}
-                          \city{Manchester}
-                                  \country{United Kingdom}
-                          \postcode{M13 9PL}
-              }
-      
+\streetaddress{Oxford Road}
+\city{Manchester}
+ \country{United Kingdom}
+\postcode{M13 9PL}
+  }
+
 \renewcommand{\shortauthors}{Strain et al.}
 
-%% By default, the full list of authors will be used in the page
-%% headers. Often, this list is too long, and will overlap
-%% other information printed in the page headers. This command allows
-%% the author to define a more concise list
-%% of authors' names for this purpose.
-%\renewcommand{\shortauthors}{Trovato et al.}
-%%  
-%% The abstract is a short summary of the work to be presented in the
-%% article.
+
 \begin{abstract}
 Viewers tend to underestimate correlation in positively correlated
 scatterplots. However, systematically changing the size and opacity of
@@ -289,35 +117,32 @@ correlation underestimation bias can also induce stronger levels of
 belief change compared to conventional scatterplots presenting identical
 data. Consequently, we show that novel visualisation techniques can be
 used to drive belief change, and suggest future directions for extending
-this work with regards to altering attitudes and behaviours.    
+this work with regards to altering attitudes and behaviours. 
 \end{abstract}
 
-%%
-%% The code below is generated by the tool at http://dl.acm.org/ccs.cfm.
-%% Please copy and paste the code instead of the example below.
-%%
+
 \begin{CCSXML}
 <ccs2012>
-   <concept>
-       <concept_id>10003120.10003145</concept_id>
-       <concept_desc>Human-centered computing~Visualization</concept_desc>
-       <concept_significance>500</concept_significance>
-       </concept>
-   <concept>
-       <concept_id>10003120.10003145.10011769</concept_id>
-       <concept_desc>Human-centered computing~Empirical studies in visualization</concept_desc>
-       <concept_significance>500</concept_significance>
-       </concept>
-   <concept>
-       <concept_id>10003120.10003121.10011748</concept_id>
-       <concept_desc>Human-centered computing~Empirical studies in HCI</concept_desc>
-       <concept_significance>500</concept_significance>
-       </concept>
-   <concept>
-       <concept_id>10003120.10003121</concept_id>
-       <concept_desc>Human-centered computing~Human computer interaction (HCI)</concept_desc>
-       <concept_significance>300</concept_significance>
-       </concept>
+<concept>
+ <concept_id>10003120.10003145</concept_id>
+ <concept_desc>Human-centered computing~Visualization</concept_desc>
+ <concept_significance>500</concept_significance>
+ </concept>
+<concept>
+ <concept_id>10003120.10003145.10011769</concept_id>
+ <concept_desc>Human-centered computing~Empirical studies in visualization</concept_desc>
+ <concept_significance>500</concept_significance>
+ </concept>
+<concept>
+ <concept_id>10003120.10003121.10011748</concept_id>
+ <concept_desc>Human-centered computing~Empirical studies in HCI</concept_desc>
+ <concept_significance>500</concept_significance>
+ </concept>
+<concept>
+ <concept_id>10003120.10003121</concept_id>
+ <concept_desc>Human-centered computing~Human computer interaction (HCI)</concept_desc>
+ <concept_significance>300</concept_significance>
+ </concept>
  </ccs2012>
 \end{CCSXML}
 
@@ -325,16 +150,12 @@ this work with regards to altering attitudes and behaviours.
 \ccsdesc[500]{Human-centered computing~Empirical studies in visualization}
 \ccsdesc[500]{Human-centered computing~Empirical studies in HCI}
 \ccsdesc[300]{Human-centered computing~Human computer interaction (HCI)}
-%%
-%% Keywords. The author(s) should pick words that accurately describe
-%% the work being presented. Separate the keywords with commas.
+
 \keywords{belief change, correlation
 perception, scatterplot, crowdsourced}
 
 
-%%
-%% This command processes the author and affiliation and title
-%% information and builds the first part of the formatted document.
+
 \maketitle
 
 \section{Introduction}\label{sec-intro}
@@ -344,7 +165,7 @@ are simple representations of (usually) bivariate data. In 1983, they
 were estimated to account for between 70 and 80 percent of data
 visualisations in scientific publications \citep{tufte_1983}, and while
 there is no doubt that the range of visualisations employed in and
-beyond scientific circles is now far broader, scatterplots remain an
+beyond scientific circles is now far wider, scatterplots remain an
 important tool for the visualisation designer. Scatterplots are
 interpreted rapidly \citep{rensink_2014}, facilitating the quick
 collection of large amounts of data, and their ubiquity
@@ -362,7 +183,7 @@ tasks in mind, plays a large part in their popularity. Building on
 previous work, we elect to focus on the use of scatterplots for the
 communication of linear, bivariate, positive correlation. There is
 evidence that, while correlation perception in scatterplots is
-characterized by low levels of interindividual variance (especially when
+characterised by low levels of interindividual variance (especially when
 compared to other visualisations that communicate the same idea
 \citep{harrison_2014, kay_2015}), our accuracy in interpretation is
 poor. Studies asking participants to estimate correlation numerically
@@ -393,7 +214,7 @@ and to what extent, these techniques can influence cognition in the
 context of real-world data visualisations and the relatedness between
 variables.
 
-visualisation is a powerful tool. After all, if numerical data were
+Visualisation is a powerful tool. After all, if numerical data were
 sufficient for understanding, there would be no need to visualise beyond
 aesthetic preference. Pattern recognition, attention, and familiarity
 are aspects of human perception and cognition that can be exploited by
@@ -404,7 +225,7 @@ cause distrust, confusion, and misunderstanding amongst viewers. It is
 for these reasons that we choose to study belief change in scatterplots
 as a consequence of alternative designs. Scatterplots, like many other
 data visualisations, have been submitted as evidence in court cases
-\citep{bobko_1979}, and play key roles in organizational
+\citep{bobko_1979}, and play key roles in organisational
 decision-making, including in healthcare \citep{poly_2019}. It is
 reasonable to assume that data visualisations are used to make decisions
 that result in positive or negative outcomes with regard to health and
@@ -432,7 +253,7 @@ and perception and cognition in data visualisation.
 \subsection{Correlation Perception}\label{sec-corr-percept}
 
 Correlation describes the level of relatedness between a number of
-variables. Here we focus exclusively on the most commonly used
+variables. Here, we focus exclusively on the most commonly used
 correlation metric - Pearson's \emph{r}. This statistic takes values
 between -1 and 1 depending on the direction of the relationship being
 described. The perceptual and cognitive mechanisms that drive the
@@ -477,8 +298,7 @@ more recent work reports strong effects of the systematic adjustment of
 each visual feature \citep{strain_2023, strain_2023b, strain_2024}. The
 idea that it is the shape of the point cloud and the probability
 distribution it represents that inform judgements of correlation has
-received support from recent work exploiting visual features to make
-correlation estimation more accurate. Strain et al.
+received support from recent work exploiting visual features to facilitate more accurate correlation estimation in positively correlated scatterplots. Strain et al.
 \citep{strain_2023, strain_2023b, strain_2024} changed the sizes and
 opacities of points in scatterplots as a function of their distance from
 the regression line and achieved success in biasing correlation
@@ -512,8 +332,7 @@ Figure~\ref{fig-previous-manipulations}).
 \begin{figure*}
 
 \centering{
-
-\includegraphics[width=1\textwidth,height=\textheight]{beliefs_alternative_scatterplots_files/figure-pdf/fig-previous-manipulations-1.pdf}
+\includegraphics[width=1\textwidth]{beliefs_alternative_scatterplots_files/figure-pdf/fig-previous-manipulations-1.pdf}
 
 }
 
@@ -521,13 +340,13 @@ Figure~\ref{fig-previous-manipulations}).
 scatterplot manipulations from previous work using an \textit{r} value
 of 0.6. Bottom row: the corresponding correlation estimation behaviour
 across values of \textit{r} between 0.2 and 0.99. The dashed diagonal
-line represents perfectly accurate estimation, while the solid line is
+line hypothetically represents accurate estimation, while the solid line is
 what is observed when participants are asked to estimate correlation.}
 
 \end{figure*}%
 
 \subsection{Perception \& Cognition in Data
-visualisation}\label{sec-perception-cognition}
+Visualisation}\label{sec-perception-cognition}
 
 Interacting with data visualisation is a complex process involving
 bottom-up and top-down mechanisms
@@ -575,8 +394,7 @@ While much prior work into correlation perception in scatterplots has
 taken place in person, there is precedent for work that explores
 cognition and perception to take place online using crowdsourced
 participants \citep{xiong_2022}. Crowdsourcing affords us the
-recruitment of samples from across our lay population of interest, and
-it is considerably quicker and less expensive than in-person testing.
+recruitment of samples from across our lay population of interest, and is considerably quicker and less expensive than in-person testing.
 Previous work has reported issues of data quality and skewed
 demographics \citep{chmielewski_2020, charalambides_2021, peer_2021}, so
 we follow published guidelines \citep{peer_2021} to give us the best
@@ -593,7 +411,7 @@ The goal of the present study is to investigate to what extent a novel
 scatterplot design can alter participants' beliefs about correlations.
 Due to our targeting of lay populations, and the authors' prior
 experience with lay participants failing to understand the term
-``correlation'' (although not the concept), we elected to operationalize
+``correlation'' (although not the concept), we elected to operationalise
 correlation for our participants as ``strength of relatedness''. There
 is evidence that belief change can be affected by prior beliefs and
 attitudes \citep{xiong_2022, markant_2023}, and that emotion, including
@@ -610,11 +428,11 @@ by using the ChatGPT4 Large Language Model \citep{chat_gpt}. We used the
 following prompt:
 
 \begin{quotation}
-    ``Generate 100 statements that describe the correlation between two variables, such as:
-     "X is associated with a higher level of Y" or
-     "As X increases, Y increases".
-    Try to match all the statements on emotionality.''
-    
+ ``Generate 100 statements that describe the correlation between two variables, such as:
+  "X is associated with a higher level of Y" or
+  "As X increases, Y increases".
+ Try to match all the statements on emotionality.''
+ 
 \end{quotation}
 
 The full list of these statements can be found in the supplemental
@@ -626,7 +444,7 @@ Positive} for the former, and \emph{Not Related At All} and
 \emph{Strongly Related} for the latter. All other points were
 unlabelled. We calculated a quadratic weighted Cohen's Kappa between the
 two raters using the \textbf{irr} package (version 0.84.1 \citep{irr})
-to penalize larger magnitude disagreements more harshly. We found
+to penalise larger magnitude disagreements more harshly. We found
 agreement above chance for both emotional valence (\(\kappa\) = 0.49,
 \emph{p} \textless{} .001) and strength of relatedness (\(\kappa\) =
 0.51, \emph{p} \textless{} .001), indicating moderate levels of
@@ -636,19 +454,18 @@ levels of absolute agreement, resulting in 14 strongly correlated
 statements and 11 weakly correlated statements that can be seen in the
 supplemental materials. We then tested these 25 statements with a
 representative UK sample to ascertain consensus on both statement
-emotionality and strength of relatedness. Doing so allows us to minimize
+emotionality and strength of relatedness. Doing so allows us to minimise
 the impact of these factors when we analyse the effects of alternative
 scatterplot design on the propensity for belief change in our main
-experiment. We hypothesized that:
+experiment. We hypothesised that:
 
 \begin{itemize}
-\tightlist
 \item
   H1: there will be a significant difference in the average ratings of
   emotional valence between statements.\footnote{The pre-registration
-    for this hypothesis refers to ``emotionality''. In response to
-    reviewer comments, we have clarified that we tested emotional
-    valence, and have therefore used this wording here.}
+ for this hypothesis refers to ``emotionality''. In response to
+ reviewer comments, we have clarified that we tested emotional
+ valence, and have therefore used this wording here.}
 \item
   H2: there will be a significant difference in the average ratings of
   strength of relatedness between statements.
@@ -663,8 +480,8 @@ experiment. We hypothesized that:
 participation, as our main experiment relied on familiarity with data
 visualisations from a popular British news source. In addition to 25
 experimental items, we included six attention check items that
-instructed participants to ignore the scatterplot and provide specific
-answers. No participants failed more than 2 out of 6 attention check
+instructed participants to ignore the statement and provide specific
+answers to the Likert scale sliders. No participants failed more than 2 out of 6 attention check
 items, and therefore data from all 100 were included in the full
 analysis (52 male and 48 female). Participants' mean age was 41.1
 (\emph{SD} = 12.3). The average time taken to complete the survey was
@@ -673,7 +490,7 @@ analysis (52 male and 48 female). Participants' mean age was 41.1
 \subsubsection{Design}\label{sec-design-pre}
 
 Each participant saw all survey items (see supplemental material), along
-with the six attention check items, in a fully randomized order. All
+with the six attention check items, in a fully randomised order. All
 experimental code, materials, and instructions are hosted on
 GitLab\footnote{https://gitlab.pavlovia.org/Strain/beliefs\_scatterplots\_pretest}.
 
@@ -687,18 +504,18 @@ consent through key presses in response to consent statements. They were
 asked to provide their age in a free text box, followed by their gender
 identity. Participants were told that they would be asked to read
 statements about the relatedness between a pair of variables, after
-which they would have to answer some questions. To familiarize
+which they would have to answer some questions. To familiarise
 themselves with the sliders, they were asked to complete a practice
 round in response to the statement: ``As participation in online
 experiments increases, society becomes happier.'' Following each
 statement, a pair of Likert scales were presented labelled ``Statement
 Emotionality'' and ``Strength of Relatedness''; these scales were
-identical to those used by the researchers in
+identical to those used by the authors in
 Section~\ref{sec-pre-study}.
 
 \subsection{Results}\label{sec-results-pre}
 
-Analyses were conducted using R (version 4.4.0) \citep{rcore}). We use
+Analyses were conducted using R (version 4.4.0) \citep{rcore}). We used
 the \textbf{irr} package to calculate Fleiss' Kappa to measure
 interrater agreement on statement emotional valence and strength of
 relatedness for the 25 experimental items. This analysis revealed that
@@ -712,7 +529,7 @@ Experiment}\label{sec-selecting-statements}
 To control for the potential effects of statement emotionality in the
 main experiment, we first select statements that represent neutral
 emotional valence. Statements with average emotionality ratings between
-3 and 5 are statements 2, 10, 22, 16, and 23, which can be seen in
+3 and 5 are statements 2, 10, 16, 22, and 23, which can be seen in
 Table~\ref{tbl-candidate-statements}. To ascertain which statements
 represent the greatest consensus, we add standard deviations in ratings
 for statement emotional valence and strength of relatedness. Due to
@@ -724,7 +541,7 @@ strength of relatedness between the variables in question. We therefore
 test statement number 22, ``Higher consumption of spicy foods is
 associated with a lower risk of certain types of cancer'', however we
 modify the wording so that the variables (food consumption and cancer
-risk) are positively correlated, as while the manipulations we use in
+risk) are positively correlated. While the manipulations we use in
 the alternative scatterplot condition can affect estimates of
 correlation in positively correlated scatterplots, no work regarding the
 effects of these manipulations in negatively correlated scatterplots has
@@ -778,7 +595,7 @@ with a higher risk of certain types of cancer.'' To give ourselves the
 best chance of detecting an effect of viewing alternative scatterplots,
 we elected to design our scatterplots based on a popular British news
 source and to falsely credit the data as being provided by the British
-National Health Service (NHS). Participants were informed that said news
+National Health Service (NHS). Participants were informed that the news
 source had requested that their identity be obscured. They were
 debriefed that this was not the case, and that the data were fictional,
 following completion of the experiment. Based on previous evidence that
@@ -791,7 +608,6 @@ we make the following hypotheses:
 \subsection{Hypotheses}\label{hypotheses}
 
 \begin{itemize}
-\tightlist
 \item
   H1: there will be a significant difference between ratings of strength
   of relatedness made before and after participants viewed scatterplots
@@ -872,7 +688,7 @@ conditions can be seen in Figure~\ref{fig-main-examples}.
 
 \centering{
 
-\includegraphics[width=1\textwidth,height=\textheight]{beliefs_alternative_scatterplots_files/figure-pdf/fig-main-examples-1.pdf}
+\includegraphics[width=1\textwidth]{beliefs_alternative_scatterplots_files/figure-pdf/fig-main-examples-1.pdf}
 
 }
 
@@ -905,11 +721,11 @@ complete the experiment (\emph{SD} = 6.41).
 \subsubsection{Design}\label{sec-design-main}
 
 We employed a between-participants design. Each participant was randomly
-assigned to either group A, in which case they viewed standard
+assigned to either group A, in which they viewed standard
 scatterplots, or group B, in which they viewed alternative scatterplots
 designed deliberately to elicit higher levels of belief change.
 Participants saw all 45 experimental items for their group, along with 4
-attention check items, in a fully randomized order. Our dependent
+attention check items, in a fully randomised order. Our dependent
 variable was the level of belief change induced by viewing the
 scatterplot visualisations, so participants were tested on how strongly
 related they believed the variables described by the correlative
@@ -934,7 +750,7 @@ scale described by Albarracín and Mitchell \citep{albarracin_2004} and
 the 5-item Subjective Graph Literacy scale \citep{garcia_2016}
 \footnote{The inclusion of this scale was not specified in the
   pre-registration.}. To give legitimacy to our data visualisations with
-the hope of maximizing any potential belief change, participants were
+the hope of maximising any potential belief change, participants were
 told that the graphs were taken from a well-known British news source,
 but that the identity of this source had been obscured. To promote
 engagement with the visualisations, participants were instructed to use
@@ -957,7 +773,7 @@ or 1.
 
 All analyses were conducted using R (version 4.4.2 \citep{rcore}).
 Likert scales capture whether one rating is higher or lower than
-another, however they do not quantify the difference between levels of
+another, however they do not quantify the differences between levels of
 rating. Metric modelling assuming equal levels of difference between
 ratings, such as linear regression, is therefore inappropriate
 \citep{liddell_2018}. In light of this, we use the \textbf{ordinal}
@@ -967,10 +783,10 @@ mixed effects models to analyse Likert scale data \footnote{Our
   Conclusions are identical when using said models, and code for this
   analysis is included in the repository associated with this paper.}.
 We use the \textbf{buildmer} (version 2.11 \citep{buildmer}) package to
-automate selection of the random effects structure; we provide a maximal
-model, which includes random intercepts for participants, and
+automate selection of the random effects structure; on provision of a maximal
+model including random intercepts for participants, 
 \textbf{buildmer} identifies the most complex model that successfully
-converges. We present odds ratios and equivalent Cohen's \emph{d} effect
+converges. We also present odds ratios and equivalent Cohen's \emph{d} effect
 sizes that were calculated using the \textbf{effectsize} package
 (version 1.0.0 \citep{effectsize}).
 
@@ -1015,7 +831,7 @@ Rating Time & 3.77 & 0.049 & 76.63 & <0.001 & 43.2 & 2.08\\
 
 \centering{
 
-\includegraphics[width=1\textwidth,height=\textheight]{beliefs_alternative_scatterplots_files/figure-pdf/fig-descriptives-1.pdf}
+\includegraphics[width=1\textwidth]{beliefs_alternative_scatterplots_files/figure-pdf/fig-descriptives-1.pdf}
 
 }
 
@@ -1052,15 +868,13 @@ who were exposed to the alternative scatterplot condition.
 
 \begin{figure*}
 
-\centering{
-
-\includegraphics{beliefs_alternative_scatterplots_files/figure-pdf/fig-difference-descriptive-1.pdf}
+\centering{\includegraphics{beliefs_alternative_scatterplots_files/figure-pdf/fig-difference-descriptive-1.pdf}
 
 }
 
 \caption{\label{fig-difference-descriptive}Histograms illustrating the
 magnitudes of the difference between pre- and post-plot viewing ratings
-of strength of relatedness. Median values are plotted as points.}
+of strength of relatedness for standard and alternative scatterplots. Median values are plotted as points.}
 
 \end{figure*}%
 
@@ -1117,7 +931,7 @@ before developing guidelines for the use of alternative scatterplot
 designs with regards to producing more persuasive visualisations.
 
 \subsubsection{Graph Literacy, Defensive Confidence, and Statement
-Emotionality}\label{sec-add-analyses-discussion}
+Emotional Valence}\label{sec-add-analyses-discussion}
 
 \begin{figure*}
 
@@ -1131,7 +945,7 @@ Emotionality}\label{sec-add-analyses-discussion}
 beliefs about strength of relatedness change as a function of
 participants' scores on the graph literacy test (left), their scores on
 the defensive confidence test (centre), and their ratings of statement
-emotionality (right). Localled smoothed curves with 95\% CI ribbons are
+emotional valence (right). Locally smoothed curves with 95\% CI ribbons are
 shown separately for standard and alternative scatterplot viewing
 conditions. Lower ratings of Difference in Beliefs (\(y\) axis)
 corresponds to lower levels of belief change between pre- and
@@ -1246,14 +1060,14 @@ statements, the propensity for strongly held beliefs to be changed, nor
 the effect of topics with strong or polarised emotional components. We
 chose to use a simple, blunt measure of belief about relatedness, and
 did not investigate variations within the alternative scatterplot design
-space, such as using different values of equation 1, or using opacity or
+space, such as using different values in equation 1, or using opacity or
 size manipulations in isolation. Each of these components deserves
 study, and each is ripe for future work to investigate the contributions
 of each factor to the effects we have seen here.
 
 In Section~\ref{sec-add-analyses-discussion}, we describe the effects
 that graph literacy, defensive confidence, and participants' ratings of
-the emotionality of the correlative statement have on the propensity for
+the emotional valence of the correlative statement have on the propensity for
 belief change. Future work may wish to investigate these factors, along
 with others that affect perceptions of correlation, such as educational
 background or spatial abilities \citep{tandon_2024}. Xiong et al.
@@ -1317,16 +1131,8 @@ are deserving of study with regards to their potential to change
 beliefs.
 
 \bibliographystyle{ACM-Reference-Format}
-\bibliography{alternative-scatterplots.bib}
+\bibliography{alternative-scatterplots}
 
-%% begin pandoc before-bib
-%% end pandoc before-bib
-%% begin pandoc biblio
-%% end pandoc biblio
-%% begin pandoc include-after
-%% end pandoc include-after
-%% begin pandoc after-body
-%% end pandoc after-body
 
 \end{document}
 \endinput
