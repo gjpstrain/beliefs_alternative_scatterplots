@@ -16,6 +16,8 @@ ADD beliefs_alternative_scatterplots.qmd /home/rstudio/
 
 RUN R -e "install.packages('devtools')"
 
+RUN R -e "install.packages('remotes')"
+
 RUN R -e "require(devtools)"
 
 # tidyverse is included in rockerverse image
@@ -26,7 +28,6 @@ RUN R -e "devtools::install_version('scales', version = '1.3.0', dependencies = 
 RUN R -e "devtools::install_version('buildmer', version = '2.11', dependencies = T)"
 RUN R -e "devtools::install_version('lme4', version = '1.1-36', dependencies = T)"
 RUN R -e "devtools::install_version('kableExtra', version = '1.4.0', dependencies = T)"
-RUN R -e "devtools::install_github('crsh/papaja')"
 RUN R -e "devtools::install_version('qwraps2', version = '0.6.1', dependencies = T)"
 RUN R -e "devtools::install_version('lmerTest', version = '3.1-3', dependencies = T)"
 RUN R -e "devtools::install_version('ggdist', version = '3.3.2', dependencies = T)"
@@ -41,6 +42,7 @@ RUN R -e "devtools::install_version('ggh4x', version = '0.3.0', dependencies = T
 RUN R -e "devtools::install_version('ordinal', version = '2023.12-4.1', dependencies = T)"
 RUN R -e "devtools::install_version('effectsize', version = '1.0.0', dependencies = T)"
 RUN R -e "devtools::install_version('ggrain', version = '0.0.4', dependencies = T)"
+RUN R -e "install.packages('papaja', version = '0.1.3', dependencies = T)"
 
 # install doclicense package to recreate ACM licensing
 
